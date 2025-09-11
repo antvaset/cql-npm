@@ -1,0 +1,14 @@
+{
+  "name": "cql-all-cql-to-elm",
+  "version": "4.0.0-SNAPSHOT",
+  "main": "kotlin/cql-all-cql-to-elm.mjs",
+  "devDependencies": {
+    "typescript": "5.8.3"
+  },
+  "dependencies": {
+    "saxes": "6.0.0"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}
