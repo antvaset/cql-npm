@@ -51,14 +51,14 @@ initMetadataForClass(Element_1, 'Element', VOID, MutableXmlNode);
 //endregion
 function BigDecimalJs_init_$Init$(value, $this) {
   BigDecimalJs.call($this);
-  $this.i21_1 = Companion_getInstance().g1u(value);
+  $this.j21_1 = Companion_getInstance().h1u(value);
   return $this;
 }
 function BigDecimalJs_init_$Create$(value) {
   return BigDecimalJs_init_$Init$(value, objectCreate(protoOf(BigDecimalJs)));
 }
-protoOf(BigDecimalJs).j1v = function () {
-  return this.i21_1.j1v();
+protoOf(BigDecimalJs).k1v = function () {
+  return this.j21_1.k1v();
 };
 function BigDecimalJs() {
 }
@@ -77,36 +77,36 @@ function QNameJs_init_$Create$_0(localPart) {
   return QNameJs_init_$Init$_0(localPart, objectCreate(protoOf(QNameJs)));
 }
 function QNameJs(namespaceURI, localPart, prefix) {
-  this.j21_1 = namespaceURI;
-  this.k21_1 = localPart;
-  this.l21_1 = prefix;
+  this.k21_1 = namespaceURI;
+  this.l21_1 = localPart;
+  this.m21_1 = prefix;
 }
-protoOf(QNameJs).m21 = function () {
+protoOf(QNameJs).n21 = function () {
+  return this.l21_1;
+};
+protoOf(QNameJs).o21 = function () {
   return this.k21_1;
 };
-protoOf(QNameJs).n21 = function () {
-  return this.j21_1;
-};
 protoOf(QNameJs).toString = function () {
-  if (this.j21_1 === '')
-    return this.k21_1;
-  return '{' + this.j21_1 + '}' + this.k21_1;
+  if (this.k21_1 === '')
+    return this.l21_1;
+  return '{' + this.k21_1 + '}' + this.l21_1;
 };
 protoOf(QNameJs).equals = function (other) {
   if (this === other)
     return true;
   if (other instanceof QNameJs) {
-    if (!(this.j21_1 === other.j21_1))
-      return false;
     if (!(this.k21_1 === other.k21_1))
+      return false;
+    if (!(this.l21_1 === other.l21_1))
       return false;
     return true;
   }
   return false;
 };
 protoOf(QNameJs).hashCode = function () {
-  var result = getStringHashCode(this.j21_1);
-  result = imul(31, result) + getStringHashCode(this.k21_1) | 0;
+  var result = getStringHashCode(this.k21_1);
+  result = imul(31, result) + getStringHashCode(this.l21_1) | 0;
   return result;
 };
 function jsonStringToQName(value) {
@@ -125,13 +125,13 @@ function jsonStringToQName(value) {
 }
 function Text(text) {
   XmlNode.call(this);
-  this.o21_1 = text;
+  this.p21_1 = text;
 }
 protoOf(Text).toString = function () {
-  return 'Text(text=' + this.o21_1 + ')';
+  return 'Text(text=' + this.p21_1 + ')';
 };
 protoOf(Text).hashCode = function () {
-  return getStringHashCode(this.o21_1);
+  return getStringHashCode(this.p21_1);
 };
 protoOf(Text).equals = function (other) {
   if (this === other)
@@ -139,32 +139,32 @@ protoOf(Text).equals = function (other) {
   if (!(other instanceof Text))
     return false;
   var tmp0_other_with_cast = other instanceof Text ? other : THROW_CCE();
-  if (!(this.o21_1 === tmp0_other_with_cast.o21_1))
+  if (!(this.p21_1 === tmp0_other_with_cast.p21_1))
     return false;
   return true;
 };
 function Element_0(tagName, attributes, children) {
   XmlNode.call(this);
-  this.p21_1 = tagName;
-  this.q21_1 = attributes;
-  this.r21_1 = children;
+  this.q21_1 = tagName;
+  this.r21_1 = attributes;
+  this.s21_1 = children;
 }
-protoOf(Element_0).s21 = function (tagName, attributes, children) {
+protoOf(Element_0).t21 = function (tagName, attributes, children) {
   return new Element_0(tagName, attributes, children);
 };
-protoOf(Element_0).t21 = function (tagName, attributes, children, $super) {
-  tagName = tagName === VOID ? this.p21_1 : tagName;
-  attributes = attributes === VOID ? this.q21_1 : attributes;
-  children = children === VOID ? this.r21_1 : children;
-  return $super === VOID ? this.s21(tagName, attributes, children) : $super.s21.call(this, tagName, attributes, children);
+protoOf(Element_0).u21 = function (tagName, attributes, children, $super) {
+  tagName = tagName === VOID ? this.q21_1 : tagName;
+  attributes = attributes === VOID ? this.r21_1 : attributes;
+  children = children === VOID ? this.s21_1 : children;
+  return $super === VOID ? this.t21(tagName, attributes, children) : $super.t21.call(this, tagName, attributes, children);
 };
 protoOf(Element_0).toString = function () {
-  return 'Element(tagName=' + this.p21_1 + ', attributes=' + toString(this.q21_1) + ', children=' + toString(this.r21_1) + ')';
+  return 'Element(tagName=' + this.q21_1 + ', attributes=' + toString(this.r21_1) + ', children=' + toString(this.s21_1) + ')';
 };
 protoOf(Element_0).hashCode = function () {
-  var result = getStringHashCode(this.p21_1);
-  result = imul(result, 31) + hashCode(this.q21_1) | 0;
+  var result = getStringHashCode(this.q21_1);
   result = imul(result, 31) + hashCode(this.r21_1) | 0;
+  result = imul(result, 31) + hashCode(this.s21_1) | 0;
   return result;
 };
 protoOf(Element_0).equals = function (other) {
@@ -173,11 +173,11 @@ protoOf(Element_0).equals = function (other) {
   if (!(other instanceof Element_0))
     return false;
   var tmp0_other_with_cast = other instanceof Element_0 ? other : THROW_CCE();
-  if (!(this.p21_1 === tmp0_other_with_cast.p21_1))
-    return false;
-  if (!equals(this.q21_1, tmp0_other_with_cast.q21_1))
+  if (!(this.q21_1 === tmp0_other_with_cast.q21_1))
     return false;
   if (!equals(this.r21_1, tmp0_other_with_cast.r21_1))
+    return false;
+  if (!equals(this.s21_1, tmp0_other_with_cast.s21_1))
     return false;
   return true;
 };
@@ -216,8 +216,8 @@ function xmlAttributeValueToQName(value, namespaces) {
   return tmp;
 }
 function qNameToXmlAttributeValue(qname, namespaces, defaultNamespaces) {
-  var localPart = qname.m21();
-  var namespace = qname.n21();
+  var localPart = qname.n21();
+  var namespace = qname.o21();
   // Inline function 'kotlin.collections.find' call
   var tmp0 = namespaces.t2();
   var tmp$ret$1;
@@ -280,16 +280,16 @@ function getNewKey(namespaces) {
 }
 function Text_0(text) {
   MutableXmlNode.call(this);
-  this.u21_1 = text;
+  this.v21_1 = text;
 }
-protoOf(Text_0).v21 = function () {
-  return new Text(this.u21_1);
+protoOf(Text_0).w21 = function () {
+  return new Text(this.v21_1);
 };
 protoOf(Text_0).toString = function () {
-  return 'Text(text=' + this.u21_1 + ')';
+  return 'Text(text=' + this.v21_1 + ')';
 };
 protoOf(Text_0).hashCode = function () {
-  return getStringHashCode(this.u21_1);
+  return getStringHashCode(this.v21_1);
 };
 protoOf(Text_0).equals = function (other) {
   if (this === other)
@@ -297,36 +297,36 @@ protoOf(Text_0).equals = function (other) {
   if (!(other instanceof Text_0))
     return false;
   var tmp0_other_with_cast = other instanceof Text_0 ? other : THROW_CCE();
-  if (!(this.u21_1 === tmp0_other_with_cast.u21_1))
+  if (!(this.v21_1 === tmp0_other_with_cast.v21_1))
     return false;
   return true;
 };
 function Element_1(tagName, attributes, children) {
   MutableXmlNode.call(this);
-  this.w21_1 = tagName;
-  this.x21_1 = attributes;
-  this.y21_1 = children;
+  this.x21_1 = tagName;
+  this.y21_1 = attributes;
+  this.z21_1 = children;
 }
-protoOf(Element_1).v21 = function () {
+protoOf(Element_1).w21 = function () {
   // Inline function 'kotlin.collections.map' call
-  var this_0 = this.y21_1;
+  var this_0 = this.z21_1;
   // Inline function 'kotlin.collections.mapTo' call
   var destination = ArrayList_init_$Create$(collectionSizeOrDefault(this_0, 10));
   var _iterator__ex2g4s = this_0.g();
   while (_iterator__ex2g4s.h()) {
     var item = _iterator__ex2g4s.i();
-    var tmp$ret$0 = item.v21();
+    var tmp$ret$0 = item.w21();
     destination.e(tmp$ret$0);
   }
-  return new Element_0(this.w21_1, this.x21_1, destination);
+  return new Element_0(this.x21_1, this.y21_1, destination);
 };
 protoOf(Element_1).toString = function () {
-  return 'Element(tagName=' + this.w21_1 + ', attributes=' + toString(this.x21_1) + ', children=' + toString(this.y21_1) + ')';
+  return 'Element(tagName=' + this.x21_1 + ', attributes=' + toString(this.y21_1) + ', children=' + toString(this.z21_1) + ')';
 };
 protoOf(Element_1).hashCode = function () {
-  var result = getStringHashCode(this.w21_1);
-  result = imul(result, 31) + hashCode(this.x21_1) | 0;
+  var result = getStringHashCode(this.x21_1);
   result = imul(result, 31) + hashCode(this.y21_1) | 0;
+  result = imul(result, 31) + hashCode(this.z21_1) | 0;
   return result;
 };
 protoOf(Element_1).equals = function (other) {
@@ -335,11 +335,11 @@ protoOf(Element_1).equals = function (other) {
   if (!(other instanceof Element_1))
     return false;
   var tmp0_other_with_cast = other instanceof Element_1 ? other : THROW_CCE();
-  if (!(this.w21_1 === tmp0_other_with_cast.w21_1))
-    return false;
-  if (!equals(this.x21_1, tmp0_other_with_cast.x21_1))
+  if (!(this.x21_1 === tmp0_other_with_cast.x21_1))
     return false;
   if (!equals(this.y21_1, tmp0_other_with_cast.y21_1))
+    return false;
+  if (!equals(this.z21_1, tmp0_other_with_cast.z21_1))
     return false;
   return true;
 };
@@ -369,14 +369,14 @@ function serializeUsingPolyfill(element, namespaces) {
     var tmp$ret$4 = tmp;
     destination.e(tmp$ret$4);
   }
-  var elementWithXmlnsAttributes = element.t21(VOID, plus(toMap(destination), element.q21_1));
+  var elementWithXmlnsAttributes = element.u21(VOID, plus(toMap(destination), element.r21_1));
   serializeXmlElement(elementWithXmlnsAttributes, sb);
   return sb.toString();
 }
 function serializeXmlElement(element, out) {
-  out.j9('<').j9(element.p21_1);
+  out.j9('<').j9(element.q21_1);
   // Inline function 'kotlin.collections.iterator' call
-  var _iterator__ex2g4s = element.q21_1.t2().g();
+  var _iterator__ex2g4s = element.r21_1.t2().g();
   while (_iterator__ex2g4s.h()) {
     var _destruct__k2r9zo = _iterator__ex2g4s.i();
     // Inline function 'kotlin.collections.component1' call
@@ -385,16 +385,16 @@ function serializeXmlElement(element, out) {
     var value = _destruct__k2r9zo.n2();
     out.j9(' ').j9(name).j9('="').j9(escapeXml(value)).j9('"');
   }
-  if (element.r21_1.q()) {
+  if (element.s21_1.q()) {
     out.j9('/>');
     return Unit_instance;
   }
   out.j9('>');
-  var _iterator__ex2g4s_0 = element.r21_1.g();
+  var _iterator__ex2g4s_0 = element.s21_1.g();
   while (_iterator__ex2g4s_0.h()) {
     var child = _iterator__ex2g4s_0.i();
     if (child instanceof Text)
-      out.j9(escapeXml(child.o21_1));
+      out.j9(escapeXml(child.p21_1));
     else {
       if (child instanceof Element_0) {
         serializeXmlElement(child, out);
@@ -403,7 +403,7 @@ function serializeXmlElement(element, out) {
       }
     }
   }
-  out.j9('<\/').j9(element.p21_1).j9('>');
+  out.j9('<\/').j9(element.q21_1).j9('>');
 }
 function escapeXml(text) {
   return replace(replace(replace(replace(replace(text, '&', '&amp;'), '<', '&lt;'), '>', '&gt;'), '"', '&quot;'), "'", '&apos;');
@@ -498,18 +498,18 @@ function parseXmlUsingPolyfill(xml) {
   if (!(stack.j() === 1)) {
     throw Exception_init_$Create$('Parsing error: Unmatched opening tag(s)');
   }
-  var _iterator__ex2g4s = stack.o(0).y21_1.g();
+  var _iterator__ex2g4s = stack.o(0).z21_1.g();
   while (_iterator__ex2g4s.h()) {
     var child = _iterator__ex2g4s.i();
     if (child instanceof Element_1) {
-      return child.v21();
+      return child.w21();
     }
   }
   throw Exception_init_$Create$('Parsing error: No root element found');
 }
 function parseXmlUsingPolyfill$lambda($stack) {
   return function (t) {
-    var tmp = last($stack).y21_1;
+    var tmp = last($stack).z21_1;
     return tmp.e(new Text_0((!(t == null) ? typeof t === 'string' : false) ? t : THROW_CCE()));
   };
 }
@@ -525,7 +525,7 @@ function parseXmlUsingPolyfill$lambda_0($stack) {
     // Inline function 'kotlin.collections.mutableListOf' call
     var tmp$ret$1 = ArrayList_init_$Create$_0();
     var newElement = new Element_1(tagName, attributes, tmp$ret$1);
-    last($stack).y21_1.e(newElement);
+    last($stack).z21_1.e(newElement);
     return $stack.e(newElement);
   };
 }
@@ -542,7 +542,7 @@ function parseXmlUsingPolyfill$lambda_2(e) {
   throw Exception_init_$Create$('Parsing error: ' + e.message);
 }
 function serializeUsingDomApi(element, namespaces) {
-  var doc = document.implementation.createDocument(namespaces.q2(substringBefore(element.p21_1, ':', '')), element.p21_1);
+  var doc = document.implementation.createDocument(namespaces.q2(substringBefore(element.q21_1, ':', '')), element.q21_1);
   var documentElement = ensureNotNull(doc.documentElement);
   // Inline function 'kotlin.collections.iterator' call
   var _iterator__ex2g4s = namespaces.t2().g();
@@ -566,7 +566,7 @@ function serializeUsingDomApi(element, namespaces) {
 }
 function exportDomContent(doc, domElement, element, namespaces) {
   // Inline function 'kotlin.collections.iterator' call
-  var _iterator__ex2g4s = element.q21_1.t2().g();
+  var _iterator__ex2g4s = element.r21_1.t2().g();
   while (_iterator__ex2g4s.h()) {
     var _destruct__k2r9zo = _iterator__ex2g4s.i();
     // Inline function 'kotlin.collections.component1' call
@@ -575,15 +575,15 @@ function exportDomContent(doc, domElement, element, namespaces) {
     var value = _destruct__k2r9zo.n2();
     domElement.setAttribute(name, value);
   }
-  var _iterator__ex2g4s_0 = element.r21_1.g();
+  var _iterator__ex2g4s_0 = element.s21_1.g();
   while (_iterator__ex2g4s_0.h()) {
     var child = _iterator__ex2g4s_0.i();
     var tmp;
     if (child instanceof Text) {
-      tmp = doc.createTextNode(child.o21_1);
+      tmp = doc.createTextNode(child.p21_1);
     } else {
       if (child instanceof Element_0) {
-        var childElement = doc.createElementNS(namespaces.q2(substringBefore(child.p21_1, ':', '')), child.p21_1);
+        var childElement = doc.createElementNS(namespaces.q2(substringBefore(child.q21_1, ':', '')), child.q21_1);
         exportDomContent(doc, childElement, child, namespaces);
         tmp = childElement;
       } else {

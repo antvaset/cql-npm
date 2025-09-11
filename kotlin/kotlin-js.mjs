@@ -48,17 +48,17 @@ function iteratorFor_0(source) {
   return iterator(iteratorFor$slambda_0(source, null));
 }
 function iteratorFor$slambda($source, resultContinuation) {
-  this.h22_1 = $source;
+  this.i22_1 = $source;
   CoroutineImpl.call(this, resultContinuation);
 }
-protoOf(iteratorFor$slambda).m22 = function ($this$iterator, $completion) {
-  var tmp = this.n22($this$iterator, $completion);
+protoOf(iteratorFor$slambda).n22 = function ($this$iterator, $completion) {
+  var tmp = this.o22($this$iterator, $completion);
   tmp.aa_1 = Unit_instance;
   tmp.ba_1 = null;
   return tmp.ga();
 };
 protoOf(iteratorFor$slambda).ya = function (p1, $completion) {
-  return this.m22(p1 instanceof SequenceScope ? p1 : THROW_CCE(), $completion);
+  return this.n22(p1 instanceof SequenceScope ? p1 : THROW_CCE(), $completion);
 };
 protoOf(iteratorFor$slambda).ga = function () {
   var suspendResult = this.aa_1;
@@ -72,22 +72,22 @@ protoOf(iteratorFor$slambda).ga = function () {
           continue $sm;
         case 1:
           var tmp_0 = this;
-          var tmp_1 = this.h22_1.next();
-          tmp_0.j22_1 = tmp_1 instanceof constructor ? tmp_1 : null;
-          if (this.j22_1 == null) {
+          var tmp_1 = this.i22_1.next();
+          tmp_0.k22_1 = tmp_1 instanceof constructor ? tmp_1 : null;
+          if (this.k22_1 == null) {
             this.y9_1 = 4;
             var tmp_2 = this;
             continue $sm;
           } else {
-            this.k22_1 = this.j22_1;
+            this.l22_1 = this.k22_1;
             this.y9_1 = 2;
             continue $sm;
           }
 
         case 2:
-          this.l22_1 = this.k22_1;
+          this.m22_1 = this.l22_1;
           this.y9_1 = 3;
-          suspendResult = this.i22_1.ch(this.l22_1.value, this);
+          suspendResult = this.j22_1.ch(this.m22_1.value, this);
           if (suspendResult === get_COROUTINE_SUSPENDED()) {
             return suspendResult;
           }
@@ -112,15 +112,15 @@ protoOf(iteratorFor$slambda).ga = function () {
     }
    while (true);
 };
-protoOf(iteratorFor$slambda).n22 = function ($this$iterator, completion) {
-  var i = new iteratorFor$slambda(this.h22_1, completion);
-  i.i22_1 = $this$iterator;
+protoOf(iteratorFor$slambda).o22 = function ($this$iterator, completion) {
+  var i = new iteratorFor$slambda(this.i22_1, completion);
+  i.j22_1 = $this$iterator;
   return i;
 };
 function iteratorFor$slambda_0($source, resultContinuation) {
   var i = new iteratorFor$slambda($source, resultContinuation);
   var l = function ($this$iterator, $completion) {
-    return i.m22($this$iterator, $completion);
+    return i.n22($this$iterator, $completion);
   };
   l.$arity = 1;
   return l;

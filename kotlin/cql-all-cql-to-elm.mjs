@@ -67,6 +67,10 @@ import {
   mapCapacity1h45rc3eh9p2l as mapCapacity,
   coerceAtLeast2bkz8m9ik7hep as coerceAtLeast,
   LinkedHashMap_init_$Create$23uxki4opd0pn as LinkedHashMap_init_$Create$,
+  lastIndexOf2d52xhix5ymjr as lastIndexOf_0,
+  indexOfwa4w6635jewi as indexOf,
+  copyToArray2j022khrow2yi as copyToArray,
+  IllegalArgumentException2asla15b5jaob as IllegalArgumentException,
   getStringHashCode26igk1bx568vk as getStringHashCode,
   hashCodeq5arwsb9dgti as hashCode,
   plus17rl43at52ays as plus,
@@ -77,13 +81,11 @@ import {
   firstOrNull1982767dljvdy as firstOrNull,
   LinkedHashMap_init_$Create$1f9mb1z5f3dxn as LinkedHashMap_init_$Create$_0,
   ArrayDeque_init_$Create$2333dl090ltjt as ArrayDeque_init_$Create$,
-  indexOfwa4w6635jewi as indexOf,
   indexOf1xbs558u7wr52 as indexOf_0,
   KtMap140uvy3s5zad8 as KtMap,
   trimIndent1qytc1wvt8suh as trimIndent,
   replace3le3ie7l9k8aq as replace,
   contains3ue2qo8xhmpf1 as contains_0,
-  copyToArray2j022khrow2yi as copyToArray,
   mutableListOf6oorvk2mtdmp as mutableListOf,
   Collection1k04j3hzsbod0 as Collection,
   toList3jhuyej2anx2q as toList,
@@ -231,14 +233,14 @@ import {
   cqlParsery4hd1wi1ye88 as cqlParser,
   NamespaceAware2wy8r4thqdilh as NamespaceAware,
   cqlLexerzqdtp7swhjhi as cqlLexer,
+  parseModelInfoXml1fsgyy00q411b as parseModelInfoXml,
+  ModelInfoProvider3ej6xc5ux2t0i as ModelInfoProvider,
   ModelIdentifier282xy4cycht8w as ModelIdentifier,
   ChoiceType_init_$Create$3b4vzk7reh3ki as ChoiceType_init_$Create$,
   ModelContext3dtyk41cxc38u as ModelContext,
   Companion_getInstancec06gjhlqfa6y as Companion_getInstance_1,
   ChoiceType_init_$Create$1p4ie8r08xx58 as ChoiceType_init_$Create$_0,
   TupleType1ny98ghg7egdp as TupleType,
-  parseModelInfoXml1fsgyy00q411b as parseModelInfoXml,
-  ModelInfoProvider3ej6xc5ux2t0i as ModelInfoProvider,
   NamespaceManager18qfoofywrgv1 as NamespaceManager,
   TypeParameter37m3goxauge5v as TypeParameter,
   SimpleTypew83544mhy19s as SimpleType,
@@ -291,6 +293,8 @@ import {
   IOException1wyutdmfe71nu as IOException,
   buffered3kq86cdmguv3h as buffered,
   buffered1hqdy4i9j28ez as buffered_0,
+  Patho2uzee7j6809 as Path_0,
+  FileNotFoundException1fp87nupo9c26 as FileNotFoundException,
   Buffergs925ekssbch as Buffer,
   writeString33ca4btrgctw7 as writeString,
 } from './kotlinx-io-kotlinx-io-core.mjs';
@@ -345,6 +349,16 @@ initMetadataForCompanion(Companion_3);
 initMetadataForObject($serializer_0, '$serializer', VOID, VOID, [GeneratedSerializer]);
 initMetadataForClass(CqlTranslatorOptions, 'CqlTranslatorOptions', CqlTranslatorOptions, VOID, VOID, VOID, VOID, {0: $serializer_getInstance_0});
 initMetadataForObject(DataTypes, 'DataTypes');
+function getLibraryContent(libraryIdentifier, type) {
+  if (LibraryContentType_CQL_getInstance().equals(type)) {
+    return this.getLibrarySource(libraryIdentifier);
+  }
+  return null;
+}
+initMetadataForInterface(LibrarySourceProvider, 'LibrarySourceProvider');
+initMetadataForInterface(PathAware, 'PathAware');
+initMetadataForClass(DefaultLibrarySourceProvider, 'DefaultLibrarySourceProvider', VOID, VOID, [LibrarySourceProvider, PathAware]);
+initMetadataForClass(DefaultModelInfoProvider, 'DefaultModelInfoProvider', VOID, VOID, [ModelInfoProvider, PathAware]);
 initMetadataForClass(IdentifierContext, 'IdentifierContext');
 initMetadataForClass(SignatureLevel, 'SignatureLevel', VOID, Enum);
 initMetadataForClass(BinaryWrapper, 'BinaryWrapper');
@@ -361,22 +375,14 @@ initMetadataForClass(FunctionSig, 'FunctionSig');
 initMetadataForCompanion(Companion_5);
 initMetadataForClass(sam$kotlin_Comparator$0, 'sam$kotlin_Comparator$0', VOID, VOID, [Comparator, FunctionAdapter]);
 initMetadataForClass(LibraryManager, 'LibraryManager');
-function getLibraryContent(libraryIdentifier, type) {
-  if (LibraryContentType_CQL_getInstance().equals(type)) {
-    return this.getLibrarySource(libraryIdentifier);
-  }
-  return null;
-}
-initMetadataForInterface(LibrarySourceLoader, 'LibrarySourceLoader');
 function getLibraryContent_0(libraryIdentifier, type) {
   if (LibraryContentType_CQL_getInstance().equals(type)) {
     return this.getLibrarySource(libraryIdentifier);
   }
   return null;
 }
-initMetadataForInterface(LibrarySourceProvider, 'LibrarySourceProvider');
+initMetadataForInterface(LibrarySourceLoader, 'LibrarySourceLoader');
 initMetadataForClass(createLibrarySourceProvider$1, VOID, VOID, VOID, [LibrarySourceProvider]);
-initMetadataForInterface(PathAware, 'PathAware');
 initMetadataForClass(ModelInfoLoader, 'ModelInfoLoader', ModelInfoLoader, VOID, [NamespaceAware, PathAware]);
 initMetadataForClass(createModelInfoProvider$1, VOID, VOID, VOID, [ModelInfoProvider]);
 initMetadataForClass(ModelManager, 'ModelManager', ModelManager);
@@ -486,7 +492,7 @@ initMetadataForClass(IdentityHashMap, 'IdentityHashMap', IdentityHashMap);
 //endregion
 function Companion() {
 }
-protoOf(Companion).o8t = function (results) {
+protoOf(Companion).p8t = function (results) {
   return new CompiledLibraryMultiResults(results);
 };
 var Companion_instance_2;
@@ -494,30 +500,30 @@ function Companion_getInstance_2() {
   return Companion_instance_2;
 }
 function CompiledLibraryMultiResults(results) {
-  this.p8t_1 = results;
+  this.q8t_1 = results;
 }
-protoOf(CompiledLibraryMultiResults).q8t = function () {
+protoOf(CompiledLibraryMultiResults).r8t = function () {
   // Inline function 'kotlin.check' call
-  if (!(this.p8t_1.j() === 1)) {
-    var message = 'Expected exactly one result, but found ' + this.p8t_1.j();
+  if (!(this.q8t_1.j() === 1)) {
+    var message = 'Expected exactly one result, but found ' + this.q8t_1.j();
     throw IllegalStateException_init_$Create$(toString(message));
   }
-  return this.p8t_1.o(0);
+  return this.q8t_1.o(0);
 };
 function CompiledLibraryResult(compiledLibrary, errors) {
-  this.r8t_1 = compiledLibrary;
-  this.s8t_1 = errors;
+  this.s8t_1 = compiledLibrary;
+  this.t8t_1 = errors;
 }
 protoOf(CompiledLibraryResult).toString = function () {
-  return '' + getKClass(CompiledLibraryResult).lb() + '[compiledLibrary=' + toString(this.r8t_1) + ', errors=' + toString(this.s8t_1) + ']';
+  return '' + getKClass(CompiledLibraryResult).lb() + '[compiledLibrary=' + toString(this.s8t_1) + ', errors=' + toString(this.t8t_1) + ']';
 };
 function getCompilerOptions($this, annotations) {
   var _iterator__ex2g4s = annotations.g();
   while (_iterator__ex2g4s.h()) {
     var base = _iterator__ex2g4s.i();
     if (base instanceof CqlToElmInfo) {
-      if (!(base.d65_1 == null)) {
-        return base.d65_1;
+      if (!(base.e65_1 == null)) {
+        return base.e65_1;
       }
     }
   }
@@ -528,21 +534,21 @@ function getCompilerVersion($this, annotations) {
   while (_iterator__ex2g4s.h()) {
     var o = _iterator__ex2g4s.i();
     if (o instanceof CqlToElmInfo) {
-      return o.c65_1;
+      return o.d65_1;
     }
   }
   return null;
 }
 function CompilerOptions() {
 }
-protoOf(CompilerOptions).t8t = function (library) {
-  if (library.n66().q()) {
+protoOf(CompilerOptions).u8t = function (library) {
+  if (library.o66().q()) {
     return null;
   }
-  var compilerOptions = getCompilerOptions(this, library.n66());
-  return this.u8t(compilerOptions);
+  var compilerOptions = getCompilerOptions(this, library.o66());
+  return this.v8t(compilerOptions);
 };
-protoOf(CompilerOptions).u8t = function (compilerOptions) {
+protoOf(CompilerOptions).v8t = function (compilerOptions) {
   // Inline function 'kotlin.text.isNullOrEmpty' call
   if (compilerOptions == null || charSequenceLength(compilerOptions) === 0) {
     return null;
@@ -600,11 +606,11 @@ protoOf(CompilerOptions).u8t = function (compilerOptions) {
   }
   return optionSet;
 };
-protoOf(CompilerOptions).v8t = function (library) {
-  if (library.n66().q()) {
+protoOf(CompilerOptions).w8t = function (library) {
+  if (library.o66().q()) {
     return null;
   }
-  return getCompilerVersion(this, library.n66());
+  return getCompilerVersion(this, library.o66());
 };
 var CompilerOptions_instance;
 function CompilerOptions_getInstance() {
@@ -612,16 +618,16 @@ function CompilerOptions_getInstance() {
 }
 function getLibraryPath($this, namespaceName, unqualifiedIdentifier) {
   if (!(namespaceName == null)) {
-    var namespaceUri = $this.w8t_1.resolveNamespaceUri(namespaceName, true);
+    var namespaceUri = $this.x8t_1.resolveNamespaceUri(namespaceName, true);
     return Companion_instance_1.getPath(namespaceUri, unqualifiedIdentifier);
   }
   return unqualifiedIdentifier;
 }
 function isUnfilteredContext($this, contextName) {
-  return contextName === 'Unfiltered' || ($this.w8t_1.isCompatibilityLevel3 && contextName === 'Population');
+  return contextName === 'Unfiltered' || ($this.x8t_1.isCompatibilityLevel3 && contextName === 'Population');
 }
 function isImplicitContextExpressionDef($this, def) {
-  var _iterator__ex2g4s = $this.j8v_1.s2().g();
+  var _iterator__ex2g4s = $this.k8v_1.s2().g();
   while (_iterator__ex2g4s.h()) {
     var e = _iterator__ex2g4s.i();
     if (def === e) {
@@ -632,7 +638,7 @@ function isImplicitContextExpressionDef($this, def) {
 }
 function removeImplicitContextExpressionDef($this, def) {
   // Inline function 'kotlin.collections.iterator' call
-  var _iterator__ex2g4s = $this.j8v_1.t2().g();
+  var _iterator__ex2g4s = $this.k8v_1.t2().g();
   $l$loop: while (_iterator__ex2g4s.h()) {
     var _destruct__k2r9zo = _iterator__ex2g4s.i();
     // Inline function 'kotlin.collections.component1' call
@@ -640,41 +646,41 @@ function removeImplicitContextExpressionDef($this, def) {
     // Inline function 'kotlin.collections.component2' call
     var value = _destruct__k2r9zo.n2();
     if (def === value) {
-      $this.j8v_1.v2(key);
+      $this.k8v_1.v2(key);
       break $l$loop;
     }
   }
 }
 function internalVisitExpressionDefinition($this, ctx) {
-  var identifier = ensureNotNull($this.k8v(ctx.g3w()));
-  var def = $this.w8t_1.resolveExpressionRef(identifier);
+  var identifier = ensureNotNull($this.l8v(ctx.h3w()));
+  var def = $this.x8t_1.resolveExpressionRef(identifier);
   if (def == null) {
-    var hollowExpressionDef = $this.y8t_1.d7n().q65(identifier).g6w($this.b8u_1);
-    var ir = $this.y8t_1.p7k().q65(identifier);
-    track($this, ir, ctx.g3w());
-    $this.w8t_1.pushIdentifier(ir, hollowExpressionDef, IdentifierScope_GLOBAL_getInstance());
+    var hollowExpressionDef = $this.z8t_1.e7n().r65(identifier).h6w($this.c8u_1);
+    var ir = $this.z8t_1.q7k().r65(identifier);
+    track($this, ir, ctx.h3w());
+    $this.x8t_1.pushIdentifier(ir, hollowExpressionDef, IdentifierScope_GLOBAL_getInstance());
   }
   if (def == null || isImplicitContextExpressionDef($this, def)) {
     if (!(def == null) && isImplicitContextExpressionDef($this, def)) {
-      $this.w8t_1.removeExpression(def);
+      $this.x8t_1.removeExpression(def);
       removeImplicitContextExpressionDef($this, def);
     }
-    $this.w8t_1.pushExpressionContext($this.b8u_1);
+    $this.x8t_1.pushExpressionContext($this.c8u_1);
     try {
-      $this.w8t_1.pushExpressionDefinition(identifier);
+      $this.x8t_1.pushExpressionDefinition(identifier);
       try {
-        var tmp = $this.y8t_1.d7n().b6i($this.l8v(ctx.h3w())).q65(identifier).g6w($this.b8u_1);
-        var tmp_0 = $this.d32(ctx.j3w());
-        def = tmp.r69((tmp_0 == null ? true : tmp_0 instanceof Expression) ? tmp_0 : THROW_CCE());
-        if (!(def.f6w_1 == null)) {
-          Trackable_getInstance().o8v(def, Trackable_getInstance().n8v(ensureNotNull(def.f6w_1)));
+        var tmp = $this.z8t_1.e7n().c6i($this.m8v(ctx.i3w())).r65(identifier).h6w($this.c8u_1);
+        var tmp_0 = $this.e32(ctx.k3w());
+        def = tmp.s69((tmp_0 == null ? true : tmp_0 instanceof Expression) ? tmp_0 : THROW_CCE());
+        if (!(def.g6w_1 == null)) {
+          Trackable_getInstance().p8v(def, Trackable_getInstance().o8v(ensureNotNull(def.g6w_1)));
         }
-        $this.w8t_1.addExpression(def);
+        $this.x8t_1.addExpression(def);
       }finally {
-        $this.w8t_1.popExpressionDefinition();
+        $this.x8t_1.popExpressionDefinition();
       }
     }finally {
-      $this.w8t_1.popExpressionContext();
+      $this.x8t_1.popExpressionContext();
     }
   }
   return def;
@@ -686,7 +692,7 @@ function parseDateTimeLiteral($this, input) {
   if (!(matcher == null)) {
     var tmp_0;
     try {
-      var result = $this.y8t_1.b7m();
+      var result = $this.z8t_1.c7m();
       var year = toInt(ensureNotNull(matcher.zd().o(1)).yd_1);
       var month = -1;
       var day = -1;
@@ -694,7 +700,7 @@ function parseDateTimeLiteral($this, input) {
       var minute = -1;
       var second = -1;
       var millisecond = -1;
-      result.w6q_1 = $this.w8t_1.j8w(year);
+      result.x6q_1 = $this.x8t_1.k8w(year);
       if (!(matcher.zd().o(5) == null)) {
         month = toInt(ensureNotNull(matcher.zd().o(5)).yd_1);
         // Inline function 'kotlin.require' call
@@ -702,7 +708,7 @@ function parseDateTimeLiteral($this, input) {
           var message = 'Invalid month in date/time literal (' + input + ').';
           throw IllegalArgumentException_init_$Create$(toString(message));
         }
-        result.x6q_1 = $this.w8t_1.j8w(month);
+        result.y6q_1 = $this.x8t_1.k8w(month);
       }
       if (!(matcher.zd().o(9) == null)) {
         day = toInt(ensureNotNull(matcher.zd().o(9)).yd_1);
@@ -723,7 +729,7 @@ function parseDateTimeLiteral($this, input) {
           var message_0 = 'Invalid day in date/time literal (' + input + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_0));
         }
-        result.y6q_1 = $this.w8t_1.j8w(day);
+        result.z6q_1 = $this.x8t_1.k8w(day);
       }
       if (!(matcher.zd().o(13) == null)) {
         hour = toInt(ensureNotNull(matcher.zd().o(13)).yd_1);
@@ -732,7 +738,7 @@ function parseDateTimeLiteral($this, input) {
           var message_1 = 'Invalid hour in date/time literal (' + input + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_1));
         }
-        result.z6q_1 = $this.w8t_1.j8w(hour);
+        result.a6r_1 = $this.x8t_1.k8w(hour);
       }
       if (!(matcher.zd().o(15) == null)) {
         minute = toInt(ensureNotNull(matcher.zd().o(15)).yd_1);
@@ -741,7 +747,7 @@ function parseDateTimeLiteral($this, input) {
           var message_2 = 'Invalid minute in date/time literal (' + input + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_2));
         }
-        result.a6r_1 = $this.w8t_1.j8w(minute);
+        result.b6r_1 = $this.x8t_1.k8w(minute);
       }
       if (!(matcher.zd().o(17) == null)) {
         second = toInt(ensureNotNull(matcher.zd().o(17)).yd_1);
@@ -750,7 +756,7 @@ function parseDateTimeLiteral($this, input) {
           var message_3 = 'Invalid second in date/time literal (' + input + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_3));
         }
-        result.b6r_1 = $this.w8t_1.j8w(second);
+        result.c6r_1 = $this.x8t_1.k8w(second);
       }
       if (!(matcher.zd().o(19) == null)) {
         millisecond = toInt(ensureNotNull(matcher.zd().o(19)).yd_1);
@@ -759,10 +765,10 @@ function parseDateTimeLiteral($this, input) {
           var message_4 = 'Invalid millisecond in date/time literal (' + input + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_4));
         }
-        result.c6r_1 = $this.w8t_1.j8w(millisecond);
+        result.d6r_1 = $this.x8t_1.k8w(millisecond);
       }
       if (!(matcher.zd().o(23) == null) && ensureNotNull(matcher.zd().o(23)).yd_1 === 'Z') {
-        result.d6r_1 = $this.w8t_1.k8w(0.0);
+        result.e6r_1 = $this.x8t_1.l8w(0.0);
       }
       if (!(matcher.zd().o(25) == null)) {
         var offsetPolarity = ensureNotNull(matcher.zd().o(25)).yd_1 === '+' ? 1 : -1;
@@ -779,7 +785,7 @@ function parseDateTimeLiteral($this, input) {
             var message_6 = 'Timezone minute offset is out of range in date/time literal (' + input + ').';
             throw IllegalArgumentException_init_$Create$(toString(message_6));
           }
-          result.d6r_1 = $this.w8t_1.k8w((hourOffset + minuteOffset / 60) * offsetPolarity);
+          result.e6r_1 = $this.x8t_1.l8w((hourOffset + minuteOffset / 60) * offsetPolarity);
         } else {
           if (!(matcher.zd().o(26) == null)) {
             var hourOffset_0 = toInt(ensureNotNull(matcher.zd().o(26)).yd_1);
@@ -788,19 +794,19 @@ function parseDateTimeLiteral($this, input) {
               var message_7 = 'Timezone hour offset is out of range in date/time literal (' + input + ').';
               throw IllegalArgumentException_init_$Create$(toString(message_7));
             }
-            result.d6r_1 = $this.w8t_1.k8w(imul(hourOffset_0, offsetPolarity));
+            result.e6r_1 = $this.x8t_1.l8w(imul(hourOffset_0, offsetPolarity));
           }
         }
       }
-      if (result.z6q_1 == null && matcher.zd().o(11) == null && matcher.zd().o(20) == null && matcher.zd().o(21) == null) {
-        var date = $this.y8t_1.h7q();
-        date.w6p_1 = result.w6q_1;
+      if (result.a6r_1 == null && matcher.zd().o(11) == null && matcher.zd().o(20) == null && matcher.zd().o(21) == null) {
+        var date = $this.z8t_1.i7q();
         date.x6p_1 = result.x6q_1;
         date.y6p_1 = result.y6q_1;
-        Trackable_getInstance().o8v(date, $this.w8t_1.l8w('System', 'Date'));
+        date.z6p_1 = result.z6q_1;
+        Trackable_getInstance().p8v(date, $this.x8t_1.m8w('System', 'Date'));
         return date;
       }
-      Trackable_getInstance().o8v(result, $this.w8t_1.l8w('System', 'DateTime'));
+      Trackable_getInstance().p8v(result, $this.x8t_1.m8w('System', 'DateTime'));
       tmp_0 = result;
     } catch ($p) {
       var tmp_1;
@@ -834,7 +840,7 @@ function parseDecimal($this, value) {
 }
 function getQuantity($this, source) {
   if (source instanceof Literal) {
-    return $this.w8t_1.createQuantity(parseDecimal($this, ensureNotNull(source.u7a_1)), '1');
+    return $this.x8t_1.createQuantity(parseDecimal($this, ensureNotNull(source.v7a_1)), '1');
   } else {
     if (source instanceof Quantity) {
       return source;
@@ -918,29 +924,29 @@ function parseDateTimePrecision$default($this, dateTimePrecision, precisionRequi
 }
 function buildRetrieve($this, ctx, useStrictRetrieveTyping, namedType, classType, codePath, codeComparator, property, propertyType, propertyException, terminology) {
   var codeComparator_0 = codeComparator;
-  var tmp = $this.y8t_1.w7l();
-  var retrieve = tmp.x81($this.w8t_1.dataTypeToQName((namedType == null ? true : isInterface(namedType, DataType)) ? namedType : THROW_CCE())).y81(classType.m60_1).z81(codePath);
-  if (!(ctx.j4a() == null)) {
+  var tmp = $this.z8t_1.x7l();
+  var retrieve = tmp.y81($this.x8t_1.dataTypeToQName((namedType == null ? true : isInterface(namedType, DataType)) ? namedType : THROW_CCE())).z81(classType.n60_1).a82(codePath);
+  if (!(ctx.k4a() == null)) {
     // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-    var this_0 = $this.d32(ensureNotNull(ctx.j4a()));
+    var this_0 = $this.e32(ensureNotNull(ctx.k4a()));
     var identifiers = (!(this_0 == null) ? isInterface(this_0, KtList) : false) ? this_0 : THROW_CCE();
     var contextExpression = resolveQualifiedIdentifier($this, identifiers);
-    retrieve.o81_1 = contextExpression;
+    retrieve.p81_1 = contextExpression;
   }
   if (!(terminology == null)) {
     try {
       if (codeComparator_0 == null) {
         codeComparator_0 = '~';
-        var tmp_0 = Trackable_getInstance().n8v(terminology);
+        var tmp_0 = Trackable_getInstance().o8v(terminology);
         if (tmp_0 instanceof ListType) {
           codeComparator_0 = 'in';
         } else {
-          if ($this.w8t_1.isCompatibleWith('1.5')) {
+          if ($this.x8t_1.isCompatibleWith('1.5')) {
             var tmp_1;
-            if (!(propertyType == null) && propertyType.x5z(ensureNotNull($this.w8t_1.l8w('System', 'Vocabulary')))) {
-              tmp_1 = ensureNotNull(Trackable_getInstance().n8v(terminology)).x5z(ensureNotNull($this.w8t_1.l8w('System', 'Vocabulary'))) ? '~' : 'contains';
+            if (!(propertyType == null) && propertyType.y5z(ensureNotNull($this.x8t_1.m8w('System', 'Vocabulary')))) {
+              tmp_1 = ensureNotNull(Trackable_getInstance().o8v(terminology)).y5z(ensureNotNull($this.x8t_1.m8w('System', 'Vocabulary'))) ? '~' : 'contains';
             } else {
-              tmp_1 = ensureNotNull(Trackable_getInstance().n8v(terminology)).x5z(ensureNotNull($this.w8t_1.l8w('System', 'Vocabulary'))) ? 'in' : '~';
+              tmp_1 = ensureNotNull(Trackable_getInstance().o8v(terminology)).y5z(ensureNotNull($this.x8t_1.m8w('System', 'Vocabulary'))) ? 'in' : '~';
             }
             codeComparator_0 = tmp_1;
           }
@@ -951,23 +957,23 @@ function buildRetrieve($this, ctx, useStrictRetrieveTyping, namedType, classType
       }
       switch (codeComparator_0) {
         case 'in':
-          var inExpression = $this.w8t_1.m8w(property, terminology);
+          var inExpression = $this.x8t_1.n8w(property, terminology);
           if (inExpression instanceof In) {
-            retrieve.m81_1 = inExpression.o67().o(1);
+            retrieve.n81_1 = inExpression.p67().o(1);
           } else {
             if (inExpression instanceof InValueSet) {
-              retrieve.m81_1 = inExpression.w71_1;
+              retrieve.n81_1 = inExpression.x71_1;
             } else {
               if (inExpression instanceof InCodeSystem) {
-                retrieve.m81_1 = inExpression.m71_1;
+                retrieve.n81_1 = inExpression.n71_1;
               } else {
                 if (inExpression instanceof AnyInValueSet) {
-                  retrieve.m81_1 = inExpression.a6b_1;
+                  retrieve.n81_1 = inExpression.b6b_1;
                 } else {
                   if (inExpression instanceof AnyInCodeSystem) {
-                    retrieve.m81_1 = inExpression.o6a_1;
+                    retrieve.n81_1 = inExpression.p6a_1;
                   } else {
-                    $this.w8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Unexpected membership operator ' + getKClassFromExpression(inExpression).lb() + ' in retrieve', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx)));
+                    $this.x8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Unexpected membership operator ' + getKClassFromExpression(inExpression).lb() + ' in retrieve', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx)));
                   }
                 }
               }
@@ -976,96 +982,96 @@ function buildRetrieve($this, ctx, useStrictRetrieveTyping, namedType, classType
 
           break;
         case 'contains':
-          var contains = $this.w8t_1.n8w(property, terminology);
+          var contains = $this.x8t_1.o8w(property, terminology);
           if (contains instanceof Contains) {
-            retrieve.m81_1 = contains.o67().o(1);
+            retrieve.n81_1 = contains.p67().o(1);
           }
 
-          $this.w8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Terminology resolution using contains is not supported at this time. Use a where clause with an in operator instead.', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx)));
+          $this.x8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Terminology resolution using contains is not supported at this time. Use a where clause with an in operator instead.', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx)));
           break;
         case '~':
-          var equivalent = $this.y8t_1.z7o().f67(listOf([property, terminology]));
-          $this.w8t_1.o8w('System', 'Equivalent', equivalent);
+          var equivalent = $this.z8t_1.a7p().g67(listOf([property, terminology]));
+          $this.x8t_1.p8w('System', 'Equivalent', equivalent);
           var tmp_2;
-          var tmp_3 = Trackable_getInstance().n8v(equivalent.o67().o(1));
+          var tmp_3 = Trackable_getInstance().o8v(equivalent.p67().o(1));
           if (tmp_3 instanceof ListType) {
             tmp_2 = true;
           } else {
-            tmp_2 = ($this.w8t_1.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().n8v(equivalent.o67().o(1))).x5z(ensureNotNull($this.w8t_1.l8w('System', 'Vocabulary'))));
+            tmp_2 = ($this.x8t_1.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().o8v(equivalent.p67().o(1))).y5z(ensureNotNull($this.x8t_1.m8w('System', 'Vocabulary'))));
           }
 
           if (!tmp_2) {
-            retrieve.m81_1 = $this.w8t_1.resolveToList(equivalent.o67().o(1));
+            retrieve.n81_1 = $this.x8t_1.resolveToList(equivalent.p67().o(1));
           } else {
-            retrieve.m81_1 = equivalent.o67().o(1);
+            retrieve.n81_1 = equivalent.p67().o(1);
           }
 
           break;
         case '=':
-          var equal = $this.y8t_1.e7m().f67(listOf([property, terminology]));
-          $this.w8t_1.o8w('System', 'Equal', equal);
+          var equal = $this.z8t_1.f7m().g67(listOf([property, terminology]));
+          $this.x8t_1.p8w('System', 'Equal', equal);
           var tmp_4;
-          var tmp_5 = Trackable_getInstance().n8v(equal.o67().o(1));
+          var tmp_5 = Trackable_getInstance().o8v(equal.p67().o(1));
           if (tmp_5 instanceof ListType) {
             tmp_4 = true;
           } else {
-            tmp_4 = ($this.w8t_1.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().n8v(equal.o67().o(1))).x5z(ensureNotNull($this.w8t_1.l8w('System', 'Vocabulary'))));
+            tmp_4 = ($this.x8t_1.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().o8v(equal.p67().o(1))).y5z(ensureNotNull($this.x8t_1.m8w('System', 'Vocabulary'))));
           }
 
           if (!tmp_4) {
-            retrieve.m81_1 = $this.w8t_1.resolveToList(equal.o67().o(1));
+            retrieve.n81_1 = $this.x8t_1.resolveToList(equal.p67().o(1));
           } else {
-            retrieve.m81_1 = equal.o67().o(1);
+            retrieve.n81_1 = equal.p67().o(1);
           }
 
           break;
         default:
-          $this.w8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Unknown code comparator ' + codeComparator_0 + ' in retrieve', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ensureNotNull(ctx.m4a()))));
+          $this.x8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Unknown code comparator ' + codeComparator_0 + ' in retrieve', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ensureNotNull(ctx.n4a()))));
           break;
       }
-      retrieve.e81_1 = codeComparator_0;
+      retrieve.f81_1 = codeComparator_0;
       var tmp_6;
       var tmp_7;
-      if (!(retrieve.m81_1 == null) && !(Trackable_getInstance().n8v(ensureNotNull(retrieve.m81_1)) == null)) {
-        var tmp_8 = Trackable_getInstance().n8v(ensureNotNull(retrieve.m81_1));
+      if (!(retrieve.n81_1 == null) && !(Trackable_getInstance().o8v(ensureNotNull(retrieve.n81_1)) == null)) {
+        var tmp_8 = Trackable_getInstance().o8v(ensureNotNull(retrieve.n81_1));
         tmp_7 = tmp_8 instanceof ListType;
       } else {
         tmp_7 = false;
       }
       if (tmp_7) {
-        var tmp_9 = Trackable_getInstance().n8v(ensureNotNull(retrieve.m81_1));
-        tmp_6 = equals((tmp_9 instanceof ListType ? tmp_9 : THROW_CCE()).d61_1, $this.w8t_1.l8w('System', 'Concept'));
+        var tmp_9 = Trackable_getInstance().o8v(ensureNotNull(retrieve.n81_1));
+        tmp_6 = equals((tmp_9 instanceof ListType ? tmp_9 : THROW_CCE()).e61_1, $this.x8t_1.m8w('System', 'Concept'));
       } else {
         tmp_6 = false;
       }
       if (tmp_6) {
-        var tmp_10 = retrieve.m81_1;
+        var tmp_10 = retrieve.n81_1;
         if (tmp_10 instanceof ToList) {
-          var tmp_11 = retrieve.m81_1;
+          var tmp_11 = retrieve.n81_1;
           var toList = tmp_11 instanceof ToList ? tmp_11 : THROW_CCE();
-          var tmp_12 = toList.u66_1;
+          var tmp_12 = toList.v66_1;
           if (tmp_12 instanceof ToConcept) {
             var tmp_13 = toList;
-            var tmp_14 = toList.u66_1;
-            tmp_13.u66_1 = (tmp_14 instanceof ToConcept ? tmp_14 : THROW_CCE()).u66_1;
+            var tmp_14 = toList.v66_1;
+            tmp_13.v66_1 = (tmp_14 instanceof ToConcept ? tmp_14 : THROW_CCE()).v66_1;
           } else {
-            var codesAccessor = $this.w8t_1.p8w(toList.u66_1, 'codes', false, Trackable_getInstance().n8v(ensureNotNull(toList.u66_1)));
-            retrieve.m81_1 = codesAccessor;
+            var codesAccessor = $this.x8t_1.q8w(toList.v66_1, 'codes', false, Trackable_getInstance().o8v(ensureNotNull(toList.v66_1)));
+            retrieve.n81_1 = codesAccessor;
           }
         } else {
-          $this.w8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Terminology target is a list of concepts, but expects a list of codes', ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx)));
+          $this.x8t_1.recordParsingException(CqlSemanticException_init_$Create$_0('Terminology target is a list of concepts, but expects a list of codes', ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx)));
         }
       }
     } catch ($p) {
       if ($p instanceof Exception) {
         var e = $p;
         var tmp_15;
-        if ($this.w8t_1.isCompatibleWith('1.5') && !ensureNotNull(Trackable_getInstance().n8v(terminology)).x5z(ensureNotNull($this.w8t_1.l8w('System', 'Vocabulary')))) {
+        if ($this.x8t_1.isCompatibleWith('1.5') && !ensureNotNull(Trackable_getInstance().o8v(terminology)).y5z(ensureNotNull($this.x8t_1.m8w('System', 'Vocabulary')))) {
           tmp_15 = true;
         } else {
           var tmp_16;
-          if (!$this.w8t_1.isCompatibleWith('1.5')) {
-            var tmp_17 = Trackable_getInstance().n8v(terminology);
+          if (!$this.x8t_1.isCompatibleWith('1.5')) {
+            var tmp_17 = Trackable_getInstance().o8v(terminology);
             tmp_16 = !(tmp_17 instanceof ListType);
           } else {
             tmp_16 = false;
@@ -1073,12 +1079,12 @@ function buildRetrieve($this, ctx, useStrictRetrieveTyping, namedType, classType
           tmp_15 = tmp_16;
         }
         if (tmp_15) {
-          retrieve.m81_1 = $this.w8t_1.resolveToList(terminology);
+          retrieve.n81_1 = $this.x8t_1.resolveToList(terminology);
         } else {
-          retrieve.m81_1 = terminology;
+          retrieve.n81_1 = terminology;
         }
-        retrieve.e81_1 = codeComparator_0;
-        $this.w8t_1.recordParsingException(CqlSemanticException_init_$Create$_2('Could not resolve membership operator for terminology target of the retrieve.', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx), e));
+        retrieve.f81_1 = codeComparator_0;
+        $this.x8t_1.recordParsingException(CqlSemanticException_init_$Create$_2('Could not resolve membership operator for terminology target of the retrieve.', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1($this, ctx), e));
       } else {
         throw $p;
       }
@@ -1087,15 +1093,15 @@ function buildRetrieve($this, ctx, useStrictRetrieveTyping, namedType, classType
   return retrieve;
 }
 function attemptDateRangeOptimization($this, during, retrieve, alias) {
-  if (!(retrieve.g81_1 == null) || !(retrieve.n81_1 == null)) {
+  if (!(retrieve.h81_1 == null) || !(retrieve.o81_1 == null)) {
     return false;
   }
-  var left = during.o67().o(0);
-  var right = during.o67().o(1);
+  var left = during.p67().o(0);
+  var right = during.p67().o(1);
   var propertyPath = getPropertyPath($this, left, alias);
   if (!(propertyPath == null) && isRHSEligibleForDateRangeOptimization($this, right)) {
-    retrieve.g81_1 = propertyPath;
-    retrieve.n81_1 = right;
+    retrieve.h81_1 = propertyPath;
+    retrieve.o81_1 = right;
     return true;
   }
   return false;
@@ -1106,12 +1112,12 @@ function getPropertyPath($this, reference, alias) {
   ref = getChoiceSelection($this, ref);
   if (ref instanceof Property) {
     var property = ref;
-    if (alias === property.n7x_1) {
-      return property.m7x_1;
-    } else if (!(property.o7x_1 == null)) {
-      var subPath = getPropertyPath($this, ensureNotNull(property.o7x_1), alias);
+    if (alias === property.o7x_1) {
+      return property.n7x_1;
+    } else if (!(property.p7x_1 == null)) {
+      var subPath = getPropertyPath($this, ensureNotNull(property.p7x_1), alias);
       if (!(subPath == null)) {
-        return '' + subPath + '.' + property.m7x_1;
+        return '' + subPath + '.' + property.n7x_1;
       }
     }
   }
@@ -1120,10 +1126,10 @@ function getPropertyPath($this, reference, alias) {
 function getConversionReference($this, reference) {
   if (reference instanceof FunctionRef) {
     var functionRef = reference;
-    if (functionRef.o67().j() === 1 && !(Trackable_getInstance().n8v(functionRef) == null) && !(Trackable_getInstance().n8v(functionRef.o67().o(0)) == null)) {
-      var o = $this.w8t_1.conversionMap.w8w(ensureNotNull(Trackable_getInstance().n8v(functionRef.o67().o(0))), ensureNotNull(Trackable_getInstance().n8v(functionRef)));
-      if (!(o == null) && !(o.e8x_1 == null) && o.e8x_1 == functionRef.n6w_1 && o.x8w_1 === functionRef.m6w_1) {
-        return functionRef.o67().o(0);
+    if (functionRef.p67().j() === 1 && !(Trackable_getInstance().o8v(functionRef) == null) && !(Trackable_getInstance().o8v(functionRef.p67().o(0)) == null)) {
+      var o = $this.x8t_1.conversionMap.x8w(ensureNotNull(Trackable_getInstance().o8v(functionRef.p67().o(0))), ensureNotNull(Trackable_getInstance().o8v(functionRef)));
+      if (!(o == null) && !(o.f8x_1 == null) && o.f8x_1 == functionRef.o6w_1 && o.y8w_1 === functionRef.n6w_1) {
+        return functionRef.p67().o(0);
       }
     }
   }
@@ -1132,29 +1138,29 @@ function getConversionReference($this, reference) {
 function getChoiceSelection($this, reference) {
   if (reference instanceof As) {
     var tmp;
-    if (!(reference.u66_1 == null)) {
-      var tmp_0 = Trackable_getInstance().n8v(ensureNotNull(reference.u66_1));
+    if (!(reference.v66_1 == null)) {
+      var tmp_0 = Trackable_getInstance().o8v(ensureNotNull(reference.v66_1));
       tmp = tmp_0 instanceof ChoiceType;
     } else {
       tmp = false;
     }
     if (tmp) {
-      return ensureNotNull(reference.u66_1);
+      return ensureNotNull(reference.v66_1);
     }
   }
   return reference;
 }
 function attemptDateRangeOptimization_0($this, and, retrieve, alias) {
-  if (!(retrieve.g81_1 == null) || !(retrieve.n81_1 == null)) {
+  if (!(retrieve.h81_1 == null) || !(retrieve.o81_1 == null)) {
     return false;
   }
   var inductionVariable = 0;
-  var last = and.o67().j() - 1 | 0;
+  var last = and.p67().j() - 1 | 0;
   if (inductionVariable <= last)
     do {
       var i = inductionVariable;
       inductionVariable = inductionVariable + 1 | 0;
-      var operand = and.o67().o(i);
+      var operand = and.p67().o(i);
       var tmp;
       var tmp_0;
       if (operand instanceof IncludedIn) {
@@ -1168,7 +1174,7 @@ function attemptDateRangeOptimization_0($this, and, retrieve, alias) {
         tmp = false;
       }
       if (tmp) {
-        and.o67().j2(i, $this.w8t_1.f8x(true));
+        and.p67().j2(i, $this.x8t_1.g8x(true));
         return true;
       } else {
         var tmp_1;
@@ -1187,8 +1193,8 @@ function attemptDateRangeOptimization_0($this, and, retrieve, alias) {
 }
 function consolidateAnd($this, and) {
   var result = and;
-  var lhs = and.o67().o(0);
-  var rhs = and.o67().o(1);
+  var lhs = and.p67().o(0);
+  var rhs = and.p67().o(1);
   if (isBooleanLiteral($this, lhs, true))
     result = rhs;
   else {
@@ -1196,10 +1202,10 @@ function consolidateAnd($this, and) {
       result = lhs;
     else {
       if (lhs instanceof And) {
-        and.o67().j2(0, consolidateAnd($this, lhs));
+        and.p67().j2(0, consolidateAnd($this, lhs));
       } else {
         if (rhs instanceof And) {
-          and.o67().j2(1, consolidateAnd($this, rhs));
+          and.p67().j2(1, consolidateAnd($this, rhs));
         }
       }
     }
@@ -1207,12 +1213,12 @@ function consolidateAnd($this, and) {
   return result;
 }
 function isRHSEligibleForDateRangeOptimization($this, rhs) {
-  return ensureNotNull(Trackable_getInstance().n8v(rhs)).x5z(ensureNotNull($this.w8t_1.l8w('System', 'DateTime'))) || ensureNotNull(Trackable_getInstance().n8v(rhs)).x5z(new IntervalType(ensureNotNull($this.w8t_1.l8w('System', 'DateTime'))));
+  return ensureNotNull(Trackable_getInstance().o8v(rhs)).y5z(ensureNotNull($this.x8t_1.m8w('System', 'DateTime'))) || ensureNotNull(Trackable_getInstance().o8v(rhs)).y5z(new IntervalType(ensureNotNull($this.x8t_1.m8w('System', 'DateTime'))));
 }
 function parseSortDirection($this, ctx) {
   var tmp;
   if (!(ctx == null)) {
-    tmp = $this.l35(ctx);
+    tmp = $this.m35(ctx);
   } else {
     tmp = SortDirection_ASC_getInstance();
   }
@@ -1227,60 +1233,60 @@ function resolveQualifiedIdentifier($this, identifiers) {
     if (current == null) {
       tmp = resolveIdentifier($this, identifier);
     } else {
-      tmp = $this.w8t_1.resolveAccessor(current, identifier);
+      tmp = $this.x8t_1.resolveAccessor(current, identifier);
     }
     current = tmp;
   }
   return current;
 }
 function resolveMemberIdentifier($this, identifier) {
-  if ($this.w8t_1.hasExpressionTarget()) {
-    var target = $this.w8t_1.popExpressionTarget();
+  if ($this.x8t_1.hasExpressionTarget()) {
+    var target = $this.x8t_1.popExpressionTarget();
     var tmp;
     try {
-      tmp = $this.w8t_1.resolveAccessor(target, identifier);
+      tmp = $this.x8t_1.resolveAccessor(target, identifier);
     }finally {
-      $this.w8t_1.pushExpressionTarget(target);
+      $this.x8t_1.pushExpressionTarget(target);
     }
     return tmp;
   }
   return resolveIdentifier($this, identifier);
 }
 function resolveIdentifier($this, identifier) {
-  var result = $this.w8t_1.resolveIdentifier(identifier, false);
+  var result = $this.x8t_1.resolveIdentifier(identifier, false);
   if (result == null) {
-    var expressionInfo = $this.d8u_1.z8x(identifier);
+    var expressionInfo = $this.e8u_1.a8y(identifier);
     if (!(expressionInfo == null)) {
-      var saveContext = $this.g8y(expressionInfo.e8y_1);
+      var saveContext = $this.h8y(expressionInfo.f8y_1);
       try {
-        var saveChunks = $this.c8u_1;
-        $this.c8u_1 = new Stack();
-        $this.c8v_1.i8y(expressionInfo);
+        var saveChunks = $this.d8u_1;
+        $this.d8u_1 = new Stack();
+        $this.d8v_1.j8y(expressionInfo);
         try {
-          var tmp0 = expressionInfo.f8y_1;
+          var tmp0 = expressionInfo.g8y_1;
           $l$block: {
             // Inline function 'kotlin.requireNotNull' call
             if (tmp0 == null) {
-              var message = 'Could not validate reference to expression ' + expressionInfo.d8y_1 + ' because its definition contains errors.';
+              var message = 'Could not validate reference to expression ' + expressionInfo.e8y_1 + ' because its definition contains errors.';
               throw IllegalArgumentException_init_$Create$(toString(message));
             } else {
               break $l$block;
             }
           }
-          $this.d32(expressionInfo.f8y_1);
+          $this.e32(expressionInfo.g8y_1);
         }finally {
-          $this.c8u_1 = saveChunks;
-          $this.c8v_1.r2c();
+          $this.d8u_1 = saveChunks;
+          $this.d8v_1.s2c();
         }
       }finally {
-        $this.b8u_1 = saveContext;
+        $this.c8u_1 = saveContext;
       }
     }
-    var parameterInfo = $this.d8u_1.j8y(identifier);
+    var parameterInfo = $this.e8u_1.k8y(identifier);
     if (!(parameterInfo == null)) {
-      $this.o33(parameterInfo.o8y_1);
+      $this.p33(parameterInfo.p8y_1);
     }
-    result = $this.w8t_1.resolveIdentifier(identifier, true);
+    result = $this.x8t_1.resolveIdentifier(identifier, true);
   }
   return result;
 }
@@ -1305,44 +1311,44 @@ function ensureSystemFunctionName($this, libraryName, functionName) {
 }
 function resolveFunction($this, libraryName, functionName, paramList) {
   var expressions = ArrayList_init_$Create$();
-  if (!((paramList == null ? null : paramList.j3w()) == null)) {
-    var _iterator__ex2g4s = paramList.j3w().g();
+  if (!((paramList == null ? null : paramList.k3w()) == null)) {
+    var _iterator__ex2g4s = paramList.k3w().g();
     while (_iterator__ex2g4s.h()) {
       var expressionContext = _iterator__ex2g4s.i();
-      var tmp = $this.d32(expressionContext);
+      var tmp = $this.e32(expressionContext);
       expressions.e(tmp instanceof Expression ? tmp : THROW_CCE());
     }
   }
-  return $this.p8y(libraryName, functionName, expressions, true, false, false);
+  return $this.q8y(libraryName, functionName, expressions, true, false, false);
 }
 function resolveFunctionOrQualifiedFunction($this, identifier, paramListCtx) {
-  if ($this.w8t_1.hasExpressionTarget()) {
-    var target = $this.w8t_1.popExpressionTarget();
+  if ($this.x8t_1.hasExpressionTarget()) {
+    var target = $this.x8t_1.popExpressionTarget();
     try {
       if (target instanceof LibraryRef) {
-        return resolveFunction($this, target.v8y_1, identifier, paramListCtx);
+        return resolveFunction($this, target.w8y_1, identifier, paramListCtx);
       }
-      if ($this.j8u_1) {
-        return $this.a8v_1.z8y(target, identifier, paramListCtx, true);
+      if ($this.k8u_1) {
+        return $this.b8v_1.a8z(target, identifier, paramListCtx, true);
       }
-      if (!$this.j8u_1) {
+      if (!$this.k8u_1) {
         throw new CqlCompilerException('The identifier ' + identifier + ' could not be resolved as an invocation because method-style invocation is disabled.', ErrorSeverity_Error_getInstance());
       }
       throw IllegalArgumentException_init_$Create$('Invalid invocation target: ' + getKClassFromExpression(target).lb());
     }finally {
-      $this.w8t_1.pushExpressionTarget(target);
+      $this.x8t_1.pushExpressionTarget(target);
     }
   }
-  var thisRef = $this.w8t_1.resolveIdentifier('$this', false);
+  var thisRef = $this.x8t_1.resolveIdentifier('$this', false);
   if (!(thisRef == null)) {
-    var result = $this.a8v_1.z8y(thisRef, identifier, paramListCtx, false);
+    var result = $this.b8v_1.a8z(thisRef, identifier, paramListCtx, false);
     if (!(result == null)) {
       return result;
     }
   }
-  var parameterRef = $this.w8t_1.resolveImplicitContext();
+  var parameterRef = $this.x8t_1.resolveImplicitContext();
   if (!(parameterRef == null)) {
-    var result_0 = $this.a8v_1.z8y(parameterRef, identifier, paramListCtx, false);
+    var result_0 = $this.b8v_1.a8z(parameterRef, identifier, paramListCtx, false);
     if (!(result_0 == null)) {
       return result_0;
     }
@@ -1350,48 +1356,48 @@ function resolveFunctionOrQualifiedFunction($this, identifier, paramListCtx) {
   return resolveFunction($this, null, identifier, paramListCtx);
 }
 function getFunctionHeader($this, ctx) {
-  var fh = $this.d8v_1.q2(ctx);
+  var fh = $this.e8v_1.q2(ctx);
   if (fh == null) {
-    var saveChunks = $this.c8u_1;
-    $this.c8u_1 = new Stack();
+    var saveChunks = $this.d8u_1;
+    $this.d8u_1 = new Stack();
     var tmp;
     try {
-      tmp = $this.a8z(ctx);
+      tmp = $this.b8z(ctx);
     }finally {
-      $this.c8u_1 = saveChunks;
+      $this.d8u_1 = saveChunks;
     }
     fh = tmp;
-    var tmp0 = $this.d8v_1;
+    var tmp0 = $this.e8v_1;
     // Inline function 'kotlin.collections.set' call
     var value = fh;
     tmp0.u2(ctx, value);
-    $this.f8v_1.c8z(fh, ctx);
-    $this.e8v_1.c8z(fh.d8z_1, fh);
+    $this.g8v_1.d8z(fh, ctx);
+    $this.f8v_1.d8z(fh.e8z_1, fh);
   }
   return fh;
 }
 function getFunctionDef($this, op) {
   var target = null;
   var st = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = op.y8w_1.h8z_1.g();
+  var _iterator__ex2g4s = op.z8w_1.i8z_1.g();
   while (_iterator__ex2g4s.h()) {
     var dt = _iterator__ex2g4s.i();
     st.e(dt);
   }
-  var fds = $this.w8t_1.compiledLibrary.p8z(op.x8w_1, st);
+  var fds = $this.x8t_1.compiledLibrary.q8z(op.y8w_1, st);
   var _iterator__ex2g4s_0 = fds.g();
   while (_iterator__ex2g4s_0.h()) {
     var fd = _iterator__ex2g4s_0.i();
-    if (ensureNotNull(fd).o67().j() === op.y8w_1.j()) {
-      var signatureTypes = op.y8w_1.h8z_1.g();
+    if (ensureNotNull(fd).p67().j() === op.z8w_1.j()) {
+      var signatureTypes = op.z8w_1.i8z_1.g();
       var signaturesMatch = true;
       var inductionVariable = 0;
-      var last = fd.o67().j() - 1 | 0;
+      var last = fd.p67().j() - 1 | 0;
       if (inductionVariable <= last)
         do {
           var i = inductionVariable;
           inductionVariable = inductionVariable + 1 | 0;
-          if (!DataTypes_instance.q8z(Trackable_getInstance().n8v(fd.o67().o(i)), signatureTypes.i())) {
+          if (!DataTypes_instance.r8z(Trackable_getInstance().o8v(fd.p67().o(i)), signatureTypes.i())) {
             signaturesMatch = false;
           }
         }
@@ -1399,7 +1405,7 @@ function getFunctionDef($this, op) {
       if (signaturesMatch) {
         // Inline function 'kotlin.check' call
         if (!(target == null)) {
-          var message = 'Internal error attempting to resolve function header for ' + op.x8w_1;
+          var message = 'Internal error attempting to resolve function header for ' + op.y8w_1;
           throw IllegalStateException_init_$Create$(toString(message));
         }
         target = fd;
@@ -1409,13 +1415,13 @@ function getFunctionDef($this, op) {
   return target;
 }
 function getFunctionHeaderByDef($this, fd) {
-  return $this.e8v_1.r8z(fd);
+  return $this.f8v_1.s8z(fd);
 }
 function getFunctionHeader_0($this, op) {
   var tmp0_elvis_lhs = getFunctionDef($this, op);
   var tmp;
   if (tmp0_elvis_lhs == null) {
-    throw IllegalArgumentException_init_$Create$('Could not resolve function header for operator ' + op.x8w_1);
+    throw IllegalArgumentException_init_$Create$('Could not resolve function header for operator ' + op.y8w_1);
   } else {
     tmp = tmp0_elvis_lhs;
   }
@@ -1423,17 +1429,17 @@ function getFunctionHeader_0($this, op) {
   var tmp1_elvis_lhs = getFunctionHeaderByDef($this, fd);
   var tmp_0;
   if (tmp1_elvis_lhs == null) {
-    throw IllegalArgumentException_init_$Create$('Could not resolve function header for operator ' + op.x8w_1);
+    throw IllegalArgumentException_init_$Create$('Could not resolve function header for operator ' + op.y8w_1);
   } else {
     tmp_0 = tmp1_elvis_lhs;
   }
   return tmp_0;
 }
 function getFunctionDefinitionContext($this, fh) {
-  var tmp0_elvis_lhs = $this.f8v_1.r8z(fh);
+  var tmp0_elvis_lhs = $this.g8v_1.s8z(fh);
   var tmp;
   if (tmp0_elvis_lhs == null) {
-    throw IllegalArgumentException_init_$Create$('Could not resolve function definition context for function header ' + fh.d8z_1.c6w_1);
+    throw IllegalArgumentException_init_$Create$('Could not resolve function definition context for function header ' + fh.e8z_1.d6w_1);
   } else {
     tmp = tmp0_elvis_lhs;
   }
@@ -1441,96 +1447,96 @@ function getFunctionDefinitionContext($this, fh) {
 }
 function registerFunctionDefinition($this, ctx) {
   var fh = getFunctionHeader($this, ctx);
-  if (!$this.w8t_1.compiledLibrary.s8z(fh.d8z_1)) {
-    $this.w8t_1.addExpression(fh.d8z_1);
+  if (!$this.x8t_1.compiledLibrary.t8z(fh.e8z_1)) {
+    $this.x8t_1.addExpression(fh.e8z_1);
   }
 }
 function compileFunctionDefinition($this, ctx) {
   var fh = getFunctionHeader($this, ctx);
-  var functionDef = fh.d8z_1;
-  var resultType = fh.e8z_1;
-  var tmp0_elvis_lhs = $this.w8t_1.resolveFunctionDefinition(fh.d8z_1);
+  var functionDef = fh.e8z_1;
+  var resultType = fh.f8z_1;
+  var tmp0_elvis_lhs = $this.x8t_1.resolveFunctionDefinition(fh.e8z_1);
   var tmp;
   if (tmp0_elvis_lhs == null) {
-    throw IllegalArgumentException_init_$Create$('Internal error: Could not resolve operator map entry for function header ' + fh.t8z());
+    throw IllegalArgumentException_init_$Create$('Internal error: Could not resolve operator map entry for function header ' + fh.u8z());
   } else {
     tmp = tmp0_elvis_lhs;
   }
   var op = tmp;
-  var ir = $this.y8t_1.p7k().q65(functionDef.c6w_1);
-  track($this, ir, ctx.n46());
-  $this.w8t_1.pushIdentifier(ir, functionDef, IdentifierScope_GLOBAL_getInstance());
-  var tmp_0 = ensureNotNull(op.a8x_1).o67();
+  var ir = $this.z8t_1.q7k().r65(functionDef.d6w_1);
+  track($this, ir, ctx.o46());
+  $this.x8t_1.pushIdentifier(ir, functionDef, IdentifierScope_GLOBAL_getInstance());
+  var tmp_0 = ensureNotNull(op.b8x_1).p67();
   var operand = isInterface(tmp_0, KtList) ? tmp_0 : THROW_CCE();
   var _iterator__ex2g4s = operand.g();
   while (_iterator__ex2g4s.h()) {
     var operandDef = _iterator__ex2g4s.i();
-    var oir = $this.y8t_1.p7k().q65(operandDef.v7q_1);
+    var oir = $this.z8t_1.q7k().r65(operandDef.w7q_1);
     track_0($this, oir, operandDef);
-    $this.w8t_1.pushIdentifier(oir, operandDef);
+    $this.x8t_1.pushIdentifier(oir, operandDef);
   }
   try {
-    if (!(ctx.o46() == null)) {
-      $this.w8t_1.beginFunctionDef(functionDef);
+    if (!(ctx.p46() == null)) {
+      $this.x8t_1.beginFunctionDef(functionDef);
       try {
-        $this.w8t_1.pushExpressionContext($this.b8u_1);
+        $this.x8t_1.pushExpressionContext($this.c8u_1);
         try {
-          $this.w8t_1.pushExpressionDefinition(fh.t8z());
+          $this.x8t_1.pushExpressionDefinition(fh.u8z());
           try {
-            functionDef.f6w_1 = parseExpression($this, ctx.o46());
+            functionDef.g6w_1 = parseExpression($this, ctx.p46());
           }finally {
-            $this.w8t_1.popExpressionDefinition();
+            $this.x8t_1.popExpressionDefinition();
           }
         }finally {
-          $this.w8t_1.popExpressionContext();
+          $this.x8t_1.popExpressionContext();
         }
       }finally {
-        $this.w8t_1.endFunctionDef();
+        $this.x8t_1.endFunctionDef();
       }
       var tmp_1;
       if (!(resultType == null)) {
-        var tmp1_safe_receiver = functionDef.f6w_1;
-        tmp_1 = !((tmp1_safe_receiver == null ? null : Trackable_getInstance().n8v(tmp1_safe_receiver)) == null);
+        var tmp1_safe_receiver = functionDef.g6w_1;
+        tmp_1 = !((tmp1_safe_receiver == null ? null : Trackable_getInstance().o8v(tmp1_safe_receiver)) == null);
       } else {
         tmp_1 = false;
       }
       if (tmp_1) {
         // Inline function 'kotlin.require' call
-        if (!DataTypes_instance.u8z(Trackable_getInstance().n8v(ensureNotNull(functionDef.f6w_1)), Trackable_getInstance().n8v(resultType))) {
-          var message = 'Function ' + functionDef.c6w_1 + ' has declared return type ' + toString_0(Trackable_getInstance().n8v(resultType)) + ' but the function body returns incompatible type ' + toString_0(Trackable_getInstance().n8v(ensureNotNull(functionDef.f6w_1))) + '.';
+        if (!DataTypes_instance.v8z(Trackable_getInstance().o8v(ensureNotNull(functionDef.g6w_1)), Trackable_getInstance().o8v(resultType))) {
+          var message = 'Function ' + functionDef.d6w_1 + ' has declared return type ' + toString_0(Trackable_getInstance().o8v(resultType)) + ' but the function body returns incompatible type ' + toString_0(Trackable_getInstance().o8v(ensureNotNull(functionDef.g6w_1))) + '.';
           throw IllegalArgumentException_init_$Create$(toString(message));
         }
       }
-      Trackable_getInstance().o8v(functionDef, Trackable_getInstance().n8v(ensureNotNull(functionDef.f6w_1)));
-      op.z8w_1 = Trackable_getInstance().n8v(functionDef);
+      Trackable_getInstance().p8v(functionDef, Trackable_getInstance().o8v(ensureNotNull(functionDef.g6w_1)));
+      op.a8x_1 = Trackable_getInstance().o8v(functionDef);
     } else {
-      functionDef.j6y_1 = true;
+      functionDef.k6y_1 = true;
       $l$block: {
         // Inline function 'kotlin.requireNotNull' call
         if (resultType == null) {
-          var message_0 = 'Function ' + functionDef.c6w_1 + ' is marked external but does not declare a return type.';
+          var message_0 = 'Function ' + functionDef.d6w_1 + ' is marked external but does not declare a return type.';
           throw IllegalArgumentException_init_$Create$(toString(message_0));
         } else {
           break $l$block;
         }
       }
-      Trackable_getInstance().o8v(functionDef, Trackable_getInstance().n8v(resultType));
-      op.z8w_1 = Trackable_getInstance().n8v(functionDef);
+      Trackable_getInstance().p8v(functionDef, Trackable_getInstance().o8v(resultType));
+      op.a8x_1 = Trackable_getInstance().o8v(functionDef);
     }
-    functionDef.d6w_1 = $this.b8u_1;
-    fh.f8z_1 = true;
+    functionDef.e6w_1 = $this.c8u_1;
+    fh.g8z_1 = true;
     return functionDef;
   }finally {
     var _iterator__ex2g4s_0 = operand.g();
     while (_iterator__ex2g4s_0.h()) {
       var operandDef_0 = _iterator__ex2g4s_0.i();
       try {
-        $this.w8t_1.popIdentifier();
+        $this.x8t_1.popIdentifier();
       } catch ($p) {
         if ($p instanceof Exception) {
           var e = $p;
           var tmp_2 = get_logger();
-          tmp_2.e1q(e, Cql2ElmVisitor$compileFunctionDefinition$lambda);
+          tmp_2.f1q(e, Cql2ElmVisitor$compileFunctionDefinition$lambda);
         } else {
           throw $p;
         }
@@ -1539,12 +1545,12 @@ function compileFunctionDefinition($this, ctx) {
   }
 }
 function parseLiteralExpression($this, pt) {
-  $this.w8t_1.pushLiteralContext();
+  $this.x8t_1.pushLiteralContext();
   var tmp;
   try {
     tmp = parseExpression($this, pt);
   }finally {
-    $this.w8t_1.popLiteralContext();
+    $this.x8t_1.popLiteralContext();
   }
   return tmp;
 }
@@ -1553,7 +1559,7 @@ function parseExpression($this, pt) {
   if (pt == null) {
     tmp = null;
   } else {
-    var tmp_0 = $this.d32(pt);
+    var tmp_0 = $this.e32(pt);
     tmp = (tmp_0 == null ? true : tmp_0 instanceof Expression) ? tmp_0 : THROW_CCE();
   }
   return tmp;
@@ -1561,9 +1567,9 @@ function parseExpression($this, pt) {
 function isBooleanLiteral($this, expression, bool) {
   var ret = false;
   if (expression instanceof Literal) {
-    ret = equals(expression.t7a_1, $this.w8t_1.dataTypeToQName($this.w8t_1.l8w('System', 'Boolean')));
+    ret = equals(expression.u7a_1, $this.x8t_1.dataTypeToQName($this.x8t_1.m8w('System', 'Boolean')));
     if (ret && !(bool == null)) {
-      ret = bool === toBoolean(expression.u7a_1);
+      ret = bool === toBoolean(expression.v7a_1);
     }
   }
   return ret;
@@ -1581,45 +1587,45 @@ function getTrackBack($this, tree) {
   return tmp;
 }
 function getTrackBack_0($this, node) {
-  return new TrackBack($this.w8t_1.libraryIdentifier, node.r2f().x24(), node.r2f().z24() + 1 | 0, node.r2f().x24(), node.r2f().z24() + ensureNotNull(node.r2f().c24()).length | 0);
+  return new TrackBack($this.x8t_1.libraryIdentifier, node.s2f().y24(), node.s2f().a25() + 1 | 0, node.s2f().y24(), node.s2f().a25() + ensureNotNull(node.s2f().d24()).length | 0);
 }
 function getTrackBack_1($this, ctx) {
-  var tmp = $this.w8t_1.libraryIdentifier;
-  var tmp0_safe_receiver = ctx.i2e_1;
-  var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.x24();
+  var tmp = $this.x8t_1.libraryIdentifier;
+  var tmp0_safe_receiver = ctx.j2e_1;
+  var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.y24();
   var tmp_0 = tmp1_elvis_lhs == null ? 0 : tmp1_elvis_lhs;
-  var tmp2_safe_receiver = ctx.i2e_1;
-  var tmp3_safe_receiver = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.z24();
+  var tmp2_safe_receiver = ctx.j2e_1;
+  var tmp3_safe_receiver = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.a25();
   var tmp4_elvis_lhs = tmp3_safe_receiver == null ? null : tmp3_safe_receiver + 1 | 0;
   var tmp_1 = tmp4_elvis_lhs == null ? 0 : tmp4_elvis_lhs;
-  var tmp5_safe_receiver = ctx.j2e_1;
-  var tmp6_elvis_lhs = tmp5_safe_receiver == null ? null : tmp5_safe_receiver.x24();
+  var tmp5_safe_receiver = ctx.k2e_1;
+  var tmp6_elvis_lhs = tmp5_safe_receiver == null ? null : tmp5_safe_receiver.y24();
   var tmp_2 = tmp6_elvis_lhs == null ? 0 : tmp6_elvis_lhs;
-  var tmp7_safe_receiver = ctx.j2e_1;
-  var tmp8_elvis_lhs = tmp7_safe_receiver == null ? null : tmp7_safe_receiver.z24();
+  var tmp7_safe_receiver = ctx.k2e_1;
+  var tmp8_elvis_lhs = tmp7_safe_receiver == null ? null : tmp7_safe_receiver.a25();
   var tmp_3 = tmp8_elvis_lhs == null ? 0 : tmp8_elvis_lhs;
-  var tmp9_safe_receiver = ctx.j2e_1;
-  var tmp10_safe_receiver = tmp9_safe_receiver == null ? null : tmp9_safe_receiver.c24();
+  var tmp9_safe_receiver = ctx.k2e_1;
+  var tmp10_safe_receiver = tmp9_safe_receiver == null ? null : tmp9_safe_receiver.d24();
   var tmp11_elvis_lhs = tmp10_safe_receiver == null ? null : tmp10_safe_receiver.length;
   return new TrackBack(tmp, tmp_0, tmp_1, tmp_2, tmp_3 + (tmp11_elvis_lhs == null ? 0 : tmp11_elvis_lhs) | 0);
 }
 function decorate($this, element, tb) {
-  if ($this.b90() && !(tb == null)) {
-    element.b66_1 = tb.a90();
+  if ($this.c90() && !(tb == null)) {
+    element.c66_1 = tb.b90();
   }
-  if ($this.c90() && !(Trackable_getInstance().n8v(element) == null)) {
-    var tmp = Trackable_getInstance().n8v(element);
+  if ($this.d90() && !(Trackable_getInstance().o8v(element) == null)) {
+    var tmp = Trackable_getInstance().o8v(element);
     if (!(tmp == null) ? isInterface(tmp, NamedType) : false) {
-      element.c66_1 = $this.w8t_1.dataTypeToQName(Trackable_getInstance().n8v(element));
+      element.d66_1 = $this.x8t_1.dataTypeToQName(Trackable_getInstance().o8v(element));
     } else {
-      element.e66_1 = $this.w8t_1.dataTypeToTypeSpecifier(Trackable_getInstance().n8v(element));
+      element.f66_1 = $this.x8t_1.dataTypeToTypeSpecifier(Trackable_getInstance().o8v(element));
     }
   }
 }
 function track($this, trackable, pt) {
   var tb = getTrackBack($this, pt);
   if (!(tb == null)) {
-    Trackable_getInstance().d90(ensureNotNull(trackable)).e(tb);
+    Trackable_getInstance().e90(ensureNotNull(trackable)).e(tb);
   }
   if (trackable instanceof Element) {
     decorate($this, trackable, tb);
@@ -1629,14 +1635,14 @@ function track($this, trackable, pt) {
 function track_0($this, element, from) {
   var tmp;
   // Inline function 'kotlin.collections.isNotEmpty' call
-  if (!Trackable_getInstance().d90(from).q()) {
-    tmp = Trackable_getInstance().d90(from).o(0);
+  if (!Trackable_getInstance().e90(from).q()) {
+    tmp = Trackable_getInstance().e90(from).o(0);
   } else {
     tmp = null;
   }
   var tb = tmp;
   if (!(tb == null)) {
-    Trackable_getInstance().d90(ensureNotNull(element)).e(tb);
+    Trackable_getInstance().e90(ensureNotNull(element)).e(tb);
   }
   if (element instanceof Element) {
     decorate($this, element, tb);
@@ -1648,35 +1654,35 @@ function Cql2ElmVisitor$compileFunctionDefinition$lambda() {
 }
 function Cql2ElmVisitor(libraryBuilder, tokenStream, libraryInfo) {
   CqlPreprocessorElmCommonVisitor.call(this, libraryBuilder, tokenStream);
-  this.a8v_1 = new SystemMethodResolver(this, libraryBuilder);
-  this.b8v_1 = HashSet_init_$Create$();
-  this.c8v_1 = new Stack();
-  this.d8v_1 = HashMap_init_$Create$();
-  this.e8v_1 = new IdentityHashMap();
+  this.b8v_1 = new SystemMethodResolver(this, libraryBuilder);
+  this.c8v_1 = HashSet_init_$Create$();
+  this.d8v_1 = new Stack();
+  this.e8v_1 = HashMap_init_$Create$();
   this.f8v_1 = new IdentityHashMap();
-  this.g8v_1 = new Stack();
-  this.h8v_1 = ArrayList_init_$Create$();
+  this.g8v_1 = new IdentityHashMap();
+  this.h8v_1 = new Stack();
   this.i8v_1 = ArrayList_init_$Create$();
-  this.j8v_1 = HashMap_init_$Create$();
-  this.d8u_1 = libraryInfo;
+  this.j8v_1 = ArrayList_init_$Create$();
+  this.k8v_1 = HashMap_init_$Create$();
+  this.e8u_1 = libraryInfo;
 }
-protoOf(Cql2ElmVisitor).e32 = function () {
+protoOf(Cql2ElmVisitor).f32 = function () {
   return null;
 };
-protoOf(Cql2ElmVisitor).i33 = function (ctx) {
+protoOf(Cql2ElmVisitor).j33 = function (ctx) {
   var lastResult = null;
   var inductionVariable = 0;
-  var last = ctx.k2f();
+  var last = ctx.l2f();
   if (inductionVariable < last)
     $l$loop: do {
       var i = inductionVariable;
       inductionVariable = inductionVariable + 1 | 0;
-      var tree = ctx.o2f(i);
+      var tree = ctx.p2f(i);
       var terminalNode = (!(tree == null) ? isInterface(tree, TerminalNode) : false) ? tree : null;
-      if (!(terminalNode == null) && terminalNode.r2f().s23() === -1) {
+      if (!(terminalNode == null) && terminalNode.s2f().t23() === -1) {
         continue $l$loop;
       }
-      var childResult = this.d32(ensureNotNull(tree));
+      var childResult = this.e32(ensureNotNull(tree));
       if (!(childResult == null)) {
         lastResult = childResult;
       }
@@ -1684,25 +1690,25 @@ protoOf(Cql2ElmVisitor).i33 = function (ctx) {
      while (inductionVariable < last);
   return lastResult;
 };
-protoOf(Cql2ElmVisitor).j33 = function (ctx) {
-  // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-  var this_0 = this.d32(ctx.f3u());
-  var identifiers = (!(this_0 == null) ? isInterface(this_0, KtMutableList) : false) ? this_0 : THROW_CCE();
-  var vid = this.y8t_1.k7n().a6i(identifiers.l2(identifiers.j() - 1 | 0)).d6j(this.k8v(ctx.g3u()));
-  // Inline function 'kotlin.collections.isNotEmpty' call
-  if (!identifiers.q()) {
-    vid.c8i_1 = this.w8t_1.resolveNamespaceUri(joinToString(identifiers, '.'), true);
-  } else {
-    if (!(this.w8t_1.namespaceInfo == null)) {
-      vid.c8i_1 = this.w8t_1.namespaceInfo.z62_1;
-    }
-  }
-  this.w8t_1.e90(vid);
-  return vid;
-};
 protoOf(Cql2ElmVisitor).k33 = function (ctx) {
   // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-  var this_0 = this.d32(ctx.f3u());
+  var this_0 = this.e32(ctx.g3u());
+  var identifiers = (!(this_0 == null) ? isInterface(this_0, KtMutableList) : false) ? this_0 : THROW_CCE();
+  var vid = this.z8t_1.l7n().b6i(identifiers.l2(identifiers.j() - 1 | 0)).e6j(this.l8v(ctx.h3u()));
+  // Inline function 'kotlin.collections.isNotEmpty' call
+  if (!identifiers.q()) {
+    vid.d8i_1 = this.x8t_1.resolveNamespaceUri(joinToString(identifiers, '.'), true);
+  } else {
+    if (!(this.x8t_1.namespaceInfo == null)) {
+      vid.d8i_1 = this.x8t_1.namespaceInfo.a63_1;
+    }
+  }
+  this.x8t_1.f90(vid);
+  return vid;
+};
+protoOf(Cql2ElmVisitor).l33 = function (ctx) {
+  // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
+  var this_0 = this.e32(ctx.g3u());
   var identifiers = (!(this_0 == null) ? isInterface(this_0, KtMutableList) : false) ? this_0 : THROW_CCE();
   var unqualifiedIdentifier = identifiers.l2(identifiers.j() - 1 | 0);
   var tmp;
@@ -1710,11 +1716,11 @@ protoOf(Cql2ElmVisitor).k33 = function (ctx) {
   if (!identifiers.q()) {
     tmp = joinToString(identifiers, '.');
   } else {
-    if (this.w8t_1.isWellKnownModelName(unqualifiedIdentifier)) {
+    if (this.x8t_1.isWellKnownModelName(unqualifiedIdentifier)) {
       tmp = null;
     } else {
-      if (!(this.w8t_1.namespaceInfo == null)) {
-        tmp = this.w8t_1.namespaceInfo.y62_1;
+      if (!(this.x8t_1.namespaceInfo == null)) {
+        tmp = this.x8t_1.namespaceInfo.z62_1;
       } else {
         tmp = null;
       }
@@ -1724,27 +1730,27 @@ protoOf(Cql2ElmVisitor).k33 = function (ctx) {
   var path = null;
   var modelNamespace = null;
   if (!(namespaceName == null)) {
-    var namespaceUri = this.w8t_1.resolveNamespaceUri(namespaceName, true);
+    var namespaceUri = this.x8t_1.resolveNamespaceUri(namespaceName, true);
     path = Companion_instance_1.getPath(namespaceUri, unqualifiedIdentifier);
     modelNamespace = new NamespaceInfo(namespaceName, ensureNotNull(namespaceUri));
   } else {
     path = unqualifiedIdentifier;
   }
-  var localIdentifier = ctx.r3u() == null ? unqualifiedIdentifier : ensureNotNull(this.k8v(ctx.r3u()));
+  var localIdentifier = ctx.s3u() == null ? unqualifiedIdentifier : ensureNotNull(this.l8v(ctx.s3u()));
   // Inline function 'kotlin.require' call
   if (!(localIdentifier === unqualifiedIdentifier)) {
     var message = 'Local identifiers for models must be the same as the name of the model in this release of the translator (Model ' + unqualifiedIdentifier + ', Called ' + localIdentifier + ')';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var usingDef = this.w8t_1.resolveUsingRef(localIdentifier);
-  var ir = this.y8t_1.p7k().q65(localIdentifier);
-  track(this, ir, ensureNotNull(ctx.r3u() == null ? ctx.f3u() : ctx.r3u()));
-  this.w8t_1.pushIdentifier(ir, usingDef, IdentifierScope_GLOBAL_getInstance());
+  var usingDef = this.x8t_1.resolveUsingRef(localIdentifier);
+  var ir = this.z8t_1.q7k().r65(localIdentifier);
+  track(this, ir, ensureNotNull(ctx.s3u() == null ? ctx.g3u() : ctx.s3u()));
+  this.x8t_1.pushIdentifier(ir, usingDef, IdentifierScope_GLOBAL_getInstance());
   return usingDef;
 };
-protoOf(Cql2ElmVisitor).l33 = function (ctx) {
+protoOf(Cql2ElmVisitor).m33 = function (ctx) {
   // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-  var this_0 = this.d32(ctx.f3u());
+  var this_0 = this.e32(ctx.g3u());
   var identifiers = (!(this_0 == null) ? isInterface(this_0, KtMutableList) : false) ? this_0 : THROW_CCE();
   var unqualifiedIdentifier = identifiers.l2(identifiers.j() - 1 | 0);
   var tmp;
@@ -1752,26 +1758,26 @@ protoOf(Cql2ElmVisitor).l33 = function (ctx) {
   if (!identifiers.q()) {
     tmp = joinToString(identifiers, '.');
   } else {
-    if (!(this.w8t_1.namespaceInfo == null)) {
-      tmp = this.w8t_1.namespaceInfo.y62_1;
+    if (!(this.x8t_1.namespaceInfo == null)) {
+      tmp = this.x8t_1.namespaceInfo.z62_1;
     } else {
       tmp = null;
     }
   }
   var namespaceName = tmp;
   var path = getLibraryPath(this, namespaceName, unqualifiedIdentifier);
-  var library = this.y8t_1.z7k().j72(ctx.r3u() == null ? unqualifiedIdentifier : this.k8v(ctx.r3u())).y6c(path).d6j(this.k8v(ctx.g3u()));
-  if (!this.w8t_1.canResolveLibrary(library)) {
+  var library = this.z8t_1.a7l().k72(ctx.s3u() == null ? unqualifiedIdentifier : this.l8v(ctx.s3u())).z6c(path).e6j(this.l8v(ctx.h3u()));
+  if (!this.x8t_1.canResolveLibrary(library)) {
     var tmp_0;
     // Inline function 'kotlin.collections.isNotEmpty' call
     if (!identifiers.q()) {
       tmp_0 = joinToString(identifiers, '.');
     } else {
-      if (this.w8t_1.isWellKnownLibraryName(unqualifiedIdentifier)) {
+      if (this.x8t_1.isWellKnownLibraryName(unqualifiedIdentifier)) {
         tmp_0 = null;
       } else {
-        if (!(this.w8t_1.namespaceInfo == null)) {
-          tmp_0 = this.w8t_1.namespaceInfo.y62_1;
+        if (!(this.x8t_1.namespaceInfo == null)) {
+          tmp_0 = this.x8t_1.namespaceInfo.z62_1;
         } else {
           tmp_0 = null;
         }
@@ -1779,56 +1785,56 @@ protoOf(Cql2ElmVisitor).l33 = function (ctx) {
     }
     namespaceName = tmp_0;
     path = getLibraryPath(this, namespaceName, unqualifiedIdentifier);
-    library = this.y8t_1.z7k().j72(ctx.r3u() == null ? unqualifiedIdentifier : this.k8v(ctx.r3u())).y6c(path).d6j(this.k8v(ctx.g3u()));
+    library = this.z8t_1.a7l().k72(ctx.s3u() == null ? unqualifiedIdentifier : this.l8v(ctx.s3u())).z6c(path).e6j(this.l8v(ctx.h3u()));
   }
-  this.w8t_1.addInclude(library);
-  var ir = this.y8t_1.p7k().q65(library.d72_1);
-  track(this, ir, ensureNotNull(ctx.r3u() == null ? ctx.f3u() : ctx.r3u()));
-  this.w8t_1.pushIdentifier(ir, library, IdentifierScope_GLOBAL_getInstance());
+  this.x8t_1.addInclude(library);
+  var ir = this.z8t_1.q7k().r65(library.e72_1);
+  track(this, ir, ensureNotNull(ctx.s3u() == null ? ctx.g3u() : ctx.s3u()));
+  this.x8t_1.pushIdentifier(ir, library, IdentifierScope_GLOBAL_getInstance());
   return library;
 };
-protoOf(Cql2ElmVisitor).o33 = function (ctx) {
-  var param = this.y8t_1.b7o().b6i(this.l8v(ctx.h3w())).q65(this.k8v(ctx.g3w())).d7t(parseLiteralExpression(this, ctx.j3w())).e7t(this.f90(ctx.i3w()));
+protoOf(Cql2ElmVisitor).p33 = function (ctx) {
+  var param = this.z8t_1.c7o().c6i(this.m8v(ctx.i3w())).r65(this.l8v(ctx.h3w())).e7t(parseLiteralExpression(this, ctx.k3w())).f7t(this.g90(ctx.j3w()));
   var paramType = null;
-  if (!(param.c7t_1 == null)) {
-    paramType = Trackable_getInstance().n8v(ensureNotNull(param.c7t_1));
+  if (!(param.d7t_1 == null)) {
+    paramType = Trackable_getInstance().o8v(ensureNotNull(param.d7t_1));
   }
-  if (!(param.b7t_1 == null)) {
+  if (!(param.c7t_1 == null)) {
     if (!(paramType == null)) {
-      this.w8t_1.verifyType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(param.b7t_1))), paramType);
+      this.x8t_1.verifyType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(param.c7t_1))), paramType);
     } else {
-      paramType = Trackable_getInstance().n8v(ensureNotNull(param.b7t_1));
+      paramType = Trackable_getInstance().o8v(ensureNotNull(param.c7t_1));
     }
   }
   var tmp0 = paramType;
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (tmp0 == null) {
-      var message = 'Could not determine parameter type for parameter ' + param.y7s_1 + '.';
+      var message = 'Could not determine parameter type for parameter ' + param.z7s_1 + '.';
       throw IllegalArgumentException_init_$Create$(toString(message));
     } else {
       break $l$block;
     }
   }
-  Trackable_getInstance().o8v(param, paramType);
-  if (!(param.b7t_1 == null)) {
-    param.b7t_1 = this.w8t_1.ensureCompatible(param.b7t_1, paramType);
+  Trackable_getInstance().p8v(param, paramType);
+  if (!(param.c7t_1 == null)) {
+    param.c7t_1 = this.x8t_1.ensureCompatible(param.c7t_1, paramType);
   }
-  this.w8t_1.addParameter(param);
-  var ir = this.y8t_1.p7k().q65(param.y7s_1);
-  track(this, ir, ctx.g3w());
-  this.w8t_1.pushIdentifier(ir, param, IdentifierScope_GLOBAL_getInstance());
+  this.x8t_1.addParameter(param);
+  var ir = this.z8t_1.q7k().r65(param.z7s_1);
+  track(this, ir, ctx.h3w());
+  this.x8t_1.pushIdentifier(ir, param, IdentifierScope_GLOBAL_getInstance());
   return param;
 };
-protoOf(Cql2ElmVisitor).h34 = function (ctx) {
-  var result = this.y8t_1.s7l().q65(this.k8v(ctx.d44())).n7a(this.f90(ctx.i3w()));
+protoOf(Cql2ElmVisitor).i34 = function (ctx) {
+  var result = this.z8t_1.t7l().r65(this.l8v(ctx.e44())).o7a(this.g90(ctx.j3w()));
   return result;
 };
-protoOf(Cql2ElmVisitor).n33 = function (ctx) {
+protoOf(Cql2ElmVisitor).o33 = function (ctx) {
   // Inline function 'kotlin.text.lowercase' call
   // Inline function 'kotlin.js.asDynamic' call
   var tmp;
-  switch (ctx.c24().toLowerCase()) {
+  switch (ctx.d24().toLowerCase()) {
     case 'public':
       tmp = AccessModifier_PUBLIC_getInstance();
       break;
@@ -1840,35 +1846,35 @@ protoOf(Cql2ElmVisitor).n33 = function (ctx) {
 
       // Inline function 'kotlin.js.asDynamic' call
 
-      var tmp$ret$3 = ctx.c24().toLowerCase();
+      var tmp$ret$3 = ctx.d24().toLowerCase();
       throw IllegalArgumentException_init_$Create$('Unknown access modifier ' + tmp$ret$3 + '.');
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).p33 = function (ctx) {
-  var cs = this.y8t_1.i7k().b6i(this.l8v(ctx.h3w())).q65(this.k8v(ctx.g3w())).a6i(this.k8v(ctx.u3w())).d6j(this.k8v(ctx.g3u()));
-  if (this.w8t_1.isCompatibleWith('1.5')) {
-    Trackable_getInstance().o8v(cs, this.w8t_1.l8w('System', 'CodeSystem'));
+protoOf(Cql2ElmVisitor).q33 = function (ctx) {
+  var cs = this.z8t_1.j7k().c6i(this.m8v(ctx.i3w())).r65(this.l8v(ctx.h3w())).b6i(this.l8v(ctx.v3w())).e6j(this.l8v(ctx.h3u()));
+  if (this.x8t_1.isCompatibleWith('1.5')) {
+    Trackable_getInstance().p8v(cs, this.x8t_1.m8w('System', 'CodeSystem'));
   } else {
-    Trackable_getInstance().o8v(cs, new ListType(ensureNotNull(this.w8t_1.l8w('System', 'Code'))));
+    Trackable_getInstance().p8v(cs, new ListType(ensureNotNull(this.x8t_1.m8w('System', 'Code'))));
   }
-  this.w8t_1.addCodeSystem(cs);
-  var ir = this.y8t_1.p7k().q65(cs.z6i_1);
-  track(this, ir, ctx.g3w());
-  this.w8t_1.pushIdentifier(ir, cs, IdentifierScope_GLOBAL_getInstance());
+  this.x8t_1.addCodeSystem(cs);
+  var ir = this.z8t_1.q7k().r65(cs.a6j_1);
+  track(this, ir, ctx.h3w());
+  this.x8t_1.pushIdentifier(ir, cs, IdentifierScope_GLOBAL_getInstance());
   return cs;
 };
-protoOf(Cql2ElmVisitor).s33 = function (ctx) {
-  var libraryName = this.k8v(ctx.c3y());
-  var name = ensureNotNull(this.k8v(ctx.g3w()));
+protoOf(Cql2ElmVisitor).t33 = function (ctx) {
+  var libraryName = this.l8v(ctx.d3y());
+  var name = ensureNotNull(this.l8v(ctx.h3w()));
   var def;
   if (!(libraryName == null)) {
-    def = this.w8t_1.resolveLibrary(libraryName).g90(name);
+    def = this.x8t_1.resolveLibrary(libraryName).h90(name);
     if (!(def == null)) {
-      this.w8t_1.checkAccessLevel(libraryName, name, ensureNotNull(def.z6h()));
+      this.x8t_1.checkAccessLevel(libraryName, name, ensureNotNull(def.a6i()));
     }
   } else {
-    def = this.w8t_1.resolveCodeSystemRef(name);
+    def = this.x8t_1.resolveCodeSystemRef(name);
   }
   var tmp0 = def;
   $l$block: {
@@ -1880,19 +1886,19 @@ protoOf(Cql2ElmVisitor).s33 = function (ctx) {
       break $l$block;
     }
   }
-  return Trackable_getInstance().h90(this.y8t_1.x7l().t6i(libraryName).q65(name), Trackable_getInstance().n8v(def));
+  return Trackable_getInstance().i90(this.z8t_1.y7l().u6i(libraryName).r65(name), Trackable_getInstance().o8v(def));
 };
-protoOf(Cql2ElmVisitor).w33 = function (ctx) {
-  var libraryName = this.k8v(ctx.c3y());
-  var name = ensureNotNull(this.k8v(ctx.g3w()));
+protoOf(Cql2ElmVisitor).x33 = function (ctx) {
+  var libraryName = this.l8v(ctx.d3y());
+  var name = ensureNotNull(this.l8v(ctx.h3w()));
   var def;
   if (!(libraryName == null)) {
-    def = this.w8t_1.resolveLibrary(libraryName).i90(name);
+    def = this.x8t_1.resolveLibrary(libraryName).j90(name);
     if (!(def == null)) {
-      this.w8t_1.checkAccessLevel(libraryName, name, ensureNotNull(def.z6h()));
+      this.x8t_1.checkAccessLevel(libraryName, name, ensureNotNull(def.a6i()));
     }
   } else {
-    def = this.w8t_1.resolveCodeRef(name);
+    def = this.x8t_1.resolveCodeRef(name);
   }
   var tmp0 = def;
   $l$block: {
@@ -1904,84 +1910,84 @@ protoOf(Cql2ElmVisitor).w33 = function (ctx) {
       break $l$block;
     }
   }
-  return Trackable_getInstance().h90(this.y8t_1.v7h().t6i(libraryName).q65(name), Trackable_getInstance().n8v(def));
+  return Trackable_getInstance().i90(this.z8t_1.w7h().u6i(libraryName).r65(name), Trackable_getInstance().o8v(def));
 };
-protoOf(Cql2ElmVisitor).q33 = function (ctx) {
-  var vs = this.y8t_1.n7n().b6i(this.l8v(ctx.h3w())).q65(this.k8v(ctx.g3w())).a6i(this.k8v(ctx.f3x())).d6j(this.k8v(ctx.g3u()));
-  if (!(ctx.g3x() == null)) {
-    var _iterator__ex2g4s = ensureNotNull(ctx.g3x()).r3x().g();
+protoOf(Cql2ElmVisitor).r33 = function (ctx) {
+  var vs = this.z8t_1.o7n().c6i(this.m8v(ctx.i3w())).r65(this.l8v(ctx.h3w())).b6i(this.l8v(ctx.g3x())).e6j(this.l8v(ctx.h3u()));
+  if (!(ctx.h3x() == null)) {
+    var _iterator__ex2g4s = ensureNotNull(ctx.h3x()).s3x().g();
     while (_iterator__ex2g4s.h()) {
       var codesystem = _iterator__ex2g4s.i();
-      var tmp = this.d32(codesystem);
+      var tmp = this.e32(codesystem);
       var tmp0_elvis_lhs = (tmp == null ? true : tmp instanceof CodeSystemRef) ? tmp : THROW_CCE();
       var tmp_0;
       if (tmp0_elvis_lhs == null) {
-        throw IllegalArgumentException_init_$Create$('Could not resolve reference to code system ' + codesystem.c24() + '.');
+        throw IllegalArgumentException_init_$Create$('Could not resolve reference to code system ' + codesystem.d24() + '.');
       } else {
         tmp_0 = tmp0_elvis_lhs;
       }
       var cs = tmp_0;
-      vs.k8h().e(cs);
+      vs.l8h().e(cs);
     }
   }
-  if (this.w8t_1.isCompatibleWith('1.5')) {
-    Trackable_getInstance().o8v(vs, this.w8t_1.l8w('System', 'ValueSet'));
+  if (this.x8t_1.isCompatibleWith('1.5')) {
+    Trackable_getInstance().p8v(vs, this.x8t_1.m8w('System', 'ValueSet'));
   } else {
-    Trackable_getInstance().o8v(vs, new ListType(ensureNotNull(this.w8t_1.l8w('System', 'Code'))));
+    Trackable_getInstance().p8v(vs, new ListType(ensureNotNull(this.x8t_1.m8w('System', 'Code'))));
   }
-  this.w8t_1.addValueSet(vs);
-  var ir = this.y8t_1.p7k().q65(vs.f8h_1);
-  track(this, ir, ctx.g3w());
-  this.w8t_1.pushIdentifier(ir, vs, IdentifierScope_GLOBAL_getInstance());
+  this.x8t_1.addValueSet(vs);
+  var ir = this.z8t_1.q7k().r65(vs.g8h_1);
+  track(this, ir, ctx.h3w());
+  this.x8t_1.pushIdentifier(ir, vs, IdentifierScope_GLOBAL_getInstance());
   return vs;
 };
-protoOf(Cql2ElmVisitor).u33 = function (ctx) {
-  var cd = this.y8t_1.c7q().b6i(this.l8v(ctx.h3w())).q65(this.k8v(ctx.g3w())).a6i(this.k8v(ctx.x3y()));
-  var cs = this.d32(ctx.r3x());
+protoOf(Cql2ElmVisitor).v33 = function (ctx) {
+  var cd = this.z8t_1.d7q().c6i(this.m8v(ctx.i3w())).r65(this.l8v(ctx.h3w())).b6i(this.l8v(ctx.y3y()));
+  var cs = this.e32(ctx.s3x());
   if (cs instanceof CodeSystemRef) {
-    cd.x6h_1 = cs;
+    cd.y6h_1 = cs;
   }
-  if (!(ctx.y3y() == null)) {
-    cd.v6h_1 = this.k8v(ensureNotNull(ctx.y3y()).d4l());
+  if (!(ctx.z3y() == null)) {
+    cd.w6h_1 = this.l8v(ensureNotNull(ctx.z3y()).e4l());
   }
-  Trackable_getInstance().o8v(cd, this.w8t_1.j90('Code'));
-  this.w8t_1.addCode(cd);
-  var ir = this.y8t_1.p7k().q65(cd.t6h_1);
-  track(this, ir, ctx.g3w());
-  this.w8t_1.pushIdentifier(ir, cd, IdentifierScope_GLOBAL_getInstance());
+  Trackable_getInstance().p8v(cd, this.x8t_1.k90('Code'));
+  this.x8t_1.addCode(cd);
+  var ir = this.z8t_1.q7k().r65(cd.u6h_1);
+  track(this, ir, ctx.h3w());
+  this.x8t_1.pushIdentifier(ir, cd, IdentifierScope_GLOBAL_getInstance());
   return cd;
 };
-protoOf(Cql2ElmVisitor).v33 = function (ctx) {
-  var cd = this.y8t_1.j7q().b6i(this.l8v(ctx.h3w())).q65(this.k8v(ctx.g3w()));
-  var _iterator__ex2g4s = ctx.j3z().g();
+protoOf(Cql2ElmVisitor).w33 = function (ctx) {
+  var cd = this.z8t_1.k7q().c6i(this.m8v(ctx.i3w())).r65(this.l8v(ctx.h3w()));
+  var _iterator__ex2g4s = ctx.k3z().g();
   while (_iterator__ex2g4s.h()) {
     var ci = _iterator__ex2g4s.i();
-    var tmp = cd.p6k();
-    var tmp_0 = this.d32(ci);
+    var tmp = cd.q6k();
+    var tmp_0 = this.e32(ci);
     tmp.e(tmp_0 instanceof CodeRef ? tmp_0 : THROW_CCE());
   }
-  if (!(ctx.y3y() == null)) {
-    cd.w6k_1 = this.k8v(ensureNotNull(ctx.y3y()).d4l());
+  if (!(ctx.z3y() == null)) {
+    cd.x6k_1 = this.l8v(ensureNotNull(ctx.z3y()).e4l());
   }
-  Trackable_getInstance().o8v(cd, this.w8t_1.j90('Concept'));
-  this.w8t_1.addConcept(cd);
+  Trackable_getInstance().p8v(cd, this.x8t_1.k90('Concept'));
+  this.x8t_1.addConcept(cd);
   return cd;
 };
-protoOf(Cql2ElmVisitor).c34 = function (ctx) {
-  var qualifiers = this.k90(ctx);
-  var modelIdentifier = Companion_instance_20.l90(qualifiers);
-  var identifier = Companion_instance_20.m90(qualifiers, ensureNotNull(this.k8v(ctx.c42())));
-  var retrievedResult = this.w8t_1.getNamedTypeSpecifierResult('' + modelIdentifier + ':' + identifier);
+protoOf(Cql2ElmVisitor).d34 = function (ctx) {
+  var qualifiers = this.l90(ctx);
+  var modelIdentifier = Companion_instance_20.m90(qualifiers);
+  var identifier = Companion_instance_20.n90(qualifiers, ensureNotNull(this.l8v(ctx.d42())));
+  var retrievedResult = this.x8t_1.getNamedTypeSpecifierResult('' + modelIdentifier + ':' + identifier);
   if (!(retrievedResult == null)) {
     var tmp;
-    if (retrievedResult.p90()) {
+    if (retrievedResult.q90()) {
       tmp = null;
     } else {
-      tmp = retrievedResult.o90();
+      tmp = retrievedResult.p90();
     }
     return tmp;
   }
-  var tmp0_elvis_lhs = this.w8t_1.l8w(modelIdentifier, identifier);
+  var tmp0_elvis_lhs = this.x8t_1.m8w(modelIdentifier, identifier);
   var tmp_0;
   if (tmp0_elvis_lhs == null) {
     throw CqlCompilerException_init_$Create$('Could not find type for model: ' + modelIdentifier + ' and name: ' + identifier, getTrackBack_1(this, ctx));
@@ -1989,192 +1995,192 @@ protoOf(Cql2ElmVisitor).c34 = function (ctx) {
     tmp_0 = tmp0_elvis_lhs;
   }
   var resultType = tmp_0;
-  var result = this.y8t_1.c7k().c7g(this.w8t_1.dataTypeToQName(resultType));
-  Trackable_getInstance().o8v(result, resultType);
+  var result = this.z8t_1.d7k().d7g(this.x8t_1.dataTypeToQName(resultType));
+  Trackable_getInstance().p8v(result, resultType);
   return result;
 };
-protoOf(Cql2ElmVisitor).l34 = function (ctx) {
-  var modelIdentifier = this.k8v(ctx.s45());
-  var unqualifiedIdentifier = ensureNotNull(this.k8v(ctx.g3w()));
-  this.b8u_1 = !(modelIdentifier == null) ? '' + modelIdentifier + '.' + unqualifiedIdentifier : unqualifiedIdentifier;
+protoOf(Cql2ElmVisitor).m34 = function (ctx) {
+  var modelIdentifier = this.l8v(ctx.t45());
+  var unqualifiedIdentifier = ensureNotNull(this.l8v(ctx.h3w()));
+  this.c8u_1 = !(modelIdentifier == null) ? '' + modelIdentifier + '.' + unqualifiedIdentifier : unqualifiedIdentifier;
   if (!isUnfilteredContext(this, unqualifiedIdentifier)) {
-    var modelContext = this.w8t_1.resolveContextName(modelIdentifier, unqualifiedIdentifier);
-    var modelContextDefinition = this.j8v_1.q2(ensureNotNull(modelContext).q62_1);
+    var modelContext = this.x8t_1.resolveContextName(modelIdentifier, unqualifiedIdentifier);
+    var modelContextDefinition = this.k8v_1.q2(ensureNotNull(modelContext).r62_1);
     if (modelContextDefinition == null) {
-      if (this.w8t_1.hasUsings()) {
-        var modelInfo = modelIdentifier == null ? this.w8t_1.x90(this.d8u_1.y90()).q90_1 : this.w8t_1.x90(modelIdentifier).q90_1;
-        var contextType = modelContext.r62_1;
-        modelContextDefinition = this.w8t_1.resolveParameterRef(modelContext.q62_1);
+      if (this.x8t_1.hasUsings()) {
+        var modelInfo = modelIdentifier == null ? this.x8t_1.y90(this.e8u_1.z90()).r90_1 : this.x8t_1.y90(modelIdentifier).r90_1;
+        var contextType = modelContext.s62_1;
+        modelContextDefinition = this.x8t_1.resolveParameterRef(modelContext.r62_1);
         if (!(modelContextDefinition == null)) {
-          var tmp0 = this.j8v_1;
-          var tmp2 = modelContext.q62_1;
+          var tmp0 = this.k8v_1;
+          var tmp2 = modelContext.r62_1;
           // Inline function 'kotlin.collections.set' call
           var value = modelContextDefinition;
           tmp0.u2(tmp2, value);
         } else {
-          var contextRetrieve = this.y8t_1.w7l().x81(this.w8t_1.dataTypeToQName(contextType));
+          var contextRetrieve = this.z8t_1.x7l().y81(this.x8t_1.dataTypeToQName(contextType));
           track(this, contextRetrieve, ctx);
-          Trackable_getInstance().o8v(contextRetrieve, new ListType(contextType));
-          var contextClassIdentifier = (contextType instanceof ClassType ? contextType : THROW_CCE()).m60_1;
+          Trackable_getInstance().p8v(contextRetrieve, new ListType(contextType));
+          var contextClassIdentifier = (contextType instanceof ClassType ? contextType : THROW_CCE()).n60_1;
           if (!(contextClassIdentifier == null)) {
-            contextRetrieve.x80_1 = contextClassIdentifier;
+            contextRetrieve.y80_1 = contextClassIdentifier;
           }
-          modelContextDefinition = this.y8t_1.d7n().q65(unqualifiedIdentifier).g6w(this.b8u_1).r69(this.y8t_1.t7l().a6c(contextRetrieve));
+          modelContextDefinition = this.z8t_1.e7n().r65(unqualifiedIdentifier).h6w(this.c8u_1).s69(this.z8t_1.u7l().b6c(contextRetrieve));
           track(this, modelContextDefinition, ctx);
-          Trackable_getInstance().o8v(ensureNotNull(modelContextDefinition.f6w_1), contextType);
-          Trackable_getInstance().o8v(modelContextDefinition, contextType);
-          this.w8t_1.addExpression(modelContextDefinition);
-          var tmp0_0 = this.j8v_1;
-          var tmp2_0 = modelContext.q62_1;
+          Trackable_getInstance().p8v(ensureNotNull(modelContextDefinition.g6w_1), contextType);
+          Trackable_getInstance().p8v(modelContextDefinition, contextType);
+          this.x8t_1.addExpression(modelContextDefinition);
+          var tmp0_0 = this.k8v_1;
+          var tmp2_0 = modelContext.r62_1;
           // Inline function 'kotlin.collections.set' call
           var value_0 = modelContextDefinition;
           tmp0_0.u2(tmp2_0, value_0);
         }
       } else {
-        modelContextDefinition = this.y8t_1.d7n().q65(unqualifiedIdentifier).g6w(this.b8u_1).r69(this.y8t_1.a7o());
+        modelContextDefinition = this.z8t_1.e7n().r65(unqualifiedIdentifier).h6w(this.c8u_1).s69(this.z8t_1.b7o());
         track(this, modelContextDefinition, ctx);
-        Trackable_getInstance().o8v(ensureNotNull(modelContextDefinition.f6w_1), this.w8t_1.l8w('System', 'Any'));
-        Trackable_getInstance().o8v(modelContextDefinition, Trackable_getInstance().n8v(ensureNotNull(modelContextDefinition.f6w_1)));
-        this.w8t_1.addExpression(modelContextDefinition);
-        var tmp0_1 = this.j8v_1;
-        var tmp2_1 = modelContext.q62_1;
+        Trackable_getInstance().p8v(ensureNotNull(modelContextDefinition.g6w_1), this.x8t_1.m8w('System', 'Any'));
+        Trackable_getInstance().p8v(modelContextDefinition, Trackable_getInstance().o8v(ensureNotNull(modelContextDefinition.g6w_1)));
+        this.x8t_1.addExpression(modelContextDefinition);
+        var tmp0_1 = this.k8v_1;
+        var tmp2_1 = modelContext.r62_1;
         // Inline function 'kotlin.collections.set' call
         var value_1 = modelContextDefinition;
         tmp0_1.u2(tmp2_1, value_1);
       }
     }
   }
-  var contextDef = this.y8t_1.j7l().q65(this.b8u_1);
+  var contextDef = this.z8t_1.k7l().r65(this.c8u_1);
   track(this, contextDef, ctx);
-  if (this.w8t_1.isCompatibleWith('1.5')) {
-    this.w8t_1.addContext(contextDef);
+  if (this.x8t_1.isCompatibleWith('1.5')) {
+    this.x8t_1.addContext(contextDef);
   }
-  return this.b8u_1;
+  return this.c8u_1;
 };
-protoOf(Cql2ElmVisitor).k34 = function (ctx) {
-  this.w8t_1.pushIdentifierScope();
+protoOf(Cql2ElmVisitor).l34 = function (ctx) {
+  this.x8t_1.pushIdentifierScope();
   var tmp;
   try {
     var expressionDef = internalVisitExpressionDefinition(this, ctx);
-    if (this.c8v_1.q() || !(this.c8v_1.q2c().d8y_1 === ensureNotNull(expressionDef).c6w_1)) {
+    if (this.d8v_1.q() || !(this.d8v_1.r2c().e8y_1 === ensureNotNull(expressionDef).d6w_1)) {
       // Inline function 'kotlin.require' call
-      if (!!contains(this.b8v_1, ensureNotNull(expressionDef).c6w_1)) {
-        var message = 'Identifier ' + expressionDef.c6w_1 + ' is already in use in this library.';
+      if (!!contains(this.c8v_1, ensureNotNull(expressionDef).d6w_1)) {
+        var message = 'Identifier ' + expressionDef.d6w_1 + ' is already in use in this library.';
         throw IllegalArgumentException_init_$Create$(toString(message));
       }
-      this.b8v_1.e(ensureNotNull(expressionDef.c6w_1));
+      this.c8v_1.e(ensureNotNull(expressionDef.d6w_1));
     }
     tmp = expressionDef;
   }finally {
-    this.w8t_1.popIdentifierScope();
+    this.x8t_1.popIdentifierScope();
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).z38 = function (ctx) {
-  var stringLiteral = this.w8t_1.z90(this.k8v(ctx.d4l()));
-  var ir = this.y8t_1.p7k().q65(stringLiteral.u7a_1);
-  track(this, ir, ctx.d4l());
-  this.w8t_1.pushIdentifier(ir, stringLiteral);
+protoOf(Cql2ElmVisitor).a39 = function (ctx) {
+  var stringLiteral = this.x8t_1.a91(this.l8v(ctx.e4l()));
+  var ir = this.z8t_1.q7k().r65(stringLiteral.v7a_1);
+  track(this, ir, ctx.e4l());
+  this.x8t_1.pushIdentifier(ir, stringLiteral);
   return stringLiteral;
 };
-protoOf(Cql2ElmVisitor).t35 = function (ctx) {
-  return this.w8t_1.z90(this.k8v(ctx.d4l()));
+protoOf(Cql2ElmVisitor).u35 = function (ctx) {
+  return this.x8t_1.a91(this.l8v(ctx.e4l()));
 };
-protoOf(Cql2ElmVisitor).x38 = function (ctx) {
-  return this.w8t_1.f8x(toBoolean(ctx.c24()));
-};
-protoOf(Cql2ElmVisitor).i39 = function (ctx) {
-  return this.w8t_1.createInterval(parseExpression(this, ctx.a4m(0)), ensureNotNull(ctx.o2f(1)).c24() === '[', parseExpression(this, ctx.a4m(1)), ensureNotNull(ctx.o2f(5)).c24() === ']');
-};
-protoOf(Cql2ElmVisitor).k39 = function (ctx) {
-  var result = this.y8t_1.k7q().q65(this.k8v(ctx.d44())).i74(parseExpression(this, ctx.j3w()));
-  return result;
+protoOf(Cql2ElmVisitor).y38 = function (ctx) {
+  return this.x8t_1.g8x(toBoolean(ctx.d24()));
 };
 protoOf(Cql2ElmVisitor).j39 = function (ctx) {
-  var tuple = this.y8t_1.y7n();
-  // Inline function 'kotlin.collections.mutableListOf' call
-  var elements = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.s5l().g();
-  while (_iterator__ex2g4s.h()) {
-    var elementContext = _iterator__ex2g4s.i();
-    var tmp = this.d32(elementContext);
-    var element = tmp instanceof TupleElement ? tmp : THROW_CCE();
-    elements.e(new TupleTypeElement(ensureNotNull(element.m8f_1), ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(element.n8f_1)))));
-    tuple.g5v().e(element);
-  }
-  Trackable_getInstance().o8v(tuple, TupleType_init_$Create$(elements));
-  return tuple;
-};
-protoOf(Cql2ElmVisitor).m39 = function (ctx) {
-  var name = this.k8v(ctx.d44());
-  var exp = parseExpression(this, ctx.j3w());
-  var result = this.y8t_1.l7j().q65(name).i74(exp);
-  return result;
+  return this.x8t_1.createInterval(parseExpression(this, ctx.b4m(0)), ensureNotNull(ctx.p2f(1)).d24() === '[', parseExpression(this, ctx.b4m(1)), ensureNotNull(ctx.p2f(5)).d24() === ']');
 };
 protoOf(Cql2ElmVisitor).l39 = function (ctx) {
-  var instance = this.y8t_1.f7j();
-  var classTypeSpecifier = ensureNotNull(this.c34(ctx.i4a()));
-  instance.e74_1 = classTypeSpecifier.b7g_1;
-  Trackable_getInstance().o8v(instance, Trackable_getInstance().n8v(classTypeSpecifier));
-  var _iterator__ex2g4s = ctx.n5m().g();
+  var result = this.z8t_1.l7q().r65(this.l8v(ctx.e44())).j74(parseExpression(this, ctx.k3w()));
+  return result;
+};
+protoOf(Cql2ElmVisitor).k39 = function (ctx) {
+  var tuple = this.z8t_1.z7n();
+  // Inline function 'kotlin.collections.mutableListOf' call
+  var elements = ArrayList_init_$Create$();
+  var _iterator__ex2g4s = ctx.t5l().g();
   while (_iterator__ex2g4s.h()) {
     var elementContext = _iterator__ex2g4s.i();
-    var tmp = this.d32(elementContext);
+    var tmp = this.e32(elementContext);
+    var element = tmp instanceof TupleElement ? tmp : THROW_CCE();
+    elements.e(new TupleTypeElement(ensureNotNull(element.n8f_1), ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(element.o8f_1)))));
+    tuple.h5v().e(element);
+  }
+  Trackable_getInstance().p8v(tuple, TupleType_init_$Create$(elements));
+  return tuple;
+};
+protoOf(Cql2ElmVisitor).n39 = function (ctx) {
+  var name = this.l8v(ctx.e44());
+  var exp = parseExpression(this, ctx.k3w());
+  var result = this.z8t_1.m7j().r65(name).j74(exp);
+  return result;
+};
+protoOf(Cql2ElmVisitor).m39 = function (ctx) {
+  var instance = this.z8t_1.g7j();
+  var classTypeSpecifier = ensureNotNull(this.d34(ctx.j4a()));
+  instance.f74_1 = classTypeSpecifier.c7g_1;
+  Trackable_getInstance().p8v(instance, Trackable_getInstance().o8v(classTypeSpecifier));
+  var _iterator__ex2g4s = ctx.o5m().g();
+  while (_iterator__ex2g4s.h()) {
+    var elementContext = _iterator__ex2g4s.i();
+    var tmp = this.e32(elementContext);
     var element = tmp instanceof InstanceElement ? tmp : THROW_CCE();
-    var resolution = this.w8t_1.resolveProperty(Trackable_getInstance().n8v(classTypeSpecifier), ensureNotNull(element.g74_1));
-    element.h74_1 = this.w8t_1.ensureCompatible(element.h74_1, ensureNotNull(resolution).a91_1);
-    element.g74_1 = resolution.b91_1;
+    var resolution = this.x8t_1.resolveProperty(Trackable_getInstance().o8v(classTypeSpecifier), ensureNotNull(element.h74_1));
+    element.i74_1 = this.x8t_1.ensureCompatible(element.i74_1, ensureNotNull(resolution).b91_1);
+    element.h74_1 = resolution.c91_1;
     // Inline function 'kotlin.require' call
-    if (!(resolution.c91_1 == null)) {
+    if (!(resolution.d91_1 == null)) {
       var message = 'Target Mapping in instance selectors not yet supported';
       throw IllegalArgumentException_init_$Create$(toString(message));
     }
-    instance.g5v().e(element);
+    instance.h5v().e(element);
   }
   return instance;
 };
-protoOf(Cql2ElmVisitor).p39 = function (ctx) {
-  var code = this.y8t_1.h7i();
-  code.l6h_1 = this.k8v(ctx.d4l());
+protoOf(Cql2ElmVisitor).q39 = function (ctx) {
+  var code = this.z8t_1.i7i();
+  code.m6h_1 = this.l8v(ctx.e4l());
   var tmp = code;
-  var tmp_0 = this.d32(ctx.r3x());
-  tmp.n6h_1 = (tmp_0 == null ? true : tmp_0 instanceof CodeSystemRef) ? tmp_0 : THROW_CCE();
-  if (!(ctx.y3y() == null)) {
-    code.m6h_1 = this.k8v(ensureNotNull(ctx.y3y()).d4l());
+  var tmp_0 = this.e32(ctx.s3x());
+  tmp.o6h_1 = (tmp_0 == null ? true : tmp_0 instanceof CodeSystemRef) ? tmp_0 : THROW_CCE();
+  if (!(ctx.z3y() == null)) {
+    code.n6h_1 = this.l8v(ensureNotNull(ctx.z3y()).e4l());
   }
-  Trackable_getInstance().o8v(code, this.w8t_1.l8w('System', 'Code'));
+  Trackable_getInstance().p8v(code, this.x8t_1.m8w('System', 'Code'));
   return code;
 };
-protoOf(Cql2ElmVisitor).q39 = function (ctx) {
-  var concept = this.y8t_1.q7o();
-  if (!(ctx.y3y() == null)) {
-    concept.n6k_1 = this.k8v(ensureNotNull(ctx.y3y()).d4l());
+protoOf(Cql2ElmVisitor).r39 = function (ctx) {
+  var concept = this.z8t_1.r7o();
+  if (!(ctx.z3y() == null)) {
+    concept.o6k_1 = this.l8v(ensureNotNull(ctx.z3y()).e4l());
   }
-  var _iterator__ex2g4s = ctx.m5o().g();
+  var _iterator__ex2g4s = ctx.n5o().g();
   while (_iterator__ex2g4s.h()) {
     var codeContext = _iterator__ex2g4s.i();
-    var tmp = concept.p6k();
-    var tmp_0 = this.d32(codeContext);
+    var tmp = concept.q6k();
+    var tmp_0 = this.e32(codeContext);
     tmp.e(tmp_0 instanceof Code ? tmp_0 : THROW_CCE());
   }
-  Trackable_getInstance().o8v(concept, this.w8t_1.l8w('System', 'Concept'));
+  Trackable_getInstance().p8v(concept, this.x8t_1.m8w('System', 'Concept'));
   return concept;
 };
-protoOf(Cql2ElmVisitor).n39 = function (ctx) {
-  var elementTypeSpecifier = this.f90(ctx.i3w());
-  var list = this.y8t_1.n7k();
+protoOf(Cql2ElmVisitor).o39 = function (ctx) {
+  var elementTypeSpecifier = this.g90(ctx.j3w());
+  var list = this.z8t_1.o7k();
   var listType = null;
   if (!(elementTypeSpecifier == null)) {
-    var listTypeSpecifier = this.y8t_1.v7m().n7a(elementTypeSpecifier);
-    track(this, listTypeSpecifier, ensureNotNull(ctx.i3w()));
-    listType = new ListType(ensureNotNull(Trackable_getInstance().n8v(elementTypeSpecifier)));
-    Trackable_getInstance().o8v(listTypeSpecifier, listType);
+    var listTypeSpecifier = this.z8t_1.w7m().o7a(elementTypeSpecifier);
+    track(this, listTypeSpecifier, ensureNotNull(ctx.j3w()));
+    listType = new ListType(ensureNotNull(Trackable_getInstance().o8v(elementTypeSpecifier)));
+    Trackable_getInstance().p8v(listTypeSpecifier, listType);
   }
-  var elementType = elementTypeSpecifier == null ? null : Trackable_getInstance().n8v(elementTypeSpecifier);
+  var elementType = elementTypeSpecifier == null ? null : Trackable_getInstance().o8v(elementTypeSpecifier);
   var inferredElementType = null;
   var initialInferredElementType = null;
   var elements = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.j3w().g();
+  var _iterator__ex2g4s = ctx.k3w().g();
   while (_iterator__ex2g4s.h()) {
     var elementContext = _iterator__ex2g4s.i();
     var tmp1_elvis_lhs = parseExpression(this, elementContext);
@@ -2186,18 +2192,18 @@ protoOf(Cql2ElmVisitor).n39 = function (ctx) {
     }
     var element = tmp;
     if (!(elementType == null)) {
-      this.w8t_1.verifyType(ensureNotNull(Trackable_getInstance().n8v(element)), elementType);
+      this.x8t_1.verifyType(ensureNotNull(Trackable_getInstance().o8v(element)), elementType);
     } else {
       if (initialInferredElementType == null) {
-        initialInferredElementType = Trackable_getInstance().n8v(element);
+        initialInferredElementType = Trackable_getInstance().o8v(element);
         inferredElementType = initialInferredElementType;
       } else {
-        var compatibleType = this.w8t_1.findCompatibleType(inferredElementType, Trackable_getInstance().n8v(element));
+        var compatibleType = this.x8t_1.findCompatibleType(inferredElementType, Trackable_getInstance().o8v(element));
         var tmp_0;
-        if (!(compatibleType == null) && (!equals(inferredElementType, this.w8t_1.l8w('System', 'Any')) || equals(initialInferredElementType, this.w8t_1.l8w('System', 'Any')))) {
+        if (!(compatibleType == null) && (!equals(inferredElementType, this.x8t_1.m8w('System', 'Any')) || equals(initialInferredElementType, this.x8t_1.m8w('System', 'Any')))) {
           tmp_0 = compatibleType;
         } else {
-          tmp_0 = this.w8t_1.l8w('System', 'Any');
+          tmp_0 = this.x8t_1.m8w('System', 'Any');
         }
         inferredElementType = tmp_0;
       }
@@ -2206,30 +2212,30 @@ protoOf(Cql2ElmVisitor).n39 = function (ctx) {
   }
   if (elementType == null) {
     var tmp2_elvis_lhs = inferredElementType;
-    elementType = tmp2_elvis_lhs == null ? this.w8t_1.l8w('System', 'Any') : tmp2_elvis_lhs;
+    elementType = tmp2_elvis_lhs == null ? this.x8t_1.m8w('System', 'Any') : tmp2_elvis_lhs;
   }
   var _iterator__ex2g4s_0 = elements.g();
   while (_iterator__ex2g4s_0.h()) {
     var element_0 = _iterator__ex2g4s_0.i();
-    if (!ensureNotNull(elementType).y5z(ensureNotNull(Trackable_getInstance().n8v(element_0)))) {
-      var conversion = this.w8t_1.findConversion(ensureNotNull(Trackable_getInstance().n8v(element_0)), elementType, true, false);
+    if (!ensureNotNull(elementType).z5z(ensureNotNull(Trackable_getInstance().o8v(element_0)))) {
+      var conversion = this.x8t_1.findConversion(ensureNotNull(Trackable_getInstance().o8v(element_0)), elementType, true, false);
       if (!(conversion == null)) {
-        list.g5v().e(this.w8t_1.e91(element_0, conversion));
+        list.h5v().e(this.x8t_1.f91(element_0, conversion));
       } else {
-        list.g5v().e(element_0);
+        list.h5v().e(element_0);
       }
     } else {
-      list.g5v().e(element_0);
+      list.h5v().e(element_0);
     }
   }
   if (listType == null) {
     listType = new ListType(ensureNotNull(elementType));
   }
-  Trackable_getInstance().o8v(list, listType);
+  Trackable_getInstance().p8v(list, listType);
   return list;
 };
-protoOf(Cql2ElmVisitor).e39 = function (ctx) {
-  var input = ctx.c24();
+protoOf(Cql2ElmVisitor).f39 = function (ctx) {
+  var input = ctx.d24();
   if (startsWith(input, '@')) {
     input = substring(input, 1);
   }
@@ -2239,7 +2245,7 @@ protoOf(Cql2ElmVisitor).e39 = function (ctx) {
   if (!(matcher == null)) {
     var tmp_0;
     try {
-      var result = this.y8t_1.c7l();
+      var result = this.z8t_1.d7l();
       var hour = toInt(ensureNotNull(matcher.zd().o(1)).yd_1);
       var minute = -1;
       var second = -1;
@@ -2249,7 +2255,7 @@ protoOf(Cql2ElmVisitor).e39 = function (ctx) {
         var message = 'Invalid hour in time literal (' + hour + ').';
         throw IllegalArgumentException_init_$Create$(toString(message));
       }
-      result.h89_1 = this.w8t_1.j8w(hour);
+      result.i89_1 = this.x8t_1.k8w(hour);
       if (!(matcher.zd().o(3) == null)) {
         minute = toInt(ensureNotNull(matcher.zd().o(3)).yd_1);
         // Inline function 'kotlin.require' call
@@ -2257,7 +2263,7 @@ protoOf(Cql2ElmVisitor).e39 = function (ctx) {
           var message_0 = 'Invalid minute in time literal (' + minute + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_0));
         }
-        result.i89_1 = this.w8t_1.j8w(minute);
+        result.j89_1 = this.x8t_1.k8w(minute);
       }
       if (!(matcher.zd().o(5) == null)) {
         second = toInt(ensureNotNull(matcher.zd().o(5)).yd_1);
@@ -2266,7 +2272,7 @@ protoOf(Cql2ElmVisitor).e39 = function (ctx) {
           var message_1 = 'Invalid second in time literal (' + second + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_1));
         }
-        result.j89_1 = this.w8t_1.j8w(second);
+        result.k89_1 = this.x8t_1.k8w(second);
       }
       if (!(matcher.zd().o(7) == null)) {
         millisecond = toInt(ensureNotNull(matcher.zd().o(7)).yd_1);
@@ -2275,9 +2281,9 @@ protoOf(Cql2ElmVisitor).e39 = function (ctx) {
           var message_2 = 'Invalid millisecond in time literal (' + millisecond + ').';
           throw IllegalArgumentException_init_$Create$(toString(message_2));
         }
-        result.k89_1 = this.w8t_1.j8w(millisecond);
+        result.l89_1 = this.x8t_1.k8w(millisecond);
       }
-      Trackable_getInstance().o8v(result, this.w8t_1.l8w('System', 'Time'));
+      Trackable_getInstance().p8v(result, this.x8t_1.m8w('System', 'Time'));
       tmp_0 = result;
     } catch ($p) {
       var tmp_1;
@@ -2294,225 +2300,225 @@ protoOf(Cql2ElmVisitor).e39 = function (ctx) {
   }
   return tmp;
 };
+protoOf(Cql2ElmVisitor).e39 = function (ctx) {
+  var input = ctx.d24();
+  if (startsWith(input, '@')) {
+    input = substring(input, 1);
+  }
+  return parseDateTimeLiteral(this, input);
+};
 protoOf(Cql2ElmVisitor).d39 = function (ctx) {
-  var input = ctx.c24();
+  var input = ctx.d24();
   if (startsWith(input, '@')) {
     input = substring(input, 1);
   }
   return parseDateTimeLiteral(this, input);
 };
-protoOf(Cql2ElmVisitor).c39 = function (ctx) {
-  var input = ctx.c24();
-  if (startsWith(input, '@')) {
-    input = substring(input, 1);
-  }
-  return parseDateTimeLiteral(this, input);
-};
-protoOf(Cql2ElmVisitor).y38 = function (ctx) {
-  var result = this.y8t_1.a7o();
-  Trackable_getInstance().o8v(result, this.w8t_1.l8w('System', 'Any'));
+protoOf(Cql2ElmVisitor).z38 = function (ctx) {
+  var result = this.z8t_1.b7o();
+  Trackable_getInstance().p8v(result, this.x8t_1.m8w('System', 'Any'));
   return result;
 };
-protoOf(Cql2ElmVisitor).a39 = function (ctx) {
-  return this.w8t_1.createNumberLiteral(ctx.s4k().c24());
-};
-protoOf(Cql2ElmVisitor).u35 = function (ctx) {
-  return this.w8t_1.createNumberLiteral(ctx.s4k().c24());
-};
 protoOf(Cql2ElmVisitor).b39 = function (ctx) {
-  var input = ctx.d5k().c24();
+  return this.x8t_1.createNumberLiteral(ctx.t4k().d24());
+};
+protoOf(Cql2ElmVisitor).v35 = function (ctx) {
+  return this.x8t_1.createNumberLiteral(ctx.t4k().d24());
+};
+protoOf(Cql2ElmVisitor).c39 = function (ctx) {
+  var input = ctx.e5k().d24();
   if (endsWith(input, 'L')) {
     input = substring_0(input, 0, input.length - 1 | 0);
   }
-  return this.w8t_1.createLongNumberLiteral(input);
+  return this.x8t_1.createLongNumberLiteral(input);
 };
-protoOf(Cql2ElmVisitor).z39 = function (ctx) {
+protoOf(Cql2ElmVisitor).a3a = function (ctx) {
   var tmp;
-  if (!(ctx.k4x() == null)) {
-    tmp = this.w8t_1.createQuantity(parseDecimal(this, ctx.s4k().c24()), ensureNotNull(this.k8v(ctx.k4x())));
+  if (!(ctx.l4x() == null)) {
+    tmp = this.x8t_1.createQuantity(parseDecimal(this, ctx.t4k().d24()), ensureNotNull(this.l8v(ctx.l4x())));
   } else {
-    tmp = this.w8t_1.createNumberLiteral(ctx.s4k().c24());
+    tmp = this.x8t_1.createNumberLiteral(ctx.t4k().d24());
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).w38 = function (ctx) {
-  var tmp = this.d32(ensureNotNull(ctx.q5g(0)));
+protoOf(Cql2ElmVisitor).x38 = function (ctx) {
+  var tmp = this.e32(ensureNotNull(ctx.r5g(0)));
   var numerator = getQuantity(this, (tmp == null ? true : tmp instanceof Expression) ? tmp : THROW_CCE());
-  var tmp_0 = this.d32(ensureNotNull(ctx.q5g(1)));
+  var tmp_0 = this.e32(ensureNotNull(ctx.r5g(1)));
   var denominator = getQuantity(this, (tmp_0 == null ? true : tmp_0 instanceof Expression) ? tmp_0 : THROW_CCE());
-  return this.w8t_1.createRatio(numerator, denominator);
+  return this.x8t_1.createRatio(numerator, denominator);
 };
-protoOf(Cql2ElmVisitor).a36 = function (ctx) {
-  var result = this.y8t_1.u7k().a6c(parseExpression(this, ctx.j3w()));
-  this.w8t_1.resolveUnaryCall('System', 'Not', result);
+protoOf(Cql2ElmVisitor).b36 = function (ctx) {
+  var result = this.z8t_1.v7k().b6c(parseExpression(this, ctx.k3w()));
+  this.x8t_1.resolveUnaryCall('System', 'Not', result);
   return result;
 };
-protoOf(Cql2ElmVisitor).k36 = function (ctx) {
-  var result = this.y8t_1.q7l().a6c(parseExpression(this, ctx.j3w()));
-  this.w8t_1.resolveUnaryCall('System', 'Exists', result);
+protoOf(Cql2ElmVisitor).l36 = function (ctx) {
+  var result = this.z8t_1.r7l().b6c(parseExpression(this, ctx.k3w()));
+  this.x8t_1.resolveUnaryCall('System', 'Exists', result);
   return result;
 };
-protoOf(Cql2ElmVisitor).d37 = function (ctx) {
+protoOf(Cql2ElmVisitor).e37 = function (ctx) {
   var exp;
   var operatorName;
-  switch (ensureNotNull(ctx.o2f(1)).c24()) {
+  switch (ensureNotNull(ctx.p2f(1)).d24()) {
     case '*':
-      exp = this.y8t_1.k7k();
+      exp = this.z8t_1.l7k();
       operatorName = 'Multiply';
       break;
     case '/':
-      exp = this.y8t_1.f7k();
+      exp = this.z8t_1.g7k();
       operatorName = 'Divide';
       break;
     case 'div':
-      exp = this.y8t_1.a7p();
+      exp = this.z8t_1.b7p();
       operatorName = 'TruncatedDivide';
       break;
     case 'mod':
-      exp = this.y8t_1.m7m();
+      exp = this.z8t_1.n7m();
       operatorName = 'Modulo';
       break;
     default:
-      throw IllegalArgumentException_init_$Create$('Unsupported operator: ' + ensureNotNull(ctx.o2f(1)).c24() + '.');
+      throw IllegalArgumentException_init_$Create$('Unsupported operator: ' + ensureNotNull(ctx.p2f(1)).d24() + '.');
   }
-  exp.f67(listOf([ensureNotNull(parseExpression(this, ctx.p4l(0))), ensureNotNull(parseExpression(this, ctx.p4l(1)))]));
-  this.w8t_1.o8w('System', operatorName, exp);
+  exp.g67(listOf([ensureNotNull(parseExpression(this, ctx.q4l(0))), ensureNotNull(parseExpression(this, ctx.q4l(1)))]));
+  this.x8t_1.p8w('System', operatorName, exp);
   return exp;
 };
-protoOf(Cql2ElmVisitor).i37 = function (ctx) {
-  var power = this.y8t_1.v7j().f67(listOf([ensureNotNull(parseExpression(this, ctx.p4l(0))), ensureNotNull(parseExpression(this, ctx.p4l(1)))]));
-  this.w8t_1.o8w('System', 'Power', power);
+protoOf(Cql2ElmVisitor).j37 = function (ctx) {
+  var power = this.z8t_1.w7j().g67(listOf([ensureNotNull(parseExpression(this, ctx.q4l(0))), ensureNotNull(parseExpression(this, ctx.q4l(1)))]));
+  this.x8t_1.p8w('System', 'Power', power);
   return power;
 };
-protoOf(Cql2ElmVisitor).k37 = function (ctx) {
-  if (ensureNotNull(ctx.o2f(0)).c24() === '+') {
-    return this.d32(ctx.e4h());
+protoOf(Cql2ElmVisitor).l37 = function (ctx) {
+  if (ensureNotNull(ctx.p2f(0)).d24() === '+') {
+    return this.e32(ctx.f4h());
   }
-  var result = this.y8t_1.o7q().a6c(parseExpression(this, ctx.e4h()));
-  this.w8t_1.resolveUnaryCall('System', 'Negate', result);
+  var result = this.z8t_1.p7q().b6c(parseExpression(this, ctx.f4h()));
+  this.x8t_1.resolveUnaryCall('System', 'Negate', result);
   return result;
 };
-protoOf(Cql2ElmVisitor).r36 = function (ctx) {
+protoOf(Cql2ElmVisitor).s36 = function (ctx) {
   var exp;
   var operatorName;
-  switch (ensureNotNull(ctx.o2f(1)).c24()) {
+  switch (ensureNotNull(ctx.p2f(1)).d24()) {
     case '+':
-      exp = this.y8t_1.x7j();
+      exp = this.z8t_1.y7j();
       operatorName = 'Add';
       break;
     case '-':
-      exp = this.y8t_1.r7i();
+      exp = this.z8t_1.s7i();
       operatorName = 'Subtract';
       break;
     case '&':
-      exp = this.y8t_1.x7k();
+      exp = this.z8t_1.y7k();
       operatorName = 'Concatenate';
       break;
     default:
-      throw IllegalArgumentException_init_$Create$('Unsupported operator: ' + ensureNotNull(ctx.o2f(1)).c24() + '.');
+      throw IllegalArgumentException_init_$Create$('Unsupported operator: ' + ensureNotNull(ctx.p2f(1)).d24() + '.');
   }
   if (exp instanceof BinaryExpression) {
-    exp.f67(listOf([ensureNotNull(parseExpression(this, ctx.p4l(0))), ensureNotNull(parseExpression(this, ctx.p4l(1)))]));
-    this.w8t_1.o8w('System', operatorName, ensureNotNull(exp instanceof BinaryExpression ? exp : THROW_CCE()));
-    if (Trackable_getInstance().n8v(exp) === this.w8t_1.l8w('System', 'String')) {
-      var concatenate = this.y8t_1.x7k();
-      concatenate.o67().n(exp.o67());
-      Trackable_getInstance().o8v(concatenate, Trackable_getInstance().n8v(exp));
+    exp.g67(listOf([ensureNotNull(parseExpression(this, ctx.q4l(0))), ensureNotNull(parseExpression(this, ctx.q4l(1)))]));
+    this.x8t_1.p8w('System', operatorName, ensureNotNull(exp instanceof BinaryExpression ? exp : THROW_CCE()));
+    if (Trackable_getInstance().o8v(exp) === this.x8t_1.m8w('System', 'String')) {
+      var concatenate = this.z8t_1.y7k();
+      concatenate.p67().n(exp.p67());
+      Trackable_getInstance().p8v(concatenate, Trackable_getInstance().o8v(exp));
       exp = concatenate;
     }
   } else {
     var concatenate_0 = exp instanceof Concatenate ? exp : THROW_CCE();
-    ensureNotNull(concatenate_0).f67(listOf([ensureNotNull(parseExpression(this, ctx.p4l(0))), ensureNotNull(parseExpression(this, ctx.p4l(1)))]));
+    ensureNotNull(concatenate_0).g67(listOf([ensureNotNull(parseExpression(this, ctx.q4l(0))), ensureNotNull(parseExpression(this, ctx.q4l(1)))]));
     var inductionVariable = 0;
-    var last = concatenate_0.o67().j() - 1 | 0;
+    var last = concatenate_0.p67().j() - 1 | 0;
     if (inductionVariable <= last)
       do {
         var i = inductionVariable;
         inductionVariable = inductionVariable + 1 | 0;
-        var operand = concatenate_0.o67().o(i);
-        var empty = this.w8t_1.z90('');
+        var operand = concatenate_0.p67().o(i);
+        var empty = this.x8t_1.a91('');
         var params = ArrayList_init_$Create$();
         params.e(operand);
         params.e(empty);
-        var coalesce = ensureNotNull(this.w8t_1.f91('System', 'Coalesce', params));
-        concatenate_0.o67().j2(i, coalesce);
+        var coalesce = ensureNotNull(this.x8t_1.g91('System', 'Coalesce', params));
+        concatenate_0.p67().j2(i, coalesce);
       }
        while (inductionVariable <= last);
-    this.w8t_1.resolveNaryCall('System', operatorName, concatenate_0);
+    this.x8t_1.resolveNaryCall('System', operatorName, concatenate_0);
   }
   return exp;
 };
-protoOf(Cql2ElmVisitor).b37 = function (ctx) {
-  return this.w8t_1.buildPredecessor(parseExpression(this, ctx.e4h()));
-};
-protoOf(Cql2ElmVisitor).j37 = function (ctx) {
-  return this.w8t_1.buildSuccessor(parseExpression(this, ctx.e4h()));
-};
-protoOf(Cql2ElmVisitor).y36 = function (ctx) {
-  var result = this.y8t_1.t7l().a6c(parseExpression(this, ctx.e4h()));
-  this.w8t_1.resolveUnaryCall('System', 'SingletonFrom', result);
-  return result;
-};
 protoOf(Cql2ElmVisitor).c37 = function (ctx) {
-  var result = this.y8t_1.j7o().a6c(parseExpression(this, ctx.e4h()));
-  this.w8t_1.resolveUnaryCall('System', 'PointFrom', result);
+  return this.x8t_1.buildPredecessor(parseExpression(this, ctx.f4h()));
+};
+protoOf(Cql2ElmVisitor).k37 = function (ctx) {
+  return this.x8t_1.buildSuccessor(parseExpression(this, ctx.f4h()));
+};
+protoOf(Cql2ElmVisitor).z36 = function (ctx) {
+  var result = this.z8t_1.u7l().b6c(parseExpression(this, ctx.f4h()));
+  this.x8t_1.resolveUnaryCall('System', 'SingletonFrom', result);
   return result;
 };
-protoOf(Cql2ElmVisitor).a37 = function (ctx) {
-  var extent = this.k8v(ctx.o2f(0));
-  var targetType = this.f90(ctx.i4a());
+protoOf(Cql2ElmVisitor).d37 = function (ctx) {
+  var result = this.z8t_1.k7o().b6c(parseExpression(this, ctx.f4h()));
+  this.x8t_1.resolveUnaryCall('System', 'PointFrom', result);
+  return result;
+};
+protoOf(Cql2ElmVisitor).b37 = function (ctx) {
+  var extent = this.l8v(ctx.p2f(0));
+  var targetType = this.g90(ctx.j4a());
   var tmp;
   switch (extent) {
     case 'minimum':
-      tmp = this.w8t_1.buildMinimum(Trackable_getInstance().n8v(ensureNotNull(targetType)));
+      tmp = this.x8t_1.buildMinimum(Trackable_getInstance().o8v(ensureNotNull(targetType)));
       break;
     case 'maximum':
-      tmp = this.w8t_1.buildMaximum(Trackable_getInstance().n8v(ensureNotNull(targetType)));
+      tmp = this.x8t_1.buildMaximum(Trackable_getInstance().o8v(ensureNotNull(targetType)));
       break;
     default:
       throw IllegalArgumentException_init_$Create$('Unknown extent: ' + extent);
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).x36 = function (ctx) {
+protoOf(Cql2ElmVisitor).y36 = function (ctx) {
   var result;
   var operatorName;
-  if (ensureNotNull(ctx.o2f(0)).c24() === 'start') {
-    result = this.y8t_1.a7k().a6c(parseExpression(this, ctx.e4h()));
+  if (ensureNotNull(ctx.p2f(0)).d24() === 'start') {
+    result = this.z8t_1.b7k().b6c(parseExpression(this, ctx.f4h()));
     operatorName = 'Start';
   } else {
-    result = this.y8t_1.a7l().a6c(parseExpression(this, ctx.e4h()));
+    result = this.z8t_1.b7l().b6c(parseExpression(this, ctx.f4h()));
     operatorName = 'End';
   }
-  this.w8t_1.resolveUnaryCall('System', operatorName, result);
+  this.x8t_1.resolveUnaryCall('System', operatorName, result);
   return result;
 };
-protoOf(Cql2ElmVisitor).v36 = function (ctx) {
-  var component = ctx.v4v().c24();
+protoOf(Cql2ElmVisitor).w36 = function (ctx) {
+  var component = ctx.w4v().d24();
   var result;
   var operatorName;
   switch (component) {
     case 'date':
-      result = this.y8t_1.o7i().a6c(parseExpression(this, ctx.e4h()));
+      result = this.z8t_1.p7i().b6c(parseExpression(this, ctx.f4h()));
       operatorName = 'DateFrom';
       break;
     case 'time':
-      result = this.y8t_1.m7i().a6c(parseExpression(this, ctx.e4h()));
+      result = this.z8t_1.n7i().b6c(parseExpression(this, ctx.f4h()));
       operatorName = 'TimeFrom';
       break;
     case 'timezone':
       // Inline function 'kotlin.require' call
 
-      if (!this.w8t_1.isCompatibilityLevel3) {
+      if (!this.x8t_1.isCompatibilityLevel3) {
         var message = 'Timezone keyword is only valid in 1.3 or lower';
         throw IllegalArgumentException_init_$Create$(toString(message));
       }
 
-      result = this.y8t_1.c7o().a6c(parseExpression(this, ctx.e4h()));
+      result = this.z8t_1.d7o().b6c(parseExpression(this, ctx.f4h()));
       operatorName = 'TimezoneFrom';
       break;
     case 'timezoneoffset':
-      result = this.y8t_1.n7l().a6c(parseExpression(this, ctx.e4h()));
+      result = this.z8t_1.o7l().b6c(parseExpression(this, ctx.f4h()));
       operatorName = 'TimezoneOffsetFrom';
       break;
     case 'year':
@@ -2522,7 +2528,7 @@ protoOf(Cql2ElmVisitor).v36 = function (ctx) {
     case 'minute':
     case 'second':
     case 'millisecond':
-      result = this.y8t_1.f7l().a6c(parseExpression(this, ctx.e4h())).e6e(parseDateTimePrecision$default(this, component));
+      result = this.z8t_1.g7l().b6c(parseExpression(this, ctx.f4h())).f6e(parseDateTimePrecision$default(this, component));
       operatorName = 'DateTimeComponentFrom';
       break;
     case 'week':
@@ -2530,171 +2536,171 @@ protoOf(Cql2ElmVisitor).v36 = function (ctx) {
     default:
       throw IllegalArgumentException_init_$Create$("Unknown precision '" + component + "'.");
   }
-  this.w8t_1.resolveUnaryCall('System', operatorName, result);
-  return result;
-};
-protoOf(Cql2ElmVisitor).f37 = function (ctx) {
-  var operand = parseExpression(this, ctx.e4h());
-  var start = this.y8t_1.a7k().a6c(operand);
-  this.w8t_1.resolveUnaryCall('System', 'Start', start);
-  var end = this.y8t_1.a7l().a6c(operand);
-  this.w8t_1.resolveUnaryCall('System', 'End', end);
-  var result = this.y8t_1.w7j().e6e(parseDateTimePrecision$default(this, ctx.o4l().c24())).f67(listOf([start, end]));
-  this.w8t_1.o8w('System', 'DurationBetween', result);
+  this.x8t_1.resolveUnaryCall('System', operatorName, result);
   return result;
 };
 protoOf(Cql2ElmVisitor).g37 = function (ctx) {
-  var operand = parseExpression(this, ctx.e4h());
-  var start = this.y8t_1.a7k().a6c(operand);
-  this.w8t_1.resolveUnaryCall('System', 'Start', start);
-  var end = this.y8t_1.a7l().a6c(operand);
-  this.w8t_1.resolveUnaryCall('System', 'End', end);
-  var result = this.y8t_1.g7m().e6e(parseDateTimePrecision$default(this, ctx.o4l().c24())).f67(listOf([start, end]));
-  this.w8t_1.o8w('System', 'DifferenceBetween', result);
+  var operand = parseExpression(this, ctx.f4h());
+  var start = this.z8t_1.b7k().b6c(operand);
+  this.x8t_1.resolveUnaryCall('System', 'Start', start);
+  var end = this.z8t_1.b7l().b6c(operand);
+  this.x8t_1.resolveUnaryCall('System', 'End', end);
+  var result = this.z8t_1.x7j().f6e(parseDateTimePrecision$default(this, ctx.p4l().d24())).g67(listOf([start, end]));
+  this.x8t_1.p8w('System', 'DurationBetween', result);
   return result;
 };
-protoOf(Cql2ElmVisitor).f36 = function (ctx) {
-  var first = ensureNotNull(parseExpression(this, ctx.j3w()));
-  var second = ensureNotNull(parseExpression(this, ctx.p4l(0)));
-  var third = parseExpression(this, ctx.p4l(1));
-  var isProper = ensureNotNull(ctx.o2f(0)).c24() === 'properly';
+protoOf(Cql2ElmVisitor).h37 = function (ctx) {
+  var operand = parseExpression(this, ctx.f4h());
+  var start = this.z8t_1.b7k().b6c(operand);
+  this.x8t_1.resolveUnaryCall('System', 'Start', start);
+  var end = this.z8t_1.b7l().b6c(operand);
+  this.x8t_1.resolveUnaryCall('System', 'End', end);
+  var result = this.z8t_1.h7m().f6e(parseDateTimePrecision$default(this, ctx.p4l().d24())).g67(listOf([start, end]));
+  this.x8t_1.p8w('System', 'DifferenceBetween', result);
+  return result;
+};
+protoOf(Cql2ElmVisitor).g36 = function (ctx) {
+  var first = ensureNotNull(parseExpression(this, ctx.k3w()));
+  var second = ensureNotNull(parseExpression(this, ctx.q4l(0)));
+  var third = parseExpression(this, ctx.q4l(1));
+  var isProper = ensureNotNull(ctx.p2f(0)).d24() === 'properly';
   var tmp;
-  var tmp_0 = Trackable_getInstance().n8v(first);
+  var tmp_0 = Trackable_getInstance().o8v(first);
   if (tmp_0 instanceof IntervalType) {
-    var result = isProper ? this.y8t_1.y7l() : this.y8t_1.q7p().f67(listOf([first, this.w8t_1.createInterval(second, true, third, true)]));
-    this.w8t_1.o8w('System', isProper ? 'ProperIncludedIn' : 'IncludedIn', result);
+    var result = isProper ? this.z8t_1.z7l() : this.z8t_1.r7p().g67(listOf([first, this.x8t_1.createInterval(second, true, third, true)]));
+    this.x8t_1.p8w('System', isProper ? 'ProperIncludedIn' : 'IncludedIn', result);
     tmp = result;
   } else {
-    var result_0 = this.y8t_1.x7o().f67(listOf([(isProper ? this.y8t_1.n7q() : this.y8t_1.t7n()).f67(listOf([first, second])), (isProper ? this.y8t_1.p7o() : this.y8t_1.y7i()).f67(listOf([first, ensureNotNull(third)]))]));
+    var result_0 = this.z8t_1.y7o().g67(listOf([(isProper ? this.z8t_1.o7q() : this.z8t_1.u7n()).g67(listOf([first, second])), (isProper ? this.z8t_1.q7o() : this.z8t_1.z7i()).g67(listOf([first, ensureNotNull(third)]))]));
     var tmp_1 = isProper ? 'Greater' : 'GreaterOrEqual';
-    var tmp_2 = result_0.o67().o(0);
-    this.w8t_1.o8w('System', tmp_1, tmp_2 instanceof BinaryExpression ? tmp_2 : THROW_CCE());
+    var tmp_2 = result_0.p67().o(0);
+    this.x8t_1.p8w('System', tmp_1, tmp_2 instanceof BinaryExpression ? tmp_2 : THROW_CCE());
     var tmp_3 = isProper ? 'Less' : 'LessOrEqual';
-    var tmp_4 = result_0.o67().o(1);
-    this.w8t_1.o8w('System', tmp_3, tmp_4 instanceof BinaryExpression ? tmp_4 : THROW_CCE());
-    this.w8t_1.o8w('System', 'And', result_0);
+    var tmp_4 = result_0.p67().o(1);
+    this.x8t_1.p8w('System', tmp_3, tmp_4 instanceof BinaryExpression ? tmp_4 : THROW_CCE());
+    this.x8t_1.p8w('System', 'And', result_0);
     tmp = result_0;
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).v35 = function (ctx) {
-  var result = this.y8t_1.w7j().e6e(parseDateTimePrecision$default(this, ctx.o4l().c24())).f67(listOf([ensureNotNull(parseExpression(this, ctx.p4l(0))), ensureNotNull(parseExpression(this, ctx.p4l(1)))]));
-  this.w8t_1.o8w('System', 'DurationBetween', result);
+protoOf(Cql2ElmVisitor).w35 = function (ctx) {
+  var result = this.z8t_1.x7j().f6e(parseDateTimePrecision$default(this, ctx.p4l().d24())).g67(listOf([ensureNotNull(parseExpression(this, ctx.q4l(0))), ensureNotNull(parseExpression(this, ctx.q4l(1)))]));
+  this.x8t_1.p8w('System', 'DurationBetween', result);
   return result;
+};
+protoOf(Cql2ElmVisitor).i36 = function (ctx) {
+  var result = this.z8t_1.h7m().f6e(parseDateTimePrecision$default(this, ctx.p4l().d24())).g67(listOf([ensureNotNull(parseExpression(this, ctx.q4l(0))), ensureNotNull(parseExpression(this, ctx.q4l(1)))]));
+  this.x8t_1.p8w('System', 'DifferenceBetween', result);
+  return result;
+};
+protoOf(Cql2ElmVisitor).u36 = function (ctx) {
+  var result = this.z8t_1.q7n().b6c(parseExpression(this, ctx.f4h()));
+  this.x8t_1.resolveUnaryCall('System', 'Width', result);
+  return result;
+};
+protoOf(Cql2ElmVisitor).n38 = function (ctx) {
+  return parseExpression(this, ctx.k3w());
 };
 protoOf(Cql2ElmVisitor).h36 = function (ctx) {
-  var result = this.y8t_1.g7m().e6e(parseDateTimePrecision$default(this, ctx.o4l().c24())).f67(listOf([ensureNotNull(parseExpression(this, ctx.p4l(0))), ensureNotNull(parseExpression(this, ctx.p4l(1)))]));
-  this.w8t_1.o8w('System', 'DifferenceBetween', result);
-  return result;
-};
-protoOf(Cql2ElmVisitor).t36 = function (ctx) {
-  var result = this.y8t_1.p7n().a6c(parseExpression(this, ctx.e4h()));
-  this.w8t_1.resolveUnaryCall('System', 'Width', result);
-  return result;
-};
-protoOf(Cql2ElmVisitor).m38 = function (ctx) {
-  return parseExpression(this, ctx.j3w());
-};
-protoOf(Cql2ElmVisitor).g36 = function (ctx) {
-  var operator = ensureNotNull(ctx.o2f(1)).c24();
+  var operator = ensureNotNull(ctx.p2f(1)).d24();
   if (operator === 'in')
-    if (!(ctx.y4p() == null)) {
-      var inExpression = this.y8t_1.e7n().e6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.y4p()).k4v().c24())).f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-      this.w8t_1.o8w('System', 'In', inExpression);
+    if (!(ctx.z4p() == null)) {
+      var inExpression = this.z8t_1.f7n().f6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.z4p()).l4v().d24())).g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+      this.x8t_1.p8w('System', 'In', inExpression);
       return inExpression;
     } else {
-      var left = parseExpression(this, ctx.a4m(0));
-      var right = parseExpression(this, ctx.a4m(1));
-      return this.w8t_1.m8w(ensureNotNull(left), ensureNotNull(right));
+      var left = parseExpression(this, ctx.b4m(0));
+      var right = parseExpression(this, ctx.b4m(1));
+      return this.x8t_1.n8w(ensureNotNull(left), ensureNotNull(right));
     }
    else if (operator === 'contains')
-    if (!(ctx.y4p() == null)) {
-      var contains = this.y8t_1.q7i().e6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.y4p()).k4v().c24())).f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-      this.w8t_1.o8w('System', 'Contains', contains);
+    if (!(ctx.z4p() == null)) {
+      var contains = this.z8t_1.r7i().f6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.z4p()).l4v().d24())).g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+      this.x8t_1.p8w('System', 'Contains', contains);
       return contains;
     } else {
-      var left_0 = ensureNotNull(parseExpression(this, ctx.a4m(0)));
-      var right_0 = ensureNotNull(parseExpression(this, ctx.a4m(1)));
+      var left_0 = ensureNotNull(parseExpression(this, ctx.b4m(0)));
+      var right_0 = ensureNotNull(parseExpression(this, ctx.b4m(1)));
       if (left_0 instanceof ValueSetRef) {
-        var tmp = this.y8t_1.v7o().o71(right_0);
-        var inValueSet = tmp.c6b(left_0 instanceof ValueSetRef ? left_0 : THROW_CCE()).d6b(left_0);
-        this.w8t_1.resolveCall('System', 'InValueSet', new InValueSetInvocation(inValueSet));
+        var tmp = this.z8t_1.w7o().p71(right_0);
+        var inValueSet = tmp.d6b(left_0 instanceof ValueSetRef ? left_0 : THROW_CCE()).e6b(left_0);
+        this.x8t_1.resolveCall('System', 'InValueSet', new InValueSetInvocation(inValueSet));
         return inValueSet;
       }
       if (left_0 instanceof CodeSystemRef) {
-        var tmp_0 = this.y8t_1.m7p().o71(right_0);
-        var inCodeSystem = tmp_0.r6a(left_0 instanceof CodeSystemRef ? left_0 : THROW_CCE()).s6a(left_0);
-        this.w8t_1.resolveCall('System', 'InCodeSystem', new InCodeSystemInvocation(inCodeSystem));
+        var tmp_0 = this.z8t_1.n7p().p71(right_0);
+        var inCodeSystem = tmp_0.s6a(left_0 instanceof CodeSystemRef ? left_0 : THROW_CCE()).t6a(left_0);
+        this.x8t_1.resolveCall('System', 'InCodeSystem', new InCodeSystemInvocation(inCodeSystem));
         return inCodeSystem;
       }
-      var contains_0 = this.y8t_1.q7i().f67(listOf([left_0, right_0]));
-      this.w8t_1.o8w('System', 'Contains', contains_0);
+      var contains_0 = this.z8t_1.r7i().g67(listOf([left_0, right_0]));
+      this.x8t_1.p8w('System', 'Contains', contains_0);
       return contains_0;
     }
   throw IllegalArgumentException_init_$Create$('Unknown operator: ' + operator);
 };
-protoOf(Cql2ElmVisitor).e36 = function (ctx) {
-  var and = this.y8t_1.x7o().f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-  this.w8t_1.o8w('System', 'And', and);
+protoOf(Cql2ElmVisitor).f36 = function (ctx) {
+  var and = this.z8t_1.y7o().g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+  this.x8t_1.p8w('System', 'And', and);
   return and;
 };
-protoOf(Cql2ElmVisitor).c36 = function (ctx) {
+protoOf(Cql2ElmVisitor).d36 = function (ctx) {
   var tmp;
-  if (ensureNotNull(ctx.o2f(1)).c24() === 'xor') {
-    var xor = this.y8t_1.s7i().f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-    this.w8t_1.o8w('System', 'Xor', xor);
+  if (ensureNotNull(ctx.p2f(1)).d24() === 'xor') {
+    var xor = this.z8t_1.t7i().g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+    this.x8t_1.p8w('System', 'Xor', xor);
     tmp = xor;
   } else {
-    var or = this.y8t_1.k7h().f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-    this.w8t_1.o8w('System', 'Or', or);
+    var or = this.z8t_1.l7h().g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+    this.x8t_1.p8w('System', 'Or', or);
     tmp = or;
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).l36 = function (ctx) {
-  var implies = this.y8t_1.h7k().f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-  this.w8t_1.o8w('System', 'Implies', implies);
+protoOf(Cql2ElmVisitor).m36 = function (ctx) {
+  var implies = this.z8t_1.i7k().g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+  this.x8t_1.p8w('System', 'Implies', implies);
   return implies;
 };
-protoOf(Cql2ElmVisitor).w35 = function (ctx) {
-  var operator = ensureNotNull(ctx.o2f(1)).c24();
-  var left = parseExpression(this, ctx.a4m(0));
-  var right = parseExpression(this, ctx.a4m(1));
+protoOf(Cql2ElmVisitor).x35 = function (ctx) {
+  var operator = ensureNotNull(ctx.p2f(1)).d24();
+  var left = parseExpression(this, ctx.b4m(0));
+  var right = parseExpression(this, ctx.b4m(1));
   switch (operator) {
     case '|':
     case 'union':
-      return this.w8t_1.resolveUnion(ensureNotNull(left), ensureNotNull(right));
+      return this.x8t_1.resolveUnion(ensureNotNull(left), ensureNotNull(right));
     case 'intersect':
-      return this.w8t_1.resolveIntersect(ensureNotNull(left), ensureNotNull(right));
+      return this.x8t_1.resolveIntersect(ensureNotNull(left), ensureNotNull(right));
     case 'except':
-      return this.w8t_1.resolveExcept(ensureNotNull(left), ensureNotNull(right));
+      return this.x8t_1.resolveExcept(ensureNotNull(left), ensureNotNull(right));
   }
-  return this.y8t_1.a7o();
+  return this.z8t_1.b7o();
 };
-protoOf(Cql2ElmVisitor).j36 = function (ctx) {
-  var operator = this.k8v(ctx.o2f(1));
+protoOf(Cql2ElmVisitor).k36 = function (ctx) {
+  var operator = this.l8v(ctx.p2f(1));
   var tmp;
   switch (operator) {
     case '~':
     case '!~':
-      var equivalent = this.y8t_1.z7o().f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-      this.w8t_1.o8w('System', 'Equivalent', equivalent);
-      if (!('~' === this.k8v(ctx.o2f(1)))) {
+      var equivalent = this.z8t_1.a7p().g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+      this.x8t_1.p8w('System', 'Equivalent', equivalent);
+      if (!('~' === this.l8v(ctx.p2f(1)))) {
         track(this, equivalent, ctx);
-        var not = this.y8t_1.u7k().a6c(equivalent);
-        this.w8t_1.resolveUnaryCall('System', 'Not', not);
+        var not = this.z8t_1.v7k().b6c(equivalent);
+        this.x8t_1.resolveUnaryCall('System', 'Not', not);
         return not;
       }
 
       tmp = equivalent;
       break;
     default:
-      var equal = this.y8t_1.e7m().f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-      this.w8t_1.o8w('System', 'Equal', equal);
-      if (!('=' === this.k8v(ctx.o2f(1)))) {
+      var equal = this.z8t_1.f7m().g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+      this.x8t_1.p8w('System', 'Equal', equal);
+      if (!('=' === this.l8v(ctx.p2f(1)))) {
         track(this, equal, ctx);
-        var not_0 = this.y8t_1.u7k().a6c(equal);
-        this.w8t_1.resolveUnaryCall('System', 'Not', not_0);
+        var not_0 = this.z8t_1.v7k().b6c(equal);
+        this.x8t_1.resolveUnaryCall('System', 'Not', not_0);
         return not_0;
       }
 
@@ -2703,79 +2709,79 @@ protoOf(Cql2ElmVisitor).j36 = function (ctx) {
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).i36 = function (ctx) {
+protoOf(Cql2ElmVisitor).j36 = function (ctx) {
   var exp;
   var operatorName;
-  switch (this.k8v(ctx.o2f(1))) {
+  switch (this.l8v(ctx.p2f(1))) {
     case '<=':
       operatorName = 'LessOrEqual';
-      exp = this.y8t_1.y7i();
+      exp = this.z8t_1.z7i();
       break;
     case '<':
       operatorName = 'Less';
-      exp = this.y8t_1.p7o();
+      exp = this.z8t_1.q7o();
       break;
     case '>':
       operatorName = 'Greater';
-      exp = this.y8t_1.n7q();
+      exp = this.z8t_1.o7q();
       break;
     case '>=':
       operatorName = 'GreaterOrEqual';
-      exp = this.y8t_1.t7n();
+      exp = this.z8t_1.u7n();
       break;
     default:
-      throw IllegalArgumentException_init_$Create$('Unknown operator: ' + ensureNotNull(ctx.o2f(1)).c24());
+      throw IllegalArgumentException_init_$Create$('Unknown operator: ' + ensureNotNull(ctx.p2f(1)).d24());
   }
-  exp.f67(listOf([ensureNotNull(parseExpression(this, ctx.a4m(0))), ensureNotNull(parseExpression(this, ctx.a4m(1)))]));
-  this.w8t_1.o8w('System', operatorName, exp);
+  exp.g67(listOf([ensureNotNull(parseExpression(this, ctx.b4m(0))), ensureNotNull(parseExpression(this, ctx.b4m(1)))]));
+  this.x8t_1.p8w('System', operatorName, exp);
   return exp;
-};
-protoOf(Cql2ElmVisitor).n35 = function (ctx) {
-  var identifiers = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.d42().g();
-  while (_iterator__ex2g4s.h()) {
-    var qualifierContext = _iterator__ex2g4s.i();
-    var qualifier = this.k8v(qualifierContext);
-    identifiers.e(qualifier);
-  }
-  var identifier = this.k8v(ctx.g3w());
-  identifiers.e(identifier);
-  return identifiers;
 };
 protoOf(Cql2ElmVisitor).o35 = function (ctx) {
   var identifiers = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.z4h().g();
+  var _iterator__ex2g4s = ctx.e42().g();
   while (_iterator__ex2g4s.h()) {
     var qualifierContext = _iterator__ex2g4s.i();
-    var qualifier = this.k8v(qualifierContext);
+    var qualifier = this.l8v(qualifierContext);
     identifiers.e(qualifier);
   }
-  var identifier = this.k8v(ctx.d44());
+  var identifier = this.l8v(ctx.h3w());
   identifiers.e(identifier);
   return identifiers;
 };
-protoOf(Cql2ElmVisitor).s35 = function (ctx) {
-  var tmp = this.d32(ctx.d44());
+protoOf(Cql2ElmVisitor).p35 = function (ctx) {
+  var identifiers = ArrayList_init_$Create$();
+  var _iterator__ex2g4s = ctx.a4i().g();
+  while (_iterator__ex2g4s.h()) {
+    var qualifierContext = _iterator__ex2g4s.i();
+    var qualifier = this.l8v(qualifierContext);
+    identifiers.e(qualifier);
+  }
+  var identifier = this.l8v(ctx.e44());
+  identifiers.e(identifier);
+  return identifiers;
+};
+protoOf(Cql2ElmVisitor).t35 = function (ctx) {
+  var tmp = this.e32(ctx.e44());
   return (tmp == null ? true : typeof tmp === 'string') ? tmp : THROW_CCE();
 };
+protoOf(Cql2ElmVisitor).s35 = function (ctx) {
+  return toString_0(this.e32(ctx.v4i())) + '.' + toString_0(this.e32(ctx.e44()));
+};
 protoOf(Cql2ElmVisitor).r35 = function (ctx) {
-  return toString_0(this.d32(ctx.u4i())) + '.' + toString_0(this.d32(ctx.d44()));
+  return toString_0(this.e32(ctx.v4i())) + '[' + toString_0(this.e32(ctx.x4f())) + ']';
 };
-protoOf(Cql2ElmVisitor).q35 = function (ctx) {
-  return toString_0(this.d32(ctx.u4i())) + '[' + toString_0(this.d32(ctx.w4f())) + ']';
-};
-protoOf(Cql2ElmVisitor).m36 = function (ctx) {
-  var result = protoOf(CqlPreprocessorElmCommonVisitor).m36.call(this, ctx);
+protoOf(Cql2ElmVisitor).n36 = function (ctx) {
+  var result = protoOf(CqlPreprocessorElmCommonVisitor).n36.call(this, ctx);
   // Inline function 'kotlin.require' call
   if (!!(result instanceof LibraryRef)) {
-    var message = 'Identifier ' + (result instanceof LibraryRef ? result : THROW_CCE()).v8y_1 + ' is a library and cannot be used as an expression.';
+    var message = 'Identifier ' + (result instanceof LibraryRef ? result : THROW_CCE()).w8y_1 + ' is a library and cannot be used as an expression.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
   return result;
 };
-protoOf(Cql2ElmVisitor).h32 = function (node) {
-  var text = node.c24();
-  var tokenType = node.r2f().s23();
+protoOf(Cql2ElmVisitor).i32 = function (node) {
+  var text = node.d24();
+  var tokenType = node.s2f().t23();
   if (-1 === tokenType) {
     return null;
   }
@@ -2788,84 +2794,84 @@ protoOf(Cql2ElmVisitor).h32 = function (node) {
   }
   return text;
 };
-protoOf(Cql2ElmVisitor).z36 = function (ctx) {
-  if (!(ctx.i3w() == null)) {
-    var targetType = this.f90(ctx.i3w());
-    var operand = parseExpression(this, ctx.j3w());
-    if (!DataTypes_instance.q8z(Trackable_getInstance().n8v(ensureNotNull(operand)), Trackable_getInstance().n8v(ensureNotNull(targetType)))) {
-      var tmp0_elvis_lhs = this.w8t_1.findConversion(ensureNotNull(Trackable_getInstance().n8v(operand)), ensureNotNull(Trackable_getInstance().n8v(targetType)), false, true);
+protoOf(Cql2ElmVisitor).a37 = function (ctx) {
+  if (!(ctx.j3w() == null)) {
+    var targetType = this.g90(ctx.j3w());
+    var operand = parseExpression(this, ctx.k3w());
+    if (!DataTypes_instance.r8z(Trackable_getInstance().o8v(ensureNotNull(operand)), Trackable_getInstance().o8v(ensureNotNull(targetType)))) {
+      var tmp0_elvis_lhs = this.x8t_1.findConversion(ensureNotNull(Trackable_getInstance().o8v(operand)), ensureNotNull(Trackable_getInstance().o8v(targetType)), false, true);
       var tmp;
       if (tmp0_elvis_lhs == null) {
-        throw IllegalArgumentException_init_$Create$('Could not resolve conversion from type ' + toString_0(Trackable_getInstance().n8v(operand)) + ' to type ' + toString_0(Trackable_getInstance().n8v(targetType)) + '.');
+        throw IllegalArgumentException_init_$Create$('Could not resolve conversion from type ' + toString_0(Trackable_getInstance().o8v(operand)) + ' to type ' + toString_0(Trackable_getInstance().o8v(targetType)) + '.');
       } else {
         tmp = tmp0_elvis_lhs;
       }
       var conversion = tmp;
-      return this.w8t_1.e91(operand, conversion);
+      return this.x8t_1.f91(operand, conversion);
     }
     return operand;
   } else {
-    var targetUnit = this.k8v(ctx.k4x());
-    targetUnit = this.w8t_1.ensureUcumUnit(ensureNotNull(targetUnit));
-    var operand_0 = ensureNotNull(parseExpression(this, ctx.j3w()));
-    var unitOperand = this.w8t_1.z90(targetUnit);
-    track(this, unitOperand, ensureNotNull(ctx.k4x()));
-    var convertQuantity = this.y8t_1.p7p().f67(listOf([operand_0, unitOperand]));
+    var targetUnit = this.l8v(ctx.l4x());
+    targetUnit = this.x8t_1.ensureUcumUnit(ensureNotNull(targetUnit));
+    var operand_0 = ensureNotNull(parseExpression(this, ctx.k3w()));
+    var unitOperand = this.x8t_1.a91(targetUnit);
+    track(this, unitOperand, ensureNotNull(ctx.l4x()));
+    var convertQuantity = this.z8t_1.q7p().g67(listOf([operand_0, unitOperand]));
     track(this, convertQuantity, ctx);
-    return this.w8t_1.o8w('System', 'ConvertQuantity', convertQuantity);
+    return this.x8t_1.p8w('System', 'ConvertQuantity', convertQuantity);
   }
 };
-protoOf(Cql2ElmVisitor).n36 = function (ctx) {
-  if (ensureNotNull(ctx.o2f(1)).c24() === 'is') {
-    var isExpression = this.y8t_1.g7n().a6c(parseExpression(this, ctx.j3w())).c76(this.f90(ctx.i3w()));
-    Trackable_getInstance().o8v(isExpression, this.w8t_1.l8w('System', 'Boolean'));
+protoOf(Cql2ElmVisitor).o36 = function (ctx) {
+  if (ensureNotNull(ctx.p2f(1)).d24() === 'is') {
+    var isExpression = this.z8t_1.h7n().b6c(parseExpression(this, ctx.k3w())).d76(this.g90(ctx.j3w()));
+    Trackable_getInstance().p8v(isExpression, this.x8t_1.m8w('System', 'Boolean'));
     return isExpression;
   }
-  var asExpression = this.y8t_1.j7j().a6c(parseExpression(this, ctx.j3w())).z6b(this.f90(ctx.i3w())).y6b(false);
-  var targetType = Trackable_getInstance().n8v(ensureNotNull(asExpression.v6b_1));
-  DataTypes_instance.g91(targetType, Trackable_getInstance().n8v(ensureNotNull(asExpression.u66_1)));
-  Trackable_getInstance().o8v(asExpression, targetType);
+  var asExpression = this.z8t_1.k7j().b6c(parseExpression(this, ctx.k3w())).a6c(this.g90(ctx.j3w())).z6b(false);
+  var targetType = Trackable_getInstance().o8v(ensureNotNull(asExpression.w6b_1));
+  DataTypes_instance.h91(targetType, Trackable_getInstance().o8v(ensureNotNull(asExpression.v66_1)));
+  Trackable_getInstance().p8v(asExpression, targetType);
   return asExpression;
 };
-protoOf(Cql2ElmVisitor).d36 = function (ctx) {
-  var asExpression = this.y8t_1.j7j().a6c(parseExpression(this, ctx.j3w())).z6b(this.f90(ctx.i3w())).y6b(true);
-  var targetType = Trackable_getInstance().n8v(ensureNotNull(asExpression.v6b_1));
-  DataTypes_instance.g91(targetType, Trackable_getInstance().n8v(ensureNotNull(asExpression.u66_1)));
-  Trackable_getInstance().o8v(asExpression, targetType);
+protoOf(Cql2ElmVisitor).e36 = function (ctx) {
+  var asExpression = this.z8t_1.k7j().b6c(parseExpression(this, ctx.k3w())).a6c(this.g90(ctx.j3w())).z6b(true);
+  var targetType = Trackable_getInstance().o8v(ensureNotNull(asExpression.w6b_1));
+  DataTypes_instance.h91(targetType, Trackable_getInstance().o8v(ensureNotNull(asExpression.v66_1)));
+  Trackable_getInstance().p8v(asExpression, targetType);
   return asExpression;
 };
-protoOf(Cql2ElmVisitor).b36 = function (ctx) {
+protoOf(Cql2ElmVisitor).c36 = function (ctx) {
   var exp;
-  var tmp = this.d32(ctx.j3w());
+  var tmp = this.e32(ctx.k3w());
   var left = (tmp == null ? true : tmp instanceof Expression) ? tmp : THROW_CCE();
-  var lastChild = ensureNotNull(ctx.o2f(ctx.k2f() - 1 | 0)).c24();
-  var nextToLast = ensureNotNull(ctx.o2f(ctx.k2f() - 2 | 0)).c24();
+  var lastChild = ensureNotNull(ctx.p2f(ctx.l2f() - 1 | 0)).d24();
+  var nextToLast = ensureNotNull(ctx.p2f(ctx.l2f() - 2 | 0)).d24();
   switch (lastChild) {
     case 'null':
-      exp = this.y8t_1.r7l().a6c(left);
-      this.w8t_1.resolveUnaryCall('System', 'IsNull', exp);
+      exp = this.z8t_1.s7l().b6c(left);
+      this.x8t_1.resolveUnaryCall('System', 'IsNull', exp);
       break;
     case 'true':
-      exp = this.y8t_1.p7l().a6c(left);
-      this.w8t_1.resolveUnaryCall('System', 'IsTrue', exp);
+      exp = this.z8t_1.q7l().b6c(left);
+      this.x8t_1.resolveUnaryCall('System', 'IsTrue', exp);
       break;
     case 'false':
-      exp = this.y8t_1.t7h().a6c(left);
-      this.w8t_1.resolveUnaryCall('System', 'IsFalse', exp);
+      exp = this.z8t_1.u7h().b6c(left);
+      this.x8t_1.resolveUnaryCall('System', 'IsFalse', exp);
       break;
     default:
       throw IllegalArgumentException_init_$Create$('Unknown boolean test predicate ' + lastChild + '.');
   }
   if ('not' === nextToLast) {
     track(this, exp, ctx);
-    exp = this.y8t_1.u7k().a6c(exp);
-    this.w8t_1.resolveUnaryCall('System', 'Not', exp);
+    exp = this.z8t_1.v7k().b6c(exp);
+    this.x8t_1.resolveUnaryCall('System', 'Not', exp);
   }
   return exp;
 };
-protoOf(Cql2ElmVisitor).y35 = function (ctx) {
-  var left = parseExpression(this, ctx.a4m(0));
-  var right = parseExpression(this, ctx.a4m(1));
+protoOf(Cql2ElmVisitor).z35 = function (ctx) {
+  var left = parseExpression(this, ctx.b4m(0));
+  var right = parseExpression(this, ctx.b4m(1));
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (left == null) {
@@ -2885,63 +2891,63 @@ protoOf(Cql2ElmVisitor).y35 = function (ctx) {
     }
   }
   var timingOperatorContext = new TimingOperatorContext(left, right);
-  this.g8v_1.i8y(timingOperatorContext);
+  this.h8v_1.j8y(timingOperatorContext);
   var tmp;
   try {
-    tmp = this.d32(ctx.v4m());
+    tmp = this.e32(ctx.w4m());
   }finally {
-    this.g8v_1.r2c();
+    this.h8v_1.s2c();
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).u37 = function (ctx) {
-  var timingOperator = this.g8v_1.q2c();
-  var firstChild = ensureNotNull(ctx.o2f(0));
-  if ('starts' === firstChild.c24()) {
-    var start = this.y8t_1.a7k().a6c(timingOperator.h91_1);
+protoOf(Cql2ElmVisitor).v37 = function (ctx) {
+  var timingOperator = this.h8v_1.r2c();
+  var firstChild = ensureNotNull(ctx.p2f(0));
+  if ('starts' === firstChild.d24()) {
+    var start = this.z8t_1.b7k().b6c(timingOperator.i91_1);
     track(this, start, firstChild);
-    this.w8t_1.resolveUnaryCall('System', 'Start', start);
-    timingOperator.h91_1 = start;
+    this.x8t_1.resolveUnaryCall('System', 'Start', start);
+    timingOperator.i91_1 = start;
   }
-  if ('ends' === firstChild.c24()) {
-    var end = this.y8t_1.a7l().a6c(timingOperator.h91_1);
+  if ('ends' === firstChild.d24()) {
+    var end = this.z8t_1.b7l().b6c(timingOperator.i91_1);
     track(this, end, firstChild);
-    this.w8t_1.resolveUnaryCall('System', 'End', end);
-    timingOperator.h91_1 = end;
+    this.x8t_1.resolveUnaryCall('System', 'End', end);
+    timingOperator.i91_1 = end;
   }
-  var lastChild = ensureNotNull(ctx.o2f(ctx.k2f() - 1 | 0));
-  if ('start' === lastChild.c24()) {
-    var start_0 = this.y8t_1.a7k().a6c(timingOperator.i91_1);
+  var lastChild = ensureNotNull(ctx.p2f(ctx.l2f() - 1 | 0));
+  if ('start' === lastChild.d24()) {
+    var start_0 = this.z8t_1.b7k().b6c(timingOperator.j91_1);
     track(this, start_0, lastChild);
-    this.w8t_1.resolveUnaryCall('System', 'Start', start_0);
-    timingOperator.i91_1 = start_0;
+    this.x8t_1.resolveUnaryCall('System', 'Start', start_0);
+    timingOperator.j91_1 = start_0;
   }
-  if ('end' === lastChild.c24()) {
-    var end_0 = this.y8t_1.a7l().a6c(timingOperator.i91_1);
+  if ('end' === lastChild.d24()) {
+    var end_0 = this.z8t_1.b7l().b6c(timingOperator.j91_1);
     track(this, end_0, lastChild);
-    this.w8t_1.resolveUnaryCall('System', 'End', end_0);
-    timingOperator.i91_1 = end_0;
+    this.x8t_1.resolveUnaryCall('System', 'End', end_0);
+    timingOperator.j91_1 = end_0;
   }
   var operatorName;
   var operator;
   var allowPromotionAndDemotion = false;
-  if (ctx.w56() == null) {
+  if (ctx.x56() == null) {
     var tmp;
-    if (!(ctx.k4v() == null)) {
-      tmp = this.y8t_1.p7j().e6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.k4v()).c24()));
+    if (!(ctx.l4v() == null)) {
+      tmp = this.z8t_1.q7j().f6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.l4v()).d24()));
     } else {
-      tmp = this.y8t_1.p7j();
+      tmp = this.z8t_1.q7j();
     }
     operator = tmp;
     operatorName = 'SameAs';
   } else {
-    switch (ensureNotNull(ctx.w56()).c24()) {
+    switch (ensureNotNull(ctx.x56()).d24()) {
       case 'or after':
         var tmp_0;
-        if (!(ctx.k4v() == null)) {
-          tmp_0 = this.y8t_1.x7h().e6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.k4v()).c24()));
+        if (!(ctx.l4v() == null)) {
+          tmp_0 = this.z8t_1.y7h().f6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.l4v()).d24()));
         } else {
-          tmp_0 = this.y8t_1.x7h();
+          tmp_0 = this.z8t_1.y7h();
         }
 
         operator = tmp_0;
@@ -2950,10 +2956,10 @@ protoOf(Cql2ElmVisitor).u37 = function (ctx) {
         break;
       case 'or before':
         var tmp_1;
-        if (!(ctx.k4v() == null)) {
-          tmp_1 = this.y8t_1.c7m().e6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.k4v()).c24()));
+        if (!(ctx.l4v() == null)) {
+          tmp_1 = this.z8t_1.d7m().f6e(parseComparableDateTimePrecision(this, ensureNotNull(ctx.l4v()).d24()));
         } else {
-          tmp_1 = this.y8t_1.c7m();
+          tmp_1 = this.z8t_1.d7m();
         }
 
         operator = tmp_1;
@@ -2961,291 +2967,291 @@ protoOf(Cql2ElmVisitor).u37 = function (ctx) {
         allowPromotionAndDemotion = true;
         break;
       default:
-        throw IllegalArgumentException_init_$Create$("Unknown relative qualifier: '" + ensureNotNull(ctx.w56()).c24() + "'.");
+        throw IllegalArgumentException_init_$Create$("Unknown relative qualifier: '" + ensureNotNull(ctx.x56()).d24() + "'.");
     }
   }
-  operator = operator.f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
-  this.w8t_1.j91('System', operatorName, operator, true, allowPromotionAndDemotion);
+  operator = operator.g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
+  this.x8t_1.k91('System', operatorName, operator, true, allowPromotionAndDemotion);
   return operator;
-};
-protoOf(Cql2ElmVisitor).v37 = function (ctx) {
-  var isProper = false;
-  var isRightPoint = false;
-  var timingOperator = this.g8v_1.q2c();
-  var _iterator__ex2g4s = ensureNotNull(ctx.h2e_1).g();
-  $l$loop_1: while (_iterator__ex2g4s.h()) {
-    var pt = _iterator__ex2g4s.i();
-    if ('properly' === pt.c24()) {
-      isProper = true;
-      continue $l$loop_1;
-    }
-    if ('start' === pt.c24()) {
-      var start = this.y8t_1.a7k().a6c(timingOperator.i91_1);
-      track(this, start, pt);
-      this.w8t_1.resolveUnaryCall('System', 'Start', start);
-      timingOperator.i91_1 = start;
-      isRightPoint = true;
-      continue $l$loop_1;
-    }
-    if ('end' === pt.c24()) {
-      var end = this.y8t_1.a7l().a6c(timingOperator.i91_1);
-      track(this, end, pt);
-      this.w8t_1.resolveUnaryCall('System', 'End', end);
-      timingOperator.i91_1 = end;
-      isRightPoint = true;
-      continue $l$loop_1;
-    }
-  }
-  var dateTimePrecision = !(ctx.y4p() == null) ? ensureNotNull(ctx.y4p()).k4v().c24() : null;
-  if (isRightPoint) {
-    var tmp;
-    if (isProper) {
-      tmp = this.w8t_1.resolveProperContains(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
-    } else {
-      tmp = this.w8t_1.k91(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
-    }
-    return tmp;
-  }
-  var tmp_0;
-  if (isProper) {
-    tmp_0 = this.w8t_1.resolveProperIncludes(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
-  } else {
-    tmp_0 = this.w8t_1.resolveIncludes(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
-  }
-  return tmp_0;
 };
 protoOf(Cql2ElmVisitor).w37 = function (ctx) {
   var isProper = false;
-  var isLeftPoint = false;
-  var timingOperator = this.g8v_1.q2c();
-  var _iterator__ex2g4s = ensureNotNull(ctx.h2e_1).g();
+  var isRightPoint = false;
+  var timingOperator = this.h8v_1.r2c();
+  var _iterator__ex2g4s = ensureNotNull(ctx.i2e_1).g();
   $l$loop_1: while (_iterator__ex2g4s.h()) {
     var pt = _iterator__ex2g4s.i();
-    if ('starts' === pt.c24()) {
-      var start = this.y8t_1.a7k().a6c(timingOperator.h91_1);
-      track(this, start, pt);
-      this.w8t_1.resolveUnaryCall('System', 'Start', start);
-      timingOperator.h91_1 = start;
-      isLeftPoint = true;
-      continue $l$loop_1;
-    }
-    if ('ends' === pt.c24()) {
-      var end = this.y8t_1.a7l().a6c(timingOperator.h91_1);
-      track(this, end, pt);
-      this.w8t_1.resolveUnaryCall('System', 'End', end);
-      timingOperator.h91_1 = end;
-      isLeftPoint = true;
-      continue $l$loop_1;
-    }
-    if ('properly' === pt.c24()) {
+    if ('properly' === pt.d24()) {
       isProper = true;
       continue $l$loop_1;
     }
+    if ('start' === pt.d24()) {
+      var start = this.z8t_1.b7k().b6c(timingOperator.j91_1);
+      track(this, start, pt);
+      this.x8t_1.resolveUnaryCall('System', 'Start', start);
+      timingOperator.j91_1 = start;
+      isRightPoint = true;
+      continue $l$loop_1;
+    }
+    if ('end' === pt.d24()) {
+      var end = this.z8t_1.b7l().b6c(timingOperator.j91_1);
+      track(this, end, pt);
+      this.x8t_1.resolveUnaryCall('System', 'End', end);
+      timingOperator.j91_1 = end;
+      isRightPoint = true;
+      continue $l$loop_1;
+    }
   }
-  var dateTimePrecision = !(ctx.y4p() == null) ? ensureNotNull(ctx.y4p()).k4v().c24() : null;
-  if (isLeftPoint) {
+  var dateTimePrecision = !(ctx.z4p() == null) ? ensureNotNull(ctx.z4p()).l4v().d24() : null;
+  if (isRightPoint) {
     var tmp;
     if (isProper) {
-      tmp = this.w8t_1.resolveProperIn(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+      tmp = this.x8t_1.resolveProperContains(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
     } else {
-      tmp = this.w8t_1.l91(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+      tmp = this.x8t_1.l91(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
     }
     return tmp;
   }
   var tmp_0;
   if (isProper) {
-    tmp_0 = this.w8t_1.resolveProperIncludedIn(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+    tmp_0 = this.x8t_1.resolveProperIncludes(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
   } else {
-    tmp_0 = this.w8t_1.resolveIncludedIn(timingOperator.h91_1, timingOperator.i91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+    tmp_0 = this.x8t_1.resolveIncludes(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
   }
   return tmp_0;
 };
 protoOf(Cql2ElmVisitor).x37 = function (ctx) {
-  var timingOperator = this.g8v_1.q2c();
+  var isProper = false;
+  var isLeftPoint = false;
+  var timingOperator = this.h8v_1.r2c();
+  var _iterator__ex2g4s = ensureNotNull(ctx.i2e_1).g();
+  $l$loop_1: while (_iterator__ex2g4s.h()) {
+    var pt = _iterator__ex2g4s.i();
+    if ('starts' === pt.d24()) {
+      var start = this.z8t_1.b7k().b6c(timingOperator.i91_1);
+      track(this, start, pt);
+      this.x8t_1.resolveUnaryCall('System', 'Start', start);
+      timingOperator.i91_1 = start;
+      isLeftPoint = true;
+      continue $l$loop_1;
+    }
+    if ('ends' === pt.d24()) {
+      var end = this.z8t_1.b7l().b6c(timingOperator.i91_1);
+      track(this, end, pt);
+      this.x8t_1.resolveUnaryCall('System', 'End', end);
+      timingOperator.i91_1 = end;
+      isLeftPoint = true;
+      continue $l$loop_1;
+    }
+    if ('properly' === pt.d24()) {
+      isProper = true;
+      continue $l$loop_1;
+    }
+  }
+  var dateTimePrecision = !(ctx.z4p() == null) ? ensureNotNull(ctx.z4p()).l4v().d24() : null;
+  if (isLeftPoint) {
+    var tmp;
+    if (isProper) {
+      tmp = this.x8t_1.resolveProperIn(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+    } else {
+      tmp = this.x8t_1.m91(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+    }
+    return tmp;
+  }
+  var tmp_0;
+  if (isProper) {
+    tmp_0 = this.x8t_1.resolveProperIncludedIn(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+  } else {
+    tmp_0 = this.x8t_1.resolveIncludedIn(timingOperator.i91_1, timingOperator.j91_1, parseComparableDateTimePrecision_0(this, dateTimePrecision, false));
+  }
+  return tmp_0;
+};
+protoOf(Cql2ElmVisitor).y37 = function (ctx) {
+  var timingOperator = this.h8v_1.r2c();
   var isBefore = false;
   var isInclusive = false;
-  var _iterator__ex2g4s = ensureNotNull(ctx.h2e_1).g();
+  var _iterator__ex2g4s = ensureNotNull(ctx.i2e_1).g();
   $l$loop_2: while (_iterator__ex2g4s.h()) {
     var child = _iterator__ex2g4s.i();
-    if ('starts' === child.c24()) {
-      var start = this.y8t_1.a7k().a6c(timingOperator.h91_1);
+    if ('starts' === child.d24()) {
+      var start = this.z8t_1.b7k().b6c(timingOperator.i91_1);
       track(this, start, child);
-      this.w8t_1.resolveUnaryCall('System', 'Start', start);
-      timingOperator.h91_1 = start;
+      this.x8t_1.resolveUnaryCall('System', 'Start', start);
+      timingOperator.i91_1 = start;
       continue $l$loop_2;
     }
-    if ('ends' === child.c24()) {
-      var end = this.y8t_1.a7l().a6c(timingOperator.h91_1);
+    if ('ends' === child.d24()) {
+      var end = this.z8t_1.b7l().b6c(timingOperator.i91_1);
       track(this, end, child);
-      this.w8t_1.resolveUnaryCall('System', 'End', end);
-      timingOperator.h91_1 = end;
+      this.x8t_1.resolveUnaryCall('System', 'End', end);
+      timingOperator.i91_1 = end;
       continue $l$loop_2;
     }
-    if ('start' === child.c24()) {
-      var start_0 = this.y8t_1.a7k().a6c(timingOperator.i91_1);
+    if ('start' === child.d24()) {
+      var start_0 = this.z8t_1.b7k().b6c(timingOperator.j91_1);
       track(this, start_0, child);
-      this.w8t_1.resolveUnaryCall('System', 'Start', start_0);
-      timingOperator.i91_1 = start_0;
+      this.x8t_1.resolveUnaryCall('System', 'Start', start_0);
+      timingOperator.j91_1 = start_0;
       continue $l$loop_2;
     }
-    if ('end' === child.c24()) {
-      var end_0 = this.y8t_1.a7l().a6c(timingOperator.i91_1);
+    if ('end' === child.d24()) {
+      var end_0 = this.z8t_1.b7l().b6c(timingOperator.j91_1);
       track(this, end_0, child);
-      this.w8t_1.resolveUnaryCall('System', 'End', end_0);
-      timingOperator.i91_1 = end_0;
+      this.x8t_1.resolveUnaryCall('System', 'End', end_0);
+      timingOperator.j91_1 = end_0;
       continue $l$loop_2;
     }
   }
-  var _iterator__ex2g4s_0 = ensureNotNull(ctx.b58().h2e_1).g();
+  var _iterator__ex2g4s_0 = ensureNotNull(ctx.c58().i2e_1).g();
   $l$loop_4: while (_iterator__ex2g4s_0.h()) {
     var child_0 = _iterator__ex2g4s_0.i();
-    if ('before' === child_0.c24()) {
+    if ('before' === child_0.d24()) {
       isBefore = true;
       continue $l$loop_4;
     }
-    if ('on or' === child_0.c24() || 'or on' === child_0.c24()) {
+    if ('on or' === child_0.d24() || 'or on' === child_0.d24()) {
       isInclusive = true;
       continue $l$loop_4;
     }
   }
-  var dateTimePrecision = !(ctx.y4p() == null) ? ensureNotNull(ctx.y4p()).k4v().c24() : null;
-  if (ctx.c58() == null) {
+  var dateTimePrecision = !(ctx.z4p() == null) ? ensureNotNull(ctx.z4p()).l4v().d24() : null;
+  if (ctx.d58() == null) {
     var tmp;
     if (isInclusive) {
       var tmp_0;
       if (isBefore) {
-        var sameOrBefore = this.y8t_1.c7m().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+        var sameOrBefore = this.z8t_1.d7m().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
         if (!(dateTimePrecision == null)) {
-          sameOrBefore.n83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+          sameOrBefore.o83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
         }
-        this.w8t_1.j91('System', 'SameOrBefore', sameOrBefore, true, true);
+        this.x8t_1.k91('System', 'SameOrBefore', sameOrBefore, true, true);
         tmp_0 = sameOrBefore;
       } else {
-        var sameOrAfter = this.y8t_1.x7h().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+        var sameOrAfter = this.z8t_1.y7h().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
         if (!(dateTimePrecision == null)) {
-          sameOrAfter.f83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+          sameOrAfter.g83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
         }
-        this.w8t_1.j91('System', 'SameOrAfter', sameOrAfter, true, true);
+        this.x8t_1.k91('System', 'SameOrAfter', sameOrAfter, true, true);
         tmp_0 = sameOrAfter;
       }
       tmp = tmp_0;
     } else {
       var tmp_1;
       if (isBefore) {
-        var before = this.y8t_1.o7p().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+        var before = this.z8t_1.p7p().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
         if (!(dateTimePrecision == null)) {
-          before.q6c_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+          before.r6c_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
         }
-        this.w8t_1.j91('System', 'Before', before, true, true);
+        this.x8t_1.k91('System', 'Before', before, true, true);
         tmp_1 = before;
       } else {
-        var after = this.y8t_1.s7j().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+        var after = this.z8t_1.t7j().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
         if (!(dateTimePrecision == null)) {
-          after.w67_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+          after.x67_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
         }
-        this.w8t_1.j91('System', 'After', after, true, true);
+        this.x8t_1.k91('System', 'After', after, true, true);
         tmp_1 = after;
       }
       tmp = tmp_1;
     }
     return tmp;
   } else {
-    var tmp_2 = this.d32(ensureNotNull(ensureNotNull(ctx.c58()).x4f()));
+    var tmp_2 = this.e32(ensureNotNull(ensureNotNull(ctx.d58()).y4f()));
     var quantity = tmp_2 instanceof Quantity ? tmp_2 : THROW_CCE();
-    var tmp_3 = Trackable_getInstance().n8v(timingOperator.h91_1);
+    var tmp_3 = Trackable_getInstance().o8v(timingOperator.i91_1);
     if (tmp_3 instanceof IntervalType) {
       if (isBefore) {
-        var end_1 = this.y8t_1.a7l().a6c(timingOperator.h91_1);
-        track_0(this, end_1, timingOperator.h91_1);
-        this.w8t_1.resolveUnaryCall('System', 'End', end_1);
-        timingOperator.h91_1 = end_1;
+        var end_1 = this.z8t_1.b7l().b6c(timingOperator.i91_1);
+        track_0(this, end_1, timingOperator.i91_1);
+        this.x8t_1.resolveUnaryCall('System', 'End', end_1);
+        timingOperator.i91_1 = end_1;
       } else {
-        var start_1 = this.y8t_1.a7k().a6c(timingOperator.h91_1);
-        track_0(this, start_1, timingOperator.h91_1);
-        this.w8t_1.resolveUnaryCall('System', 'Start', start_1);
-        timingOperator.h91_1 = start_1;
+        var start_1 = this.z8t_1.b7k().b6c(timingOperator.i91_1);
+        track_0(this, start_1, timingOperator.i91_1);
+        this.x8t_1.resolveUnaryCall('System', 'Start', start_1);
+        timingOperator.i91_1 = start_1;
       }
     }
-    var tmp_4 = Trackable_getInstance().n8v(timingOperator.i91_1);
+    var tmp_4 = Trackable_getInstance().o8v(timingOperator.j91_1);
     if (tmp_4 instanceof IntervalType) {
       if (isBefore) {
-        var start_2 = this.y8t_1.a7k().a6c(timingOperator.i91_1);
-        track_0(this, start_2, timingOperator.i91_1);
-        this.w8t_1.resolveUnaryCall('System', 'Start', start_2);
-        timingOperator.i91_1 = start_2;
+        var start_2 = this.z8t_1.b7k().b6c(timingOperator.j91_1);
+        track_0(this, start_2, timingOperator.j91_1);
+        this.x8t_1.resolveUnaryCall('System', 'Start', start_2);
+        timingOperator.j91_1 = start_2;
       } else {
-        var end_2 = this.y8t_1.a7l().a6c(timingOperator.i91_1);
-        track_0(this, end_2, timingOperator.i91_1);
-        this.w8t_1.resolveUnaryCall('System', 'End', end_2);
-        timingOperator.i91_1 = end_2;
+        var end_2 = this.z8t_1.b7l().b6c(timingOperator.j91_1);
+        track_0(this, end_2, timingOperator.j91_1);
+        this.x8t_1.resolveUnaryCall('System', 'End', end_2);
+        timingOperator.j91_1 = end_2;
       }
     }
-    if (ensureNotNull(ctx.c58()).w54() == null && ensureNotNull(ctx.c58()).x54() == null) {
+    if (ensureNotNull(ctx.d58()).x54() == null && ensureNotNull(ctx.d58()).y54() == null) {
       if (isBefore) {
-        var subtract = this.y8t_1.r7i().f67(listOf([timingOperator.i91_1, quantity]));
-        track_0(this, subtract, timingOperator.i91_1);
-        this.w8t_1.o8w('System', 'Subtract', subtract);
-        timingOperator.i91_1 = subtract;
+        var subtract = this.z8t_1.s7i().g67(listOf([timingOperator.j91_1, quantity]));
+        track_0(this, subtract, timingOperator.j91_1);
+        this.x8t_1.p8w('System', 'Subtract', subtract);
+        timingOperator.j91_1 = subtract;
       } else {
-        var add = this.y8t_1.x7j().f67(listOf([timingOperator.i91_1, quantity]));
-        track_0(this, add, timingOperator.i91_1);
-        this.w8t_1.o8w('System', 'Add', add);
-        timingOperator.i91_1 = add;
+        var add = this.z8t_1.y7j().g67(listOf([timingOperator.j91_1, quantity]));
+        track_0(this, add, timingOperator.j91_1);
+        this.x8t_1.p8w('System', 'Add', add);
+        timingOperator.j91_1 = add;
       }
-      var sameAs = this.y8t_1.p7j().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+      var sameAs = this.z8t_1.q7j().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
       if (!(dateTimePrecision == null)) {
-        sameAs.x82_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+        sameAs.y82_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
       }
-      this.w8t_1.o8w('System', 'SameAs', sameAs);
+      this.x8t_1.p8w('System', 'SameAs', sameAs);
       return sameAs;
     } else {
-      var isOffsetInclusive = !(ensureNotNull(ctx.c58()).w54() == null);
-      var qualifier = !(ensureNotNull(ctx.c58()).w54() == null) ? ensureNotNull(ensureNotNull(ctx.c58()).w54()).c24() : ensureNotNull(ensureNotNull(ctx.c58()).x54()).c24();
+      var isOffsetInclusive = !(ensureNotNull(ctx.d58()).x54() == null);
+      var qualifier = !(ensureNotNull(ctx.d58()).x54() == null) ? ensureNotNull(ensureNotNull(ctx.d58()).x54()).d24() : ensureNotNull(ensureNotNull(ctx.d58()).y54()).d24();
       switch (qualifier) {
         case 'more than':
         case 'or more':
           var tmp_5;
           if (isBefore) {
-            var subtract_0 = this.y8t_1.r7i().f67(listOf([timingOperator.i91_1, quantity]));
-            track_0(this, subtract_0, timingOperator.i91_1);
-            this.w8t_1.o8w('System', 'Subtract', subtract_0);
-            timingOperator.i91_1 = subtract_0;
+            var subtract_0 = this.z8t_1.s7i().g67(listOf([timingOperator.j91_1, quantity]));
+            track_0(this, subtract_0, timingOperator.j91_1);
+            this.x8t_1.p8w('System', 'Subtract', subtract_0);
+            timingOperator.j91_1 = subtract_0;
             var tmp_6;
             if (!isOffsetInclusive) {
-              var before_0 = this.y8t_1.o7p().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+              var before_0 = this.z8t_1.p7p().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
               if (!(dateTimePrecision == null)) {
-                before_0.q6c_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+                before_0.r6c_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
               }
-              this.w8t_1.j91('System', 'Before', before_0, true, true);
+              this.x8t_1.k91('System', 'Before', before_0, true, true);
               tmp_6 = before_0;
             } else {
-              var sameOrBefore_0 = this.y8t_1.c7m().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+              var sameOrBefore_0 = this.z8t_1.d7m().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
               if (!(dateTimePrecision == null)) {
-                sameOrBefore_0.n83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+                sameOrBefore_0.o83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
               }
-              this.w8t_1.j91('System', 'SameOrBefore', sameOrBefore_0, true, true);
+              this.x8t_1.k91('System', 'SameOrBefore', sameOrBefore_0, true, true);
               tmp_6 = sameOrBefore_0;
             }
             tmp_5 = tmp_6;
           } else {
-            var add_0 = this.y8t_1.x7j().f67(listOf([timingOperator.i91_1, quantity]));
-            track_0(this, add_0, timingOperator.i91_1);
-            this.w8t_1.o8w('System', 'Add', add_0);
-            timingOperator.i91_1 = add_0;
+            var add_0 = this.z8t_1.y7j().g67(listOf([timingOperator.j91_1, quantity]));
+            track_0(this, add_0, timingOperator.j91_1);
+            this.x8t_1.p8w('System', 'Add', add_0);
+            timingOperator.j91_1 = add_0;
             var tmp_7;
             if (!isOffsetInclusive) {
-              var after_0 = this.y8t_1.s7j().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+              var after_0 = this.z8t_1.t7j().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
               if (!(dateTimePrecision == null)) {
-                after_0.w67_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+                after_0.x67_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
               }
-              this.w8t_1.j91('System', 'After', after_0, true, true);
+              this.x8t_1.k91('System', 'After', after_0, true, true);
               tmp_7 = after_0;
             } else {
-              var sameOrAfter_0 = this.y8t_1.x7h().f67(listOf([timingOperator.h91_1, timingOperator.i91_1]));
+              var sameOrAfter_0 = this.z8t_1.y7h().g67(listOf([timingOperator.i91_1, timingOperator.j91_1]));
               if (!(dateTimePrecision == null)) {
-                sameOrAfter_0.f83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+                sameOrAfter_0.g83_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
               }
-              this.w8t_1.j91('System', 'SameOrAfter', sameOrAfter_0, true, true);
+              this.x8t_1.k91('System', 'SameOrAfter', sameOrAfter_0, true, true);
               tmp_7 = sameOrAfter_0;
             }
             tmp_5 = tmp_7;
@@ -3256,38 +3262,38 @@ protoOf(Cql2ElmVisitor).x37 = function (ctx) {
         case 'or less':
           var lowerBound;
           var upperBound;
-          var right = timingOperator.i91_1;
+          var right = timingOperator.j91_1;
           if (isBefore) {
-            lowerBound = this.y8t_1.r7i().f67(listOf([right, quantity]));
+            lowerBound = this.z8t_1.s7i().g67(listOf([right, quantity]));
             track_0(this, lowerBound, right);
-            this.w8t_1.o8w('System', 'Subtract', ensureNotNull(lowerBound instanceof BinaryExpression ? lowerBound : THROW_CCE()));
+            this.x8t_1.p8w('System', 'Subtract', ensureNotNull(lowerBound instanceof BinaryExpression ? lowerBound : THROW_CCE()));
             upperBound = right;
           } else {
             lowerBound = right;
-            upperBound = this.y8t_1.x7j().f67(listOf([right, quantity]));
+            upperBound = this.z8t_1.y7j().g67(listOf([right, quantity]));
             track_0(this, upperBound, right);
-            this.w8t_1.o8w('System', 'Add', ensureNotNull(upperBound instanceof BinaryExpression ? upperBound : THROW_CCE()));
+            this.x8t_1.p8w('System', 'Add', ensureNotNull(upperBound instanceof BinaryExpression ? upperBound : THROW_CCE()));
           }
 
-          var interval = isBefore ? this.w8t_1.createInterval(lowerBound, isOffsetInclusive, upperBound, isInclusive) : this.w8t_1.createInterval(lowerBound, isInclusive, upperBound, isOffsetInclusive);
-          track(this, interval, ensureNotNull(ctx.c58()));
-          var inExpression = this.y8t_1.e7n().f67(listOf([timingOperator.h91_1, interval]));
+          var interval = isBefore ? this.x8t_1.createInterval(lowerBound, isOffsetInclusive, upperBound, isInclusive) : this.x8t_1.createInterval(lowerBound, isInclusive, upperBound, isOffsetInclusive);
+          track(this, interval, ensureNotNull(ctx.d58()));
+          var inExpression = this.z8t_1.f7n().g67(listOf([timingOperator.i91_1, interval]));
           if (!(dateTimePrecision == null)) {
-            inExpression.e71_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
+            inExpression.f71_1 = parseComparableDateTimePrecision(this, dateTimePrecision);
           }
 
-          track(this, inExpression, ensureNotNull(ctx.c58()));
-          this.w8t_1.o8w('System', 'In', inExpression);
+          track(this, inExpression, ensureNotNull(ctx.d58()));
+          this.x8t_1.p8w('System', 'In', inExpression);
           if (isOffsetInclusive || isInclusive) {
-            var nullTest = this.y8t_1.r7l().a6c(right);
-            track(this, nullTest, ensureNotNull(ctx.c58()));
-            this.w8t_1.resolveUnaryCall('System', 'IsNull', nullTest);
-            var notNullTest = this.y8t_1.u7k().a6c(nullTest);
-            track(this, notNullTest, ensureNotNull(ctx.c58()));
-            this.w8t_1.resolveUnaryCall('System', 'Not', notNullTest);
-            var and = this.y8t_1.x7o().f67(listOf([inExpression, notNullTest]));
-            track(this, and, ensureNotNull(ctx.c58()));
-            this.w8t_1.o8w('System', 'And', and);
+            var nullTest = this.z8t_1.s7l().b6c(right);
+            track(this, nullTest, ensureNotNull(ctx.d58()));
+            this.x8t_1.resolveUnaryCall('System', 'IsNull', nullTest);
+            var notNullTest = this.z8t_1.v7k().b6c(nullTest);
+            track(this, notNullTest, ensureNotNull(ctx.d58()));
+            this.x8t_1.resolveUnaryCall('System', 'Not', notNullTest);
+            var and = this.z8t_1.y7o().g67(listOf([inExpression, notNullTest]));
+            track(this, and, ensureNotNull(ctx.d58()));
+            this.x8t_1.p8w('System', 'And', and);
             return and;
           }
 
@@ -3297,259 +3303,259 @@ protoOf(Cql2ElmVisitor).x37 = function (ctx) {
   }
   throw IllegalArgumentException_init_$Create$('Unable to resolve interval operator phrase.');
 };
-protoOf(Cql2ElmVisitor).y37 = function (ctx) {
-  var timingOperator = this.g8v_1.q2c();
+protoOf(Cql2ElmVisitor).z37 = function (ctx) {
+  var timingOperator = this.h8v_1.r2c();
   var isProper = false;
-  var _iterator__ex2g4s = ensureNotNull(ctx.h2e_1).g();
+  var _iterator__ex2g4s = ensureNotNull(ctx.i2e_1).g();
   $l$loop_3: while (_iterator__ex2g4s.h()) {
     var child = _iterator__ex2g4s.i();
-    if ('starts' === child.c24()) {
-      var start = this.y8t_1.a7k().a6c(timingOperator.h91_1);
+    if ('starts' === child.d24()) {
+      var start = this.z8t_1.b7k().b6c(timingOperator.i91_1);
       track(this, start, child);
-      this.w8t_1.resolveUnaryCall('System', 'Start', start);
-      timingOperator.h91_1 = start;
+      this.x8t_1.resolveUnaryCall('System', 'Start', start);
+      timingOperator.i91_1 = start;
       continue $l$loop_3;
     }
-    if ('ends' === child.c24()) {
-      var end = this.y8t_1.a7l().a6c(timingOperator.h91_1);
+    if ('ends' === child.d24()) {
+      var end = this.z8t_1.b7l().b6c(timingOperator.i91_1);
       track(this, end, child);
-      this.w8t_1.resolveUnaryCall('System', 'End', end);
-      timingOperator.h91_1 = end;
+      this.x8t_1.resolveUnaryCall('System', 'End', end);
+      timingOperator.i91_1 = end;
       continue $l$loop_3;
     }
-    if ('start' === child.c24()) {
-      var start_0 = this.y8t_1.a7k().a6c(timingOperator.i91_1);
+    if ('start' === child.d24()) {
+      var start_0 = this.z8t_1.b7k().b6c(timingOperator.j91_1);
       track(this, start_0, child);
-      this.w8t_1.resolveUnaryCall('System', 'Start', start_0);
-      timingOperator.i91_1 = start_0;
+      this.x8t_1.resolveUnaryCall('System', 'Start', start_0);
+      timingOperator.j91_1 = start_0;
       continue $l$loop_3;
     }
-    if ('end' === child.c24()) {
-      var end_0 = this.y8t_1.a7l().a6c(timingOperator.i91_1);
+    if ('end' === child.d24()) {
+      var end_0 = this.z8t_1.b7l().b6c(timingOperator.j91_1);
       track(this, end_0, child);
-      this.w8t_1.resolveUnaryCall('System', 'End', end_0);
-      timingOperator.i91_1 = end_0;
+      this.x8t_1.resolveUnaryCall('System', 'End', end_0);
+      timingOperator.j91_1 = end_0;
       continue $l$loop_3;
     }
-    if ('properly' === child.c24()) {
+    if ('properly' === child.d24()) {
       isProper = true;
       continue $l$loop_3;
     }
   }
-  var tmp = this.d32(ctx.x4f());
+  var tmp = this.e32(ctx.y4f());
   var quantity = tmp instanceof Quantity ? tmp : THROW_CCE();
   var lowerBound;
   var upperBound;
   var initialBound = null;
-  var tmp_0 = Trackable_getInstance().n8v(timingOperator.i91_1);
+  var tmp_0 = Trackable_getInstance().o8v(timingOperator.j91_1);
   if (tmp_0 instanceof IntervalType) {
-    lowerBound = this.y8t_1.a7k().a6c(timingOperator.i91_1);
-    track(this, lowerBound, ctx.x4f());
-    this.w8t_1.resolveUnaryCall('System', 'Start', lowerBound);
-    upperBound = this.y8t_1.a7l().a6c(timingOperator.i91_1);
-    track(this, upperBound, ctx.x4f());
-    this.w8t_1.resolveUnaryCall('System', 'End', upperBound);
+    lowerBound = this.z8t_1.b7k().b6c(timingOperator.j91_1);
+    track(this, lowerBound, ctx.y4f());
+    this.x8t_1.resolveUnaryCall('System', 'Start', lowerBound);
+    upperBound = this.z8t_1.b7l().b6c(timingOperator.j91_1);
+    track(this, upperBound, ctx.y4f());
+    this.x8t_1.resolveUnaryCall('System', 'End', upperBound);
   } else {
-    lowerBound = timingOperator.i91_1;
-    upperBound = timingOperator.i91_1;
+    lowerBound = timingOperator.j91_1;
+    upperBound = timingOperator.j91_1;
     initialBound = lowerBound;
   }
-  lowerBound = this.y8t_1.r7i().f67(listOf([lowerBound, quantity]));
-  track(this, lowerBound, ctx.x4f());
-  this.w8t_1.o8w('System', 'Subtract', ensureNotNull(lowerBound instanceof BinaryExpression ? lowerBound : THROW_CCE()));
-  upperBound = this.y8t_1.x7j().f67(listOf([upperBound, quantity]));
-  track(this, upperBound, ctx.x4f());
-  this.w8t_1.o8w('System', 'Add', ensureNotNull(upperBound instanceof BinaryExpression ? upperBound : THROW_CCE()));
-  var interval = this.w8t_1.createInterval(lowerBound, !isProper, upperBound, !isProper);
-  track(this, interval, ctx.x4f());
-  var inExpression = this.y8t_1.e7n().f67(listOf([timingOperator.h91_1, interval]));
-  this.w8t_1.o8w('System', 'In', inExpression);
+  lowerBound = this.z8t_1.s7i().g67(listOf([lowerBound, quantity]));
+  track(this, lowerBound, ctx.y4f());
+  this.x8t_1.p8w('System', 'Subtract', ensureNotNull(lowerBound instanceof BinaryExpression ? lowerBound : THROW_CCE()));
+  upperBound = this.z8t_1.y7j().g67(listOf([upperBound, quantity]));
+  track(this, upperBound, ctx.y4f());
+  this.x8t_1.p8w('System', 'Add', ensureNotNull(upperBound instanceof BinaryExpression ? upperBound : THROW_CCE()));
+  var interval = this.x8t_1.createInterval(lowerBound, !isProper, upperBound, !isProper);
+  track(this, interval, ctx.y4f());
+  var inExpression = this.z8t_1.f7n().g67(listOf([timingOperator.i91_1, interval]));
+  this.x8t_1.p8w('System', 'In', inExpression);
   if (!isProper && !(initialBound == null)) {
-    var nullTest = this.y8t_1.r7l().a6c(initialBound);
-    track(this, nullTest, ctx.x4f());
-    this.w8t_1.resolveUnaryCall('System', 'IsNull', nullTest);
-    var notNullTest = this.y8t_1.u7k().a6c(nullTest);
-    track(this, notNullTest, ctx.x4f());
-    this.w8t_1.resolveUnaryCall('System', 'Not', notNullTest);
-    var and = this.y8t_1.x7o().f67(listOf([inExpression, notNullTest]));
-    track(this, and, ctx.x4f());
-    this.w8t_1.o8w('System', 'And', and);
+    var nullTest = this.z8t_1.s7l().b6c(initialBound);
+    track(this, nullTest, ctx.y4f());
+    this.x8t_1.resolveUnaryCall('System', 'IsNull', nullTest);
+    var notNullTest = this.z8t_1.v7k().b6c(nullTest);
+    track(this, notNullTest, ctx.y4f());
+    this.x8t_1.resolveUnaryCall('System', 'Not', notNullTest);
+    var and = this.z8t_1.y7o().g67(listOf([inExpression, notNullTest]));
+    track(this, and, ctx.y4f());
+    this.x8t_1.p8w('System', 'And', and);
     return and;
   }
   return inExpression;
 };
-protoOf(Cql2ElmVisitor).z37 = function (ctx) {
-  var operatorName;
-  var operator;
-  var dateTimePrecision = !(ctx.y4p() == null) ? ensureNotNull(ctx.y4p()).k4v().c24() : null;
-  if (ctx.k2f() === (1 + (dateTimePrecision == null ? 0 : 1) | 0)) {
-    operator = !(dateTimePrecision == null) ? this.y8t_1.y7j().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.y7j();
-    operatorName = 'Meets';
-  } else {
-    if ('before' === ensureNotNull(ctx.o2f(1)).c24()) {
-      operator = !(dateTimePrecision == null) ? this.y8t_1.h7m().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.h7m();
-      operatorName = 'MeetsBefore';
-    } else {
-      operator = !(dateTimePrecision == null) ? this.y8t_1.d7m().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.d7m();
-      operatorName = 'MeetsAfter';
-    }
-  }
-  operator.f67(listOf([this.g8v_1.q2c().h91_1, this.g8v_1.q2c().i91_1]));
-  this.w8t_1.o8w('System', operatorName, operator);
-  return operator;
-};
 protoOf(Cql2ElmVisitor).a38 = function (ctx) {
   var operatorName;
   var operator;
-  var dateTimePrecision = !(ctx.y4p() == null) ? ensureNotNull(ctx.y4p()).k4v().c24() : null;
-  if (ctx.k2f() === (1 + (dateTimePrecision == null ? 0 : 1) | 0)) {
-    operator = !(dateTimePrecision == null) ? this.y8t_1.a7j().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.a7j();
-    operatorName = 'Overlaps';
+  var dateTimePrecision = !(ctx.z4p() == null) ? ensureNotNull(ctx.z4p()).l4v().d24() : null;
+  if (ctx.l2f() === (1 + (dateTimePrecision == null ? 0 : 1) | 0)) {
+    operator = !(dateTimePrecision == null) ? this.z8t_1.z7j().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.z7j();
+    operatorName = 'Meets';
   } else {
-    if ('before' === ensureNotNull(ctx.o2f(1)).c24()) {
-      operator = !(dateTimePrecision == null) ? this.y8t_1.n7i().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.n7i();
-      operatorName = 'OverlapsBefore';
+    if ('before' === ensureNotNull(ctx.p2f(1)).d24()) {
+      operator = !(dateTimePrecision == null) ? this.z8t_1.i7m().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.i7m();
+      operatorName = 'MeetsBefore';
     } else {
-      operator = !(dateTimePrecision == null) ? this.y8t_1.x7m().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.x7m();
-      operatorName = 'OverlapsAfter';
+      operator = !(dateTimePrecision == null) ? this.z8t_1.e7m().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.e7m();
+      operatorName = 'MeetsAfter';
     }
   }
-  operator.f67(listOf([this.g8v_1.q2c().h91_1, this.g8v_1.q2c().i91_1]));
-  this.w8t_1.o8w('System', operatorName, operator);
+  operator.g67(listOf([this.h8v_1.r2c().i91_1, this.h8v_1.r2c().j91_1]));
+  this.x8t_1.p8w('System', operatorName, operator);
   return operator;
 };
 protoOf(Cql2ElmVisitor).b38 = function (ctx) {
-  var dateTimePrecision = !(ctx.y4p() == null) ? ensureNotNull(ctx.y4p()).k4v().c24() : null;
-  var starts = (!(dateTimePrecision == null) ? this.y8t_1.b7j().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.b7j()).f67(listOf([this.g8v_1.q2c().h91_1, this.g8v_1.q2c().i91_1]));
-  this.w8t_1.o8w('System', 'Starts', starts);
-  return starts;
+  var operatorName;
+  var operator;
+  var dateTimePrecision = !(ctx.z4p() == null) ? ensureNotNull(ctx.z4p()).l4v().d24() : null;
+  if (ctx.l2f() === (1 + (dateTimePrecision == null ? 0 : 1) | 0)) {
+    operator = !(dateTimePrecision == null) ? this.z8t_1.b7j().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.b7j();
+    operatorName = 'Overlaps';
+  } else {
+    if ('before' === ensureNotNull(ctx.p2f(1)).d24()) {
+      operator = !(dateTimePrecision == null) ? this.z8t_1.o7i().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.o7i();
+      operatorName = 'OverlapsBefore';
+    } else {
+      operator = !(dateTimePrecision == null) ? this.z8t_1.y7m().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.y7m();
+      operatorName = 'OverlapsAfter';
+    }
+  }
+  operator.g67(listOf([this.h8v_1.r2c().i91_1, this.h8v_1.r2c().j91_1]));
+  this.x8t_1.p8w('System', operatorName, operator);
+  return operator;
 };
 protoOf(Cql2ElmVisitor).c38 = function (ctx) {
-  var dateTimePrecision = !(ctx.y4p() == null) ? ensureNotNull(ctx.y4p()).k4v().c24() : null;
-  var ends = (!(dateTimePrecision == null) ? this.y8t_1.w7m().e6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.y8t_1.w7m()).f67(listOf([this.g8v_1.q2c().h91_1, this.g8v_1.q2c().i91_1]));
-  this.w8t_1.o8w('System', 'Ends', ends);
+  var dateTimePrecision = !(ctx.z4p() == null) ? ensureNotNull(ctx.z4p()).l4v().d24() : null;
+  var starts = (!(dateTimePrecision == null) ? this.z8t_1.c7j().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.c7j()).g67(listOf([this.h8v_1.r2c().i91_1, this.h8v_1.r2c().j91_1]));
+  this.x8t_1.p8w('System', 'Starts', starts);
+  return starts;
+};
+protoOf(Cql2ElmVisitor).d38 = function (ctx) {
+  var dateTimePrecision = !(ctx.z4p() == null) ? ensureNotNull(ctx.z4p()).l4v().d24() : null;
+  var ends = (!(dateTimePrecision == null) ? this.z8t_1.x7m().f6e(parseComparableDateTimePrecision(this, dateTimePrecision)) : this.z8t_1.x7m()).g67(listOf([this.h8v_1.r2c().i91_1, this.h8v_1.r2c().j91_1]));
+  this.x8t_1.p8w('System', 'Ends', ends);
   return ends;
 };
-protoOf(Cql2ElmVisitor).m91 = function (ifObject) {
-  ifObject.m70_1 = this.w8t_1.ensureCompatible(ifObject.m70_1, this.w8t_1.l8w('System', 'Boolean'));
-  var resultType = this.w8t_1.ensureCompatibleTypes(Trackable_getInstance().n8v(ensureNotNull(ifObject.n70_1)), ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(ifObject.o70_1))));
-  Trackable_getInstance().o8v(ifObject, resultType);
-  ifObject.n70_1 = this.w8t_1.ensureCompatible(ifObject.n70_1, resultType);
-  ifObject.o70_1 = this.w8t_1.ensureCompatible(ifObject.o70_1, resultType);
+protoOf(Cql2ElmVisitor).n91 = function (ifObject) {
+  ifObject.n70_1 = this.x8t_1.ensureCompatible(ifObject.n70_1, this.x8t_1.m8w('System', 'Boolean'));
+  var resultType = this.x8t_1.ensureCompatibleTypes(Trackable_getInstance().o8v(ensureNotNull(ifObject.o70_1)), ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(ifObject.p70_1))));
+  Trackable_getInstance().p8v(ifObject, resultType);
+  ifObject.o70_1 = this.x8t_1.ensureCompatible(ifObject.o70_1, resultType);
+  ifObject.p70_1 = this.x8t_1.ensureCompatible(ifObject.p70_1, resultType);
   return ifObject;
 };
-protoOf(Cql2ElmVisitor).w36 = function (ctx) {
-  var ifObject = this.y8t_1.y7m().p70(parseExpression(this, ctx.a4m(0))).v6f(parseExpression(this, ctx.a4m(1))).m6f(parseExpression(this, ctx.a4m(2)));
-  return this.m91(ifObject);
+protoOf(Cql2ElmVisitor).x36 = function (ctx) {
+  var ifObject = this.z8t_1.z7m().q70(parseExpression(this, ctx.b4m(0))).w6f(parseExpression(this, ctx.b4m(1))).n6f(parseExpression(this, ctx.b4m(2)));
+  return this.n91(ifObject);
 };
-protoOf(Cql2ElmVisitor).h37 = function (ctx) {
-  var result = this.y8t_1.i7n();
+protoOf(Cql2ElmVisitor).i37 = function (ctx) {
+  var result = this.z8t_1.j7n();
   var hitElse = false;
   var resultType = null;
-  var _iterator__ex2g4s = ensureNotNull(ctx.h2e_1).g();
+  var _iterator__ex2g4s = ensureNotNull(ctx.i2e_1).g();
   $l$loop: while (_iterator__ex2g4s.h()) {
     var pt = _iterator__ex2g4s.i();
-    if ('else' === pt.c24()) {
+    if ('else' === pt.d24()) {
       hitElse = true;
       continue $l$loop;
     }
     if (pt instanceof ExpressionContext) {
       if (hitElse) {
-        result.k6f_1 = parseExpression(this, pt);
-        resultType = this.w8t_1.ensureCompatibleTypes(resultType, ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(result.k6f_1))));
+        result.l6f_1 = parseExpression(this, pt);
+        resultType = this.x8t_1.ensureCompatibleTypes(resultType, ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(result.l6f_1))));
       } else {
-        result.i6f_1 = parseExpression(this, pt);
+        result.j6f_1 = parseExpression(this, pt);
       }
     }
     if (pt instanceof CaseExpressionItemContext) {
-      var tmp = this.d32(pt);
+      var tmp = this.e32(pt);
       var caseItem = tmp instanceof CaseItem ? tmp : THROW_CCE();
-      if (!(result.i6f_1 == null)) {
-        this.w8t_1.verifyType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(caseItem.s6f_1))), ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(result.i6f_1))));
+      if (!(result.j6f_1 == null)) {
+        this.x8t_1.verifyType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(caseItem.t6f_1))), ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(result.j6f_1))));
       } else {
-        DataTypes_instance.n91(Trackable_getInstance().n8v(ensureNotNull(caseItem.s6f_1)), this.w8t_1.l8w('System', 'Boolean'));
+        DataTypes_instance.o91(Trackable_getInstance().o8v(ensureNotNull(caseItem.t6f_1)), this.x8t_1.m8w('System', 'Boolean'));
       }
       var tmp_0;
       if (resultType == null) {
-        tmp_0 = Trackable_getInstance().n8v(ensureNotNull(caseItem.t6f_1));
+        tmp_0 = Trackable_getInstance().o8v(ensureNotNull(caseItem.u6f_1));
       } else {
-        tmp_0 = this.w8t_1.ensureCompatibleTypes(resultType, ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(caseItem.t6f_1))));
+        tmp_0 = this.x8t_1.ensureCompatibleTypes(resultType, ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(caseItem.u6f_1))));
       }
       resultType = tmp_0;
-      result.l6f().e(caseItem);
+      result.m6f().e(caseItem);
     }
   }
-  var _iterator__ex2g4s_0 = result.l6f().g();
+  var _iterator__ex2g4s_0 = result.m6f().g();
   while (_iterator__ex2g4s_0.h()) {
     var caseItem_0 = _iterator__ex2g4s_0.i();
-    if (!(result.i6f_1 == null)) {
-      ensureNotNull(caseItem_0).s6f_1 = this.w8t_1.ensureCompatible(caseItem_0.s6f_1, Trackable_getInstance().n8v(ensureNotNull(result.i6f_1)));
+    if (!(result.j6f_1 == null)) {
+      ensureNotNull(caseItem_0).t6f_1 = this.x8t_1.ensureCompatible(caseItem_0.t6f_1, Trackable_getInstance().o8v(ensureNotNull(result.j6f_1)));
     }
-    ensureNotNull(caseItem_0).t6f_1 = this.w8t_1.ensureCompatible(caseItem_0.t6f_1, resultType);
+    ensureNotNull(caseItem_0).u6f_1 = this.x8t_1.ensureCompatible(caseItem_0.u6f_1, resultType);
   }
-  result.k6f_1 = this.w8t_1.ensureCompatible(result.k6f_1, resultType);
-  Trackable_getInstance().o8v(result, resultType);
+  result.l6f_1 = this.x8t_1.ensureCompatible(result.l6f_1, resultType);
+  Trackable_getInstance().p8v(result, resultType);
   return result;
 };
-protoOf(Cql2ElmVisitor).n37 = function (ctx) {
-  return this.y8t_1.m7o().u6f(parseExpression(this, ctx.a4m(0))).v6f(parseExpression(this, ctx.a4m(1)));
+protoOf(Cql2ElmVisitor).o37 = function (ctx) {
+  return this.z8t_1.n7o().v6f(parseExpression(this, ctx.b4m(0))).w6f(parseExpression(this, ctx.b4m(1)));
 };
-protoOf(Cql2ElmVisitor).e37 = function (ctx) {
-  var tmp0_subject = ensureNotNull(ctx.o2f(0)).c24();
+protoOf(Cql2ElmVisitor).f37 = function (ctx) {
+  var tmp0_subject = ensureNotNull(ctx.p2f(0)).d24();
   if (tmp0_subject === 'distinct') {
-    var distinct = this.y8t_1.s7h().a6c(parseExpression(this, ctx.j3w()));
-    this.w8t_1.resolveUnaryCall('System', 'Distinct', distinct);
+    var distinct = this.z8t_1.t7h().b6c(parseExpression(this, ctx.k3w()));
+    this.x8t_1.resolveUnaryCall('System', 'Distinct', distinct);
     return distinct;
   } else if (tmp0_subject === 'flatten') {
-    var flatten = this.y8t_1.p7m().a6c(parseExpression(this, ctx.j3w()));
-    this.w8t_1.resolveUnaryCall('System', 'Flatten', flatten);
+    var flatten = this.z8t_1.q7m().b6c(parseExpression(this, ctx.k3w()));
+    this.x8t_1.resolveUnaryCall('System', 'Flatten', flatten);
     return flatten;
   }
-  throw IllegalArgumentException_init_$Create$('Unknown aggregate operator ' + ensureNotNull(ctx.o2f(0)).c24() + '.');
+  throw IllegalArgumentException_init_$Create$('Unknown aggregate operator ' + ensureNotNull(ctx.p2f(0)).d24() + '.');
 };
-protoOf(Cql2ElmVisitor).u36 = function (ctx) {
-  var source = ensureNotNull(parseExpression(this, ctx.a4m(0)));
-  var per = this.w8t_1.buildNull(this.w8t_1.l8w('System', 'Quantity'));
-  if (!(ctx.k4v() == null)) {
-    per = this.w8t_1.createQuantity(BigDecimalJs_init_$Create$('1.0'), ensureNotNull(this.k8v(ctx.k4v())));
-  } else if (ctx.j3w().j() > 1) {
-    var perExpression = parseExpression(this, ctx.a4m(1));
+protoOf(Cql2ElmVisitor).v36 = function (ctx) {
+  var source = ensureNotNull(parseExpression(this, ctx.b4m(0)));
+  var per = this.x8t_1.buildNull(this.x8t_1.m8w('System', 'Quantity'));
+  if (!(ctx.l4v() == null)) {
+    per = this.x8t_1.createQuantity(BigDecimalJs_init_$Create$('1.0'), ensureNotNull(this.l8v(ctx.l4v())));
+  } else if (ctx.k3w().j() > 1) {
+    var perExpression = parseExpression(this, ctx.b4m(1));
     if (perExpression instanceof Literal) {
-      per = this.w8t_1.createQuantity(BigDecimalJs_init_$Create$(ensureNotNull(perExpression.u7a_1)), '1');
+      per = this.x8t_1.createQuantity(BigDecimalJs_init_$Create$(ensureNotNull(perExpression.v7a_1)), '1');
     } else {
       per = perExpression;
     }
   } else {
-    var tmp = Trackable_getInstance().n8v(source);
+    var tmp = Trackable_getInstance().o8v(source);
     if (tmp instanceof ListType) {
-      var tmp_0 = Trackable_getInstance().n8v(source);
+      var tmp_0 = Trackable_getInstance().o8v(source);
       var listType = tmp_0 instanceof ListType ? tmp_0 : THROW_CCE();
-      var tmp_1 = listType.d61_1;
+      var tmp_1 = listType.e61_1;
       if (tmp_1 instanceof IntervalType) {
-        var tmp_2 = listType.d61_1;
+        var tmp_2 = listType.e61_1;
         var intervalType = tmp_2 instanceof IntervalType ? tmp_2 : THROW_CCE();
-        var pointType = intervalType.g61_1;
+        var pointType = intervalType.h61_1;
       }
     }
   }
-  var tmp0_subject = ensureNotNull(ctx.o2f(0)).c24();
+  var tmp0_subject = ensureNotNull(ctx.p2f(0)).d24();
   if (tmp0_subject === 'expand') {
-    var expand = this.y8t_1.p7i().f67(listOf([source, ensureNotNull(per)]));
-    this.w8t_1.o8w('System', 'Expand', expand);
+    var expand = this.z8t_1.q7i().g67(listOf([source, ensureNotNull(per)]));
+    this.x8t_1.p8w('System', 'Expand', expand);
     return expand;
   } else if (tmp0_subject === 'collapse') {
-    var collapse = this.y8t_1.z7p().f67(listOf([source, ensureNotNull(per)]));
-    this.w8t_1.o8w('System', 'Collapse', collapse);
+    var collapse = this.z8t_1.a7q().g67(listOf([source, ensureNotNull(per)]));
+    this.x8t_1.p8w('System', 'Collapse', collapse);
     return collapse;
   }
-  throw IllegalArgumentException_init_$Create$('Unknown aggregate set operator ' + ensureNotNull(ctx.o2f(0)).c24() + '.');
+  throw IllegalArgumentException_init_$Create$('Unknown aggregate set operator ' + ensureNotNull(ctx.p2f(0)).d24() + '.');
 };
-protoOf(Cql2ElmVisitor).w34 = function (ctx) {
-  this.w8t_1.checkLiteralContext();
-  var qualifiers = this.k90(ctx.i4a());
-  var model = Companion_instance_20.l90(qualifiers);
-  var label = Companion_instance_20.m90(qualifiers, ensureNotNull(this.k8v(ctx.i4a().c42())));
-  var dataType = this.w8t_1.l8w(model, label);
+protoOf(Cql2ElmVisitor).x34 = function (ctx) {
+  this.x8t_1.checkLiteralContext();
+  var qualifiers = this.l90(ctx.j4a());
+  var model = Companion_instance_20.m90(qualifiers);
+  var label = Companion_instance_20.n90(qualifiers, ensureNotNull(this.l8v(ctx.j4a().d42())));
+  var dataType = this.x8t_1.m8w(model, label);
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (dataType == null) {
@@ -3561,7 +3567,7 @@ protoOf(Cql2ElmVisitor).w34 = function (ctx) {
   }
   var tmp;
   if (dataType instanceof ClassType) {
-    tmp = dataType.p60_1;
+    tmp = dataType.q60_1;
   } else {
     tmp = false;
   }
@@ -3572,51 +3578,51 @@ protoOf(Cql2ElmVisitor).w34 = function (ctx) {
   }
   var classType = dataType;
   var namedType = classType;
-  var modelInfo = this.w8t_1.x90(namedType.n61()).q90_1;
-  var useStrictRetrieveTyping = !(modelInfo.f5y() == null) && ensureNotNull(modelInfo.f5y());
+  var modelInfo = this.x8t_1.y90(namedType.o61()).r90_1;
+  var useStrictRetrieveTyping = !(modelInfo.g5y() == null) && ensureNotNull(modelInfo.g5y());
   var codePath = null;
   var property = null;
   var propertyException = null;
   var terminology = null;
   var codeComparator = null;
-  if (!(ctx.k4a() == null)) {
-    if (!(ctx.l4a() == null)) {
-      var tmp_0 = this.d32(ensureNotNull(ctx.l4a()));
+  if (!(ctx.l4a() == null)) {
+    if (!(ctx.m4a() == null)) {
+      var tmp_0 = this.e32(ensureNotNull(ctx.m4a()));
       var identifiers = (tmp_0 == null ? true : typeof tmp_0 === 'string') ? tmp_0 : THROW_CCE();
       codePath = identifiers;
-    } else if (!(classType.q60_1 == null)) {
-      codePath = classType.q60_1;
+    } else if (!(classType.r60_1 == null)) {
+      codePath = classType.r60_1;
     }
     if (codePath == null) {
       propertyException = CqlSemanticException_init_$Create$_0('Retrieve has a terminology target but does not specify a code path and the type of the retrieve does not have a primary code path defined.', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1(this, ctx));
-      this.w8t_1.recordParsingException(propertyException);
+      this.x8t_1.recordParsingException(propertyException);
     } else {
       try {
-        var codeType = this.w8t_1.resolvePath(isInterface(namedType, DataType) ? namedType : THROW_CCE(), codePath);
-        property = this.y8t_1.q7n().y6c(codePath);
-        Trackable_getInstance().o8v(property, codeType);
+        var codeType = this.x8t_1.resolvePath(isInterface(namedType, DataType) ? namedType : THROW_CCE(), codePath);
+        property = this.z8t_1.r7n().z6c(codePath);
+        Trackable_getInstance().p8v(property, codeType);
       } catch ($p) {
         if ($p instanceof Exception) {
           var e = $p;
           propertyException = CqlSemanticException_init_$Create$_2('Could not resolve code path ' + codePath + ' for the type of the retrieve ' + namedType.z2() + '.', useStrictRetrieveTyping ? ErrorSeverity_Error_getInstance() : ErrorSeverity_Warning_getInstance(), getTrackBack_1(this, ctx), e);
-          this.w8t_1.recordParsingException(propertyException);
+          this.x8t_1.recordParsingException(propertyException);
         } else {
           throw $p;
         }
       }
     }
-    if (!(ensureNotNull(ctx.k4a()).w47() == null)) {
+    if (!(ensureNotNull(ctx.l4a()).x47() == null)) {
       // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-      var this_0 = this.d32(ensureNotNull(ctx.k4a()));
+      var this_0 = this.e32(ensureNotNull(ctx.l4a()));
       var identifiers_0 = (!(this_0 == null) ? isInterface(this_0, KtList) : false) ? this_0 : THROW_CCE();
       terminology = resolveQualifiedIdentifier(this, identifiers_0);
-      track(this, terminology, ensureNotNull(ensureNotNull(ctx.k4a()).w47()));
+      track(this, terminology, ensureNotNull(ensureNotNull(ctx.l4a()).x47()));
     } else {
-      terminology = parseExpression(this, ensureNotNull(ctx.k4a()).j3w());
+      terminology = parseExpression(this, ensureNotNull(ctx.l4a()).k3w());
     }
     var tmp_1;
-    if (!(ctx.m4a() == null)) {
-      var tmp_2 = this.d32(ensureNotNull(ctx.m4a()));
+    if (!(ctx.n4a() == null)) {
+      var tmp_2 = this.e32(ensureNotNull(ctx.n4a()));
       tmp_1 = (tmp_2 == null ? true : typeof tmp_2 === 'string') ? tmp_2 : THROW_CCE();
     } else {
       tmp_1 = null;
@@ -3624,11 +3630,11 @@ protoOf(Cql2ElmVisitor).w34 = function (ctx) {
     codeComparator = tmp_1;
   }
   var result = null;
-  var hasFHIRHelpers = !(this.d8u_1.o91('FHIRHelpers') == null);
+  var hasFHIRHelpers = !(this.e8u_1.p91('FHIRHelpers') == null);
   var tmp_3;
   var tmp_4;
   if (!(property == null)) {
-    var tmp_5 = Trackable_getInstance().n8v(property);
+    var tmp_5 = Trackable_getInstance().o8v(property);
     tmp_4 = tmp_5 instanceof ChoiceType;
   } else {
     tmp_4 = false;
@@ -3639,8 +3645,8 @@ protoOf(Cql2ElmVisitor).w34 = function (ctx) {
     tmp_3 = false;
   }
   if (tmp_3) {
-    var tmp_6 = Trackable_getInstance().n8v(property);
-    var _iterator__ex2g4s = (tmp_6 instanceof ChoiceType ? tmp_6 : THROW_CCE()).b60_1.g();
+    var tmp_6 = Trackable_getInstance().o8v(property);
+    var _iterator__ex2g4s = (tmp_6 instanceof ChoiceType ? tmp_6 : THROW_CCE()).c60_1.g();
     while (_iterator__ex2g4s.h()) {
       var propertyType = _iterator__ex2g4s.i();
       var tmp_7;
@@ -3663,92 +3669,92 @@ protoOf(Cql2ElmVisitor).w34 = function (ctx) {
       }
       if (tmp_7) {
         var mrRetrieve = buildRetrieve(this, ctx, useStrictRetrieveTyping, namedType, classType, null, null, null, null, null, null);
-        this.h8v_1.e(mrRetrieve);
+        this.i8v_1.e(mrRetrieve);
         var tmp_10 = Trackable_getInstance();
-        tmp_10.o8v(mrRetrieve, new ListType(isInterface(namedType, DataType) ? namedType : THROW_CCE()));
-        var mDataType = this.w8t_1.l8w(model, 'Medication');
+        tmp_10.p8v(mrRetrieve, new ListType(isInterface(namedType, DataType) ? namedType : THROW_CCE()));
+        var mDataType = this.x8t_1.m8w(model, 'Medication');
         var mClassType = mDataType instanceof ClassType ? mDataType : THROW_CCE();
         var mNamedType = mClassType;
         var mRetrieve = buildRetrieve(this, ctx, useStrictRetrieveTyping, mNamedType, mClassType, null, null, null, null, null, null);
-        this.h8v_1.e(mRetrieve);
-        Trackable_getInstance().o8v(mRetrieve, new ListType(mDataType));
-        var q = this.y8t_1.l7h();
-        var aqs = this.y8t_1.f7q().r69(mrRetrieve).q69('MR');
+        this.i8v_1.e(mRetrieve);
+        Trackable_getInstance().p8v(mRetrieve, new ListType(mDataType));
+        var q = this.z8t_1.m7h();
+        var aqs = this.z8t_1.g7q().s69(mrRetrieve).r69('MR');
         track(this, aqs, ctx);
-        Trackable_getInstance().o8v(aqs, Trackable_getInstance().n8v(ensureNotNull(aqs.p69_1)));
-        q.b1p().e(aqs);
+        Trackable_getInstance().p8v(aqs, Trackable_getInstance().o8v(ensureNotNull(aqs.q69_1)));
+        q.c1p().e(aqs);
         track(this, q, ctx);
-        Trackable_getInstance().o8v(q, Trackable_getInstance().n8v(aqs));
-        var w = this.y8t_1.g7l().r69(mRetrieve).q69('M');
+        Trackable_getInstance().p8v(q, Trackable_getInstance().o8v(aqs));
+        var w = this.z8t_1.h7l().s69(mRetrieve).r69('M');
         track(this, w, ctx);
-        Trackable_getInstance().o8v(w, Trackable_getInstance().n8v(ensureNotNull(w.p69_1)));
-        q.p7y().e(w);
+        Trackable_getInstance().p8v(w, Trackable_getInstance().o8v(ensureNotNull(w.q69_1)));
+        q.q7y().e(w);
         var idPath = 'id';
-        var idType = this.w8t_1.resolvePath(mDataType, idPath);
-        var idProperty = this.w8t_1.p91('M', idPath, false, idType);
+        var idType = this.x8t_1.resolvePath(mDataType, idPath);
+        var idProperty = this.x8t_1.q91('M', idPath, false, idType);
         var refPath = 'medication.reference';
-        var refType = this.w8t_1.resolvePath(dataType, refPath);
-        var refProperty = this.w8t_1.p91('MR', refPath, false, refType);
-        var split = this.y8t_1.v7i().r85(refProperty).s85(this.w8t_1.z90('/'));
-        this.w8t_1.resolveCall('System', 'Split', new SplitInvocation(split));
-        var last = this.y8t_1.g7k().a6k(split);
-        this.w8t_1.resolveCall('System', 'Last', new LastInvocation(last));
-        var e_0 = this.y8t_1.e7m().f67(listOf([idProperty, last]));
-        this.w8t_1.o8w('System', 'Equal', e_0);
-        if (DataTypes_instance.q8z(idType, this.w8t_1.l8w('System', 'String'))) {
-          idProperty.m7x_1 = 'id.value';
+        var refType = this.x8t_1.resolvePath(dataType, refPath);
+        var refProperty = this.x8t_1.q91('MR', refPath, false, refType);
+        var split = this.z8t_1.w7i().s85(refProperty).t85(this.x8t_1.a91('/'));
+        this.x8t_1.resolveCall('System', 'Split', new SplitInvocation(split));
+        var last = this.z8t_1.h7k().b6k(split);
+        this.x8t_1.resolveCall('System', 'Last', new LastInvocation(last));
+        var e_0 = this.z8t_1.f7m().g67(listOf([idProperty, last]));
+        this.x8t_1.p8w('System', 'Equal', e_0);
+        if (DataTypes_instance.r8z(idType, this.x8t_1.m8w('System', 'String'))) {
+          idProperty.n7x_1 = 'id.value';
         }
-        if (DataTypes_instance.q8z(refType, this.w8t_1.l8w('System', 'String'))) {
-          refProperty.m7x_1 = 'medication.reference.value';
+        if (DataTypes_instance.r8z(refType, this.x8t_1.m8w('System', 'String'))) {
+          refProperty.n7x_1 = 'medication.reference.value';
         }
-        var mCodeType = this.w8t_1.resolvePath(isInterface(mNamedType, DataType) ? mNamedType : THROW_CCE(), 'code');
-        var mProperty = this.w8t_1.p91('M', 'code', false, mCodeType);
+        var mCodeType = this.x8t_1.resolvePath(isInterface(mNamedType, DataType) ? mNamedType : THROW_CCE(), 'code');
+        var mProperty = this.x8t_1.q91('M', 'code', false, mCodeType);
         var mCodeProperty = mProperty;
-        if (DataTypes_instance.q8z(mCodeType, this.w8t_1.l8w('System', 'Concept'))) {
-          var toConcept = this.y8t_1.w7h().t6i('FHIRHelpers').q65('ToConcept').f67(listOf_0(mCodeProperty));
-          Trackable_getInstance().o8v(toConcept, mCodeType);
+        if (DataTypes_instance.r8z(mCodeType, this.x8t_1.m8w('System', 'Concept'))) {
+          var toConcept = this.z8t_1.x7h().u6i('FHIRHelpers').r65('ToConcept').g67(listOf_0(mCodeProperty));
+          Trackable_getInstance().p8v(toConcept, mCodeType);
           mCodeProperty = toConcept;
         }
         var mCodeComparator = '~';
-        var tmp_11 = Trackable_getInstance().n8v(ensureNotNull(terminology));
+        var tmp_11 = Trackable_getInstance().o8v(ensureNotNull(terminology));
         if (tmp_11 instanceof ListType) {
           mCodeComparator = 'in';
         } else {
-          if (this.w8t_1.isCompatibleWith('1.5')) {
-            mCodeComparator = ensureNotNull(Trackable_getInstance().n8v(terminology)).x5z(ensureNotNull(this.w8t_1.l8w('System', 'Vocabulary'))) ? 'in' : '~';
+          if (this.x8t_1.isCompatibleWith('1.5')) {
+            mCodeComparator = ensureNotNull(Trackable_getInstance().o8v(terminology)).y5z(ensureNotNull(this.x8t_1.m8w('System', 'Vocabulary'))) ? 'in' : '~';
           }
         }
         var tmp_12;
         if (mCodeComparator === 'in') {
-          tmp_12 = this.w8t_1.m8w(mCodeProperty, terminology);
+          tmp_12 = this.x8t_1.n8w(mCodeProperty, terminology);
         } else {
-          var equivalent = this.y8t_1.z7o().f67(listOf([mCodeProperty, terminology]));
-          this.w8t_1.o8w('System', 'Equivalent', equivalent);
+          var equivalent = this.z8t_1.a7p().g67(listOf([mCodeProperty, terminology]));
+          this.x8t_1.p8w('System', 'Equivalent', equivalent);
           tmp_12 = equivalent;
         }
         var terminologyComparison = tmp_12;
-        var a = this.y8t_1.x7o().f67(listOf([e_0, terminologyComparison]));
-        this.w8t_1.o8w('System', 'And', a);
-        w.u7z(a);
+        var a = this.z8t_1.y7o().g67(listOf([e_0, terminologyComparison]));
+        this.x8t_1.p8w('System', 'And', a);
+        w.v7z(a);
         var tmp_13;
         if (result == null) {
           tmp_13 = q;
         } else {
           track(this, q, ctx);
-          tmp_13 = this.w8t_1.resolveUnion(result, q);
+          tmp_13 = this.x8t_1.resolveUnion(result, q);
         }
         result = tmp_13;
       } else {
         var retrieve = buildRetrieve(this, ctx, useStrictRetrieveTyping, namedType, classType, codePath, codeComparator, property, propertyType, propertyException, terminology);
-        this.h8v_1.e(retrieve);
+        this.i8v_1.e(retrieve);
         var tmp_14 = Trackable_getInstance();
-        tmp_14.o8v(retrieve, new ListType(isInterface(namedType, DataType) ? namedType : THROW_CCE()));
+        tmp_14.p8v(retrieve, new ListType(isInterface(namedType, DataType) ? namedType : THROW_CCE()));
         var tmp_15;
         if (result == null) {
           tmp_15 = retrieve;
         } else {
           track(this, retrieve, ctx);
-          tmp_15 = this.w8t_1.resolveUnion(result, retrieve);
+          tmp_15 = this.x8t_1.resolveUnion(result, retrieve);
         }
         result = tmp_15;
       }
@@ -3758,23 +3764,23 @@ protoOf(Cql2ElmVisitor).w34 = function (ctx) {
     var tmp_17 = codeComparator;
     var tmp_18 = property;
     var tmp0_safe_receiver = property;
-    var retrieve_0 = buildRetrieve(this, ctx, useStrictRetrieveTyping, namedType, classType, tmp_16, tmp_17, tmp_18, tmp0_safe_receiver == null ? null : Trackable_getInstance().n8v(tmp0_safe_receiver), propertyException, terminology);
-    this.h8v_1.e(retrieve_0);
+    var retrieve_0 = buildRetrieve(this, ctx, useStrictRetrieveTyping, namedType, classType, tmp_16, tmp_17, tmp_18, tmp0_safe_receiver == null ? null : Trackable_getInstance().o8v(tmp0_safe_receiver), propertyException, terminology);
+    this.i8v_1.e(retrieve_0);
     var tmp_19 = Trackable_getInstance();
-    tmp_19.o8v(retrieve_0, new ListType(isInterface(namedType, DataType) ? namedType : THROW_CCE()));
+    tmp_19.p8v(retrieve_0, new ListType(isInterface(namedType, DataType) ? namedType : THROW_CCE()));
     result = retrieve_0;
   }
   return result;
 };
-protoOf(Cql2ElmVisitor).d35 = function (ctx) {
-  var hasFrom = 'from' === ensureNotNull(ctx.o2f(0)).c24();
+protoOf(Cql2ElmVisitor).e35 = function (ctx) {
+  var hasFrom = 'from' === ensureNotNull(ctx.p2f(0)).d24();
   // Inline function 'kotlin.require' call
-  if (!(hasFrom || !this.k8u_1)) {
+  if (!(hasFrom || !this.l8u_1)) {
     var message = 'The from keyword is required for queries.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
   var sources = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.n49().g();
+  var _iterator__ex2g4s = ctx.o49().g();
   while (_iterator__ex2g4s.h()) {
     var source = _iterator__ex2g4s.i();
     // Inline function 'kotlin.require' call
@@ -3782,41 +3788,41 @@ protoOf(Cql2ElmVisitor).d35 = function (ctx) {
       var message_0 = 'The from keyword is required for multi-source queries.';
       throw IllegalArgumentException_init_$Create$(toString(message_0));
     }
-    var tmp = this.d32(source);
+    var tmp = this.e32(source);
     sources.e((tmp == null ? true : tmp instanceof AliasedQuerySource) ? tmp : THROW_CCE());
   }
   return sources;
 };
-protoOf(Cql2ElmVisitor).c35 = function (ctx) {
+protoOf(Cql2ElmVisitor).d35 = function (ctx) {
   var queryContext = new QueryContext();
-  this.w8t_1.pushQueryContext(queryContext);
+  this.x8t_1.pushQueryContext(queryContext);
   var sources = null;
   var tmp;
   try {
-    queryContext.y91();
+    queryContext.z91();
     try {
       // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-      var this_0 = this.d32(ctx.v4c());
+      var this_0 = this.e32(ctx.w4c());
       sources = (this_0 == null ? true : isInterface(this_0, KtList)) ? this_0 : THROW_CCE();
     }finally {
-      queryContext.z91();
+      queryContext.a92();
     }
-    queryContext.a92(ensureNotNull(sources));
+    queryContext.b92(ensureNotNull(sources));
     var _iterator__ex2g4s = sources.g();
     while (_iterator__ex2g4s.h()) {
       var source = _iterator__ex2g4s.i();
-      var ir = this.y8t_1.p7k().q65(source.o69_1);
+      var ir = this.z8t_1.q7k().r65(source.p69_1);
       track_0(this, ir, source);
-      this.w8t_1.pushIdentifier(ir, source);
+      this.x8t_1.pushIdentifier(ir, source);
     }
     var expressionContextPushed = false;
     var dfcx = emptyList();
     var tmp_0;
     try {
       var tmp_1;
-      if (!(ctx.w4c() == null)) {
+      if (!(ctx.x4c() == null)) {
         // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-        var this_1 = this.d32(ensureNotNull(ctx.w4c()));
+        var this_1 = this.e32(ensureNotNull(ctx.x4c()));
         tmp_1 = (!(this_1 == null) ? isInterface(this_1, KtList) : false) ? this_1 : THROW_CCE();
       } else {
         tmp_1 = dfcx;
@@ -3825,159 +3831,159 @@ protoOf(Cql2ElmVisitor).c35 = function (ctx) {
       var _iterator__ex2g4s_0 = dfcx.g();
       while (_iterator__ex2g4s_0.h()) {
         var letClause = _iterator__ex2g4s_0.i();
-        var ir_0 = this.y8t_1.p7k().q65(letClause.w78_1);
+        var ir_0 = this.z8t_1.q7k().r65(letClause.x78_1);
         track_0(this, ir_0, letClause);
-        this.w8t_1.pushIdentifier(ir_0, letClause);
+        this.x8t_1.pushIdentifier(ir_0, letClause);
       }
       var qicx = ArrayList_init_$Create$();
-      var _iterator__ex2g4s_1 = ctx.x4c().g();
+      var _iterator__ex2g4s_1 = ctx.y4c().g();
       while (_iterator__ex2g4s_1.h()) {
         var queryInclusionClauseContext = _iterator__ex2g4s_1.i();
-        var tmp_2 = this.d32(queryInclusionClauseContext);
+        var tmp_2 = this.e32(queryInclusionClauseContext);
         qicx.e(tmp_2 instanceof RelationshipClause ? tmp_2 : THROW_CCE());
       }
       var tmp_3;
-      if (!(ctx.y4c() == null)) {
-        var tmp_4 = this.d32(ensureNotNull(ctx.y4c()));
+      if (!(ctx.z4c() == null)) {
+        var tmp_4 = this.e32(ensureNotNull(ctx.z4c()));
         tmp_3 = (tmp_4 == null ? true : tmp_4 instanceof Expression) ? tmp_4 : THROW_CCE();
       } else {
         tmp_3 = null;
       }
       var where = tmp_3;
-      if (this.i8u_1 && !(where == null)) {
+      if (this.j8u_1 && !(where == null)) {
         var _iterator__ex2g4s_2 = sources.g();
         while (_iterator__ex2g4s_2.h()) {
           var aqs = _iterator__ex2g4s_2.i();
-          where = this.b92(where, aqs);
+          where = this.c92(where, aqs);
         }
       }
       var tmp_5;
-      if (!(ctx.a4d() == null)) {
-        var tmp_6 = this.d32(ensureNotNull(ctx.a4d()));
+      if (!(ctx.b4d() == null)) {
+        var tmp_6 = this.e32(ensureNotNull(ctx.b4d()));
         tmp_5 = (tmp_6 == null ? true : tmp_6 instanceof ReturnClause) ? tmp_6 : THROW_CCE();
       } else {
         tmp_5 = null;
       }
       var ret = tmp_5;
       var tmp_7;
-      if (!(ctx.z4c() == null)) {
-        var tmp_8 = this.d32(ensureNotNull(ctx.z4c()));
+      if (!(ctx.a4d() == null)) {
+        var tmp_8 = this.e32(ensureNotNull(ctx.a4d()));
         tmp_7 = (tmp_8 == null ? true : tmp_8 instanceof AggregateClause) ? tmp_8 : THROW_CCE();
       } else {
         tmp_7 = null;
       }
       var agg = tmp_7;
       if (agg == null && ret == null && sources.j() > 1) {
-        ret = this.y8t_1.d7o().h82(true);
-        var returnExpression = this.y8t_1.y7n();
+        ret = this.z8t_1.e7o().i82(true);
+        var returnExpression = this.z8t_1.z7n();
         // Inline function 'kotlin.collections.mutableListOf' call
         var elements = ArrayList_init_$Create$();
         var _iterator__ex2g4s_3 = sources.g();
         while (_iterator__ex2g4s_3.h()) {
           var aqs_0 = _iterator__ex2g4s_3.i();
-          var element = this.y8t_1.k7q().q65(aqs_0.o69_1).i74(this.y8t_1.g7j().q65(aqs_0.o69_1));
+          var element = this.z8t_1.l7q().r65(aqs_0.p69_1).j74(this.z8t_1.h7j().r65(aqs_0.p69_1));
           var tmp_9;
-          var tmp_10 = Trackable_getInstance().n8v(aqs_0);
+          var tmp_10 = Trackable_getInstance().o8v(aqs_0);
           if (tmp_10 instanceof ListType) {
-            var tmp_11 = Trackable_getInstance().n8v(aqs_0);
-            tmp_9 = (tmp_11 instanceof ListType ? tmp_11 : THROW_CCE()).d61_1;
+            var tmp_11 = Trackable_getInstance().o8v(aqs_0);
+            tmp_9 = (tmp_11 instanceof ListType ? tmp_11 : THROW_CCE()).e61_1;
           } else {
-            tmp_9 = Trackable_getInstance().n8v(aqs_0);
+            tmp_9 = Trackable_getInstance().o8v(aqs_0);
           }
           var sourceType = tmp_9;
-          Trackable_getInstance().o8v(ensureNotNull(element.n8f_1), sourceType);
-          elements.e(new TupleTypeElement(ensureNotNull(element.m8f_1), ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(element.n8f_1)))));
-          returnExpression.g5v().e(element);
+          Trackable_getInstance().p8v(ensureNotNull(element.o8f_1), sourceType);
+          elements.e(new TupleTypeElement(ensureNotNull(element.n8f_1), ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(element.o8f_1)))));
+          returnExpression.h5v().e(element);
         }
         var returnType = TupleType_init_$Create$(elements);
-        Trackable_getInstance().o8v(returnExpression, queryContext.s91_1 ? returnType : new ListType(returnType));
-        ret.g82_1 = returnExpression;
-        Trackable_getInstance().o8v(ret, Trackable_getInstance().n8v(returnExpression));
+        Trackable_getInstance().p8v(returnExpression, queryContext.t91_1 ? returnType : new ListType(returnType));
+        ret.h82_1 = returnExpression;
+        Trackable_getInstance().p8v(ret, Trackable_getInstance().o8v(returnExpression));
       }
-      queryContext.c92(sources);
-      queryContext.d92(dfcx);
+      queryContext.d92(sources);
+      queryContext.e92(dfcx);
       var tmp_12;
       if (!(agg == null)) {
-        tmp_12 = Trackable_getInstance().n8v(agg);
+        tmp_12 = Trackable_getInstance().o8v(agg);
       } else if (!(ret == null)) {
-        tmp_12 = Trackable_getInstance().n8v(ret);
+        tmp_12 = Trackable_getInstance().o8v(ret);
       } else {
-        tmp_12 = Trackable_getInstance().n8v(sources.o(0));
+        tmp_12 = Trackable_getInstance().o8v(sources.o(0));
       }
       var queryResultType = tmp_12;
       var sort = null;
       if (agg == null) {
         var tmp_13 = queryContext;
         var tmp_14;
-        if (queryContext.s91_1) {
+        if (queryContext.t91_1) {
           tmp_14 = null;
         } else {
-          tmp_14 = ensureNotNull((queryResultType == null ? true : queryResultType instanceof ListType) ? queryResultType : THROW_CCE()).d61_1;
+          tmp_14 = ensureNotNull((queryResultType == null ? true : queryResultType instanceof ListType) ? queryResultType : THROW_CCE()).e61_1;
         }
-        tmp_13.w91_1 = tmp_14;
-        if (!(ctx.b4d() == null)) {
+        tmp_13.x91_1 = tmp_14;
+        if (!(ctx.c4d() == null)) {
           // Inline function 'kotlin.require' call
-          if (!!queryContext.s91_1) {
+          if (!!queryContext.t91_1) {
             var message = 'Sort clause cannot be used in a singular query.';
             throw IllegalArgumentException_init_$Create$(toString(message));
           }
-          queryContext.e92();
+          queryContext.f92();
           try {
-            var tmp_15 = this.d32(ensureNotNull(ctx.b4d()));
+            var tmp_15 = this.e32(ensureNotNull(ctx.c4d()));
             sort = tmp_15 instanceof SortClause ? tmp_15 : THROW_CCE();
-            var _iterator__ex2g4s_4 = sort.a85().g();
+            var _iterator__ex2g4s_4 = sort.b85().g();
             while (_iterator__ex2g4s_4.h()) {
               var sortByItem = _iterator__ex2g4s_4.i();
               if (sortByItem instanceof ByDirection) {
-                this.w8t_1.verifyComparable(ensureNotNull(queryContext.w91_1));
+                this.x8t_1.verifyComparable(ensureNotNull(queryContext.x91_1));
               } else {
-                this.w8t_1.verifyComparable(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(sortByItem))));
+                this.x8t_1.verifyComparable(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(sortByItem))));
               }
             }
           }finally {
-            queryContext.f92();
+            queryContext.g92();
           }
         }
       } else {
         // Inline function 'kotlin.require' call
-        if (!(ctx.b4d() == null)) {
+        if (!(ctx.c4d() == null)) {
           var message_0 = 'Sort clause cannot be used in an aggregate query.';
           throw IllegalArgumentException_init_$Create$(toString(message_0));
         }
       }
-      var query = this.y8t_1.l7h().q7y(sources).r7y(dfcx).s7y(qicx).t7y(where).u7y(ret).v7y(agg).w7y(sort);
-      Trackable_getInstance().o8v(query, queryResultType);
+      var query = this.z8t_1.m7h().r7y(sources).s7y(dfcx).t7y(qicx).u7y(where).v7y(ret).w7y(agg).x7y(sort);
+      Trackable_getInstance().p8v(query, queryResultType);
       tmp_0 = query;
     }finally {
       if (expressionContextPushed) {
-        this.w8t_1.popExpressionContext();
+        this.x8t_1.popExpressionContext();
       }
       var _iterator__ex2g4s_5 = dfcx.g();
       while (_iterator__ex2g4s_5.h()) {
         var letClause_0 = _iterator__ex2g4s_5.i();
-        this.w8t_1.popIdentifier();
+        this.x8t_1.popIdentifier();
       }
     }
     tmp = tmp_0;
   }finally {
-    this.w8t_1.popQueryContext();
+    this.x8t_1.popQueryContext();
     if (!(sources == null)) {
       var _iterator__ex2g4s_6 = sources.g();
       while (_iterator__ex2g4s_6.h()) {
         var source_0 = _iterator__ex2g4s_6.i();
-        this.w8t_1.popIdentifier();
+        this.x8t_1.popIdentifier();
       }
     }
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).b92 = function (where, aqs) {
+protoOf(Cql2ElmVisitor).c92 = function (where, aqs) {
   var where_0 = where;
-  var tmp = aqs.p69_1;
+  var tmp = aqs.q69_1;
   if (tmp instanceof Retrieve) {
-    var tmp_0 = aqs.p69_1;
+    var tmp_0 = aqs.q69_1;
     var retrieve = tmp_0 instanceof Retrieve ? tmp_0 : THROW_CCE();
-    var alias = aqs.o69_1;
+    var alias = aqs.p69_1;
     var tmp_1;
     var tmp_2;
     if (where_0 instanceof IncludedIn) {
@@ -4006,255 +4012,255 @@ protoOf(Cql2ElmVisitor).b92 = function (where, aqs) {
   }
   return where_0;
 };
-protoOf(Cql2ElmVisitor).e35 = function (ctx) {
+protoOf(Cql2ElmVisitor).f35 = function (ctx) {
   var letClauseItems = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.w4d().g();
+  var _iterator__ex2g4s = ctx.x4d().g();
   while (_iterator__ex2g4s.h()) {
     var letClauseItem = _iterator__ex2g4s.i();
-    var tmp = this.d32(letClauseItem);
+    var tmp = this.e32(letClauseItem);
     letClauseItems.e((tmp == null ? true : tmp instanceof LetClause) ? tmp : THROW_CCE());
   }
   return letClauseItems;
 };
-protoOf(Cql2ElmVisitor).f35 = function (ctx) {
-  var letClause = this.y8t_1.s7o().r69(parseExpression(this, ctx.j3w())).y78(this.k8v(ctx.g3w()));
-  Trackable_getInstance().o8v(letClause, Trackable_getInstance().n8v(ensureNotNull(letClause.x78_1)));
-  this.w8t_1.peekQueryContext().g92(letClause);
+protoOf(Cql2ElmVisitor).g35 = function (ctx) {
+  var letClause = this.z8t_1.t7o().s69(parseExpression(this, ctx.k3w())).z78(this.l8v(ctx.h3w()));
+  Trackable_getInstance().p8v(letClause, Trackable_getInstance().o8v(ensureNotNull(letClause.y78_1)));
+  this.x8t_1.peekQueryContext().h92(letClause);
   return letClause;
 };
-protoOf(Cql2ElmVisitor).r34 = function (ctx) {
-  var source = this.y8t_1.f7q().r69(parseExpression(this, ctx.h48())).q69(this.k8v(ctx.i48()));
-  Trackable_getInstance().o8v(source, Trackable_getInstance().n8v(ensureNotNull(source.p69_1)));
+protoOf(Cql2ElmVisitor).s34 = function (ctx) {
+  var source = this.z8t_1.g7q().s69(parseExpression(this, ctx.i48())).r69(this.l8v(ctx.j48()));
+  Trackable_getInstance().p8v(source, Trackable_getInstance().o8v(ensureNotNull(source.q69_1)));
   return source;
 };
-protoOf(Cql2ElmVisitor).u34 = function (ctx) {
-  var tmp = this.d32(ctx.n49());
-  var aqs = tmp instanceof AliasedQuerySource ? tmp : THROW_CCE();
-  this.w8t_1.peekQueryContext().h92(aqs);
-  var tmp_0;
-  try {
-    var tmp_1 = this.d32(ctx.j3w());
-    var expression = tmp_1 instanceof Expression ? tmp_1 : THROW_CCE();
-    DataTypes_instance.n91(Trackable_getInstance().n8v(expression), this.w8t_1.l8w('System', 'Boolean'));
-    var result = this.y8t_1.g7l();
-    result.r69(aqs.p69_1).q69(aqs.o69_1).u7z(expression);
-    Trackable_getInstance().o8v(result, Trackable_getInstance().n8v(aqs));
-    tmp_0 = result;
-  }finally {
-    this.w8t_1.peekQueryContext().i92(aqs);
-  }
-  return tmp_0;
-};
 protoOf(Cql2ElmVisitor).v34 = function (ctx) {
-  var tmp = this.d32(ctx.n49());
+  var tmp = this.e32(ctx.o49());
   var aqs = tmp instanceof AliasedQuerySource ? tmp : THROW_CCE();
-  this.w8t_1.peekQueryContext().h92(aqs);
+  this.x8t_1.peekQueryContext().i92(aqs);
   var tmp_0;
   try {
-    var tmp_1 = this.d32(ctx.j3w());
+    var tmp_1 = this.e32(ctx.k3w());
     var expression = tmp_1 instanceof Expression ? tmp_1 : THROW_CCE();
-    DataTypes_instance.n91(Trackable_getInstance().n8v(expression), this.w8t_1.l8w('System', 'Boolean'));
-    var result = this.y8t_1.m7n();
-    result.r69(aqs.p69_1).q69(aqs.o69_1).u7z(expression);
-    Trackable_getInstance().o8v(result, Trackable_getInstance().n8v(aqs));
+    DataTypes_instance.o91(Trackable_getInstance().o8v(expression), this.x8t_1.m8w('System', 'Boolean'));
+    var result = this.z8t_1.h7l();
+    result.s69(aqs.q69_1).r69(aqs.p69_1).v7z(expression);
+    Trackable_getInstance().p8v(result, Trackable_getInstance().o8v(aqs));
     tmp_0 = result;
   }finally {
-    this.w8t_1.peekQueryContext().i92(aqs);
+    this.x8t_1.peekQueryContext().j92(aqs);
   }
   return tmp_0;
 };
-protoOf(Cql2ElmVisitor).g35 = function (ctx) {
-  var tmp = this.d32(ctx.j3w());
-  var result = tmp instanceof Expression ? tmp : THROW_CCE();
-  DataTypes_instance.n91(Trackable_getInstance().n8v(result), this.w8t_1.l8w('System', 'Boolean'));
-  return result;
+protoOf(Cql2ElmVisitor).w34 = function (ctx) {
+  var tmp = this.e32(ctx.o49());
+  var aqs = tmp instanceof AliasedQuerySource ? tmp : THROW_CCE();
+  this.x8t_1.peekQueryContext().i92(aqs);
+  var tmp_0;
+  try {
+    var tmp_1 = this.e32(ctx.k3w());
+    var expression = tmp_1 instanceof Expression ? tmp_1 : THROW_CCE();
+    DataTypes_instance.o91(Trackable_getInstance().o8v(expression), this.x8t_1.m8w('System', 'Boolean'));
+    var result = this.z8t_1.n7n();
+    result.s69(aqs.q69_1).r69(aqs.p69_1).v7z(expression);
+    Trackable_getInstance().p8v(result, Trackable_getInstance().o8v(aqs));
+    tmp_0 = result;
+  }finally {
+    this.x8t_1.peekQueryContext().j92(aqs);
+  }
+  return tmp_0;
 };
 protoOf(Cql2ElmVisitor).h35 = function (ctx) {
-  var returnClause = this.y8t_1.d7o();
-  var tmp = ctx.o2f(1);
+  var tmp = this.e32(ctx.k3w());
+  var result = tmp instanceof Expression ? tmp : THROW_CCE();
+  DataTypes_instance.o91(Trackable_getInstance().o8v(result), this.x8t_1.m8w('System', 'Boolean'));
+  return result;
+};
+protoOf(Cql2ElmVisitor).i35 = function (ctx) {
+  var returnClause = this.z8t_1.e7o();
+  var tmp = ctx.p2f(1);
   if (!(tmp == null) ? isInterface(tmp, TerminalNode) : false) {
-    var tmp0_subject = ensureNotNull(ctx.o2f(1)).c24();
+    var tmp0_subject = ensureNotNull(ctx.p2f(1)).d24();
     if (tmp0_subject === 'all') {
-      returnClause.b69(false);
+      returnClause.c69(false);
     } else if (tmp0_subject === 'distinct') {
-      returnClause.b69(true);
+      returnClause.c69(true);
     }
   }
-  returnClause.g82_1 = parseExpression(this, ctx.j3w());
-  Trackable_getInstance().o8v(returnClause, this.w8t_1.peekQueryContext().s91_1 ? Trackable_getInstance().n8v(ensureNotNull(returnClause.g82_1)) : new ListType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(returnClause.g82_1)))));
+  returnClause.h82_1 = parseExpression(this, ctx.k3w());
+  Trackable_getInstance().p8v(returnClause, this.x8t_1.peekQueryContext().t91_1 ? Trackable_getInstance().o8v(ensureNotNull(returnClause.h82_1)) : new ListType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(returnClause.h82_1)))));
   return returnClause;
 };
-protoOf(Cql2ElmVisitor).j35 = function (ctx) {
-  if (!(ctx.w4f() == null)) {
-    return this.d32(ensureNotNull(ctx.w4f()));
-  }
+protoOf(Cql2ElmVisitor).k35 = function (ctx) {
   if (!(ctx.x4f() == null)) {
-    return this.d32(ensureNotNull(ctx.x4f()));
+    return this.e32(ensureNotNull(ctx.x4f()));
+  }
+  if (!(ctx.y4f() == null)) {
+    return this.e32(ensureNotNull(ctx.y4f()));
   }
   var tmp;
-  if (!(ctx.j3w() == null)) {
-    tmp = this.d32(ensureNotNull(ctx.j3w()));
+  if (!(ctx.k3w() == null)) {
+    tmp = this.e32(ensureNotNull(ctx.k3w()));
   } else {
     tmp = null;
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).i35 = function (ctx) {
-  this.w8t_1.checkCompatibilityLevel('Aggregate query clause', '1.5');
-  var aggregateClause = this.y8t_1.a7i();
-  var tmp = ctx.o2f(1);
+protoOf(Cql2ElmVisitor).j35 = function (ctx) {
+  this.x8t_1.checkCompatibilityLevel('Aggregate query clause', '1.5');
+  var aggregateClause = this.z8t_1.b7i();
+  var tmp = ctx.p2f(1);
   if (!(tmp == null) ? isInterface(tmp, TerminalNode) : false) {
-    var tmp0_subject = ensureNotNull(ctx.o2f(1)).c24();
+    var tmp0_subject = ensureNotNull(ctx.p2f(1)).d24();
     if (tmp0_subject === 'all') {
-      aggregateClause.b69(false);
+      aggregateClause.c69(false);
     } else if (tmp0_subject === 'distinct') {
-      aggregateClause.b69(true);
+      aggregateClause.c69(true);
     }
   }
-  if (!(ctx.l4f() == null)) {
-    aggregateClause.a69_1 = parseExpression(this, ctx.l4f());
+  if (!(ctx.m4f() == null)) {
+    aggregateClause.b69_1 = parseExpression(this, ctx.m4f());
   }
-  aggregateClause.x68_1 = this.k8v(ctx.g3w());
+  aggregateClause.y68_1 = this.l8v(ctx.h3w());
   var tmp_0;
-  if (!(aggregateClause.a69_1 == null)) {
-    tmp_0 = this.w8t_1.buildNull(Trackable_getInstance().n8v(ensureNotNull(aggregateClause.a69_1)));
+  if (!(aggregateClause.b69_1 == null)) {
+    tmp_0 = this.x8t_1.buildNull(Trackable_getInstance().o8v(ensureNotNull(aggregateClause.b69_1)));
   } else {
-    tmp_0 = this.w8t_1.buildNull(this.w8t_1.l8w('System', 'Any'));
+    tmp_0 = this.x8t_1.buildNull(this.x8t_1.m8w('System', 'Any'));
   }
   var accumulator = tmp_0;
-  var letClause = this.y8t_1.s7o().r69(accumulator).y78(aggregateClause.x68_1);
-  Trackable_getInstance().o8v(letClause, Trackable_getInstance().n8v(ensureNotNull(letClause.x78_1)));
-  this.w8t_1.peekQueryContext().g92(letClause);
-  aggregateClause.z68_1 = parseExpression(this, ctx.j3w());
-  Trackable_getInstance().o8v(aggregateClause, Trackable_getInstance().n8v(ensureNotNull(aggregateClause.z68_1)));
-  if (aggregateClause.a69_1 == null) {
-    Trackable_getInstance().o8v(accumulator, Trackable_getInstance().n8v(aggregateClause));
-    aggregateClause.a69_1 = accumulator;
+  var letClause = this.z8t_1.t7o().s69(accumulator).z78(aggregateClause.y68_1);
+  Trackable_getInstance().p8v(letClause, Trackable_getInstance().o8v(ensureNotNull(letClause.y78_1)));
+  this.x8t_1.peekQueryContext().h92(letClause);
+  aggregateClause.a69_1 = parseExpression(this, ctx.k3w());
+  Trackable_getInstance().p8v(aggregateClause, Trackable_getInstance().o8v(ensureNotNull(aggregateClause.a69_1)));
+  if (aggregateClause.b69_1 == null) {
+    Trackable_getInstance().p8v(accumulator, Trackable_getInstance().o8v(aggregateClause));
+    aggregateClause.b69_1 = accumulator;
   }
   return aggregateClause;
 };
-protoOf(Cql2ElmVisitor).l35 = function (ctx) {
-  return Companion_instance.u5t(ctx.c24());
-};
 protoOf(Cql2ElmVisitor).m35 = function (ctx) {
-  var sortExpression = ensureNotNull(parseExpression(this, ctx.e4h()));
+  return Companion_instance.v5t(ctx.d24());
+};
+protoOf(Cql2ElmVisitor).n35 = function (ctx) {
+  var sortExpression = ensureNotNull(parseExpression(this, ctx.f4h()));
   var tmp;
   if (sortExpression instanceof IdentifierRef) {
-    tmp = Trackable_getInstance().h90(this.y8t_1.s7m().y6c(sortExpression.f70_1).z6c(parseSortDirection(this, ctx.i4g())), Trackable_getInstance().n8v(sortExpression));
+    tmp = Trackable_getInstance().i90(this.z8t_1.t7m().z6c(sortExpression.g70_1).a6d(parseSortDirection(this, ctx.j4g())), Trackable_getInstance().o8v(sortExpression));
   } else {
-    tmp = Trackable_getInstance().h90(this.y8t_1.y7p().r69(sortExpression).z6c(parseSortDirection(this, ctx.i4g())), Trackable_getInstance().n8v(sortExpression));
+    tmp = Trackable_getInstance().i90(this.z8t_1.z7p().s69(sortExpression).a6d(parseSortDirection(this, ctx.j4g())), Trackable_getInstance().o8v(sortExpression));
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).k35 = function (ctx) {
-  if (!(ctx.i4g() == null)) {
-    return this.y8t_1.e7j().i85(listOf_0(this.y8t_1.v7n().z6c(parseSortDirection(this, ctx.i4g()))));
+protoOf(Cql2ElmVisitor).l35 = function (ctx) {
+  if (!(ctx.j4g() == null)) {
+    return this.z8t_1.f7j().j85(listOf_0(this.z8t_1.w7n().a6d(parseSortDirection(this, ctx.j4g()))));
   }
   var sortItems = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.j4g().g();
+  var _iterator__ex2g4s = ctx.k4g().g();
   while (_iterator__ex2g4s.h()) {
     var sortByItemContext = _iterator__ex2g4s.i();
-    var tmp = this.d32(sortByItemContext);
+    var tmp = this.e32(sortByItemContext);
     sortItems.e(tmp instanceof SortByItem ? tmp : THROW_CCE());
   }
-  return this.y8t_1.e7j().i85(sortItems);
+  return this.z8t_1.f7j().j85(sortItems);
 };
-protoOf(Cql2ElmVisitor).q34 = function (ctx) {
+protoOf(Cql2ElmVisitor).r34 = function (ctx) {
   var tmp;
-  if (!(ctx.j3w() == null)) {
-    tmp = this.d32(ensureNotNull(ctx.j3w()));
-  } else if (!(ctx.v47() == null)) {
-    tmp = this.d32(ensureNotNull(ctx.v47()));
+  if (!(ctx.k3w() == null)) {
+    tmp = this.e32(ensureNotNull(ctx.k3w()));
+  } else if (!(ctx.w47() == null)) {
+    tmp = this.e32(ensureNotNull(ctx.w47()));
   } else {
     // Inline function 'org.cqframework.cql.cql2elm.Cql2ElmVisitor.cast' call
-    var this_0 = this.d32(ensureNotNull(ctx.w47()));
+    var this_0 = this.e32(ensureNotNull(ctx.x47()));
     var identifiers = (!(this_0 == null) ? isInterface(this_0, KtList) : false) ? this_0 : THROW_CCE();
     tmp = resolveQualifiedIdentifier(this, identifiers);
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).s36 = function (ctx) {
-  var indexer = this.y8t_1.w7p().f67(listOf([ensureNotNull(parseExpression(this, ctx.e4h())), ensureNotNull(parseExpression(this, ctx.j3w()))]));
-  this.w8t_1.o8w('System', 'Indexer', indexer);
+protoOf(Cql2ElmVisitor).t36 = function (ctx) {
+  var indexer = this.z8t_1.x7p().g67(listOf([ensureNotNull(parseExpression(this, ctx.f4h())), ensureNotNull(parseExpression(this, ctx.k3w()))]));
+  this.x8t_1.p8w('System', 'Indexer', indexer);
   return indexer;
 };
-protoOf(Cql2ElmVisitor).m37 = function (ctx) {
-  var left = ensureNotNull(parseExpression(this, ctx.e4h()));
-  this.w8t_1.pushExpressionTarget(left);
+protoOf(Cql2ElmVisitor).n37 = function (ctx) {
+  var left = ensureNotNull(parseExpression(this, ctx.f4h()));
+  this.x8t_1.pushExpressionTarget(left);
   var tmp;
   try {
-    var tmp_0 = this.d32(ctx.l52());
+    var tmp_0 = this.e32(ctx.m52());
     tmp = (tmp_0 == null ? true : tmp_0 instanceof Expression) ? tmp_0 : THROW_CCE();
   }finally {
-    this.w8t_1.popExpressionTarget();
+    this.x8t_1.popExpressionTarget();
   }
   return tmp;
 };
-protoOf(Cql2ElmVisitor).h39 = function (ctx) {
-  return this.w8t_1.resolveIdentifier(ctx.c24(), true);
+protoOf(Cql2ElmVisitor).i39 = function (ctx) {
+  return this.x8t_1.resolveIdentifier(ctx.d24(), true);
 };
-protoOf(Cql2ElmVisitor).s38 = function (ctx) {
-  return this.w8t_1.resolveIdentifier(ctx.c24(), true);
+protoOf(Cql2ElmVisitor).t38 = function (ctx) {
+  return this.x8t_1.resolveIdentifier(ctx.d24(), true);
 };
-protoOf(Cql2ElmVisitor).q38 = function (ctx) {
-  var identifier = ensureNotNull(this.k8v(ctx.d44()));
+protoOf(Cql2ElmVisitor).r38 = function (ctx) {
+  var identifier = ensureNotNull(this.l8v(ctx.e44()));
   return resolveMemberIdentifier(this, identifier);
 };
-protoOf(Cql2ElmVisitor).n38 = function (ctx) {
-  var identifier = ensureNotNull(this.k8v(ctx.d44()));
+protoOf(Cql2ElmVisitor).o38 = function (ctx) {
+  var identifier = ensureNotNull(this.l8v(ctx.e44()));
   return resolveMemberIdentifier(this, identifier);
 };
-protoOf(Cql2ElmVisitor).p8y = function (libraryName, functionName, expressions, mustResolve, allowPromotionAndDemotion, allowFluent) {
+protoOf(Cql2ElmVisitor).q8y = function (libraryName, functionName, expressions, mustResolve, allowPromotionAndDemotion, allowFluent) {
   var name = functionName;
   if (allowFluent) {
-    this.w8t_1.checkCompatibilityLevel('Fluent functions', '1.5');
+    this.x8t_1.checkCompatibilityLevel('Fluent functions', '1.5');
   }
   name = ensureSystemFunctionName(this, libraryName, name);
-  if (libraryName == null || libraryName === '' || libraryName == this.d8u_1.k8x_1) {
-    var fdis = this.d8u_1.j92(name);
+  if (libraryName == null || libraryName === '' || libraryName == this.e8u_1.l8x_1) {
+    var fdis = this.e8u_1.k92(name);
     if (!(fdis == null)) {
       var _iterator__ex2g4s = fdis.g();
       while (_iterator__ex2g4s.h()) {
         var _destruct__k2r9zo = _iterator__ex2g4s.i();
         var context = _destruct__k2r9zo.ug();
         var definition = _destruct__k2r9zo.dm();
-        var saveContext = this.g8y(context);
+        var saveContext = this.h8y(context);
         try {
           registerFunctionDefinition(this, definition);
         }finally {
-          this.b8u_1 = saveContext;
+          this.c8u_1 = saveContext;
         }
       }
     }
   }
-  var result = this.w8t_1.p8y(libraryName, name, expressions, mustResolve, allowPromotionAndDemotion, allowFluent);
+  var result = this.x8t_1.q8y(libraryName, name, expressions, mustResolve, allowPromotionAndDemotion, allowFluent);
   var tmp;
   var tmp_0;
   if (result instanceof FunctionRefInvocation) {
-    tmp_0 = !(result.s92() == null);
+    tmp_0 = !(result.t92() == null);
   } else {
     tmp_0 = false;
   }
   if (tmp_0) {
-    tmp = ensureNotNull(result.s92()).t92_1.e8x_1 == null || ensureNotNull(result.s92()).t92_1.e8x_1 == ensureNotNull(this.w8t_1.compiledLibrary.j8z_1).b8i_1;
+    tmp = ensureNotNull(result.t92()).u92_1.f8x_1 == null || ensureNotNull(result.t92()).u92_1.f8x_1 == ensureNotNull(this.x8t_1.compiledLibrary.k8z_1).c8i_1;
   } else {
     tmp = false;
   }
   if (tmp) {
-    var op = ensureNotNull(result.s92()).t92_1;
+    var op = ensureNotNull(result.t92()).u92_1;
     var fh = getFunctionHeader_0(this, op);
-    if (!fh.f8z_1) {
+    if (!fh.g8z_1) {
       var ctx = getFunctionDefinitionContext(this, fh);
-      var saveContext_0 = this.g8y(ensureNotNull(fh.d8z_1.d6w_1));
-      var saveChunks = this.c8u_1;
-      this.c8u_1 = new Stack();
+      var saveContext_0 = this.h8y(ensureNotNull(fh.e8z_1.e6w_1));
+      var saveChunks = this.d8u_1;
+      this.d8u_1 = new Stack();
       try {
         var fd = compileFunctionDefinition(this, ctx);
-        op.z8w_1 = Trackable_getInstance().n8v(fd);
-        result.c93(op.z8w_1);
+        op.a8x_1 = Trackable_getInstance().o8v(fd);
+        result.d93(op.a8x_1);
       }finally {
-        this.b8u_1 = saveContext_0;
-        this.c8u_1 = saveChunks;
+        this.c8u_1 = saveContext_0;
+        this.d8u_1 = saveChunks;
       }
     }
   }
@@ -4268,7 +4274,7 @@ protoOf(Cql2ElmVisitor).p8y = function (libraryName, functionName, expressions, 
         break $l$block;
       }
     }
-    var tmp0 = Trackable_getInstance().n8v(result.l5w());
+    var tmp0 = Trackable_getInstance().o8v(result.m5w());
     $l$block_0: {
       // Inline function 'kotlin.requireNotNull' call
       if (tmp0 == null) {
@@ -4279,30 +4285,30 @@ protoOf(Cql2ElmVisitor).p8y = function (libraryName, functionName, expressions, 
       }
     }
   }
-  return result == null ? null : result.l5w();
+  return result == null ? null : result.m5w();
 };
-protoOf(Cql2ElmVisitor).v38 = function (ctx) {
-  return resolveFunctionOrQualifiedFunction(this, ensureNotNull(this.k8v(ctx.d44())), ctx.x5d());
+protoOf(Cql2ElmVisitor).w38 = function (ctx) {
+  return resolveFunctionOrQualifiedFunction(this, ensureNotNull(this.l8v(ctx.e44())), ctx.y5d());
 };
-protoOf(Cql2ElmVisitor).p38 = function (ctx) {
-  return resolveFunctionOrQualifiedFunction(this, ensureNotNull(this.k8v(ctx.n46())), ctx.x5d());
+protoOf(Cql2ElmVisitor).q38 = function (ctx) {
+  return resolveFunctionOrQualifiedFunction(this, ensureNotNull(this.l8v(ctx.o46())), ctx.y5d());
 };
-protoOf(Cql2ElmVisitor).p34 = function (ctx) {
-  return this.d32(ctx.j3w());
+protoOf(Cql2ElmVisitor).q34 = function (ctx) {
+  return this.e32(ctx.k3w());
 };
-protoOf(Cql2ElmVisitor).n34 = function (ctx) {
-  this.w8t_1.pushIdentifierScope();
+protoOf(Cql2ElmVisitor).o34 = function (ctx) {
+  this.x8t_1.pushIdentifierScope();
   var tmp;
   try {
     registerFunctionDefinition(this, ctx);
     tmp = compileFunctionDefinition(this, ctx);
   }finally {
-    this.w8t_1.popIdentifierScope();
+    this.x8t_1.popIdentifierScope();
   }
   return tmp;
 };
 function extractLibraryIdentifier($this, parser) {
-  var context = parser.p26_1;
+  var context = parser.q26_1;
   $l$loop: while (true) {
     var tmp;
     if (!(context == null)) {
@@ -4313,14 +4319,14 @@ function extractLibraryIdentifier($this, parser) {
     if (!tmp) {
       break $l$loop;
     }
-    context = context.x29();
+    context = context.y29();
   }
   if (context instanceof LibraryContext) {
-    var ldc = context.u3t();
-    if (!((ldc == null ? null : ldc.f3u()) == null)) {
-      var identifierText = ldc.f3u().g3w().c24();
+    var ldc = context.v3t();
+    if (!((ldc == null ? null : ldc.g3u()) == null)) {
+      var identifierText = ldc.g3u().h3w().d24();
       if (startsWith(identifierText, '"')) {
-        var unescaped = StringEscapeUtils_getInstance().p93(identifierText);
+        var unescaped = StringEscapeUtils_getInstance().q93(identifierText);
         // Inline function 'kotlin.require' call
         if (!startsWith(unescaped, '"')) {
           var message = 'Expected string to start with double quotes';
@@ -4333,11 +4339,11 @@ function extractLibraryIdentifier($this, parser) {
         }
         identifierText = substring_0(unescaped, 1, unescaped.length - 1 | 0);
       }
-      var vi = (new VersionedIdentifier()).a6i(identifierText);
-      if (!(ldc.g3u() == null)) {
-        var version = StringEscapeUtils_getInstance().p93(ensureNotNull(ldc.g3u()).c24());
+      var vi = (new VersionedIdentifier()).b6i(identifierText);
+      if (!(ldc.h3u() == null)) {
+        var version = StringEscapeUtils_getInstance().q93(ensureNotNull(ldc.h3u()).d24());
         version = substring_0(version, 1, version.length - 1 | 0);
-        vi.d8i_1 = version;
+        vi.e8i_1 = version;
       }
       return vi;
     }
@@ -4345,30 +4351,30 @@ function extractLibraryIdentifier($this, parser) {
   return null;
 }
 function CqlErrorListener($outer, builder, detailedErrors) {
-  this.s93_1 = $outer;
+  this.t93_1 = $outer;
   BaseErrorListener.call(this);
-  this.q93_1 = builder;
-  this.r93_1 = detailedErrors;
+  this.r93_1 = builder;
+  this.s93_1 = detailedErrors;
 }
-protoOf(CqlErrorListener).w22 = function (recognizer, offendingSymbol, line, charPositionInLine, msg, e) {
-  var libraryIdentifier = this.q93_1.libraryIdentifier;
+protoOf(CqlErrorListener).x22 = function (recognizer, offendingSymbol, line, charPositionInLine, msg, e) {
+  var libraryIdentifier = this.r93_1.libraryIdentifier;
   if (libraryIdentifier == null) {
     if (recognizer instanceof cqlParser) {
       libraryIdentifier = extractLibraryIdentifier(this, recognizer);
     }
     if (libraryIdentifier == null) {
-      libraryIdentifier = this.s93_1.d94_1;
+      libraryIdentifier = this.t93_1.e94_1;
     }
   }
   var trackback = new TrackBack(libraryIdentifier, line, charPositionInLine, line, charPositionInLine);
-  if (this.r93_1) {
-    this.q93_1.recordParsingException(new CqlSyntaxException(msg, trackback, e));
-    this.q93_1.recordParsingException(CqlCompilerException_init_$Create$_0(msg, trackback, e));
+  if (this.s93_1) {
+    this.r93_1.recordParsingException(new CqlSyntaxException(msg, trackback, e));
+    this.r93_1.recordParsingException(CqlCompilerException_init_$Create$_0(msg, trackback, e));
   } else {
     if (offendingSymbol instanceof CommonToken) {
-      this.q93_1.recordParsingException(new CqlSyntaxException('Syntax error at ' + offendingSymbol.c24(), trackback, e));
+      this.r93_1.recordParsingException(new CqlSyntaxException('Syntax error at ' + offendingSymbol.d24(), trackback, e));
     } else {
-      this.q93_1.recordParsingException(new CqlSyntaxException('Syntax error', trackback, e));
+      this.r93_1.recordParsingException(new CqlSyntaxException('Syntax error', trackback, e));
     }
   }
 };
@@ -4376,9 +4382,8 @@ function allNonNull($this, ts) {
   return filterNotNull(ts);
 }
 function CqlCompiler(namespaceInfo, sourceInfo, libraryManager) {
-  this.t93_1 = namespaceInfo;
-  this.u93_1 = libraryManager;
-  this.v93_1 = null;
+  this.u93_1 = namespaceInfo;
+  this.v93_1 = libraryManager;
   this.w93_1 = null;
   this.x93_1 = null;
   this.y93_1 = null;
@@ -4386,33 +4391,34 @@ function CqlCompiler(namespaceInfo, sourceInfo, libraryManager) {
   this.a94_1 = null;
   this.b94_1 = null;
   this.c94_1 = null;
+  this.d94_1 = null;
   var tmp = this;
-  tmp.d94_1 = sourceInfo == null ? (new VersionedIdentifier()).a6i('Anonymous').e8i('text/cql') : sourceInfo;
-  if (!(this.t93_1 == null)) {
-    this.u93_1.namespaceManager.ensureNamespaceRegistered(this.t93_1);
+  tmp.e94_1 = sourceInfo == null ? (new VersionedIdentifier()).b6i('Anonymous').f8i('text/cql') : sourceInfo;
+  if (!(this.u93_1 == null)) {
+    this.v93_1.namespaceManager.ensureNamespaceRegistered(this.u93_1);
   }
   var tmp_0;
-  if (this.u93_1.namespaceManager.hasNamespaces()) {
-    var tmp_1 = this.u93_1.librarySourceLoader;
+  if (this.v93_1.namespaceManager.hasNamespaces()) {
+    var tmp_1 = this.v93_1.librarySourceLoader;
     tmp_0 = isInterface(tmp_1, NamespaceAware);
   } else {
     tmp_0 = false;
   }
   if (tmp_0) {
-    this.u93_1.librarySourceLoader.x62(this.u93_1.namespaceManager);
+    this.v93_1.librarySourceLoader.y62(this.v93_1.namespaceManager);
   }
 }
-protoOf(CqlCompiler).f94 = function () {
-  return this.x93_1;
-};
 protoOf(CqlCompiler).g94 = function () {
   return this.y93_1;
 };
 protoOf(CqlCompiler).h94 = function () {
+  return this.z93_1;
+};
+protoOf(CqlCompiler).i94 = function () {
   var result = HashMap_init_$Create$();
   // Inline function 'kotlin.collections.forEach' call
   // Inline function 'kotlin.collections.iterator' call
-  var _iterator__ex2g4s = this.u93_1.compiledLibraries.t2().g();
+  var _iterator__ex2g4s = this.v93_1.compiledLibraries.t2().g();
   while (_iterator__ex2g4s.h()) {
     var element = _iterator__ex2g4s.i();
     // Inline function 'kotlin.collections.component1' call
@@ -4420,64 +4426,64 @@ protoOf(CqlCompiler).h94 = function () {
     // Inline function 'kotlin.collections.component2' call
     var compiledLibrary = element.n2();
     // Inline function 'kotlin.collections.set' call
-    var value = ensureNotNull(compiledLibrary.k8z_1);
+    var value = ensureNotNull(compiledLibrary.l8z_1);
     result.u2(id, value);
   }
   return result;
 };
-protoOf(CqlCompiler).i94 = function (cqlText) {
-  return this.j94(CharStreams_getInstance().v22(cqlText));
+protoOf(CqlCompiler).j94 = function (cqlText) {
+  return this.k94(CharStreams_getInstance().w22(cqlText));
 };
-protoOf(CqlCompiler).k94 = function (source) {
-  return this.i94(readString(source));
+protoOf(CqlCompiler).l94 = function (source) {
+  return this.j94(readString(source));
 };
-protoOf(CqlCompiler).j94 = function (charStream) {
-  this.z93_1 = ArrayList_init_$Create$();
+protoOf(CqlCompiler).k94 = function (charStream) {
   this.a94_1 = ArrayList_init_$Create$();
   this.b94_1 = ArrayList_init_$Create$();
   this.c94_1 = ArrayList_init_$Create$();
-  var options = this.u93_1.cqlCompilerOptions.options;
-  var builder = new LibraryBuilder(this.t93_1, this.u93_1, new IdObjectFactory());
+  this.d94_1 = ArrayList_init_$Create$();
+  var options = this.v93_1.cqlCompilerOptions.options;
+  var builder = new LibraryBuilder(this.u93_1, this.v93_1, new IdObjectFactory());
   var errorListener = new CqlErrorListener(this, builder, options.p(Options_EnableDetailedErrors_getInstance()));
   var lexer = new cqlLexer(charStream);
-  lexer.z2c();
-  lexer.y2c(errorListener);
+  lexer.a2d();
+  lexer.z2c(errorListener);
   var tokens = new CommonTokenStream(lexer);
   var parser = new cqlParser(tokens);
-  parser.q26_1 = true;
-  parser.z2c();
-  parser.y2c(errorListener);
-  var tree = parser.r5s();
+  parser.r26_1 = true;
+  parser.a2d();
+  parser.z2c(errorListener);
+  var tree = parser.s5s();
   var preprocessor = new CqlPreprocessor(builder, tokens);
-  preprocessor.d32(tree);
-  var visitor = new Cql2ElmVisitor(builder, tokens, preprocessor.d8u_1);
-  this.x93_1 = visitor.d32(tree);
-  this.v93_1 = builder.library;
+  preprocessor.e32(tree);
+  var visitor = new Cql2ElmVisitor(builder, tokens, preprocessor.e8u_1);
+  this.y93_1 = visitor.e32(tree);
+  this.w93_1 = builder.library;
   var edits = allNonNull(this, [!options.p(Options_EnableAnnotations_getInstance()) ? ElmEdit_REMOVE_ANNOTATION_getInstance() : null, !options.p(Options_EnableResultTypes_getInstance()) ? ElmEdit_REMOVE_RESULT_TYPE_getInstance() : null, !options.p(Options_EnableLocators_getInstance()) ? ElmEdit_REMOVE_LOCATOR_getInstance() : null]);
-  (new ElmEditor(edits)).n94(ensureNotNull(this.v93_1));
-  this.w93_1 = builder.compiledLibrary;
-  this.y93_1 = visitor.h8v_1;
-  var tmp0_safe_receiver = this.z93_1;
+  (new ElmEditor(edits)).o94(ensureNotNull(this.w93_1));
+  this.x93_1 = builder.compiledLibrary;
+  this.z93_1 = visitor.i8v_1;
+  var tmp0_safe_receiver = this.a94_1;
   if (tmp0_safe_receiver == null)
     null;
   else
     tmp0_safe_receiver.n(builder.exceptions);
-  var tmp1_safe_receiver = this.a94_1;
+  var tmp1_safe_receiver = this.b94_1;
   if (tmp1_safe_receiver == null)
     null;
   else
     tmp1_safe_receiver.n(builder.errors);
-  var tmp2_safe_receiver = this.b94_1;
+  var tmp2_safe_receiver = this.c94_1;
   if (tmp2_safe_receiver == null)
     null;
   else
     tmp2_safe_receiver.n(builder.warnings);
-  var tmp3_safe_receiver = this.c94_1;
+  var tmp3_safe_receiver = this.d94_1;
   if (tmp3_safe_receiver == null)
     null;
   else
     tmp3_safe_receiver.n(builder.messages);
-  return ensureNotNull(this.v93_1);
+  return ensureNotNull(this.w93_1);
 };
 var ErrorSeverity_Info_instance;
 var ErrorSeverity_Warning_instance;
@@ -4566,10 +4572,10 @@ function CqlCompilerException(message, severity, locator, cause) {
   this.severity = severity;
   this.locator = locator;
 }
-protoOf(CqlCompilerException).q94 = function () {
+protoOf(CqlCompilerException).r94 = function () {
   return this.severity;
 };
-protoOf(CqlCompilerException).r94 = function () {
+protoOf(CqlCompilerException).s94 = function () {
   return this.locator;
 };
 var Options_EnableDateRangeOptimization_instance;
@@ -4664,9 +4670,9 @@ function Companion_1() {
   // Inline function 'kotlin.arrayOf' call
   // Inline function 'kotlin.js.unsafeCast' call
   // Inline function 'kotlin.js.asDynamic' call
-  tmp.u94_1 = [tmp_1, null, null, null, null, tmp_3, lazy(tmp_4, CqlCompilerOptions$Companion$$childSerializers$_anonymous__o2748n_1), null, null];
+  tmp.v94_1 = [tmp_1, null, null, null, null, tmp_3, lazy(tmp_4, CqlCompilerOptions$Companion$$childSerializers$_anonymous__o2748n_1), null, null];
 }
-protoOf(Companion_1).v94 = function () {
+protoOf(Companion_1).w94 = function () {
   var result = new CqlCompilerOptions();
   result.options.e(Options_EnableAnnotations_getInstance());
   result.options.e(Options_EnableLocators_getInstance());
@@ -4674,7 +4680,7 @@ protoOf(Companion_1).v94 = function () {
   result.options.e(Options_DisableListPromotion_getInstance());
   return result;
 };
-protoOf(Companion_1).m1e = function () {
+protoOf(Companion_1).n1e = function () {
   return $serializer_getInstance();
 };
 var Companion_instance_4;
@@ -4686,23 +4692,23 @@ function Companion_getInstance_4() {
 function $serializer() {
   $serializer_instance = this;
   var tmp0_serialDesc = new PluginGeneratedSerialDescriptor('org.cqframework.cql.cql2elm.CqlCompilerOptions', this, 9);
-  tmp0_serialDesc.w11('options', true);
-  tmp0_serialDesc.w11('validateUnits', true);
-  tmp0_serialDesc.w11('verifyOnly', true);
-  tmp0_serialDesc.w11('enableCqlOnly', true);
-  tmp0_serialDesc.w11('compatibilityLevel', true);
-  tmp0_serialDesc.w11('errorLevel', true);
-  tmp0_serialDesc.w11('signatureLevel', true);
-  tmp0_serialDesc.w11('analyzeDataRequirements', true);
-  tmp0_serialDesc.w11('collapseDataRequirements', true);
-  this.w94_1 = tmp0_serialDesc;
+  tmp0_serialDesc.x11('options', true);
+  tmp0_serialDesc.x11('validateUnits', true);
+  tmp0_serialDesc.x11('verifyOnly', true);
+  tmp0_serialDesc.x11('enableCqlOnly', true);
+  tmp0_serialDesc.x11('compatibilityLevel', true);
+  tmp0_serialDesc.x11('errorLevel', true);
+  tmp0_serialDesc.x11('signatureLevel', true);
+  tmp0_serialDesc.x11('analyzeDataRequirements', true);
+  tmp0_serialDesc.x11('collapseDataRequirements', true);
+  this.x94_1 = tmp0_serialDesc;
 }
-protoOf($serializer).x94 = function (encoder, value) {
-  var tmp0_desc = this.w94_1;
-  var tmp1_output = encoder.gu(tmp0_desc);
-  var tmp2_cached = Companion_getInstance_4().u94_1;
+protoOf($serializer).y94 = function (encoder, value) {
+  var tmp0_desc = this.x94_1;
+  var tmp1_output = encoder.hu(tmp0_desc);
+  var tmp2_cached = Companion_getInstance_4().v94_1;
   var tmp;
-  if (tmp1_output.dw(tmp0_desc, 0)) {
+  if (tmp1_output.ew(tmp0_desc, 0)) {
     tmp = true;
   } else {
     // Inline function 'kotlin.collections.mutableSetOf' call
@@ -4710,39 +4716,39 @@ protoOf($serializer).x94 = function (encoder, value) {
     tmp = !equals(value.options, tmp$ret$0);
   }
   if (tmp) {
-    tmp1_output.xv(tmp0_desc, 0, tmp2_cached[0].n2(), value.options);
+    tmp1_output.yv(tmp0_desc, 0, tmp2_cached[0].n2(), value.options);
   }
-  if (tmp1_output.dw(tmp0_desc, 1) ? true : !(value.validateUnits === true)) {
-    tmp1_output.nv(tmp0_desc, 1, value.validateUnits);
+  if (tmp1_output.ew(tmp0_desc, 1) ? true : !(value.validateUnits === true)) {
+    tmp1_output.ov(tmp0_desc, 1, value.validateUnits);
   }
-  if (tmp1_output.dw(tmp0_desc, 2) ? true : !(value.verifyOnly === false)) {
-    tmp1_output.nv(tmp0_desc, 2, value.verifyOnly);
+  if (tmp1_output.ew(tmp0_desc, 2) ? true : !(value.verifyOnly === false)) {
+    tmp1_output.ov(tmp0_desc, 2, value.verifyOnly);
   }
-  if (tmp1_output.dw(tmp0_desc, 3) ? true : !(value.enableCqlOnly === false)) {
-    tmp1_output.nv(tmp0_desc, 3, value.enableCqlOnly);
+  if (tmp1_output.ew(tmp0_desc, 3) ? true : !(value.enableCqlOnly === false)) {
+    tmp1_output.ov(tmp0_desc, 3, value.enableCqlOnly);
   }
-  if (tmp1_output.dw(tmp0_desc, 4) ? true : !(value.compatibilityLevel === '1.5')) {
-    tmp1_output.vv(tmp0_desc, 4, value.compatibilityLevel);
+  if (tmp1_output.ew(tmp0_desc, 4) ? true : !(value.compatibilityLevel === '1.5')) {
+    tmp1_output.wv(tmp0_desc, 4, value.compatibilityLevel);
   }
-  if (tmp1_output.dw(tmp0_desc, 5) ? true : !equals(value.errorLevel, ErrorSeverity_Info_getInstance())) {
-    tmp1_output.zv(tmp0_desc, 5, tmp2_cached[5].n2(), value.errorLevel);
+  if (tmp1_output.ew(tmp0_desc, 5) ? true : !equals(value.errorLevel, ErrorSeverity_Info_getInstance())) {
+    tmp1_output.aw(tmp0_desc, 5, tmp2_cached[5].n2(), value.errorLevel);
   }
-  if (tmp1_output.dw(tmp0_desc, 6) ? true : !value.signatureLevel.equals(SignatureLevel_Overloads_getInstance())) {
-    tmp1_output.xv(tmp0_desc, 6, tmp2_cached[6].n2(), value.signatureLevel);
+  if (tmp1_output.ew(tmp0_desc, 6) ? true : !value.signatureLevel.equals(SignatureLevel_Overloads_getInstance())) {
+    tmp1_output.yv(tmp0_desc, 6, tmp2_cached[6].n2(), value.signatureLevel);
   }
-  if (tmp1_output.dw(tmp0_desc, 7) ? true : !(value.analyzeDataRequirements === false)) {
-    tmp1_output.nv(tmp0_desc, 7, value.analyzeDataRequirements);
+  if (tmp1_output.ew(tmp0_desc, 7) ? true : !(value.analyzeDataRequirements === false)) {
+    tmp1_output.ov(tmp0_desc, 7, value.analyzeDataRequirements);
   }
-  if (tmp1_output.dw(tmp0_desc, 8) ? true : !(value.collapseDataRequirements === false)) {
-    tmp1_output.nv(tmp0_desc, 8, value.collapseDataRequirements);
+  if (tmp1_output.ew(tmp0_desc, 8) ? true : !(value.collapseDataRequirements === false)) {
+    tmp1_output.ov(tmp0_desc, 8, value.collapseDataRequirements);
   }
-  tmp1_output.hu(tmp0_desc);
+  tmp1_output.iu(tmp0_desc);
 };
-protoOf($serializer).gr = function (encoder, value) {
-  return this.x94(encoder, value instanceof CqlCompilerOptions ? value : THROW_CCE());
+protoOf($serializer).hr = function (encoder, value) {
+  return this.y94(encoder, value instanceof CqlCompilerOptions ? value : THROW_CCE());
 };
-protoOf($serializer).hr = function (decoder) {
-  var tmp0_desc = this.w94_1;
+protoOf($serializer).ir = function (decoder) {
+  var tmp0_desc = this.x94_1;
   var tmp1_flag = true;
   var tmp2_index = 0;
   var tmp3_bitMask0 = 0;
@@ -4755,82 +4761,82 @@ protoOf($serializer).hr = function (decoder) {
   var tmp10_local6 = null;
   var tmp11_local7 = false;
   var tmp12_local8 = false;
-  var tmp13_input = decoder.gu(tmp0_desc);
-  var tmp14_cached = Companion_getInstance_4().u94_1;
-  if (tmp13_input.wu()) {
-    tmp4_local0 = tmp13_input.su(tmp0_desc, 0, tmp14_cached[0].n2(), tmp4_local0);
+  var tmp13_input = decoder.hu(tmp0_desc);
+  var tmp14_cached = Companion_getInstance_4().v94_1;
+  if (tmp13_input.xu()) {
+    tmp4_local0 = tmp13_input.tu(tmp0_desc, 0, tmp14_cached[0].n2(), tmp4_local0);
     tmp3_bitMask0 = tmp3_bitMask0 | 1;
-    tmp5_local1 = tmp13_input.iu(tmp0_desc, 1);
+    tmp5_local1 = tmp13_input.ju(tmp0_desc, 1);
     tmp3_bitMask0 = tmp3_bitMask0 | 2;
-    tmp6_local2 = tmp13_input.iu(tmp0_desc, 2);
+    tmp6_local2 = tmp13_input.ju(tmp0_desc, 2);
     tmp3_bitMask0 = tmp3_bitMask0 | 4;
-    tmp7_local3 = tmp13_input.iu(tmp0_desc, 3);
+    tmp7_local3 = tmp13_input.ju(tmp0_desc, 3);
     tmp3_bitMask0 = tmp3_bitMask0 | 8;
-    tmp8_local4 = tmp13_input.qu(tmp0_desc, 4);
+    tmp8_local4 = tmp13_input.ru(tmp0_desc, 4);
     tmp3_bitMask0 = tmp3_bitMask0 | 16;
-    tmp9_local5 = tmp13_input.uu(tmp0_desc, 5, tmp14_cached[5].n2(), tmp9_local5);
+    tmp9_local5 = tmp13_input.vu(tmp0_desc, 5, tmp14_cached[5].n2(), tmp9_local5);
     tmp3_bitMask0 = tmp3_bitMask0 | 32;
-    tmp10_local6 = tmp13_input.su(tmp0_desc, 6, tmp14_cached[6].n2(), tmp10_local6);
+    tmp10_local6 = tmp13_input.tu(tmp0_desc, 6, tmp14_cached[6].n2(), tmp10_local6);
     tmp3_bitMask0 = tmp3_bitMask0 | 64;
-    tmp11_local7 = tmp13_input.iu(tmp0_desc, 7);
+    tmp11_local7 = tmp13_input.ju(tmp0_desc, 7);
     tmp3_bitMask0 = tmp3_bitMask0 | 128;
-    tmp12_local8 = tmp13_input.iu(tmp0_desc, 8);
+    tmp12_local8 = tmp13_input.ju(tmp0_desc, 8);
     tmp3_bitMask0 = tmp3_bitMask0 | 256;
   } else
     while (tmp1_flag) {
-      tmp2_index = tmp13_input.xu(tmp0_desc);
+      tmp2_index = tmp13_input.yu(tmp0_desc);
       switch (tmp2_index) {
         case -1:
           tmp1_flag = false;
           break;
         case 0:
-          tmp4_local0 = tmp13_input.su(tmp0_desc, 0, tmp14_cached[0].n2(), tmp4_local0);
+          tmp4_local0 = tmp13_input.tu(tmp0_desc, 0, tmp14_cached[0].n2(), tmp4_local0);
           tmp3_bitMask0 = tmp3_bitMask0 | 1;
           break;
         case 1:
-          tmp5_local1 = tmp13_input.iu(tmp0_desc, 1);
+          tmp5_local1 = tmp13_input.ju(tmp0_desc, 1);
           tmp3_bitMask0 = tmp3_bitMask0 | 2;
           break;
         case 2:
-          tmp6_local2 = tmp13_input.iu(tmp0_desc, 2);
+          tmp6_local2 = tmp13_input.ju(tmp0_desc, 2);
           tmp3_bitMask0 = tmp3_bitMask0 | 4;
           break;
         case 3:
-          tmp7_local3 = tmp13_input.iu(tmp0_desc, 3);
+          tmp7_local3 = tmp13_input.ju(tmp0_desc, 3);
           tmp3_bitMask0 = tmp3_bitMask0 | 8;
           break;
         case 4:
-          tmp8_local4 = tmp13_input.qu(tmp0_desc, 4);
+          tmp8_local4 = tmp13_input.ru(tmp0_desc, 4);
           tmp3_bitMask0 = tmp3_bitMask0 | 16;
           break;
         case 5:
-          tmp9_local5 = tmp13_input.uu(tmp0_desc, 5, tmp14_cached[5].n2(), tmp9_local5);
+          tmp9_local5 = tmp13_input.vu(tmp0_desc, 5, tmp14_cached[5].n2(), tmp9_local5);
           tmp3_bitMask0 = tmp3_bitMask0 | 32;
           break;
         case 6:
-          tmp10_local6 = tmp13_input.su(tmp0_desc, 6, tmp14_cached[6].n2(), tmp10_local6);
+          tmp10_local6 = tmp13_input.tu(tmp0_desc, 6, tmp14_cached[6].n2(), tmp10_local6);
           tmp3_bitMask0 = tmp3_bitMask0 | 64;
           break;
         case 7:
-          tmp11_local7 = tmp13_input.iu(tmp0_desc, 7);
+          tmp11_local7 = tmp13_input.ju(tmp0_desc, 7);
           tmp3_bitMask0 = tmp3_bitMask0 | 128;
           break;
         case 8:
-          tmp12_local8 = tmp13_input.iu(tmp0_desc, 8);
+          tmp12_local8 = tmp13_input.ju(tmp0_desc, 8);
           tmp3_bitMask0 = tmp3_bitMask0 | 256;
           break;
         default:
           throw UnknownFieldException_init_$Create$(tmp2_index);
       }
     }
-  tmp13_input.hu(tmp0_desc);
+  tmp13_input.iu(tmp0_desc);
   return CqlCompilerOptions_init_$Create$(tmp3_bitMask0, tmp4_local0, tmp5_local1, tmp6_local2, tmp7_local3, tmp8_local4, tmp9_local5, tmp10_local6, tmp11_local7, tmp12_local8, null);
 };
-protoOf($serializer).fr = function () {
-  return this.w94_1;
+protoOf($serializer).gr = function () {
+  return this.x94_1;
 };
-protoOf($serializer).l12 = function () {
-  var tmp0_cached = Companion_getInstance_4().u94_1;
+protoOf($serializer).m12 = function () {
+  var tmp0_cached = Companion_getInstance_4().v94_1;
   // Inline function 'kotlin.arrayOf' call
   // Inline function 'kotlin.js.unsafeCast' call
   // Inline function 'kotlin.js.asDynamic' call
@@ -4844,7 +4850,7 @@ function $serializer_getInstance() {
 }
 function CqlCompilerOptions_init_$Init$(seen0, options, validateUnits, verifyOnly, enableCqlOnly, compatibilityLevel, errorLevel, signatureLevel, analyzeDataRequirements, collapseDataRequirements, serializationConstructorMarker, $this) {
   if (!(0 === (0 & seen0))) {
-    throwMissingFieldException(seen0, 0, $serializer_getInstance().w94_1);
+    throwMissingFieldException(seen0, 0, $serializer_getInstance().x94_1);
   }
   if (0 === (seen0 & 1)) {
     var tmp = $this;
@@ -4890,7 +4896,7 @@ function CqlCompilerOptions_init_$Create$(seen0, options, validateUnits, verifyO
   return CqlCompilerOptions_init_$Init$(seen0, options, validateUnits, verifyOnly, enableCqlOnly, compatibilityLevel, errorLevel, signatureLevel, analyzeDataRequirements, collapseDataRequirements, serializationConstructorMarker, objectCreate(protoOf(CqlCompilerOptions)));
 }
 function defaultOptions() {
-  return Companion_getInstance_4().v94();
+  return Companion_getInstance_4().w94();
 }
 function Options_EnableDateRangeOptimization_getInstance() {
   Options_initEntries();
@@ -4958,55 +4964,55 @@ function CqlCompilerOptions() {
   this.analyzeDataRequirements = false;
   this.collapseDataRequirements = false;
 }
-protoOf(CqlCompilerOptions).y94 = function () {
+protoOf(CqlCompilerOptions).z94 = function () {
   return this.options;
 };
-protoOf(CqlCompilerOptions).z94 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).a95 = function (_set____db54di) {
   this.validateUnits = _set____db54di;
 };
-protoOf(CqlCompilerOptions).a95 = function () {
+protoOf(CqlCompilerOptions).b95 = function () {
   return this.validateUnits;
 };
-protoOf(CqlCompilerOptions).b95 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).c95 = function (_set____db54di) {
   this.verifyOnly = _set____db54di;
 };
-protoOf(CqlCompilerOptions).c95 = function () {
+protoOf(CqlCompilerOptions).d95 = function () {
   return this.verifyOnly;
 };
-protoOf(CqlCompilerOptions).d95 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).e95 = function (_set____db54di) {
   this.enableCqlOnly = _set____db54di;
 };
-protoOf(CqlCompilerOptions).e95 = function () {
+protoOf(CqlCompilerOptions).f95 = function () {
   return this.enableCqlOnly;
 };
-protoOf(CqlCompilerOptions).f95 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).g95 = function (_set____db54di) {
   this.compatibilityLevel = _set____db54di;
 };
-protoOf(CqlCompilerOptions).g95 = function () {
+protoOf(CqlCompilerOptions).h95 = function () {
   return this.compatibilityLevel;
 };
-protoOf(CqlCompilerOptions).h95 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).i95 = function (_set____db54di) {
   this.errorLevel = _set____db54di;
 };
-protoOf(CqlCompilerOptions).i95 = function () {
+protoOf(CqlCompilerOptions).j95 = function () {
   return this.errorLevel;
 };
-protoOf(CqlCompilerOptions).j95 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).k95 = function (_set____db54di) {
   this.signatureLevel = _set____db54di;
 };
-protoOf(CqlCompilerOptions).k95 = function () {
+protoOf(CqlCompilerOptions).l95 = function () {
   return this.signatureLevel;
 };
-protoOf(CqlCompilerOptions).l95 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).m95 = function (_set____db54di) {
   this.analyzeDataRequirements = _set____db54di;
 };
-protoOf(CqlCompilerOptions).m95 = function () {
+protoOf(CqlCompilerOptions).n95 = function () {
   return this.analyzeDataRequirements;
 };
-protoOf(CqlCompilerOptions).n95 = function (_set____db54di) {
+protoOf(CqlCompilerOptions).o95 = function (_set____db54di) {
   this.collapseDataRequirements = _set____db54di;
 };
-protoOf(CqlCompilerOptions).o95 = function () {
+protoOf(CqlCompilerOptions).p95 = function () {
   return this.collapseDataRequirements;
 };
 protoOf(CqlCompilerOptions).setOptions = function (options) {
@@ -5066,9 +5072,9 @@ protoOf(CqlCompilerOptions).toString = function () {
 function CqlIncludeException_init_$Init$(message, librarySystem, libraryId, versionId, $this) {
   RuntimeException_init_$Init$_0(message, $this);
   CqlIncludeException.call($this);
-  $this.p95_1 = librarySystem;
-  $this.q95_1 = libraryId;
-  $this.r95_1 = versionId;
+  $this.q95_1 = librarySystem;
+  $this.r95_1 = libraryId;
+  $this.s95_1 = versionId;
   return $this;
 }
 function CqlIncludeException_init_$Create$(message, librarySystem, libraryId, versionId) {
@@ -5172,7 +5178,7 @@ function getSourceInfo_0($this, cqlFile) {
   }
   var tmp;
   try {
-    tmp = get_SystemFileSystem().sq(cqlFile).toString();
+    tmp = get_SystemFileSystem().tq(cqlFile).toString();
   } catch ($p) {
     var tmp_0;
     if ($p instanceof IOException) {
@@ -5184,39 +5190,39 @@ function getSourceInfo_0($this, cqlFile) {
     tmp = tmp_0;
   }
   var system = tmp;
-  return (new VersionedIdentifier()).a6i(name).e8i(system);
+  return (new VersionedIdentifier()).b6i(name).f8i(system);
 }
 function Format(name, ordinal) {
   Enum.call(this, name, ordinal);
 }
 function toXml($this, library, elmLibraryWriterProvider) {
-  return Companion_instance_5.u95(library, elmLibraryWriterProvider);
+  return Companion_instance_5.v95(library, elmLibraryWriterProvider);
 }
 function toJson($this, library, elmLibraryWriterProvider) {
-  return Companion_instance_5.v95(library, elmLibraryWriterProvider);
+  return Companion_instance_5.w95(library, elmLibraryWriterProvider);
 }
 function Companion_2() {
 }
-protoOf(Companion_2).w95 = function (cqlText, libraryManager) {
-  return new CqlTranslator(null, null, CharStreams_getInstance().v22(cqlText), libraryManager);
+protoOf(Companion_2).x95 = function (cqlText, libraryManager) {
+  return new CqlTranslator(null, null, CharStreams_getInstance().w22(cqlText), libraryManager);
 };
-protoOf(Companion_2).x95 = function (namespaceInfo, source, libraryManager) {
-  return new CqlTranslator(namespaceInfo, null, CharStreams_getInstance().v22(readString(source)), libraryManager);
+protoOf(Companion_2).y95 = function (namespaceInfo, source, libraryManager) {
+  return new CqlTranslator(namespaceInfo, null, CharStreams_getInstance().w22(readString(source)), libraryManager);
 };
-protoOf(Companion_2).y95 = function (source, libraryManager) {
-  return new CqlTranslator(null, null, CharStreams_getInstance().v22(readString(source)), libraryManager);
+protoOf(Companion_2).z95 = function (source, libraryManager) {
+  return new CqlTranslator(null, null, CharStreams_getInstance().w22(readString(source)), libraryManager);
 };
-protoOf(Companion_2).z95 = function (namespaceInfo, sourceInfo, source, libraryManager) {
-  return new CqlTranslator(namespaceInfo, sourceInfo, CharStreams_getInstance().v22(readString(source)), libraryManager);
+protoOf(Companion_2).a96 = function (namespaceInfo, sourceInfo, source, libraryManager) {
+  return new CqlTranslator(namespaceInfo, sourceInfo, CharStreams_getInstance().w22(readString(source)), libraryManager);
 };
-protoOf(Companion_2).a96 = function (cqlFileName, libraryManager) {
-  var tmp0 = buffered(get_SystemFileSystem().oq(Path(cqlFileName)));
+protoOf(Companion_2).b96 = function (cqlFileName, libraryManager) {
+  var tmp0 = buffered(get_SystemFileSystem().pq(Path(cqlFileName)));
   var tmp$ret$1;
   $l$block: {
     // Inline function 'kotlin.use' call
     var exception = null;
     try {
-      tmp$ret$1 = Companion_instance_5.z95(null, getSourceInfo(Companion_instance_5, cqlFileName), tmp0, libraryManager);
+      tmp$ret$1 = Companion_instance_5.a96(null, getSourceInfo(Companion_instance_5, cqlFileName), tmp0, libraryManager);
       break $l$block;
     } catch ($p) {
       if ($p instanceof Error) {
@@ -5233,14 +5239,14 @@ protoOf(Companion_2).a96 = function (cqlFileName, libraryManager) {
   }
   return tmp$ret$1;
 };
-protoOf(Companion_2).b96 = function (namespaceInfo, cqlFileName, libraryManager) {
-  var tmp0 = buffered(get_SystemFileSystem().oq(Path(cqlFileName)));
+protoOf(Companion_2).c96 = function (namespaceInfo, cqlFileName, libraryManager) {
+  var tmp0 = buffered(get_SystemFileSystem().pq(Path(cqlFileName)));
   var tmp$ret$1;
   $l$block: {
     // Inline function 'kotlin.use' call
     var exception = null;
     try {
-      tmp$ret$1 = Companion_instance_5.z95(namespaceInfo, getSourceInfo(Companion_instance_5, cqlFileName), tmp0, libraryManager);
+      tmp$ret$1 = Companion_instance_5.a96(namespaceInfo, getSourceInfo(Companion_instance_5, cqlFileName), tmp0, libraryManager);
       break $l$block;
     } catch ($p) {
       if ($p instanceof Error) {
@@ -5257,14 +5263,14 @@ protoOf(Companion_2).b96 = function (namespaceInfo, cqlFileName, libraryManager)
   }
   return tmp$ret$1;
 };
-protoOf(Companion_2).c96 = function (cqlFile, libraryManager) {
-  var tmp0 = buffered(get_SystemFileSystem().oq(cqlFile));
+protoOf(Companion_2).d96 = function (cqlFile, libraryManager) {
+  var tmp0 = buffered(get_SystemFileSystem().pq(cqlFile));
   var tmp$ret$1;
   $l$block: {
     // Inline function 'kotlin.use' call
     var exception = null;
     try {
-      tmp$ret$1 = Companion_instance_5.z95(null, getSourceInfo_0(Companion_instance_5, cqlFile), tmp0, libraryManager);
+      tmp$ret$1 = Companion_instance_5.a96(null, getSourceInfo_0(Companion_instance_5, cqlFile), tmp0, libraryManager);
       break $l$block;
     } catch ($p) {
       if ($p instanceof Error) {
@@ -5281,14 +5287,14 @@ protoOf(Companion_2).c96 = function (cqlFile, libraryManager) {
   }
   return tmp$ret$1;
 };
-protoOf(Companion_2).d96 = function (namespaceInfo, cqlFile, libraryManager) {
-  var tmp0 = buffered(get_SystemFileSystem().oq(cqlFile));
+protoOf(Companion_2).e96 = function (namespaceInfo, cqlFile, libraryManager) {
+  var tmp0 = buffered(get_SystemFileSystem().pq(cqlFile));
   var tmp$ret$1;
   $l$block: {
     // Inline function 'kotlin.use' call
     var exception = null;
     try {
-      tmp$ret$1 = Companion_instance_5.z95(namespaceInfo, getSourceInfo_0(Companion_instance_5, cqlFile), tmp0, libraryManager);
+      tmp$ret$1 = Companion_instance_5.a96(namespaceInfo, getSourceInfo_0(Companion_instance_5, cqlFile), tmp0, libraryManager);
       break $l$block;
     } catch ($p) {
       if ($p instanceof Error) {
@@ -5305,14 +5311,14 @@ protoOf(Companion_2).d96 = function (namespaceInfo, cqlFile, libraryManager) {
   }
   return tmp$ret$1;
 };
-protoOf(Companion_2).e96 = function (namespaceInfo, sourceInfo, cqlFile, libraryManager) {
-  var tmp0 = buffered(get_SystemFileSystem().oq(cqlFile));
+protoOf(Companion_2).f96 = function (namespaceInfo, sourceInfo, cqlFile, libraryManager) {
+  var tmp0 = buffered(get_SystemFileSystem().pq(cqlFile));
   var tmp$ret$1;
   $l$block: {
     // Inline function 'kotlin.use' call
     var exception = null;
     try {
-      tmp$ret$1 = Companion_instance_5.z95(namespaceInfo, sourceInfo, tmp0, libraryManager);
+      tmp$ret$1 = Companion_instance_5.a96(namespaceInfo, sourceInfo, tmp0, libraryManager);
       break $l$block;
     } catch ($p) {
       if ($p instanceof Error) {
@@ -5329,42 +5335,42 @@ protoOf(Companion_2).e96 = function (namespaceInfo, sourceInfo, cqlFile, library
   }
   return tmp$ret$1;
 };
-protoOf(Companion_2).u95 = function (library, elmLibraryWriterProvider) {
-  return elmLibraryWriterProvider.l8j(LibraryContentType_XML_getInstance().i96()).o8j(library);
+protoOf(Companion_2).v95 = function (library, elmLibraryWriterProvider) {
+  return elmLibraryWriterProvider.m8j(LibraryContentType_XML_getInstance().j96()).p8j(library);
 };
 protoOf(Companion_2).convertToXml$default = function (library, elmLibraryWriterProvider, $super) {
   elmLibraryWriterProvider = elmLibraryWriterProvider === VOID ? DefaultElmLibraryWriterProvider_instance : elmLibraryWriterProvider;
-  return $super === VOID ? this.u95(library, elmLibraryWriterProvider) : $super.u95.call(this, library, elmLibraryWriterProvider);
+  return $super === VOID ? this.v95(library, elmLibraryWriterProvider) : $super.v95.call(this, library, elmLibraryWriterProvider);
 };
-protoOf(Companion_2).v95 = function (library, elmLibraryWriterProvider) {
-  return elmLibraryWriterProvider.l8j(LibraryContentType_JSON_getInstance().i96()).o8j(library);
+protoOf(Companion_2).w95 = function (library, elmLibraryWriterProvider) {
+  return elmLibraryWriterProvider.m8j(LibraryContentType_JSON_getInstance().j96()).p8j(library);
 };
 protoOf(Companion_2).convertToJson$default = function (library, elmLibraryWriterProvider, $super) {
   elmLibraryWriterProvider = elmLibraryWriterProvider === VOID ? DefaultElmLibraryWriterProvider_instance : elmLibraryWriterProvider;
-  return $super === VOID ? this.v95(library, elmLibraryWriterProvider) : $super.v95.call(this, library, elmLibraryWriterProvider);
+  return $super === VOID ? this.w95(library, elmLibraryWriterProvider) : $super.w95.call(this, library, elmLibraryWriterProvider);
 };
 var Companion_instance_5;
 function Companion_getInstance_5() {
   return Companion_instance_5;
 }
 function fromText(cqlText, libraryManager) {
-  return Companion_instance_5.w95(cqlText, libraryManager);
+  return Companion_instance_5.x95(cqlText, libraryManager);
 }
 function fromSource(namespaceInfo, sourceInfo, source, libraryManager) {
-  return Companion_instance_5.z95(namespaceInfo, sourceInfo, source, libraryManager);
+  return Companion_instance_5.a96(namespaceInfo, sourceInfo, source, libraryManager);
 }
 function fromFile(namespaceInfo, sourceInfo, cqlFile, libraryManager) {
-  return Companion_instance_5.e96(namespaceInfo, sourceInfo, cqlFile, libraryManager);
+  return Companion_instance_5.f96(namespaceInfo, sourceInfo, cqlFile, libraryManager);
 }
 function convertToXml(library, elmLibraryWriterProvider) {
-  return Companion_instance_5.u95(library, elmLibraryWriterProvider);
+  return Companion_instance_5.v95(library, elmLibraryWriterProvider);
 }
 function convertToXml_0(library, elmLibraryWriterProvider, $super) {
   elmLibraryWriterProvider = elmLibraryWriterProvider === VOID ? DefaultElmLibraryWriterProvider_instance : elmLibraryWriterProvider;
   return convertToXml(library, elmLibraryWriterProvider);
 }
 function convertToJson(library, elmLibraryWriterProvider) {
-  return Companion_instance_5.v95(library, elmLibraryWriterProvider);
+  return Companion_instance_5.w95(library, elmLibraryWriterProvider);
 }
 function convertToJson_0(library, elmLibraryWriterProvider, $super) {
   elmLibraryWriterProvider = elmLibraryWriterProvider === VOID ? DefaultElmLibraryWriterProvider_instance : elmLibraryWriterProvider;
@@ -5383,49 +5389,49 @@ function Format_COFFEE_getInstance() {
   return Format_COFFEE_instance;
 }
 function CqlTranslator(namespaceInfo, sourceInfo, is, libraryManager) {
-  this.j96_1 = new CqlCompiler(namespaceInfo, sourceInfo, libraryManager);
-  this.j96_1.j94(is);
+  this.k96_1 = new CqlCompiler(namespaceInfo, sourceInfo, libraryManager);
+  this.k96_1.k94(is);
 }
-protoOf(CqlTranslator).k96 = function (elmLibraryWriterProvider) {
-  return toXml(this, ensureNotNull(this.j96_1.v93_1), elmLibraryWriterProvider);
+protoOf(CqlTranslator).l96 = function (elmLibraryWriterProvider) {
+  return toXml(this, ensureNotNull(this.k96_1.w93_1), elmLibraryWriterProvider);
 };
 protoOf(CqlTranslator).toXml = function (elmLibraryWriterProvider, $super) {
   elmLibraryWriterProvider = elmLibraryWriterProvider === VOID ? DefaultElmLibraryWriterProvider_instance : elmLibraryWriterProvider;
-  return $super === VOID ? this.k96(elmLibraryWriterProvider) : $super.k96.call(this, elmLibraryWriterProvider);
+  return $super === VOID ? this.l96(elmLibraryWriterProvider) : $super.l96.call(this, elmLibraryWriterProvider);
 };
-protoOf(CqlTranslator).l96 = function (elmLibraryWriterProvider) {
-  return toJson(this, ensureNotNull(this.j96_1.v93_1), elmLibraryWriterProvider);
+protoOf(CqlTranslator).m96 = function (elmLibraryWriterProvider) {
+  return toJson(this, ensureNotNull(this.k96_1.w93_1), elmLibraryWriterProvider);
 };
 protoOf(CqlTranslator).toJson = function (elmLibraryWriterProvider, $super) {
   elmLibraryWriterProvider = elmLibraryWriterProvider === VOID ? DefaultElmLibraryWriterProvider_instance : elmLibraryWriterProvider;
-  return $super === VOID ? this.l96(elmLibraryWriterProvider) : $super.l96.call(this, elmLibraryWriterProvider);
+  return $super === VOID ? this.m96(elmLibraryWriterProvider) : $super.m96.call(this, elmLibraryWriterProvider);
 };
 protoOf(CqlTranslator).toELM = function () {
-  return this.j96_1.v93_1;
-};
-protoOf(CqlTranslator).m96 = function () {
-  return this.j96_1.w93_1;
-};
-protoOf(CqlTranslator).toObject = function () {
-  return this.j96_1.f94();
-};
-protoOf(CqlTranslator).toRetrieves = function () {
-  return this.j96_1.g94();
-};
-protoOf(CqlTranslator).h94 = function () {
-  return this.j96_1.h94();
+  return this.k96_1.w93_1;
 };
 protoOf(CqlTranslator).n96 = function () {
-  return this.j96_1.z93_1;
+  return this.k96_1.x93_1;
+};
+protoOf(CqlTranslator).toObject = function () {
+  return this.k96_1.g94();
+};
+protoOf(CqlTranslator).toRetrieves = function () {
+  return this.k96_1.h94();
+};
+protoOf(CqlTranslator).i94 = function () {
+  return this.k96_1.i94();
 };
 protoOf(CqlTranslator).o96 = function () {
-  return this.j96_1.a94_1;
+  return this.k96_1.a94_1;
 };
 protoOf(CqlTranslator).p96 = function () {
-  return this.j96_1.b94_1;
+  return this.k96_1.b94_1;
 };
 protoOf(CqlTranslator).q96 = function () {
-  return this.j96_1.c94_1;
+  return this.k96_1.c94_1;
+};
+protoOf(CqlTranslator).r96 = function () {
+  return this.k96_1.d94_1;
 };
 var Format_XML_instance_0;
 var Format_JSON_instance_0;
@@ -5469,19 +5475,19 @@ function Companion_3() {
   // Inline function 'kotlin.arrayOf' call
   // Inline function 'kotlin.js.unsafeCast' call
   // Inline function 'kotlin.js.asDynamic' call
-  tmp.t96_1 = [null, lazy(tmp_0, CqlTranslatorOptions$Companion$$childSerializers$_anonymous__rm62fw)];
+  tmp.u96_1 = [null, lazy(tmp_0, CqlTranslatorOptions$Companion$$childSerializers$_anonymous__rm62fw)];
 }
-protoOf(Companion_3).v94 = function () {
-  return (new CqlTranslatorOptions()).withCqlCompilerOptions(Companion_getInstance_4().v94()).withFormats(setOf(Format_XML_getInstance_0()));
+protoOf(Companion_3).w94 = function () {
+  return (new CqlTranslatorOptions()).withCqlCompilerOptions(Companion_getInstance_4().w94()).withFormats(setOf(Format_XML_getInstance_0()));
 };
-protoOf(Companion_3).u96 = function (path) {
-  var tmp0 = buffered(get_SystemFileSystem().oq(path));
+protoOf(Companion_3).v96 = function (path) {
+  var tmp0 = buffered(get_SystemFileSystem().pq(path));
   var tmp$ret$1;
   $l$block: {
     // Inline function 'kotlin.use' call
     var exception = null;
     try {
-      tmp$ret$1 = Companion_getInstance_6().v96(tmp0);
+      tmp$ret$1 = Companion_getInstance_6().w96(tmp0);
       break $l$block;
     } catch ($p) {
       if ($p instanceof Error) {
@@ -5498,10 +5504,10 @@ protoOf(Companion_3).u96 = function (path) {
   }
   return tmp$ret$1;
 };
-protoOf(Companion_3).v96 = function (source) {
+protoOf(Companion_3).w96 = function (source) {
   return readTranslatorOptionsFromJson(source);
 };
-protoOf(Companion_3).m1e = function () {
+protoOf(Companion_3).n1e = function () {
   return $serializer_getInstance_0();
 };
 var Companion_instance_6;
@@ -5513,66 +5519,66 @@ function Companion_getInstance_6() {
 function $serializer_0() {
   $serializer_instance_0 = this;
   var tmp0_serialDesc = new PluginGeneratedSerialDescriptor('org.cqframework.cql.cql2elm.CqlTranslatorOptions', this, 2);
-  tmp0_serialDesc.w11('cqlCompilerOptions', true);
-  tmp0_serialDesc.w11('formats', true);
-  this.w96_1 = tmp0_serialDesc;
+  tmp0_serialDesc.x11('cqlCompilerOptions', true);
+  tmp0_serialDesc.x11('formats', true);
+  this.x96_1 = tmp0_serialDesc;
 }
-protoOf($serializer_0).x96 = function (encoder, value) {
-  var tmp0_desc = this.w96_1;
-  var tmp1_output = encoder.gu(tmp0_desc);
-  var tmp2_cached = Companion_getInstance_6().t96_1;
-  if (tmp1_output.dw(tmp0_desc, 0) ? true : !(value.cqlCompilerOptions == null)) {
-    tmp1_output.zv(tmp0_desc, 0, $serializer_getInstance(), value.cqlCompilerOptions);
+protoOf($serializer_0).y96 = function (encoder, value) {
+  var tmp0_desc = this.x96_1;
+  var tmp1_output = encoder.hu(tmp0_desc);
+  var tmp2_cached = Companion_getInstance_6().u96_1;
+  if (tmp1_output.ew(tmp0_desc, 0) ? true : !(value.cqlCompilerOptions == null)) {
+    tmp1_output.aw(tmp0_desc, 0, $serializer_getInstance(), value.cqlCompilerOptions);
   }
-  if (tmp1_output.dw(tmp0_desc, 1) ? true : !(value.formats == null)) {
-    tmp1_output.zv(tmp0_desc, 1, tmp2_cached[1].n2(), value.formats);
+  if (tmp1_output.ew(tmp0_desc, 1) ? true : !(value.formats == null)) {
+    tmp1_output.aw(tmp0_desc, 1, tmp2_cached[1].n2(), value.formats);
   }
-  tmp1_output.hu(tmp0_desc);
+  tmp1_output.iu(tmp0_desc);
 };
-protoOf($serializer_0).gr = function (encoder, value) {
-  return this.x96(encoder, value instanceof CqlTranslatorOptions ? value : THROW_CCE());
+protoOf($serializer_0).hr = function (encoder, value) {
+  return this.y96(encoder, value instanceof CqlTranslatorOptions ? value : THROW_CCE());
 };
-protoOf($serializer_0).hr = function (decoder) {
-  var tmp0_desc = this.w96_1;
+protoOf($serializer_0).ir = function (decoder) {
+  var tmp0_desc = this.x96_1;
   var tmp1_flag = true;
   var tmp2_index = 0;
   var tmp3_bitMask0 = 0;
   var tmp4_local0 = null;
   var tmp5_local1 = null;
-  var tmp6_input = decoder.gu(tmp0_desc);
-  var tmp7_cached = Companion_getInstance_6().t96_1;
-  if (tmp6_input.wu()) {
-    tmp4_local0 = tmp6_input.uu(tmp0_desc, 0, $serializer_getInstance(), tmp4_local0);
+  var tmp6_input = decoder.hu(tmp0_desc);
+  var tmp7_cached = Companion_getInstance_6().u96_1;
+  if (tmp6_input.xu()) {
+    tmp4_local0 = tmp6_input.vu(tmp0_desc, 0, $serializer_getInstance(), tmp4_local0);
     tmp3_bitMask0 = tmp3_bitMask0 | 1;
-    tmp5_local1 = tmp6_input.uu(tmp0_desc, 1, tmp7_cached[1].n2(), tmp5_local1);
+    tmp5_local1 = tmp6_input.vu(tmp0_desc, 1, tmp7_cached[1].n2(), tmp5_local1);
     tmp3_bitMask0 = tmp3_bitMask0 | 2;
   } else
     while (tmp1_flag) {
-      tmp2_index = tmp6_input.xu(tmp0_desc);
+      tmp2_index = tmp6_input.yu(tmp0_desc);
       switch (tmp2_index) {
         case -1:
           tmp1_flag = false;
           break;
         case 0:
-          tmp4_local0 = tmp6_input.uu(tmp0_desc, 0, $serializer_getInstance(), tmp4_local0);
+          tmp4_local0 = tmp6_input.vu(tmp0_desc, 0, $serializer_getInstance(), tmp4_local0);
           tmp3_bitMask0 = tmp3_bitMask0 | 1;
           break;
         case 1:
-          tmp5_local1 = tmp6_input.uu(tmp0_desc, 1, tmp7_cached[1].n2(), tmp5_local1);
+          tmp5_local1 = tmp6_input.vu(tmp0_desc, 1, tmp7_cached[1].n2(), tmp5_local1);
           tmp3_bitMask0 = tmp3_bitMask0 | 2;
           break;
         default:
           throw UnknownFieldException_init_$Create$(tmp2_index);
       }
     }
-  tmp6_input.hu(tmp0_desc);
+  tmp6_input.iu(tmp0_desc);
   return CqlTranslatorOptions_init_$Create$(tmp3_bitMask0, tmp4_local0, tmp5_local1, null);
 };
-protoOf($serializer_0).fr = function () {
-  return this.w96_1;
+protoOf($serializer_0).gr = function () {
+  return this.x96_1;
 };
-protoOf($serializer_0).l12 = function () {
-  var tmp0_cached = Companion_getInstance_6().t96_1;
+protoOf($serializer_0).m12 = function () {
+  var tmp0_cached = Companion_getInstance_6().u96_1;
   // Inline function 'kotlin.arrayOf' call
   // Inline function 'kotlin.js.unsafeCast' call
   // Inline function 'kotlin.js.asDynamic' call
@@ -5586,7 +5592,7 @@ function $serializer_getInstance_0() {
 }
 function CqlTranslatorOptions_init_$Init$(seen0, cqlCompilerOptions, formats, serializationConstructorMarker, $this) {
   if (!(0 === (0 & seen0))) {
-    throwMissingFieldException(seen0, 0, $serializer_getInstance_0().w96_1);
+    throwMissingFieldException(seen0, 0, $serializer_getInstance_0().x96_1);
   }
   if (0 === (seen0 & 1))
     $this.cqlCompilerOptions = null;
@@ -5602,13 +5608,13 @@ function CqlTranslatorOptions_init_$Create$(seen0, cqlCompilerOptions, formats, 
   return CqlTranslatorOptions_init_$Init$(seen0, cqlCompilerOptions, formats, serializationConstructorMarker, objectCreate(protoOf(CqlTranslatorOptions)));
 }
 function defaultOptions_0() {
-  return Companion_getInstance_6().v94();
+  return Companion_getInstance_6().w94();
 }
 function fromFile_0(path) {
-  return Companion_getInstance_6().u96(path);
+  return Companion_getInstance_6().v96(path);
 }
 function fromSource_0(source) {
-  return Companion_getInstance_6().v96(source);
+  return Companion_getInstance_6().w96(source);
 }
 function Format_XML_getInstance_0() {
   Format_initEntries_0();
@@ -5627,16 +5633,16 @@ function CqlTranslatorOptions() {
   this.cqlCompilerOptions = null;
   this.formats = null;
 }
-protoOf(CqlTranslatorOptions).y96 = function (_set____db54di) {
+protoOf(CqlTranslatorOptions).z96 = function (_set____db54di) {
   this.cqlCompilerOptions = _set____db54di;
 };
-protoOf(CqlTranslatorOptions).z96 = function () {
+protoOf(CqlTranslatorOptions).a97 = function () {
   return this.cqlCompilerOptions;
 };
-protoOf(CqlTranslatorOptions).a97 = function (_set____db54di) {
+protoOf(CqlTranslatorOptions).b97 = function (_set____db54di) {
   this.formats = _set____db54di;
 };
-protoOf(CqlTranslatorOptions).b97 = function () {
+protoOf(CqlTranslatorOptions).c97 = function () {
   return this.formats;
 };
 protoOf(CqlTranslatorOptions).withCqlCompilerOptions = function (cqlCompilerOptions) {
@@ -5651,7 +5657,7 @@ protoOf(CqlTranslatorOptions).toSink = function (sink) {
   writeTranslatorOptionsToJson(this, sink);
 };
 protoOf(CqlTranslatorOptions).toFile = function (path) {
-  var tmp0 = buffered_0(get_SystemFileSystem().qq(path));
+  var tmp0 = buffered_0(get_SystemFileSystem().rq(path));
   $l$block: {
     // Inline function 'kotlin.use' call
     var exception = null;
@@ -5683,24 +5689,24 @@ function readTranslatorOptionsFromJson(source) {
   // Inline function 'kotlinx.serialization.json.Json.decodeFromString' call
   var this_0 = get_cqlTranslatorOptionsJson();
   // Inline function 'kotlinx.serialization.serializer' call
-  var this_1 = this_0.vu();
+  var this_1 = this_0.wu();
   // Inline function 'kotlinx.serialization.internal.cast' call
   var this_2 = serializer(this_1, createKType(getKClass(CqlCompilerOptions), arrayOf([]), false));
   var tmp$ret$1 = isInterface(this_2, KSerializer) ? this_2 : THROW_CCE();
-  var compilerOptions = this_0.e1c(tmp$ret$1, string);
+  var compilerOptions = this_0.f1c(tmp$ret$1, string);
   // Inline function 'kotlinx.serialization.json.Json.decodeFromString' call
   var this_3 = get_cqlTranslatorOptionsJson();
   // Inline function 'kotlinx.serialization.serializer' call
-  var this_4 = this_3.vu();
+  var this_4 = this_3.wu();
   // Inline function 'kotlinx.serialization.internal.cast' call
   var this_5 = serializer(this_4, createKType(getKClass(CqlTranslatorOptions), arrayOf([]), false));
   var tmp$ret$4 = isInterface(this_5, KSerializer) ? this_5 : THROW_CCE();
-  var translatorOptions = this_3.e1c(tmp$ret$4, string);
+  var translatorOptions = this_3.f1c(tmp$ret$4, string);
   return translatorOptions.withCqlCompilerOptions(compilerOptions);
 }
 function writeTranslatorOptionsToJson(options, sink) {
   _init_properties_CqlTranslatorOptionsMapper_kt__z0xhh5();
-  var jsonElement = get_cqlTranslatorOptionsJson().f1c(Companion_getInstance_6().m1e(), options);
+  var jsonElement = get_cqlTranslatorOptionsJson().g1c(Companion_getInstance_6().n1e(), options);
   // Inline function 'kotlin.require' call
   // Inline function 'kotlin.require' call
   if (!(jsonElement instanceof JsonObject)) {
@@ -5758,7 +5764,7 @@ function writeTranslatorOptionsToJson(options, sink) {
   // Inline function 'kotlinx.serialization.json.io.encodeToSink' call
   var value_0 = new JsonObject(unwrapped);
   // Inline function 'kotlinx.serialization.serializer' call
-  var this_1 = tmp0_0.vu();
+  var this_1 = tmp0_0.wu();
   // Inline function 'kotlinx.serialization.internal.cast' call
   var this_2 = serializer(this_1, createKType(getKClass(JsonObject), arrayOf([]), false));
   var tmp$ret$19 = isInterface(this_2, KSerializer) ? this_2 : THROW_CCE();
@@ -5766,8 +5772,8 @@ function writeTranslatorOptionsToJson(options, sink) {
 }
 function cqlTranslatorOptionsJson$lambda($this$Json) {
   _init_properties_CqlTranslatorOptionsMapper_kt__z0xhh5();
-  $this$Json.v1c_1 = false;
-  $this$Json.w1c_1 = true;
+  $this$Json.w1c_1 = false;
+  $this$Json.x1c_1 = true;
   return Unit_instance;
 }
 var properties_initialized_CqlTranslatorOptionsMapper_kt_k3darb;
@@ -5778,49 +5784,275 @@ function _init_properties_CqlTranslatorOptionsMapper_kt__z0xhh5() {
   }
 }
 function compatibleWith($this, a, b) {
-  return !(a == null) && !(b == null) && a.z5z(b);
+  return !(a == null) && !(b == null) && a.a60(b);
 }
 function superTypeOf($this, a, b) {
-  return !(a == null) && !(b == null) && a.y5z(b);
+  return !(a == null) && !(b == null) && a.z5z(b);
 }
 function DataTypes() {
 }
-protoOf(DataTypes).n91 = function (actualType, expectedType) {
+protoOf(DataTypes).o91 = function (actualType, expectedType) {
   // Inline function 'kotlin.require' call
-  if (!this.u8z(actualType, expectedType)) {
-    var tmp1_elvis_lhs = expectedType == null ? null : expectedType.w5z();
+  if (!this.v8z(actualType, expectedType)) {
+    var tmp1_elvis_lhs = expectedType == null ? null : expectedType.x5z();
     var tmp = "Expected an expression of type '" + (tmp1_elvis_lhs == null ? '<unknown>' : tmp1_elvis_lhs) + "',";
-    var tmp3_elvis_lhs = actualType == null ? null : actualType.w5z();
+    var tmp3_elvis_lhs = actualType == null ? null : actualType.x5z();
     var message = tmp + ("but found an expression of type '" + (tmp3_elvis_lhs == null ? '<unknown>' : tmp3_elvis_lhs) + "'.");
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
 };
-protoOf(DataTypes).g91 = function (targetType, sourceType) {
+protoOf(DataTypes).h91 = function (targetType, sourceType) {
   // Inline function 'kotlin.require' call
-  if (!(this.u8z(targetType, sourceType) || superTypeOf(this, targetType, sourceType) || compatibleWith(this, sourceType, targetType))) {
-    var tmp1_elvis_lhs = sourceType == null ? null : sourceType.w5z();
+  if (!(this.v8z(targetType, sourceType) || superTypeOf(this, targetType, sourceType) || compatibleWith(this, sourceType, targetType))) {
+    var tmp1_elvis_lhs = sourceType == null ? null : sourceType.x5z();
     var tmp = "Expression of type '" + (tmp1_elvis_lhs == null ? '<unknown>' : tmp1_elvis_lhs) + "'";
-    var tmp3_elvis_lhs = targetType == null ? null : targetType.w5z();
+    var tmp3_elvis_lhs = targetType == null ? null : targetType.x5z();
     var message = tmp + (" cannot be cast as a value of type '" + (tmp3_elvis_lhs == null ? '<unknown>' : tmp3_elvis_lhs) + "'.");
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
 };
-protoOf(DataTypes).q8z = function (a, b) {
+protoOf(DataTypes).r8z = function (a, b) {
   return !(a == null) && !(b == null) && equals(a, b);
 };
-protoOf(DataTypes).u8z = function (a, b) {
-  return !(a == null) && !(b == null) && a.x5z(b);
+protoOf(DataTypes).v8z = function (a, b) {
+  return !(a == null) && !(b == null) && a.y5z(b);
 };
 var DataTypes_instance;
 function DataTypes_getInstance() {
   return DataTypes_instance;
 }
-function IdentifierContext(identifierRef, trackableSubclass) {
-  this.c97_1 = identifierRef;
-  this.d97_1 = trackableSubclass;
+function DefaultLibrarySourceProvider(path) {
+  this.d97_1 = null;
+  this.e97(path);
 }
-protoOf(IdentifierContext).e97 = function () {
-  return ensureNotNull(this.c97_1.f70_1);
+protoOf(DefaultLibrarySourceProvider).e97 = function (path) {
+  var tmp0_safe_receiver = get_SystemFileSystem().sq(path);
+  // Inline function 'kotlin.require' call
+  if (!((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.wq_1) === true)) {
+    var message = "path '" + path.toString() + "' is not a valid directory";
+    throw IllegalArgumentException_init_$Create$(toString(message));
+  }
+  this.d97_1 = path;
+};
+protoOf(DefaultLibrarySourceProvider).getLibrarySource = function (libraryIdentifier) {
+  var currentPath = this.d97_1;
+  if (!(currentPath == null)) {
+    var libraryName = ensureNotNull(libraryIdentifier.c8i_1);
+    var libraryPath = Path_0(currentPath, [libraryName + (!(libraryIdentifier.e8i_1 == null) ? '-' + libraryIdentifier.e8i_1 : '') + '.cql']);
+    var libraryFile = libraryPath;
+    if (!get_SystemFileSystem().oq(ensureNotNull(libraryFile))) {
+      var mostRecentFile = null;
+      var mostRecent = null;
+      var requestedVersion = libraryIdentifier.e8i_1 == null ? null : new Version(ensureNotNull(libraryIdentifier.e8i_1));
+      // Inline function 'kotlin.collections.filter' call
+      var tmp0 = get_SystemFileSystem().uq(currentPath);
+      // Inline function 'kotlin.collections.filterTo' call
+      var destination = ArrayList_init_$Create$();
+      var _iterator__ex2g4s = tmp0.g();
+      while (_iterator__ex2g4s.h()) {
+        var element = _iterator__ex2g4s.i();
+        var fileName = element.z2();
+        if (startsWith(fileName, libraryName) && endsWith(fileName, '.cql')) {
+          destination.e(element);
+        }
+      }
+      var _iterator__ex2g4s_0 = destination.g();
+      while (_iterator__ex2g4s_0.h()) {
+        var file = _iterator__ex2g4s_0.i();
+        var fileName_0 = file.z2();
+        var indexOfExtension = lastIndexOf_0(fileName_0, '.');
+        if (indexOfExtension >= 0) {
+          fileName_0 = substring_0(fileName_0, 0, indexOfExtension);
+        }
+        var indexOfVersionSeparator = indexOf(fileName_0, '-');
+        if (indexOfVersionSeparator >= 0) {
+          var version = new Version(substring(fileName_0, indexOfVersionSeparator + 1 | 0));
+          if (indexOfVersionSeparator === libraryName.length && requestedVersion == null || version.n97(requestedVersion)) {
+            if (mostRecent == null || (version.l97() && mostRecent.l97() && version.m97(mostRecent) > 0)) {
+              mostRecent = version;
+              mostRecentFile = file;
+            } else if (version.k97(mostRecent)) {
+              mostRecent = version;
+              mostRecentFile = file;
+            }
+          }
+        } else {
+          if (fileName_0 === libraryName && mostRecent == null) {
+            mostRecentFile = file;
+          }
+        }
+      }
+      libraryFile = mostRecentFile;
+    }
+    try {
+      if (!(libraryFile == null)) {
+        return buffered(get_SystemFileSystem().pq(libraryFile));
+      }
+    } catch ($p) {
+      if ($p instanceof FileNotFoundException) {
+        var e = $p;
+        throw IllegalArgumentException_init_$Create$_0('Could not load source for library ' + libraryIdentifier.c8i_1 + '.', e);
+      } else {
+        throw $p;
+      }
+    }
+  }
+  return null;
+};
+protoOf(DefaultLibrarySourceProvider).getLibraryContent = function (libraryIdentifier, type) {
+  if (LibraryContentType_CQL_getInstance().equals(type)) {
+    return this.getLibrarySource(libraryIdentifier);
+  }
+  return null;
+};
+function DefaultModelInfoProvider(path) {
+  this.o97_1 = null;
+  this.e97(path);
+}
+protoOf(DefaultModelInfoProvider).e97 = function (path) {
+  var tmp0_safe_receiver = get_SystemFileSystem().sq(path);
+  // Inline function 'kotlin.require' call
+  if (!((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.wq_1) === true)) {
+    var message = "path '" + path.toString() + "' is not a valid directory";
+    throw IllegalArgumentException_init_$Create$(toString(message));
+  }
+  this.o97_1 = path;
+};
+protoOf(DefaultModelInfoProvider).load = function (modelIdentifier) {
+  var currentPath = this.o97_1;
+  if (!(currentPath == null)) {
+    var modelName = modelIdentifier.v62_1;
+    var modelVersion = modelIdentifier.x62_1;
+    // Inline function 'kotlin.text.lowercase' call
+    // Inline function 'kotlin.js.asDynamic' call
+    var tmp$ret$1 = modelName.toLowerCase();
+    var modelPath = Path_0(currentPath, [tmp$ret$1 + '-modelinfo' + (!(modelVersion == null) ? '-' + modelVersion : '') + '.xml']);
+    var modelFile = modelPath;
+    if (!get_SystemFileSystem().oq(ensureNotNull(modelFile))) {
+      var mostRecentFile = null;
+      var mostRecent = null;
+      try {
+        var requestedVersion = modelVersion == null ? null : new Version(modelVersion);
+        // Inline function 'kotlin.collections.filter' call
+        var tmp0 = get_SystemFileSystem().uq(currentPath);
+        // Inline function 'kotlin.collections.filterTo' call
+        var destination = ArrayList_init_$Create$();
+        var _iterator__ex2g4s = tmp0.g();
+        while (_iterator__ex2g4s.h()) {
+          var element = _iterator__ex2g4s.i();
+          var fileName = element.z2();
+          var tmp;
+          // Inline function 'kotlin.text.lowercase' call
+          // Inline function 'kotlin.js.asDynamic' call
+          var tmp$ret$3 = modelName.toLowerCase();
+          if (startsWith(fileName, tmp$ret$3 + '-modelinfo')) {
+            tmp = endsWith(fileName, '.xml');
+          } else {
+            tmp = false;
+          }
+          if (tmp) {
+            destination.e(element);
+          }
+        }
+        var _iterator__ex2g4s_0 = destination.g();
+        while (_iterator__ex2g4s_0.h()) {
+          var file = _iterator__ex2g4s_0.i();
+          var fileName_0 = file.z2();
+          var indexOfExtension = lastIndexOf_0(fileName_0, '.');
+          if (indexOfExtension >= 0) {
+            fileName_0 = substring_0(fileName_0, 0, indexOfExtension);
+          }
+          var tmp0_0 = fileName_0;
+          // Inline function 'kotlin.text.toRegex' call
+          // Inline function 'kotlin.text.split' call
+          var tmp0_1 = Regex_init_$Create$('-').wd(tmp0_0, 0);
+          var tmp$ret$11;
+          $l$block: {
+            // Inline function 'kotlin.collections.dropLastWhile' call
+            if (!tmp0_1.q()) {
+              var iterator = tmp0_1.c2(tmp0_1.j());
+              while (iterator.v5()) {
+                // Inline function 'kotlin.text.isEmpty' call
+                var this_0 = iterator.x5();
+                if (!(charSequenceLength(this_0) === 0)) {
+                  tmp$ret$11 = take(tmp0_1, iterator.w5() + 1 | 0);
+                  break $l$block;
+                }
+              }
+            }
+            tmp$ret$11 = emptyList();
+          }
+          // Inline function 'kotlin.collections.toTypedArray' call
+          var this_1 = tmp$ret$11;
+          var fileNameComponents = copyToArray(this_1);
+          if (fileNameComponents.length === 3) {
+            var version = new Version(fileNameComponents[2]);
+            if (requestedVersion == null || version.n97(requestedVersion)) {
+              if (mostRecent == null || (version.l97() && mostRecent.l97() && version.m97(mostRecent) > 0)) {
+                mostRecent = version;
+                mostRecentFile = file;
+              } else if (version.k97(mostRecent)) {
+                mostRecent = version;
+                mostRecentFile = file;
+              }
+            }
+          } else {
+            if (mostRecent == null) {
+              mostRecentFile = file;
+            }
+          }
+        }
+        modelFile = mostRecentFile;
+      } catch ($p) {
+        if ($p instanceof IllegalArgumentException) {
+          var e = $p;
+        } else {
+          throw $p;
+        }
+      }
+    }
+    try {
+      if (!(modelFile == null)) {
+        var tmp0_2 = buffered(get_SystemFileSystem().pq(modelFile));
+        var tmp$ret$14;
+        $l$block_0: {
+          // Inline function 'kotlin.use' call
+          var exception = null;
+          try {
+            tmp$ret$14 = parseModelInfoXml(tmp0_2);
+            break $l$block_0;
+          } catch ($p) {
+            if ($p instanceof Error) {
+              var e_0 = $p;
+              exception = e_0;
+              throw e_0;
+            } else {
+              throw $p;
+            }
+          }
+          finally {
+            closeFinally(tmp0_2, exception);
+          }
+        }
+        return tmp$ret$14;
+      }
+    } catch ($p) {
+      if ($p instanceof IOException) {
+        var e_1 = $p;
+        throw IllegalArgumentException_init_$Create$_0('Could not load definition for model info ' + modelIdentifier.v62_1 + '.', e_1);
+      } else {
+        throw $p;
+      }
+    }
+  }
+  return null;
+};
+function IdentifierContext(identifierRef, trackableSubclass) {
+  this.p97_1 = identifierRef;
+  this.q97_1 = trackableSubclass;
+}
+protoOf(IdentifierContext).r97 = function () {
+  return ensureNotNull(this.p97_1.g70_1);
 };
 protoOf(IdentifierContext).equals = function (other) {
   if (this === other) {
@@ -5830,17 +6062,17 @@ protoOf(IdentifierContext).equals = function (other) {
     return false;
   }
   var that = other instanceof IdentifierContext ? other : THROW_CCE();
-  return this.e97() === that.e97() && equals(this.d97_1, that.d97_1);
+  return this.r97() === that.r97() && equals(this.q97_1, that.q97_1);
 };
 protoOf(IdentifierContext).hashCode = function () {
-  var tmp = imul(getStringHashCode(this.e97()), 31);
+  var tmp = imul(getStringHashCode(this.r97()), 31);
   // Inline function 'kotlin.hashCode' call
-  var tmp0_safe_receiver = this.d97_1;
+  var tmp0_safe_receiver = this.q97_1;
   var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : hashCode(tmp0_safe_receiver);
   return tmp + (tmp1_elvis_lhs == null ? 0 : tmp1_elvis_lhs) | 0;
 };
 protoOf(IdentifierContext).toString = function () {
-  return joinToString(listOf(["identifier='" + this.e97() + "'", 'elementSubclass=' + toString_0(this.d97_1)]), ', ', plus(getKClass(IdentifierContext).lb(), '['), ']');
+  return joinToString(listOf(["identifier='" + this.r97() + "'", 'elementSubclass=' + toString_0(this.q97_1)]), ', ', plus(getKClass(IdentifierContext).lb(), '['), ']');
 };
 var SignatureLevel_None_instance;
 var SignatureLevel_Differing_instance;
@@ -5958,73 +6190,73 @@ function SignatureLevel(name, ordinal) {
 }
 function _set_defaultModel__6o4wsx($this, model) {
   var tmp;
-  if ($this.b8w_1 == null) {
-    var tmp1_safe_receiver = model == null ? null : model.q90_1;
-    tmp = !((tmp1_safe_receiver == null ? null : tmp1_safe_receiver.j5x_1) === 'System');
+  if ($this.c8w_1 == null) {
+    var tmp1_safe_receiver = model == null ? null : model.r90_1;
+    tmp = !((tmp1_safe_receiver == null ? null : tmp1_safe_receiver.k5x_1) === 'System');
   } else {
     tmp = false;
   }
   if (tmp) {
-    $this.b8w_1 = model;
+    $this.c8w_1 = model;
   }
 }
 function setCompilerOptions($this, options) {
   if (options.options.p(Options_DisableListTraversal_getInstance())) {
-    $this.d8w_1 = false;
+    $this.e8w_1 = false;
   }
   if (options.options.p(Options_DisableListDemotion_getInstance())) {
-    $this.conversionMap.s8w_1 = false;
-  }
-  if (options.options.p(Options_DisableListPromotion_getInstance())) {
     $this.conversionMap.t8w_1 = false;
   }
-  if (options.options.p(Options_EnableIntervalDemotion_getInstance())) {
-    $this.conversionMap.u8w_1 = true;
+  if (options.options.p(Options_DisableListPromotion_getInstance())) {
+    $this.conversionMap.u8w_1 = false;
   }
-  if (options.options.p(Options_EnableIntervalPromotion_getInstance())) {
+  if (options.options.p(Options_EnableIntervalDemotion_getInstance())) {
     $this.conversionMap.v8w_1 = true;
   }
-  $this.h97(options.compatibilityLevel);
-  $this.f8w_1.d65_1 = options.toString();
-  $this.f8w_1.e65_1 = options.signatureLevel.x2_1;
+  if (options.options.p(Options_EnableIntervalPromotion_getInstance())) {
+    $this.conversionMap.w8w_1 = true;
+  }
+  $this.u97(options.compatibilityLevel);
+  $this.g8w_1.e65_1 = options.toString();
+  $this.g8w_1.f65_1 = options.signatureLevel.x2_1;
 }
 function loadModel($this, modelIdentifier) {
-  var model = $this.a8w_1.l97(modelIdentifier);
+  var model = $this.b8w_1.y97(modelIdentifier);
   loadConversionMap($this, model);
   return model;
 }
 function loadConversionMap($this, model) {
-  var _iterator__ex2g4s = ensureNotNull(model).m97().g();
+  var _iterator__ex2g4s = ensureNotNull(model).z97().g();
   while (_iterator__ex2g4s.h()) {
     var conversion = _iterator__ex2g4s.i();
-    $this.conversionMap.n97(conversion);
+    $this.conversionMap.a98(conversion);
   }
 }
 function buildUsingDef($this, modelIdentifier, model, localIdentifier) {
-  var usingDef = $this.objectFactory.o7o().j72(localIdentifier).d6j(modelIdentifier.w62_1).z8g(ensureNotNull(model).q90_1.l5x_1);
+  var usingDef = $this.objectFactory.p7o().k72(localIdentifier).e6j(modelIdentifier.x62_1).a8h(ensureNotNull(model).r90_1.m5x_1);
   addUsing($this, usingDef);
   return usingDef;
 }
 function addUsing($this, usingDef) {
-  if ($this.library.q79_1 == null) {
-    $this.library.q79_1 = $this.objectFactory.c7p();
+  if ($this.library.r79_1 == null) {
+    $this.library.r79_1 = $this.objectFactory.d7p();
   }
-  ensureNotNull($this.library.q79_1).a79().e(usingDef);
-  $this.compiledLibrary.o97(usingDef);
+  ensureNotNull($this.library.r79_1).b79().e(usingDef);
+  $this.compiledLibrary.b98(usingDef);
 }
 function resolveLabel($this, modelName, label) {
   var result = null;
   switch (modelName) {
     case null:
     case '':
-      var _iterator__ex2g4s = $this.p8v_1.s2().g();
+      var _iterator__ex2g4s = $this.q8v_1.s2().g();
       while (_iterator__ex2g4s.h()) {
         var model = _iterator__ex2g4s.i();
-        var modelResult = ensureNotNull(model).p97(label);
+        var modelResult = ensureNotNull(model).c98(label);
         if (!(modelResult == null)) {
           // Inline function 'kotlin.require' call
           if (!(result == null)) {
-            var message = 'Label ' + label + ' is ambiguous between ' + (result instanceof ClassType ? result : THROW_CCE()).n60_1 + ' and ' + modelResult.n60_1 + '.';
+            var message = 'Label ' + label + ' is ambiguous between ' + (result instanceof ClassType ? result : THROW_CCE()).o60_1 + ' and ' + modelResult.o60_1 + '.';
             throw IllegalArgumentException_init_$Create$(toString(message));
           }
           result = modelResult;
@@ -6033,30 +6265,30 @@ function resolveLabel($this, modelName, label) {
 
       break;
     default:
-      result = $this.x90(modelName).p97(label);
+      result = $this.y90(modelName).c98(label);
       break;
   }
   return result;
 }
 function isFHIRHelpers($this, library) {
-  return !(library == null) && !(library.j8z_1 == null) && !(ensureNotNull(library.j8z_1).b8i_1 == null) && ensureNotNull(library.j8z_1).b8i_1 === 'FHIRHelpers';
+  return !(library == null) && !(library.k8z_1 == null) && !(ensureNotNull(library.k8z_1).c8i_1 == null) && ensureNotNull(library.k8z_1).c8i_1 === 'FHIRHelpers';
 }
 function getModel($this, usingDef) {
-  return $this.q97(new ModelIdentifier(ensureNotNull(Companion_instance_1.getNamePart(usingDef.x8g_1)), Companion_instance_1.getUriPart(usingDef.x8g_1), usingDef.y8g_1), ensureNotNull(usingDef.w8g_1));
+  return $this.d98(new ModelIdentifier(ensureNotNull(Companion_instance_1.getNamePart(usingDef.y8g_1)), Companion_instance_1.getUriPart(usingDef.y8g_1), usingDef.z8g_1), ensureNotNull(usingDef.x8g_1));
 }
 function loadSystemLibrary($this) {
-  var systemLibrary = SystemLibraryHelper_instance.r97($this.systemModel, $this.g8w_1);
-  var tmp0 = $this.r8v_1;
+  var systemLibrary = SystemLibraryHelper_instance.e98($this.systemModel, $this.h8w_1);
+  var tmp0 = $this.s8v_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(ensureNotNull(systemLibrary.j8z_1).b8i_1);
+  var key = ensureNotNull(ensureNotNull(systemLibrary.k8z_1).c8i_1);
   tmp0.u2(key, systemLibrary);
   loadConversionMap_0($this, systemLibrary);
 }
 function loadConversionMap_0($this, library) {
-  var _iterator__ex2g4s = library.m97().g();
+  var _iterator__ex2g4s = library.z97().g();
   while (_iterator__ex2g4s.h()) {
     var conversion = _iterator__ex2g4s.i();
-    $this.conversionMap.n97(conversion);
+    $this.conversionMap.a98(conversion);
   }
 }
 function _get_systemLibrary__2e3lff($this) {
@@ -6098,7 +6330,7 @@ function addException($this, e) {
   }
 }
 function shouldReport($this, errorSeverity) {
-  var tmp0_subject = $this.e8w_1.errorLevel;
+  var tmp0_subject = $this.f8w_1.errorLevel;
   var tmp;
   switch (tmp0_subject == null ? -1 : tmp0_subject.y2_1) {
     case 0:
@@ -6116,122 +6348,122 @@ function shouldReport($this, errorSeverity) {
   return tmp;
 }
 function resolveIncludeAlias($this, libraryIdentifier) {
-  return $this.compiledLibrary.s97(libraryIdentifier);
+  return $this.compiledLibrary.f98(libraryIdentifier);
 }
 function BinaryWrapper($outer, left, right) {
-  this.v97_1 = $outer;
-  this.t97_1 = left;
-  this.u97_1 = right;
+  this.i98_1 = $outer;
+  this.g98_1 = left;
+  this.h98_1 = right;
 }
 function normalizeListTypes($this, left, right) {
   var left_0 = left;
   var right_0 = right;
   var tmp;
-  var tmp_0 = Trackable_getInstance().n8v(left_0);
+  var tmp_0 = Trackable_getInstance().o8v(left_0);
   if (tmp_0 instanceof ListType) {
-    var tmp_1 = Trackable_getInstance().n8v(right_0);
+    var tmp_1 = Trackable_getInstance().o8v(right_0);
     tmp = tmp_1 instanceof ListType;
   } else {
     tmp = false;
   }
   if (tmp) {
-    var tmp_2 = Trackable_getInstance().n8v(left_0);
+    var tmp_2 = Trackable_getInstance().o8v(left_0);
     var leftListType = tmp_2 instanceof ListType ? tmp_2 : THROW_CCE();
-    var tmp_3 = Trackable_getInstance().n8v(right_0);
+    var tmp_3 = Trackable_getInstance().o8v(right_0);
     var rightListType = tmp_3 instanceof ListType ? tmp_3 : THROW_CCE();
-    if (!(leftListType.y5z(rightListType) || rightListType.y5z(leftListType)) && !(leftListType.z5z(rightListType) || rightListType.z5z(leftListType))) {
+    if (!(leftListType.z5z(rightListType) || rightListType.z5z(leftListType)) && !(leftListType.a60(rightListType) || rightListType.a60(leftListType))) {
       var elementTypes = HashSet_init_$Create$();
-      var tmp_4 = leftListType.d61_1;
+      var tmp_4 = leftListType.e61_1;
       if (tmp_4 instanceof ChoiceType) {
-        var tmp_5 = leftListType.d61_1;
-        var _iterator__ex2g4s = (tmp_5 instanceof ChoiceType ? tmp_5 : THROW_CCE()).b60_1.g();
+        var tmp_5 = leftListType.e61_1;
+        var _iterator__ex2g4s = (tmp_5 instanceof ChoiceType ? tmp_5 : THROW_CCE()).c60_1.g();
         while (_iterator__ex2g4s.h()) {
           var choice = _iterator__ex2g4s.i();
           elementTypes.e(choice);
         }
       } else {
-        elementTypes.e(leftListType.d61_1);
+        elementTypes.e(leftListType.e61_1);
       }
-      var tmp_6 = rightListType.d61_1;
+      var tmp_6 = rightListType.e61_1;
       if (tmp_6 instanceof ChoiceType) {
-        var tmp_7 = rightListType.d61_1;
-        var _iterator__ex2g4s_0 = (tmp_7 instanceof ChoiceType ? tmp_7 : THROW_CCE()).b60_1.g();
+        var tmp_7 = rightListType.e61_1;
+        var _iterator__ex2g4s_0 = (tmp_7 instanceof ChoiceType ? tmp_7 : THROW_CCE()).c60_1.g();
         while (_iterator__ex2g4s_0.h()) {
           var choice_0 = _iterator__ex2g4s_0.i();
           elementTypes.e(choice_0);
         }
       } else {
-        elementTypes.e(rightListType.d61_1);
+        elementTypes.e(rightListType.e61_1);
       }
       if (elementTypes.j() > 1) {
         var targetType = new ListType(ChoiceType_init_$Create$(elementTypes));
-        left_0 = $this.objectFactory.j7j().a6c(left_0).z6b($this.dataTypeToTypeSpecifier(targetType));
-        Trackable_getInstance().o8v(left_0, targetType);
-        right_0 = $this.objectFactory.j7j().a6c(right_0).z6b($this.dataTypeToTypeSpecifier(targetType));
-        Trackable_getInstance().o8v(right_0, targetType);
+        left_0 = $this.objectFactory.k7j().b6c(left_0).a6c($this.dataTypeToTypeSpecifier(targetType));
+        Trackable_getInstance().p8v(left_0, targetType);
+        right_0 = $this.objectFactory.k7j().b6c(right_0).a6c($this.dataTypeToTypeSpecifier(targetType));
+        Trackable_getInstance().p8v(right_0, targetType);
       }
     }
   }
   return new BinaryWrapper($this, left_0, right_0);
 }
 function resolveInInvocation($this, left, right, dateTimePrecision) {
-  var inExpression = $this.objectFactory.e7n().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var inExpression = $this.objectFactory.f7n().g67(listOf([left, right])).f6e(dateTimePrecision);
   return $this.resolveBinaryInvocation('System', 'In', inExpression);
 }
 function resolveProperInInvocation($this, left, right, dateTimePrecision) {
-  var properIn = $this.objectFactory.u7h().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var properIn = $this.objectFactory.v7h().g67(listOf([left, right])).f6e(dateTimePrecision);
   return $this.resolveBinaryInvocation('System', 'ProperIn', properIn);
 }
 function resolveContainsInvocation($this, left, right, dateTimePrecision) {
-  var contains = $this.objectFactory.q7i().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var contains = $this.objectFactory.r7i().g67(listOf([left, right])).f6e(dateTimePrecision);
   return $this.resolveBinaryInvocation('System', 'Contains', contains);
 }
 function resolveProperContainsInvocation($this, left, right, dateTimePrecision) {
-  var properContains = $this.objectFactory.m7k().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var properContains = $this.objectFactory.n7k().g67(listOf([left, right])).f6e(dateTimePrecision);
   return $this.resolveBinaryInvocation('System', 'ProperContains', properContains);
 }
 function getTypeScore($this, resolution) {
-  var typeScore = ConversionScore_ExactMatch_getInstance().y97_1;
-  var _iterator__ex2g4s = ensureNotNull(resolution).t92_1.y8w_1.h8z_1.g();
+  var typeScore = ConversionScore_ExactMatch_getInstance().l98_1;
+  var _iterator__ex2g4s = ensureNotNull(resolution).u92_1.z8w_1.i8z_1.g();
   while (_iterator__ex2g4s.h()) {
     var operand = _iterator__ex2g4s.i();
-    typeScore = typeScore + Companion_instance_12.z97(operand) | 0;
+    typeScore = typeScore + Companion_instance_12.m98(operand) | 0;
   }
   return typeScore;
 }
 function lowestScoringInvocation($this, primary, secondary) {
   if (!(primary == null)) {
     if (!(secondary == null)) {
-      if (ensureNotNull(secondary.s92()).v92_1 < ensureNotNull(primary.s92()).v92_1) {
-        return secondary.l5w();
-      } else if (ensureNotNull(primary.s92()).v92_1 < ensureNotNull(secondary.s92()).v92_1) {
-        return primary.l5w();
+      if (ensureNotNull(secondary.t92()).w92_1 < ensureNotNull(primary.t92()).w92_1) {
+        return secondary.m5w();
+      } else if (ensureNotNull(primary.t92()).w92_1 < ensureNotNull(secondary.t92()).w92_1) {
+        return primary.m5w();
       }
-      if (ensureNotNull(primary.s92()).v92_1 === ensureNotNull(secondary.s92()).v92_1) {
-        var primaryTypeScore = getTypeScore($this, primary.s92());
-        var secondaryTypeScore = getTypeScore($this, secondary.s92());
+      if (ensureNotNull(primary.t92()).w92_1 === ensureNotNull(secondary.t92()).w92_1) {
+        var primaryTypeScore = getTypeScore($this, primary.t92());
+        var secondaryTypeScore = getTypeScore($this, secondary.t92());
         var tmp;
         if (secondaryTypeScore < primaryTypeScore) {
-          tmp = secondary.l5w();
+          tmp = secondary.m5w();
         } else if (primaryTypeScore < secondaryTypeScore) {
-          tmp = primary.l5w();
+          tmp = primary.m5w();
         } else {
-          var message = (new StringBuilder('Call to operator ')).j9(ensureNotNull(primary.s92()).t92_1.x8w_1).j9('/').j9(ensureNotNull(secondary.s92()).t92_1.x8w_1).j9(' is ambiguous with: ').j9('\n  - ').j9(ensureNotNull(primary.s92()).t92_1.x8w_1).i9(ensureNotNull(primary.s92()).t92_1.y8w_1).j9('\n  - ').j9(ensureNotNull(secondary.s92()).t92_1.x8w_1).i9(ensureNotNull(secondary.s92()).t92_1.y8w_1);
+          var message = (new StringBuilder('Call to operator ')).j9(ensureNotNull(primary.t92()).u92_1.y8w_1).j9('/').j9(ensureNotNull(secondary.t92()).u92_1.y8w_1).j9(' is ambiguous with: ').j9('\n  - ').j9(ensureNotNull(primary.t92()).u92_1.y8w_1).i9(ensureNotNull(primary.t92()).u92_1.z8w_1).j9('\n  - ').j9(ensureNotNull(secondary.t92()).u92_1.y8w_1).i9(ensureNotNull(secondary.t92()).u92_1.z8w_1);
           throw IllegalArgumentException_init_$Create$(message.toString());
         }
         return tmp;
       }
     }
-    return primary.l5w();
+    return primary.m5w();
   }
-  return secondary == null ? null : secondary.l5w();
+  return secondary == null ? null : secondary.m5w();
 }
 function resolveCall($this, libraryName, operatorName, invocation, allowPromotionAndDemotion, allowFluent) {
   return resolveCall_0($this, libraryName, operatorName, invocation, true, allowPromotionAndDemotion, allowFluent);
 }
 function resolveCall_0($this, libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent) {
-  var result = $this.a98(libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent);
-  return result == null ? null : result.l5w();
+  var result = $this.n98(libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent);
+  return result == null ? null : result.m5w();
 }
 function buildCallContext($this, libraryName, operatorName, operands, mustResolve, allowPromotionAndDemotion, allowFluent) {
   var dataTypes = ArrayList_init_$Create$();
@@ -6239,11 +6471,11 @@ function buildCallContext($this, libraryName, operatorName, operands, mustResolv
   while (_iterator__ex2g4s.h()) {
     var operand = _iterator__ex2g4s.i();
     // Inline function 'kotlin.require' call
-    if (!(!(operand == null) && !(Trackable_getInstance().n8v(operand) == null))) {
+    if (!(!(operand == null) && !(Trackable_getInstance().o8v(operand) == null))) {
       var message = 'Could not determine signature for invocation of operator ' + (libraryName == null ? '' : '' + libraryName + '.') + operatorName + '.';
       throw IllegalArgumentException_init_$Create$(toString(message));
     }
-    dataTypes.e(ensureNotNull(Trackable_getInstance().n8v(operand)));
+    dataTypes.e(ensureNotNull(Trackable_getInstance().o8v(operand)));
   }
   return new CallContext(libraryName, operatorName, allowPromotionAndDemotion, allowFluent, mustResolve, dataTypes);
 }
@@ -6253,17 +6485,17 @@ function pruneChoices($this, expression, targetType) {
 function resolveCall_1($this, callContext) {
   var result;
   // Inline function 'kotlin.text.isNullOrEmpty' call
-  var this_0 = callContext.b98_1;
+  var this_0 = callContext.o98_1;
   if (this_0 == null || charSequenceLength(this_0) === 0) {
-    result = $this.compiledLibrary.h98(callContext, $this.conversionMap);
+    result = $this.compiledLibrary.u98(callContext, $this.conversionMap);
     if (result == null) {
-      result = _get_systemLibrary__2e3lff($this).h98(callContext, $this.conversionMap);
-      if (result == null && callContext.e98_1) {
-        var _iterator__ex2g4s = $this.r8v_1.s2().g();
+      result = _get_systemLibrary__2e3lff($this).u98(callContext, $this.conversionMap);
+      if (result == null && callContext.r98_1) {
+        var _iterator__ex2g4s = $this.s8v_1.s2().g();
         $l$loop: while (_iterator__ex2g4s.h()) {
           var lib = _iterator__ex2g4s.i();
           if (!equals(lib, _get_systemLibrary__2e3lff($this))) {
-            result = lib.h98(callContext, $this.conversionMap);
+            result = lib.u98(callContext, $this.conversionMap);
             if (!(result == null)) {
               break $l$loop;
             }
@@ -6272,10 +6504,10 @@ function resolveCall_1($this, callContext) {
       }
     }
   } else {
-    result = $this.resolveLibrary(callContext.b98_1).h98(callContext, $this.conversionMap);
+    result = $this.resolveLibrary(callContext.o98_1).u98(callContext, $this.conversionMap);
   }
   if (!(result == null)) {
-    $this.checkAccessLevel(result.t92_1.e8x_1, result.t92_1.x8w_1, result.t92_1.b8x_1);
+    $this.checkAccessLevel(result.u92_1.f8x_1, result.u92_1.y8w_1, result.u92_1.c8x_1);
   }
   return result;
 }
@@ -6300,50 +6532,50 @@ function checkOperator($this, callContext, resolution) {
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (resolution == null) {
-      var message = 'Could not resolve call to operator ' + callContext.c98_1 + ' with signature ' + callContext.g98_1.toString() + '.';
+      var message = 'Could not resolve call to operator ' + callContext.p98_1 + ' with signature ' + callContext.t98_1.toString() + '.';
       throw IllegalArgumentException_init_$Create$(toString(message));
     } else {
       break $l$block;
     }
   }
   // Inline function 'kotlin.require' call
-  if (!(!resolution.t92_1.c8x_1 || callContext.e98_1)) {
-    var message_0 = 'Operator ' + callContext.c98_1 + ' with signature ' + callContext.g98_1.toString() + ' is a fluent function and can only be invoked with fluent syntax.';
+  if (!(!resolution.u92_1.d8x_1 || callContext.r98_1)) {
+    var message_0 = 'Operator ' + callContext.p98_1 + ' with signature ' + callContext.t98_1.toString() + ' is a fluent function and can only be invoked with fluent syntax.';
     throw IllegalArgumentException_init_$Create$(toString(message_0));
   }
   // Inline function 'kotlin.require' call
-  if (!(!callContext.e98_1 || resolution.t92_1.c8x_1 || resolution.w92_1)) {
-    var message_1 = 'Invocation of operator ' + callContext.c98_1 + ' with signature ' + callContext.g98_1.toString() + ' uses fluent syntax, but the operator is not defined as a fluent function.';
+  if (!(!callContext.r98_1 || resolution.u92_1.d8x_1 || resolution.x92_1)) {
+    var message_1 = 'Invocation of operator ' + callContext.p98_1 + ' with signature ' + callContext.t98_1.toString() + ' uses fluent syntax, but the operator is not defined as a fluent function.';
     throw IllegalArgumentException_init_$Create$(toString(message_1));
   }
 }
 function buildFunctionRef($this, libraryName, functionName, paramList) {
-  var functionRef = $this.objectFactory.w7h().t6i(libraryName).q65(functionName);
+  var functionRef = $this.objectFactory.x7h().u6i(libraryName).r65(functionName);
   var _iterator__ex2g4s = paramList.g();
   while (_iterator__ex2g4s.h()) {
     var param = _iterator__ex2g4s.i();
-    functionRef.o67().e(param);
+    functionRef.p67().e(param);
   }
   return functionRef;
 }
 function convertListExpression($this, expression, conversion) {
-  var tmp = conversion.i98_1;
+  var tmp = conversion.v98_1;
   var fromType = tmp instanceof ListType ? tmp : THROW_CCE();
-  var tmp_0 = conversion.j98_1;
+  var tmp_0 = conversion.w98_1;
   var toType = tmp_0 instanceof ListType ? tmp_0 : THROW_CCE();
-  return Trackable_getInstance().h90($this.objectFactory.l7h().q7y(listOf_0(Trackable_getInstance().h90($this.objectFactory.f7q().q69('X').r69(expression), fromType))).u7y(Trackable_getInstance().h90($this.objectFactory.d7o().h82(false).r69($this.e91(Trackable_getInstance().h90($this.objectFactory.g7j().q65('X'), fromType.d61_1), ensureNotNull(conversion.l98_1))), toType)), toType);
+  return Trackable_getInstance().i90($this.objectFactory.m7h().r7y(listOf_0(Trackable_getInstance().i90($this.objectFactory.g7q().r69('X').s69(expression), fromType))).v7y(Trackable_getInstance().i90($this.objectFactory.e7o().i82(false).s69($this.f91(Trackable_getInstance().i90($this.objectFactory.h7j().r65('X'), fromType.e61_1), ensureNotNull(conversion.y98_1))), toType)), toType);
 }
 function reportWarning($this, message, expression) {
   var tmp;
   var tmp_0;
   if (!(expression == null)) {
     // Inline function 'kotlin.collections.isNotEmpty' call
-    tmp_0 = !Trackable_getInstance().d90(expression).q();
+    tmp_0 = !Trackable_getInstance().e90(expression).q();
   } else {
     tmp_0 = false;
   }
   if (tmp_0) {
-    tmp = Trackable_getInstance().d90(expression).o(0);
+    tmp = Trackable_getInstance().e90(expression).o(0);
   } else {
     tmp = null;
   }
@@ -6352,15 +6584,15 @@ function reportWarning($this, message, expression) {
   $this.recordParsingException(warning);
 }
 function demoteListExpression($this, expression, conversion) {
-  var tmp = conversion.i98_1;
+  var tmp = conversion.v98_1;
   var fromType = tmp instanceof ListType ? tmp : THROW_CCE();
-  var singletonFrom = $this.objectFactory.t7l().a6c(expression);
-  Trackable_getInstance().o8v(singletonFrom, fromType.d61_1);
+  var singletonFrom = $this.objectFactory.u7l().b6c(expression);
+  Trackable_getInstance().p8v(singletonFrom, fromType.e61_1);
   $this.resolveUnaryCall('System', 'SingletonFrom', singletonFrom);
   reportWarning($this, 'List-valued expression was demoted to a singleton.', expression);
   var tmp_0;
-  if (!(conversion.l98_1 == null)) {
-    tmp_0 = $this.e91(singletonFrom, conversion.l98_1);
+  if (!(conversion.y98_1 == null)) {
+    tmp_0 = $this.f91(singletonFrom, conversion.y98_1);
   } else {
     tmp_0 = singletonFrom;
   }
@@ -6368,24 +6600,24 @@ function demoteListExpression($this, expression, conversion) {
 }
 function promoteListExpression($this, expression, conversion) {
   var expression_0 = expression;
-  if (!(conversion.l98_1 == null)) {
-    expression_0 = $this.e91(expression_0, conversion.l98_1);
+  if (!(conversion.y98_1 == null)) {
+    expression_0 = $this.f91(expression_0, conversion.y98_1);
   }
-  if (equals(Trackable_getInstance().n8v(expression_0), $this.l8w('System', 'Boolean'))) {
+  if (equals(Trackable_getInstance().o8v(expression_0), $this.m8w('System', 'Boolean'))) {
     reportWarning($this, 'Boolean-valued expression was promoted to a list.', expression_0);
   }
   return $this.resolveToList(expression_0);
 }
 function demoteIntervalExpression($this, expression, conversion) {
-  var tmp = conversion.i98_1;
+  var tmp = conversion.v98_1;
   var fromType = tmp instanceof IntervalType ? tmp : THROW_CCE();
-  var pointFrom = $this.objectFactory.j7o().a6c(expression);
-  Trackable_getInstance().o8v(pointFrom, fromType.g61_1);
+  var pointFrom = $this.objectFactory.k7o().b6c(expression);
+  Trackable_getInstance().p8v(pointFrom, fromType.h61_1);
   $this.resolveUnaryCall('System', 'PointFrom', pointFrom);
   reportWarning($this, 'Interval-valued expression was demoted to a point.', expression);
   var tmp_0;
-  if (!(conversion.l98_1 == null)) {
-    tmp_0 = $this.e91(pointFrom, conversion.l98_1);
+  if (!(conversion.y98_1 == null)) {
+    tmp_0 = $this.f91(pointFrom, conversion.y98_1);
   } else {
     tmp_0 = pointFrom;
   }
@@ -6393,50 +6625,50 @@ function demoteIntervalExpression($this, expression, conversion) {
 }
 function promoteIntervalExpression($this, expression, conversion) {
   var expression_0 = expression;
-  if (!(conversion.l98_1 == null)) {
-    expression_0 = $this.e91(expression_0, conversion.l98_1);
+  if (!(conversion.y98_1 == null)) {
+    expression_0 = $this.f91(expression_0, conversion.y98_1);
   }
   return resolveToInterval($this, expression_0);
 }
 function resolveToInterval($this, expression) {
-  var condition = $this.objectFactory.y7m();
-  condition.m70_1 = buildIsNull($this, expression);
-  condition.n70_1 = $this.buildNull(new IntervalType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(expression)))));
-  var toInterval = $this.objectFactory.a7n().h75(expression).j75(expression).f75(true).g75(true);
-  Trackable_getInstance().o8v(toInterval, new IntervalType(ensureNotNull(Trackable_getInstance().n8v(expression))));
-  condition.o70_1 = toInterval;
-  Trackable_getInstance().o8v(condition, $this.l8w('System', 'Boolean'));
+  var condition = $this.objectFactory.z7m();
+  condition.n70_1 = buildIsNull($this, expression);
+  condition.o70_1 = $this.buildNull(new IntervalType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(expression)))));
+  var toInterval = $this.objectFactory.b7n().i75(expression).k75(expression).g75(true).h75(true);
+  Trackable_getInstance().p8v(toInterval, new IntervalType(ensureNotNull(Trackable_getInstance().o8v(expression))));
+  condition.p70_1 = toInterval;
+  Trackable_getInstance().p8v(condition, $this.m8w('System', 'Boolean'));
   return condition;
 }
 function convertIntervalExpression($this, expression, conversion) {
-  var tmp = conversion.i98_1;
+  var tmp = conversion.v98_1;
   var fromType = tmp instanceof IntervalType ? tmp : THROW_CCE();
-  var tmp_0 = conversion.j98_1;
+  var tmp_0 = conversion.w98_1;
   var toType = tmp_0 instanceof IntervalType ? tmp_0 : THROW_CCE();
-  return Trackable_getInstance().h90($this.objectFactory.a7n().h75($this.e91(Trackable_getInstance().h90($this.objectFactory.q7n().a6k(expression).y6c('low'), fromType.g61_1), ensureNotNull(conversion.l98_1))).i75(Trackable_getInstance().h90($this.objectFactory.q7n().a6k(expression).y6c('lowClosed'), $this.l8w('System', 'Boolean'))).j75($this.e91(Trackable_getInstance().h90($this.objectFactory.q7n().a6k(expression).y6c('high'), fromType.g61_1), conversion.l98_1)).k75(Trackable_getInstance().h90($this.objectFactory.q7n().a6k(expression).y6c('highClosed'), $this.l8w('System', 'Boolean'))), toType);
+  return Trackable_getInstance().i90($this.objectFactory.b7n().i75($this.f91(Trackable_getInstance().i90($this.objectFactory.r7n().b6k(expression).z6c('low'), fromType.h61_1), ensureNotNull(conversion.y98_1))).j75(Trackable_getInstance().i90($this.objectFactory.r7n().b6k(expression).z6c('lowClosed'), $this.m8w('System', 'Boolean'))).k75($this.f91(Trackable_getInstance().i90($this.objectFactory.r7n().b6k(expression).z6c('high'), fromType.h61_1), conversion.y98_1)).l75(Trackable_getInstance().i90($this.objectFactory.r7n().b6k(expression).z6c('highClosed'), $this.m8w('System', 'Boolean'))), toType);
 }
 function buildIsNull($this, expression) {
-  var isNull = $this.objectFactory.r7l().a6c(expression);
-  Trackable_getInstance().o8v(isNull, $this.l8w('System', 'Boolean'));
+  var isNull = $this.objectFactory.s7l().b6c(expression);
+  Trackable_getInstance().p8v(isNull, $this.m8w('System', 'Boolean'));
   return isNull;
 }
 function buildIsNotNull($this, expression) {
   var isNull = buildIsNull($this, expression);
-  var not = $this.objectFactory.u7k().a6c(isNull);
-  Trackable_getInstance().o8v(not, $this.l8w('System', 'Boolean'));
+  var not = $this.objectFactory.v7k().b6c(isNull);
+  Trackable_getInstance().p8v(not, $this.m8w('System', 'Boolean'));
   return not;
 }
 function collapseTypeCase($this, asExpression) {
-  var tmp = asExpression.u66_1;
+  var tmp = asExpression.v66_1;
   if (tmp instanceof Case) {
-    var tmp_0 = asExpression.u66_1;
+    var tmp_0 = asExpression.v66_1;
     var c = tmp_0 instanceof Case ? tmp_0 : THROW_CCE();
     if (isTypeCase($this, c)) {
-      var _iterator__ex2g4s = c.l6f().g();
+      var _iterator__ex2g4s = c.m6f().g();
       while (_iterator__ex2g4s.h()) {
         var ci = _iterator__ex2g4s.i();
-        if (DataTypes_instance.q8z(Trackable_getInstance().n8v(asExpression), Trackable_getInstance().n8v(ensureNotNull(ci.t6f_1)))) {
-          return ensureNotNull(ci.t6f_1);
+        if (DataTypes_instance.r8z(Trackable_getInstance().o8v(asExpression), Trackable_getInstance().o8v(ensureNotNull(ci.u6f_1)))) {
+          return ensureNotNull(ci.u6f_1);
         }
       }
     }
@@ -6444,31 +6676,31 @@ function collapseTypeCase($this, asExpression) {
   return asExpression;
 }
 function isTypeCase($this, c) {
-  if (!(c.i6f_1 == null)) {
+  if (!(c.j6f_1 == null)) {
     return false;
   }
-  var _iterator__ex2g4s = c.l6f().g();
+  var _iterator__ex2g4s = c.m6f().g();
   while (_iterator__ex2g4s.h()) {
     var ci = _iterator__ex2g4s.i();
-    var tmp = ci.s6f_1;
+    var tmp = ci.t6f_1;
     if (!(tmp instanceof Is)) {
       return false;
     }
-    if (Trackable_getInstance().n8v(ensureNotNull(ci.t6f_1)) == null) {
+    if (Trackable_getInstance().o8v(ensureNotNull(ci.u6f_1)) == null) {
       return false;
     }
   }
-  var tmp_0 = c.k6f_1;
+  var tmp_0 = c.l6f_1;
   if (!(tmp_0 instanceof Null)) {
     return false;
   }
-  var tmp_1 = Trackable_getInstance().n8v(c);
+  var tmp_1 = Trackable_getInstance().o8v(c);
   return tmp_1 instanceof ChoiceType;
 }
 function createLiteral($this, value, type) {
-  var resultType = $this.l8w('System', type);
-  var result = $this.objectFactory.j7k().r65(value).v7a($this.dataTypeToQName(resultType));
-  Trackable_getInstance().o8v(result, resultType);
+  var resultType = $this.m8w('System', type);
+  var result = $this.objectFactory.k7k().s65(value).w7a($this.dataTypeToQName(resultType));
+  Trackable_getInstance().p8v(result, resultType);
   return result;
 }
 function validateUnit($this, unit) {
@@ -6496,7 +6728,7 @@ function validateUnit($this, unit) {
   }
 }
 function validateUcumUnit($this, unit) {
-  var message = $this.libraryManager.ucumService.v98(unit);
+  var message = $this.libraryManager.ucumService.i99(unit);
   // Inline function 'kotlin.require' call
   if (!(message == null)) {
     var message_0 = ensureNotNull(message);
@@ -6504,49 +6736,49 @@ function validateUcumUnit($this, unit) {
   }
 }
 function dataTypesToTypeSpecifiers($this, types) {
-  return $this.g8w_1.y98(types);
+  return $this.h8w_1.l99(types);
 }
 function getModelMapping($this, sourceContext) {
   var result = null;
-  if (!($this.library.q79_1 == null)) {
-    var _iterator__ex2g4s = ensureNotNull($this.library.q79_1).a79().g();
+  if (!($this.library.r79_1 == null)) {
+    var _iterator__ex2g4s = ensureNotNull($this.library.r79_1).b79().g();
     while (_iterator__ex2g4s.h()) {
       var usingDef = _iterator__ex2g4s.i();
       var model = getModel($this, usingDef);
-      if (!(model.q90_1.m5x_1 == null)) {
+      if (!(model.r90_1.n5x_1 == null)) {
         if (!(result == null)) {
-          reportWarning($this, 'Duplicate mapped model ' + model.q90_1.j5x_1 + ':' + model.q90_1.m5x_1 + (!(model.q90_1.n5x_1 == null) ? '|' + model.q90_1.n5x_1 : ''), sourceContext);
+          reportWarning($this, 'Duplicate mapped model ' + model.r90_1.k5x_1 + ':' + model.r90_1.n5x_1 + (!(model.r90_1.o5x_1 == null) ? '|' + model.r90_1.o5x_1 : ''), sourceContext);
         }
-        result = $this.objectFactory.k7n().a6i(model.q90_1.j5x_1).e8i(model.q90_1.m5x_1).d6j(model.q90_1.n5x_1);
+        result = $this.objectFactory.l7n().b6i(model.r90_1.k5x_1).f8i(model.r90_1.n5x_1).e6j(model.r90_1.o5x_1);
       }
     }
   }
   return result;
 }
 function ensureLibraryIncluded($this, libraryName, sourceContext) {
-  var includeDef = $this.compiledLibrary.z98(libraryName);
+  var includeDef = $this.compiledLibrary.m99(libraryName);
   if (includeDef == null) {
     var modelMapping = getModelMapping($this, sourceContext);
     var path = libraryName;
-    if (!($this.namespaceInfo == null) && !(modelMapping == null) && !(modelMapping.c8i_1 == null)) {
-      path = Companion_instance_1.getPath(modelMapping.c8i_1, path);
+    if (!($this.namespaceInfo == null) && !(modelMapping == null) && !(modelMapping.d8i_1 == null)) {
+      path = Companion_instance_1.getPath(modelMapping.d8i_1, path);
     }
-    includeDef = $this.objectFactory.z7k().j72(libraryName).y6c(path);
+    includeDef = $this.objectFactory.a7l().k72(libraryName).z6c(path);
     if (!(modelMapping == null)) {
-      includeDef.g72_1 = modelMapping.d8i_1;
+      includeDef.h72_1 = modelMapping.e8i_1;
     }
-    $this.compiledLibrary.a99(includeDef);
+    $this.compiledLibrary.n99(includeDef);
   }
 }
 function applyTargetModelMaps($this) {
-  if (!($this.library.q79_1 == null)) {
-    var _iterator__ex2g4s = ensureNotNull($this.library.q79_1).a79().g();
+  if (!($this.library.r79_1 == null)) {
+    var _iterator__ex2g4s = ensureNotNull($this.library.r79_1).b79().g();
     while (_iterator__ex2g4s.h()) {
       var usingDef = _iterator__ex2g4s.i();
       var model = getModel($this, usingDef);
-      if (!(model.q90_1.m5x_1 == null)) {
-        usingDef.x8g_1 = model.q90_1.m5x_1;
-        usingDef.y8g_1 = model.q90_1.n5x_1;
+      if (!(model.r90_1.n5x_1 == null)) {
+        usingDef.y8g_1 = model.r90_1.n5x_1;
+        usingDef.z8g_1 = model.r90_1.o5x_1;
       }
     }
   }
@@ -6554,17 +6786,17 @@ function applyTargetModelMaps($this) {
 function resolveQueryResultElement($this, identifier) {
   if (inQueryContext($this)) {
     var query = $this.peekQueryContext();
-    if (query.b99() && !query.s91_1) {
+    if (query.o99() && !query.t91_1) {
       if (identifier === '$this') {
-        var result = $this.objectFactory.p7k().q65(identifier);
-        Trackable_getInstance().o8v(result, query.w91_1);
+        var result = $this.objectFactory.q7k().r65(identifier);
+        Trackable_getInstance().p8v(result, query.x91_1);
         return result;
       }
-      var resolution = $this.resolveProperty(query.w91_1, identifier, false);
+      var resolution = $this.resolveProperty(query.x91_1, identifier, false);
       if (!(resolution == null)) {
-        var result_0 = $this.objectFactory.p7k().q65(resolution.b91_1);
-        Trackable_getInstance().o8v(result_0, resolution.a91_1);
-        return $this.applyTargetMap(result_0, resolution.c91_1);
+        var result_0 = $this.objectFactory.q7k().r65(resolution.c91_1);
+        Trackable_getInstance().p8v(result_0, resolution.b91_1);
+        return $this.applyTargetMap(result_0, resolution.d91_1);
       }
     }
   }
@@ -6572,14 +6804,14 @@ function resolveQueryResultElement($this, identifier) {
 }
 function resolveAlias($this, identifier) {
   if (inQueryContext($this)) {
-    var progression = _get_scope__bi2zur($this).d99_1.f99();
+    var progression = _get_scope__bi2zur($this).q99_1.s99();
     var last = progression.u_1;
     var inductionVariable = progression.v_1;
     if (last <= inductionVariable)
       do {
         var i = inductionVariable;
         inductionVariable = inductionVariable + -1 | 0;
-        var source = _get_scope__bi2zur($this).d99_1.g99(i).h99(identifier);
+        var source = _get_scope__bi2zur($this).q99_1.t99(i).u99(identifier);
         if (!(source == null)) {
           return source;
         }
@@ -6591,19 +6823,19 @@ function resolveAlias($this, identifier) {
 function resolveQueryThisElement($this, identifier) {
   if (inQueryContext($this)) {
     var query = $this.peekQueryContext();
-    if (query.v91_1) {
+    if (query.w91_1) {
       var source = resolveAlias($this, '$this');
       if (!(source == null)) {
-        var aliasRef = $this.objectFactory.g7j().q65('$this');
-        var tmp = Trackable_getInstance().n8v(source);
+        var aliasRef = $this.objectFactory.h7j().r65('$this');
+        var tmp = Trackable_getInstance().o8v(source);
         if (tmp instanceof ListType) {
           var tmp_0 = Trackable_getInstance();
-          var tmp_1 = Trackable_getInstance().n8v(source);
-          tmp_0.o8v(aliasRef, (tmp_1 instanceof ListType ? tmp_1 : THROW_CCE()).d61_1);
+          var tmp_1 = Trackable_getInstance().o8v(source);
+          tmp_0.p8v(aliasRef, (tmp_1 instanceof ListType ? tmp_1 : THROW_CCE()).e61_1);
         } else {
-          Trackable_getInstance().o8v(aliasRef, Trackable_getInstance().n8v(source));
+          Trackable_getInstance().p8v(aliasRef, Trackable_getInstance().o8v(source));
         }
-        var result = $this.resolveProperty(Trackable_getInstance().n8v(aliasRef), identifier, false);
+        var result = $this.resolveProperty(Trackable_getInstance().o8v(aliasRef), identifier, false);
         if (!(result == null)) {
           return $this.resolveAccessor(aliasRef, identifier);
         }
@@ -6614,14 +6846,14 @@ function resolveQueryThisElement($this, identifier) {
 }
 function resolveQueryLet($this, identifier) {
   if (inQueryContext($this)) {
-    var progression = _get_scope__bi2zur($this).d99_1.f99();
+    var progression = _get_scope__bi2zur($this).q99_1.s99();
     var last = progression.u_1;
     var inductionVariable = progression.v_1;
     if (last <= inductionVariable)
       do {
         var i = inductionVariable;
         inductionVariable = inductionVariable + -1 | 0;
-        var let_0 = _get_scope__bi2zur($this).d99_1.g99(i).i99(identifier);
+        var let_0 = _get_scope__bi2zur($this).q99_1.t99(i).v99(identifier);
         if (!(let_0 == null)) {
           return let_0;
         }
@@ -6631,29 +6863,29 @@ function resolveQueryLet($this, identifier) {
   return null;
 }
 function resolveOperandRef($this, identifier) {
-  if (!$this.v8v_1.e10()) {
-    var _iterator__ex2g4s = $this.v8v_1.q2c().o67().g();
+  if (!$this.w8v_1.f10()) {
+    var _iterator__ex2g4s = $this.w8v_1.r2c().p67().g();
     while (_iterator__ex2g4s.h()) {
       var operand = _iterator__ex2g4s.i();
-      if (operand.v7q_1 === identifier) {
-        return Trackable_getInstance().h90($this.objectFactory.f7o().q65(identifier), Trackable_getInstance().n8v(operand));
+      if (operand.w7q_1 === identifier) {
+        return Trackable_getInstance().i90($this.objectFactory.g7o().r65(identifier), Trackable_getInstance().o8v(operand));
       }
     }
   }
   return null;
 }
 function getExpressionDefResultType($this, expressionDef) {
-  if (currentExpressionContext($this) === expressionDef.d6w_1) {
-    return Trackable_getInstance().n8v(expressionDef);
+  if (currentExpressionContext($this) === expressionDef.e6w_1) {
+    return Trackable_getInstance().o8v(expressionDef);
   }
   if (inSpecificContext($this)) {
-    return Trackable_getInstance().n8v(expressionDef);
+    return Trackable_getInstance().o8v(expressionDef);
   }
   if (inUnfilteredContext($this)) {
-    if (inQueryContext($this) && _get_scope__bi2zur($this).d99_1.q2c().j99()) {
-      _get_scope__bi2zur($this).d99_1.q2c().x91_1 = true;
+    if (inQueryContext($this) && _get_scope__bi2zur($this).q99_1.r2c().w99()) {
+      _get_scope__bi2zur($this).q99_1.r2c().y91_1 = true;
     }
-    var resultType = ensureNotNull(Trackable_getInstance().n8v(expressionDef));
+    var resultType = ensureNotNull(Trackable_getInstance().o8v(expressionDef));
     var tmp;
     if (!(resultType instanceof ListType)) {
       tmp = new ListType(resultType);
@@ -6662,7 +6894,7 @@ function getExpressionDefResultType($this, expressionDef) {
     }
     return tmp;
   }
-  throw IllegalArgumentException_init_$Create$('Invalid context reference from ' + currentExpressionContext($this) + ' context to ' + expressionDef.d6w_1 + ' context.');
+  throw IllegalArgumentException_init_$Create$('Invalid context reference from ' + currentExpressionContext($this) + ' context to ' + expressionDef.e6w_1 + ' context.');
 }
 function IdentifierScope(name, ordinal) {
   Enum.call(this, name, ordinal);
@@ -6674,7 +6906,7 @@ function findMatchingIdentifierContext($this, identifierContext, identifier) {
   var _iterator__ex2g4s = identifierContext.g();
   while (_iterator__ex2g4s.h()) {
     var element = _iterator__ex2g4s.i();
-    if (element.e97() === identifier) {
+    if (element.r97() === identifier) {
       destination.e(element);
     }
   }
@@ -6694,29 +6926,29 @@ function resolveWarningMessage($this, matchedIdentifier, identifierParam, elemen
   return tmp;
 }
 function Scope($outer) {
-  this.e99_1 = $outer;
-  this.c99_1 = new Stack();
-  this.d99_1 = new Stack();
+  this.r99_1 = $outer;
+  this.p99_1 = new Stack();
+  this.q99_1 = new Stack();
 }
 function ExpressionDefinitionContext($outer, identifier) {
-  this.p99_1 = $outer;
-  this.m99_1 = identifier;
-  this.n99_1 = new Scope(this.p99_1);
-  this.o99_1 = null;
+  this.c9a_1 = $outer;
+  this.z99_1 = identifier;
+  this.a9a_1 = new Scope(this.c9a_1);
+  this.b9a_1 = null;
 }
 function ExpressionDefinitionContextStack($outer) {
-  this.r99_1 = $outer;
+  this.e9a_1 = $outer;
   Stack.call(this);
 }
-protoOf(ExpressionDefinitionContextStack).s99 = function (identifier) {
+protoOf(ExpressionDefinitionContextStack).f9a = function (identifier) {
   var inductionVariable = 0;
-  var last = this.l23();
+  var last = this.m23();
   if (inductionVariable < last)
     do {
       var i = inductionVariable;
       inductionVariable = inductionVariable + 1 | 0;
-      var tmp0_safe_receiver = this.g99(i);
-      if ((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.m99_1) === identifier) {
+      var tmp0_safe_receiver = this.t99(i);
+      if ((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.z99_1) === identifier) {
         return true;
       }
     }
@@ -6724,19 +6956,19 @@ protoOf(ExpressionDefinitionContextStack).s99 = function (identifier) {
   return false;
 };
 function hasScope($this) {
-  return !$this.u8v_1.e10();
+  return !$this.v8v_1.f10();
 }
 function _get_scope__bi2zur($this) {
-  var tmp0_safe_receiver = $this.u8v_1.q2c();
-  return ensureNotNull(tmp0_safe_receiver == null ? null : tmp0_safe_receiver.n99_1);
+  var tmp0_safe_receiver = $this.v8v_1.r2c();
+  return ensureNotNull(tmp0_safe_receiver == null ? null : tmp0_safe_receiver.a9a_1);
 }
 function currentExpressionContext($this) {
   // Inline function 'kotlin.check' call
-  if (!!$this.t8v_1.e10()) {
+  if (!!$this.u8v_1.f10()) {
     var message = 'Expression context stack is empty.';
     throw IllegalStateException_init_$Create$(toString(message));
   }
-  return $this.t8v_1.q2c();
+  return $this.u8v_1.r2c();
 }
 function inSpecificContext($this) {
   return !inUnfilteredContext($this);
@@ -6745,13 +6977,13 @@ function inUnfilteredContext($this) {
   return currentExpressionContext($this) === 'Unfiltered' || ($this.isCompatibilityLevel3 && currentExpressionContext($this) === 'Population');
 }
 function inQueryContext($this) {
-  return hasScope($this) && _get_scope__bi2zur($this).d99_1.t99();
+  return hasScope($this) && _get_scope__bi2zur($this).q99_1.g9a();
 }
 function inLiteralContext($this) {
-  return $this.y8v_1 > 0;
+  return $this.z8v_1 > 0;
 }
 function inTypeSpecifierContext($this) {
-  return $this.z8v_1 > 0;
+  return $this.a8w_1 > 0;
 }
 function Companion_4() {
 }
@@ -6791,93 +7023,93 @@ function LibraryBuilder(namespaceInfo, libraryManager, objectFactory) {
   this.warnings = ArrayList_init_$Create$();
   this.messages = ArrayList_init_$Create$();
   this.exceptions = ArrayList_init_$Create$();
-  this.p8v_1 = LinkedHashMap_init_$Create$_0();
-  this.q8v_1 = HashMap_init_$Create$();
-  this.r8v_1 = LinkedHashMap_init_$Create$_0();
-  this.s8v_1 = new SystemFunctionResolver(this);
-  this.t8v_1 = new Stack();
-  this.u8v_1 = new ExpressionDefinitionContextStack(this);
-  this.v8v_1 = new Stack();
-  this.w8v_1 = ArrayDeque_init_$Create$();
-  this.x8v_1 = new Stack();
-  this.y8v_1 = 0;
+  this.q8v_1 = LinkedHashMap_init_$Create$_0();
+  this.r8v_1 = HashMap_init_$Create$();
+  this.s8v_1 = LinkedHashMap_init_$Create$_0();
+  this.t8v_1 = new SystemFunctionResolver(this);
+  this.u8v_1 = new Stack();
+  this.v8v_1 = new ExpressionDefinitionContextStack(this);
+  this.w8v_1 = new Stack();
+  this.x8v_1 = ArrayDeque_init_$Create$();
+  this.y8v_1 = new Stack();
   this.z8v_1 = 0;
-  this.a8w_1 = this.libraryManager.modelManager;
-  this.b8w_1 = null;
-  this.library = this.objectFactory.b7p().z79(this.objectFactory.k7n().a6i('urn:hl7-org:elm').d6j('r1'));
+  this.a8w_1 = 0;
+  this.b8w_1 = this.libraryManager.modelManager;
+  this.c8w_1 = null;
+  this.library = this.objectFactory.c7p().a7a(this.objectFactory.l7n().b6i('urn:hl7-org:elm').e6j('r1'));
   this.compiledLibrary = new CompiledLibrary();
   this.conversionMap = new ConversionMap();
-  this.c8w_1 = new ObjectFactory();
-  this.d8w_1 = true;
-  this.e8w_1 = this.libraryManager.cqlCompilerOptions;
-  this.f8w_1 = this.c8w_1.k65();
-  this.g8w_1 = TypeBuilder_init_$Create$(this.objectFactory, this.a8w_1);
-  this.h8w_1 = null;
+  this.d8w_1 = new ObjectFactory();
+  this.e8w_1 = true;
+  this.f8w_1 = this.libraryManager.cqlCompilerOptions;
+  this.g8w_1 = this.d8w_1.l65();
+  this.h8w_1 = TypeBuilder_init_$Create$(this.objectFactory, this.b8w_1);
   this.i8w_1 = null;
-  this.f8w_1.c65_1 = getTranslatorVersion();
-  this.library.n66().e(this.f8w_1);
-  setCompilerOptions(this, this.e8w_1);
-  this.compiledLibrary.k8z_1 = this.library;
+  this.j8w_1 = null;
+  this.g8w_1.d65_1 = getTranslatorVersion();
+  this.library.o66().e(this.g8w_1);
+  setCompilerOptions(this, this.f8w_1);
+  this.compiledLibrary.l8z_1 = this.library;
 }
-protoOf(LibraryBuilder).u99 = function () {
+protoOf(LibraryBuilder).h9a = function () {
   return this.namespaceInfo;
 };
-protoOf(LibraryBuilder).v99 = function () {
+protoOf(LibraryBuilder).i9a = function () {
   return this.libraryManager;
 };
-protoOf(LibraryBuilder).w99 = function () {
+protoOf(LibraryBuilder).j9a = function () {
   return this.objectFactory;
 };
-protoOf(LibraryBuilder).o96 = function () {
+protoOf(LibraryBuilder).p96 = function () {
   return this.errors;
 };
-protoOf(LibraryBuilder).p96 = function () {
+protoOf(LibraryBuilder).q96 = function () {
   return this.warnings;
 };
-protoOf(LibraryBuilder).q96 = function () {
+protoOf(LibraryBuilder).r96 = function () {
   return this.messages;
 };
-protoOf(LibraryBuilder).n96 = function () {
+protoOf(LibraryBuilder).o96 = function () {
   return this.exceptions;
 };
-protoOf(LibraryBuilder).x99 = function () {
-  return this.b8w_1;
+protoOf(LibraryBuilder).k9a = function () {
+  return this.c8w_1;
 };
-protoOf(LibraryBuilder).y99 = function (_set____db54di) {
+protoOf(LibraryBuilder).l9a = function (_set____db54di) {
   this.library = _set____db54di;
 };
-protoOf(LibraryBuilder).z99 = function () {
+protoOf(LibraryBuilder).m9a = function () {
   return this.library;
 };
-protoOf(LibraryBuilder).a9a = function (_set____db54di) {
+protoOf(LibraryBuilder).n9a = function (_set____db54di) {
   this.compiledLibrary = _set____db54di;
 };
-protoOf(LibraryBuilder).b9a = function () {
+protoOf(LibraryBuilder).o9a = function () {
   return this.compiledLibrary;
 };
-protoOf(LibraryBuilder).c9a = function () {
+protoOf(LibraryBuilder).p9a = function () {
   return this.conversionMap;
 };
 protoOf(LibraryBuilder).enableListTraversal = function () {
-  this.d8w_1 = true;
+  this.e8w_1 = true;
 };
-protoOf(LibraryBuilder).h97 = function (compatibilityLevel) {
-  this.h8w_1 = compatibilityLevel;
+protoOf(LibraryBuilder).u97 = function (compatibilityLevel) {
+  this.i8w_1 = compatibilityLevel;
   if (!(compatibilityLevel == null)) {
-    this.i8w_1 = new Version(compatibilityLevel);
+    this.j8w_1 = new Version(compatibilityLevel);
   }
 };
-protoOf(LibraryBuilder).g95 = function () {
-  return this.h8w_1;
+protoOf(LibraryBuilder).h95 = function () {
+  return this.i8w_1;
 };
-protoOf(LibraryBuilder).d9a = function () {
-  return '1.3' === this.h8w_1;
+protoOf(LibraryBuilder).q9a = function () {
+  return '1.3' === this.i8w_1;
 };
-protoOf(LibraryBuilder).e9a = function () {
-  return '1.4' === this.h8w_1;
+protoOf(LibraryBuilder).r9a = function () {
+  return '1.4' === this.i8w_1;
 };
 protoOf(LibraryBuilder).isCompatibleWith = function (sinceCompatibilityLevel) {
-  if (this.i8w_1 == null) {
+  if (this.j8w_1 == null) {
     return true;
   }
   // Inline function 'kotlin.text.isNullOrEmpty' call
@@ -6887,7 +7119,7 @@ protoOf(LibraryBuilder).isCompatibleWith = function (sinceCompatibilityLevel) {
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
   var sinceVersion = new Version(sinceCompatibilityLevel);
-  return ensureNotNull(this.i8w_1).k9a(sinceVersion);
+  return ensureNotNull(this.j8w_1).n97(sinceVersion);
 };
 protoOf(LibraryBuilder).checkCompatibilityLevel = function (featureName, sinceCompatibilityLevel) {
   // Inline function 'kotlin.text.isNullOrEmpty' call
@@ -6898,7 +7130,7 @@ protoOf(LibraryBuilder).checkCompatibilityLevel = function (featureName, sinceCo
   }
   // Inline function 'kotlin.require' call
   if (!this.isCompatibleWith(sinceCompatibilityLevel)) {
-    var message_0 = 'Feature ' + featureName + ' was introduced in version ' + sinceCompatibilityLevel + ' and so cannot be used at compatibility level ' + this.h8w_1;
+    var message_0 = 'Feature ' + featureName + ' was introduced in version ' + sinceCompatibilityLevel + ' and so cannot be used at compatibility level ' + this.i8w_1;
     throw IllegalArgumentException_init_$Create$(toString(message_0));
   }
 };
@@ -6907,7 +7139,7 @@ protoOf(LibraryBuilder).isWellKnownModelName = function (unqualifiedIdentifier) 
   if (this.namespaceInfo == null) {
     tmp = false;
   } else {
-    tmp = this.a8w_1.isWellKnownModelName(unqualifiedIdentifier);
+    tmp = this.b8w_1.isWellKnownModelName(unqualifiedIdentifier);
   }
   return tmp;
 };
@@ -6920,38 +7152,38 @@ protoOf(LibraryBuilder).isWellKnownLibraryName = function (unqualifiedIdentifier
   }
   return tmp;
 };
-protoOf(LibraryBuilder).q97 = function (modelIdentifier, localIdentifier) {
-  var model = this.p8v_1.q2(localIdentifier);
+protoOf(LibraryBuilder).d98 = function (modelIdentifier, localIdentifier) {
+  var model = this.q8v_1.q2(localIdentifier);
   if (model == null) {
     model = loadModel(this, modelIdentifier);
     _set_defaultModel__6o4wsx(this, model);
-    var tmp0 = this.p8v_1;
+    var tmp0 = this.q8v_1;
     // Inline function 'kotlin.collections.set' call
     var value = model;
     tmp0.u2(localIdentifier, value);
     buildUsingDef(this, modelIdentifier, model, localIdentifier);
   }
   // Inline function 'kotlin.require' call
-  if (!(modelIdentifier.w62_1 == null || modelIdentifier.w62_1 == model.q90_1.k5x_1)) {
-    var message = 'Could not load model information for model ' + modelIdentifier.u62_1 + ', version ' + modelIdentifier.w62_1 + ' because version ' + model.q90_1.k5x_1 + ' is already loaded.';
+  if (!(modelIdentifier.x62_1 == null || modelIdentifier.x62_1 == model.r90_1.l5x_1)) {
+    var message = 'Could not load model information for model ' + modelIdentifier.v62_1 + ', version ' + modelIdentifier.x62_1 + ' because version ' + model.r90_1.l5x_1 + ' is already loaded.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
   return model;
 };
 protoOf(LibraryBuilder).getNamedTypeSpecifierResult = function (namedTypeSpecifierIdentifier) {
-  return this.q8v_1.q2(namedTypeSpecifierIdentifier);
+  return this.r8v_1.q2(namedTypeSpecifierIdentifier);
 };
 protoOf(LibraryBuilder).addNamedTypeSpecifierResult = function (namedTypeSpecifierIdentifier, namedTypeSpecifierResult) {
-  if (!this.q8v_1.o2(namedTypeSpecifierIdentifier)) {
+  if (!this.r8v_1.o2(namedTypeSpecifierIdentifier)) {
     // Inline function 'kotlin.collections.set' call
-    this.q8v_1.u2(namedTypeSpecifierIdentifier, namedTypeSpecifierResult);
+    this.r8v_1.u2(namedTypeSpecifierIdentifier, namedTypeSpecifierResult);
   }
 };
 protoOf(LibraryBuilder).hasUsings = function () {
-  var _iterator__ex2g4s = this.p8v_1.s2().g();
+  var _iterator__ex2g4s = this.q8v_1.s2().g();
   while (_iterator__ex2g4s.h()) {
     var model = _iterator__ex2g4s.i();
-    if (!(ensureNotNull(model).q90_1.j5x_1 === 'System')) {
+    if (!(ensureNotNull(model).r90_1.k5x_1 === 'System')) {
       return true;
     }
   }
@@ -6962,21 +7194,21 @@ protoOf(LibraryBuilder).resolveContextName = function (modelName, contextName) {
   switch (modelName) {
     case null:
     case '':
-      if (!(this.b8w_1 == null)) {
-        var modelResult = ensureNotNull(this.b8w_1).l9a(contextName);
+      if (!(this.c8w_1 == null)) {
+        var modelResult = ensureNotNull(this.c8w_1).s9a(contextName);
         if (!(modelResult == null)) {
           return modelResult;
         }
       }
 
-      var _iterator__ex2g4s = this.p8v_1.s2().g();
+      var _iterator__ex2g4s = this.q8v_1.s2().g();
       while (_iterator__ex2g4s.h()) {
         var model = _iterator__ex2g4s.i();
-        var modelResult_0 = ensureNotNull(model).l9a(contextName);
+        var modelResult_0 = ensureNotNull(model).s9a(contextName);
         if (!(modelResult_0 == null)) {
           // Inline function 'kotlin.require' call
           if (!(result == null)) {
-            var message = 'Context name ' + contextName + ' is ambiguous between ' + (result instanceof ModelContext ? result : THROW_CCE()).q62_1 + ' and ' + modelResult_0.q62_1 + '.';
+            var message = 'Context name ' + contextName + ' is ambiguous between ' + (result instanceof ModelContext ? result : THROW_CCE()).r62_1 + ' and ' + modelResult_0.r62_1 + '.';
             throw IllegalArgumentException_init_$Create$(toString(message));
           }
           result = modelResult_0;
@@ -6985,31 +7217,31 @@ protoOf(LibraryBuilder).resolveContextName = function (modelName, contextName) {
 
       break;
     default:
-      result = this.x90(modelName).l9a(contextName);
+      result = this.y90(modelName).s9a(contextName);
       break;
   }
   return result;
 };
-protoOf(LibraryBuilder).j90 = function (typeName) {
-  return this.l8w(null, typeName);
+protoOf(LibraryBuilder).k90 = function (typeName) {
+  return this.m8w(null, typeName);
 };
-protoOf(LibraryBuilder).l8w = function (modelName, typeName) {
+protoOf(LibraryBuilder).m8w = function (modelName, typeName) {
   var result = resolveLabel(this, modelName, typeName);
   if (result == null) {
     switch (modelName) {
       case null:
       case '':
-        if (!(this.b8w_1 == null)) {
-          var modelResult = ensureNotNull(this.b8w_1).j90(typeName);
+        if (!(this.c8w_1 == null)) {
+          var modelResult = ensureNotNull(this.c8w_1).k90(typeName);
           if (!(modelResult == null)) {
             return modelResult;
           }
         }
 
-        var _iterator__ex2g4s = this.p8v_1.s2().g();
+        var _iterator__ex2g4s = this.q8v_1.s2().g();
         while (_iterator__ex2g4s.h()) {
           var model = _iterator__ex2g4s.i();
-          var modelResult_0 = ensureNotNull(model).j90(typeName);
+          var modelResult_0 = ensureNotNull(model).k90(typeName);
           if (!(modelResult_0 == null)) {
             // Inline function 'kotlin.require' call
             if (!(result == null)) {
@@ -7023,7 +7255,7 @@ protoOf(LibraryBuilder).l8w = function (modelName, typeName) {
 
         break;
       default:
-        result = this.x90(modelName).j90(typeName);
+        result = this.y90(modelName).k90(typeName);
         break;
     }
   }
@@ -7042,7 +7274,7 @@ protoOf(LibraryBuilder).l8w = function (modelName, typeName) {
         // Inline function 'kotlin.require' call
 
         if (!(this.isCompatibleWith('1.5') || isFHIRHelpers(this, this.compiledLibrary))) {
-          var message_0 = 'The type ' + ((!(result == null) ? isInterface(result, NamedType) : false) ? result : THROW_CCE()).z2() + ' was introduced in CQL 1.5 and cannot be referenced at compatibility level ' + this.h8w_1;
+          var message_0 = 'The type ' + ((!(result == null) ? isInterface(result, NamedType) : false) ? result : THROW_CCE()).z2() + ' was introduced in CQL 1.5 and cannot be referenced at compatibility level ' + this.i8w_1;
           throw IllegalArgumentException_init_$Create$(toString(message_0));
         }
 
@@ -7074,15 +7306,15 @@ protoOf(LibraryBuilder).resolveTypeSpecifier = function (typeSpecifier) {
     // Inline function 'kotlin.js.asDynamic' call
     var tmp$ret$5 = typeSpecifier.toLowerCase();
     if (startsWith(tmp$ret$5, 'list<')) {
-      var elementType = this.j90(substring_0(typeSpecifier, indexOf_0(typeSpecifier, _Char___init__impl__6a9atx(60)) + 1 | 0, lastIndexOf(typeSpecifier, _Char___init__impl__6a9atx(62))));
+      var elementType = this.k90(substring_0(typeSpecifier, indexOf_0(typeSpecifier, _Char___init__impl__6a9atx(60)) + 1 | 0, lastIndexOf(typeSpecifier, _Char___init__impl__6a9atx(62))));
       tmp_0 = new ListType(ensureNotNull(elementType));
     } else {
       if (indexOf(typeSpecifier, '.') >= 0) {
         var modelName = substring_0(typeSpecifier, 0, indexOf(typeSpecifier, '.'));
         var typeName = substring(typeSpecifier, indexOf(typeSpecifier, '.') + 1 | 0);
-        tmp_0 = this.l8w(modelName, typeName);
+        tmp_0 = this.m8w(modelName, typeName);
       } else {
-        tmp_0 = this.j90(typeSpecifier);
+        tmp_0 = this.k90(typeSpecifier);
       }
     }
     tmp = tmp_0;
@@ -7090,16 +7322,16 @@ protoOf(LibraryBuilder).resolveTypeSpecifier = function (typeSpecifier) {
   return tmp;
 };
 protoOf(LibraryBuilder).resolveUsingRef = function (modelName) {
-  return this.compiledLibrary.m9a(modelName);
+  return this.compiledLibrary.t9a(modelName);
 };
-protoOf(LibraryBuilder).n9a = function () {
-  var tmp = this.q97(new ModelIdentifier('System'), 'System');
+protoOf(LibraryBuilder).u9a = function () {
+  var tmp = this.d98(new ModelIdentifier('System'), 'System');
   return tmp instanceof SystemModel ? tmp : THROW_CCE();
 };
-protoOf(LibraryBuilder).x90 = function (modelName) {
+protoOf(LibraryBuilder).y90 = function (modelName) {
   var usingDef = this.resolveUsingRef(modelName);
   if (usingDef == null && modelName === 'FHIR') {
-    return this.a8w_1.resolveModelByUri('http://hl7.org/fhir');
+    return this.b8w_1.resolveModelByUri('http://hl7.org/fhir');
   }
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
@@ -7117,7 +7349,7 @@ protoOf(LibraryBuilder).resolveLibrary = function (identifier) {
     this.checkLiteralContext();
   }
   // Inline function 'kotlin.collections.get' call
-  var this_0 = this.r8v_1;
+  var this_0 = this.s8v_1;
   var tmp0_elvis_lhs = (isInterface(this_0, KtMap) ? this_0 : THROW_CCE()).q2(identifier);
   var tmp;
   if (tmp0_elvis_lhs == null) {
@@ -7139,8 +7371,8 @@ protoOf(LibraryBuilder).resolveNamespaceUri = function (namespaceName, mustResol
 protoOf(LibraryBuilder).recordParsingException = function (e) {
   addException(this, e);
   if (shouldReport(this, e.severity)) {
-    var err = this.c8w_1.j65();
-    err.i64_1 = e.message;
+    var err = this.d8w_1.k65();
+    err.j64_1 = e.message;
     var tmp = err;
     var tmp_0;
     if (e instanceof CqlSyntaxException) {
@@ -7152,18 +7384,18 @@ protoOf(LibraryBuilder).recordParsingException = function (e) {
         tmp_0 = ErrorType_INTERNAL_getInstance();
       }
     }
-    tmp.j64_1 = tmp_0;
-    err.k64_1 = toErrorSeverity(this, e.severity);
+    tmp.k64_1 = tmp_0;
+    err.l64_1 = toErrorSeverity(this, e.severity);
     if (!(e.locator == null)) {
-      if (!(e.locator.v8z_1 == null)) {
-        err.o64_1 = e.locator.v8z_1.c8i_1;
-        err.p64_1 = e.locator.v8z_1.b8i_1;
-        err.q64_1 = e.locator.v8z_1.d8i_1;
+      if (!(e.locator.w8z_1 == null)) {
+        err.p64_1 = e.locator.w8z_1.d8i_1;
+        err.q64_1 = e.locator.w8z_1.c8i_1;
+        err.r64_1 = e.locator.w8z_1.e8i_1;
       }
-      err.r64_1 = e.locator.w8z_1;
-      err.t64_1 = e.locator.y8z_1;
       err.s64_1 = e.locator.x8z_1;
       err.u64_1 = e.locator.z8z_1;
+      err.t64_1 = e.locator.y8z_1;
+      err.v64_1 = e.locator.a90_1;
     }
     var tmp_1;
     if (!(e.cause == null)) {
@@ -7175,161 +7407,161 @@ protoOf(LibraryBuilder).recordParsingException = function (e) {
     if (tmp_1) {
       var tmp_3 = e.cause;
       var incEx = (tmp_3 == null ? true : tmp_3 instanceof CqlIncludeException) ? tmp_3 : THROW_CCE();
-      err.l64_1 = ensureNotNull(incEx).p95_1;
-      err.m64_1 = incEx.q95_1;
+      err.m64_1 = ensureNotNull(incEx).q95_1;
       err.n64_1 = incEx.r95_1;
-      err.j64_1 = ErrorType_INCLUDE_getInstance();
+      err.o64_1 = incEx.s95_1;
+      err.k64_1 = ErrorType_INCLUDE_getInstance();
     }
-    this.library.n66().e(err);
+    this.library.o66().e(err);
   }
 };
 protoOf(LibraryBuilder).beginTranslation = function () {
   loadSystemLibrary(this);
 };
-protoOf(LibraryBuilder).e90 = function (vid) {
-  this.library.o79_1 = vid;
-  this.compiledLibrary.j8z_1 = vid;
+protoOf(LibraryBuilder).f90 = function (vid) {
+  this.library.p79_1 = vid;
+  this.compiledLibrary.k8z_1 = vid;
 };
-protoOf(LibraryBuilder).o9a = function () {
-  return this.library.o79_1;
+protoOf(LibraryBuilder).v9a = function () {
+  return this.library.p79_1;
 };
 protoOf(LibraryBuilder).endTranslation = function () {
   applyTargetModelMaps(this);
 };
 protoOf(LibraryBuilder).canResolveLibrary = function (includeDef) {
-  var libraryIdentifier = (new VersionedIdentifier()).e8i(Companion_instance_1.getUriPart(includeDef.f72_1)).a6i(Companion_instance_1.getNamePart(includeDef.f72_1)).d6j(includeDef.g72_1);
+  var libraryIdentifier = (new VersionedIdentifier()).f8i(Companion_instance_1.getUriPart(includeDef.g72_1)).b6i(Companion_instance_1.getNamePart(includeDef.g72_1)).e6j(includeDef.h72_1);
   return this.libraryManager.canResolveLibrary(libraryIdentifier);
 };
 protoOf(LibraryBuilder).addInclude = function (includeDef) {
   // Inline function 'kotlin.require' call
-  if (!(!(this.library.o79_1 == null) && !(ensureNotNull(this.library.o79_1).b8i_1 == null))) {
+  if (!(!(this.library.p79_1 == null) && !(ensureNotNull(this.library.p79_1).c8i_1 == null))) {
     var message = 'Unnamed libraries cannot reference other libraries.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  if (this.library.r79_1 == null) {
-    this.library.r79_1 = this.objectFactory.d7p();
+  if (this.library.s79_1 == null) {
+    this.library.s79_1 = this.objectFactory.e7p();
   }
-  ensureNotNull(this.library.r79_1).a79().e(includeDef);
-  this.compiledLibrary.a99(includeDef);
-  var libraryIdentifier = (new VersionedIdentifier()).e8i(Companion_instance_1.getUriPart(includeDef.f72_1)).a6i(Companion_instance_1.getNamePart(includeDef.f72_1)).d6j(includeDef.g72_1);
+  ensureNotNull(this.library.s79_1).b79().e(includeDef);
+  this.compiledLibrary.n99(includeDef);
+  var libraryIdentifier = (new VersionedIdentifier()).f8i(Companion_instance_1.getUriPart(includeDef.g72_1)).b6i(Companion_instance_1.getNamePart(includeDef.g72_1)).e6j(includeDef.h72_1);
   var errors = ArrayList_init_$Create$();
-  var referencedLibrary = this.libraryManager.p9a(libraryIdentifier, errors);
+  var referencedLibrary = this.libraryManager.w9a(libraryIdentifier, errors);
   var _iterator__ex2g4s = errors.g();
   while (_iterator__ex2g4s.h()) {
     var error = _iterator__ex2g4s.i();
     this.recordParsingException(error);
   }
-  var currentNamespaceUri = Companion_instance_1.getUriPart(includeDef.f72_1);
-  if (currentNamespaceUri == null && !(libraryIdentifier.c8i_1 == null) || (!(currentNamespaceUri == null) && !(currentNamespaceUri == libraryIdentifier.c8i_1))) {
-    includeDef.f72_1 = Companion_instance_1.getPath(libraryIdentifier.c8i_1, ensureNotNull(libraryIdentifier.b8i_1));
+  var currentNamespaceUri = Companion_instance_1.getUriPart(includeDef.g72_1);
+  if (currentNamespaceUri == null && !(libraryIdentifier.d8i_1 == null) || (!(currentNamespaceUri == null) && !(currentNamespaceUri == libraryIdentifier.d8i_1))) {
+    includeDef.g72_1 = Companion_instance_1.getPath(libraryIdentifier.d8i_1, ensureNotNull(libraryIdentifier.c8i_1));
   }
-  var tmp0 = this.r8v_1;
+  var tmp0 = this.s8v_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(includeDef.d72_1);
+  var key = ensureNotNull(includeDef.e72_1);
   tmp0.u2(key, referencedLibrary);
   loadConversionMap_0(this, referencedLibrary);
 };
 protoOf(LibraryBuilder).addParameter = function (paramDef) {
-  if (this.library.s79_1 == null) {
-    this.library.s79_1 = this.objectFactory.e7p();
-  }
-  ensureNotNull(this.library.s79_1).a79().e(paramDef);
-  this.compiledLibrary.q9a(paramDef);
-};
-protoOf(LibraryBuilder).addCodeSystem = function (cs) {
   if (this.library.t79_1 == null) {
     this.library.t79_1 = this.objectFactory.f7p();
   }
-  ensureNotNull(this.library.t79_1).a79().e(cs);
-  this.compiledLibrary.r9a(cs);
+  ensureNotNull(this.library.t79_1).b79().e(paramDef);
+  this.compiledLibrary.x9a(paramDef);
 };
-protoOf(LibraryBuilder).addValueSet = function (vs) {
+protoOf(LibraryBuilder).addCodeSystem = function (cs) {
   if (this.library.u79_1 == null) {
     this.library.u79_1 = this.objectFactory.g7p();
   }
-  ensureNotNull(this.library.u79_1).a79().e(vs);
-  this.compiledLibrary.s9a(vs);
+  ensureNotNull(this.library.u79_1).b79().e(cs);
+  this.compiledLibrary.y9a(cs);
 };
-protoOf(LibraryBuilder).addCode = function (cd) {
+protoOf(LibraryBuilder).addValueSet = function (vs) {
   if (this.library.v79_1 == null) {
     this.library.v79_1 = this.objectFactory.h7p();
   }
-  ensureNotNull(this.library.v79_1).a79().e(cd);
-  this.compiledLibrary.t9a(cd);
+  ensureNotNull(this.library.v79_1).b79().e(vs);
+  this.compiledLibrary.z9a(vs);
 };
-protoOf(LibraryBuilder).addConcept = function (cd) {
+protoOf(LibraryBuilder).addCode = function (cd) {
   if (this.library.w79_1 == null) {
     this.library.w79_1 = this.objectFactory.i7p();
   }
-  ensureNotNull(this.library.w79_1).a79().e(cd);
-  this.compiledLibrary.u9a(cd);
+  ensureNotNull(this.library.w79_1).b79().e(cd);
+  this.compiledLibrary.a9b(cd);
 };
-protoOf(LibraryBuilder).addContext = function (cd) {
+protoOf(LibraryBuilder).addConcept = function (cd) {
   if (this.library.x79_1 == null) {
     this.library.x79_1 = this.objectFactory.j7p();
   }
-  ensureNotNull(this.library.x79_1).a79().e(cd);
+  ensureNotNull(this.library.x79_1).b79().e(cd);
+  this.compiledLibrary.b9b(cd);
 };
-protoOf(LibraryBuilder).addExpression = function (expDef) {
+protoOf(LibraryBuilder).addContext = function (cd) {
   if (this.library.y79_1 == null) {
     this.library.y79_1 = this.objectFactory.k7p();
   }
-  ensureNotNull(this.library.y79_1).a79().e(expDef);
-  this.compiledLibrary.v9a(expDef);
+  ensureNotNull(this.library.y79_1).b79().e(cd);
+};
+protoOf(LibraryBuilder).addExpression = function (expDef) {
+  if (this.library.z79_1 == null) {
+    this.library.z79_1 = this.objectFactory.l7p();
+  }
+  ensureNotNull(this.library.z79_1).b79().e(expDef);
+  this.compiledLibrary.c9b(expDef);
 };
 protoOf(LibraryBuilder).removeExpression = function (expDef) {
-  if (!(this.library.y79_1 == null)) {
-    ensureNotNull(this.library.y79_1).a79().e2(expDef);
-    this.compiledLibrary.w9a(expDef);
+  if (!(this.library.z79_1 == null)) {
+    ensureNotNull(this.library.z79_1).b79().e2(expDef);
+    this.compiledLibrary.d9b(expDef);
   }
 };
 protoOf(LibraryBuilder).resolve = function (identifier) {
-  return this.compiledLibrary.x9a(identifier);
+  return this.compiledLibrary.e9b(identifier);
 };
 protoOf(LibraryBuilder).resolveIncludeRef = function (identifier) {
-  return this.compiledLibrary.z98(identifier);
+  return this.compiledLibrary.m99(identifier);
 };
 protoOf(LibraryBuilder).resolveCodeSystemRef = function (identifier) {
-  return this.compiledLibrary.g90(identifier);
+  return this.compiledLibrary.h90(identifier);
 };
 protoOf(LibraryBuilder).resolveValueSetRef = function (identifier) {
-  return this.compiledLibrary.y9a(identifier);
+  return this.compiledLibrary.f9b(identifier);
 };
 protoOf(LibraryBuilder).resolveCodeRef = function (identifier) {
-  return this.compiledLibrary.i90(identifier);
+  return this.compiledLibrary.j90(identifier);
 };
 protoOf(LibraryBuilder).resolveConceptRef = function (identifier) {
-  return this.compiledLibrary.z9a(identifier);
+  return this.compiledLibrary.g9b(identifier);
 };
 protoOf(LibraryBuilder).resolveParameterRef = function (identifier) {
   this.checkLiteralContext();
-  return this.compiledLibrary.a9b(identifier);
+  return this.compiledLibrary.h9b(identifier);
 };
 protoOf(LibraryBuilder).resolveExpressionRef = function (identifier) {
   this.checkLiteralContext();
-  return this.compiledLibrary.b9b(identifier);
+  return this.compiledLibrary.i9b(identifier);
 };
 protoOf(LibraryBuilder).findConversion = function (fromType, toType, implicit, allowPromotionAndDemotion) {
-  return this.conversionMap.c9b(fromType, toType, implicit, allowPromotionAndDemotion, this.compiledLibrary.m8z_1);
+  return this.conversionMap.j9b(fromType, toType, implicit, allowPromotionAndDemotion, this.compiledLibrary.n8z_1);
 };
 protoOf(LibraryBuilder).resolveUnaryCall = function (libraryName, operatorName, expression) {
   return resolveCall(this, libraryName, operatorName, new UnaryExpressionInvocation(expression), false, false);
 };
-protoOf(LibraryBuilder).o8w = function (libraryName, operatorName, expression) {
+protoOf(LibraryBuilder).p8w = function (libraryName, operatorName, expression) {
   var invocation = this.resolveBinaryInvocation(libraryName, operatorName, expression);
-  return invocation == null ? null : invocation.l5w();
+  return invocation == null ? null : invocation.m5w();
 };
-protoOf(LibraryBuilder).d9b = function (libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion) {
-  return this.a98(libraryName, operatorName, new BinaryExpressionInvocation(expression), mustResolve, allowPromotionAndDemotion, false);
+protoOf(LibraryBuilder).k9b = function (libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion) {
+  return this.n98(libraryName, operatorName, new BinaryExpressionInvocation(expression), mustResolve, allowPromotionAndDemotion, false);
 };
 protoOf(LibraryBuilder).resolveBinaryInvocation = function (libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion, $super) {
   mustResolve = mustResolve === VOID ? true : mustResolve;
   allowPromotionAndDemotion = allowPromotionAndDemotion === VOID ? false : allowPromotionAndDemotion;
-  return $super === VOID ? this.d9b(libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion) : $super.d9b.call(this, libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion);
+  return $super === VOID ? this.k9b(libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion) : $super.k9b.call(this, libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion);
 };
-protoOf(LibraryBuilder).j91 = function (libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion) {
+protoOf(LibraryBuilder).k91 = function (libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion) {
   var invocation = this.resolveBinaryInvocation(libraryName, operatorName, expression, mustResolve, allowPromotionAndDemotion);
-  return invocation == null ? null : invocation.l5w();
+  return invocation == null ? null : invocation.m5w();
 };
 protoOf(LibraryBuilder).resolveTernaryCall = function (libraryName, operatorName, expression) {
   return resolveCall(this, libraryName, operatorName, new TernaryExpressionInvocation(expression), false, false);
@@ -7345,8 +7577,8 @@ protoOf(LibraryBuilder).resolveUnion = function (left, right) {
   var right_0 = right;
   if (left_0 instanceof Union) {
     var leftUnion = left_0;
-    var leftUnionLeft = leftUnion.o67().o(0);
-    var leftUnionRight = leftUnion.o67().o(1);
+    var leftUnionLeft = leftUnion.p67().o(0);
+    var leftUnionRight = leftUnion.p67().o(1);
     var tmp;
     if (leftUnionLeft instanceof Union) {
       tmp = !(leftUnionRight instanceof Union);
@@ -7359,7 +7591,7 @@ protoOf(LibraryBuilder).resolveUnion = function (left, right) {
     }
   }
   var wrapper = normalizeListTypes(this, left_0, right_0);
-  var union = this.objectFactory.i7j().f67(listOf([wrapper.t97_1, wrapper.u97_1]));
+  var union = this.objectFactory.j7j().g67(listOf([wrapper.g98_1, wrapper.h98_1]));
   this.resolveNaryCall('System', 'Union', union);
   return union;
 };
@@ -7368,8 +7600,8 @@ protoOf(LibraryBuilder).resolveIntersect = function (left, right) {
   var right_0 = right;
   if (left_0 instanceof Intersect) {
     var leftIntersect = left_0;
-    var leftIntersectLeft = leftIntersect.o67().o(0);
-    var leftIntersectRight = leftIntersect.o67().o(1);
+    var leftIntersectLeft = leftIntersect.p67().o(0);
+    var leftIntersectRight = leftIntersect.p67().o(1);
     var tmp;
     if (leftIntersectLeft instanceof Intersect) {
       tmp = !(leftIntersectRight instanceof Intersect);
@@ -7382,59 +7614,59 @@ protoOf(LibraryBuilder).resolveIntersect = function (left, right) {
     }
   }
   var wrapper = normalizeListTypes(this, left_0, right_0);
-  var intersect = this.objectFactory.g7o().f67(listOf([wrapper.t97_1, wrapper.u97_1]));
+  var intersect = this.objectFactory.h7o().g67(listOf([wrapper.g98_1, wrapper.h98_1]));
   this.resolveNaryCall('System', 'Intersect', intersect);
   return intersect;
 };
 protoOf(LibraryBuilder).resolveExcept = function (left, right) {
   var wrapper = normalizeListTypes(this, left, right);
-  var except = this.objectFactory.n7p().f67(listOf([wrapper.t97_1, wrapper.u97_1]));
+  var except = this.objectFactory.o7p().g67(listOf([wrapper.g98_1, wrapper.h98_1]));
   this.resolveNaryCall('System', 'Except', except);
   return except;
 };
-protoOf(LibraryBuilder).m8w = function (left, right) {
+protoOf(LibraryBuilder).n8w = function (left, right) {
   var tmp;
   if (right instanceof ValueSetRef) {
     tmp = true;
   } else {
-    tmp = (this.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().n8v(right)).z5z(ensureNotNull(this.l8w('System', 'ValueSet'))) && !equals(Trackable_getInstance().n8v(right), this.l8w('System', 'Any')));
+    tmp = (this.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().o8v(right)).a60(ensureNotNull(this.m8w('System', 'ValueSet'))) && !equals(Trackable_getInstance().o8v(right), this.m8w('System', 'Any')));
   }
   if (tmp) {
-    var tmp_0 = Trackable_getInstance().n8v(left);
+    var tmp_0 = Trackable_getInstance().o8v(left);
     if (tmp_0 instanceof ListType) {
-      var tmp_1 = this.objectFactory.w7o().q6a(left);
+      var tmp_1 = this.objectFactory.x7o().r6a(left);
       var tmp_2;
       if (right instanceof ValueSetRef) {
         tmp_2 = right;
       } else {
         tmp_2 = null;
       }
-      var tmp_3 = tmp_1.c6b(tmp_2);
+      var tmp_3 = tmp_1.d6b(tmp_2);
       var tmp_4;
       if (right instanceof ValueSetRef) {
         tmp_4 = null;
       } else {
         tmp_4 = right;
       }
-      var anyIn = tmp_3.d6b(tmp_4);
+      var anyIn = tmp_3.e6b(tmp_4);
       this.resolveCall('System', 'AnyInValueSet', new AnyInValueSetInvocation(anyIn));
       return anyIn;
     }
-    var tmp_5 = this.objectFactory.v7o().o71(left);
+    var tmp_5 = this.objectFactory.w7o().p71(left);
     var tmp_6;
     if (right instanceof ValueSetRef) {
       tmp_6 = right;
     } else {
       tmp_6 = null;
     }
-    var tmp_7 = tmp_5.c6b(tmp_6);
+    var tmp_7 = tmp_5.d6b(tmp_6);
     var tmp_8;
     if (right instanceof ValueSetRef) {
       tmp_8 = null;
     } else {
       tmp_8 = right;
     }
-    var inValueSet = tmp_7.d6b(tmp_8);
+    var inValueSet = tmp_7.e6b(tmp_8);
     this.resolveCall('System', 'InValueSet', new InValueSetInvocation(inValueSet));
     return inValueSet;
   }
@@ -7442,112 +7674,112 @@ protoOf(LibraryBuilder).m8w = function (left, right) {
   if (right instanceof CodeSystemRef) {
     tmp_9 = true;
   } else {
-    tmp_9 = (this.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().n8v(right)).z5z(ensureNotNull(this.l8w('System', 'CodeSystem'))) && !equals(Trackable_getInstance().n8v(right), this.l8w('System', 'Any')));
+    tmp_9 = (this.isCompatibleWith('1.5') && ensureNotNull(Trackable_getInstance().o8v(right)).a60(ensureNotNull(this.m8w('System', 'CodeSystem'))) && !equals(Trackable_getInstance().o8v(right), this.m8w('System', 'Any')));
   }
   if (tmp_9) {
-    var tmp_10 = Trackable_getInstance().n8v(left);
+    var tmp_10 = Trackable_getInstance().o8v(left);
     if (tmp_10 instanceof ListType) {
-      var tmp_11 = this.objectFactory.r7n().q6a(left);
+      var tmp_11 = this.objectFactory.s7n().r6a(left);
       var tmp_12;
       if (right instanceof CodeSystemRef) {
         tmp_12 = right;
       } else {
         tmp_12 = null;
       }
-      var tmp_13 = tmp_11.r6a(tmp_12);
+      var tmp_13 = tmp_11.s6a(tmp_12);
       var tmp_14;
       if (right instanceof CodeSystemRef) {
         tmp_14 = null;
       } else {
         tmp_14 = right;
       }
-      var anyIn_0 = tmp_13.s6a(tmp_14);
+      var anyIn_0 = tmp_13.t6a(tmp_14);
       this.resolveCall('System', 'AnyInCodeSystem', new AnyInCodeSystemInvocation(anyIn_0));
       return anyIn_0;
     }
-    var tmp_15 = this.objectFactory.m7p().o71(left);
+    var tmp_15 = this.objectFactory.n7p().p71(left);
     var tmp_16;
     if (right instanceof CodeSystemRef) {
       tmp_16 = right;
     } else {
       tmp_16 = null;
     }
-    var tmp_17 = tmp_15.r6a(tmp_16);
+    var tmp_17 = tmp_15.s6a(tmp_16);
     var tmp_18;
     if (right instanceof CodeSystemRef) {
       tmp_18 = null;
     } else {
       tmp_18 = right;
     }
-    var inCodeSystem = tmp_17.s6a(tmp_18);
+    var inCodeSystem = tmp_17.t6a(tmp_18);
     this.resolveCall('System', 'InCodeSystem', new InCodeSystemInvocation(inCodeSystem));
     return inCodeSystem;
   }
-  var inExpression = this.objectFactory.e7n().f67(listOf([left, right]));
-  this.o8w('System', 'In', inExpression);
+  var inExpression = this.objectFactory.f7n().g67(listOf([left, right]));
+  this.p8w('System', 'In', inExpression);
   return inExpression;
 };
-protoOf(LibraryBuilder).n8w = function (left, right) {
-  var contains = this.objectFactory.q7i().f67(listOf([left, right]));
-  this.o8w('System', 'Contains', contains);
+protoOf(LibraryBuilder).o8w = function (left, right) {
+  var contains = this.objectFactory.r7i().g67(listOf([left, right]));
+  this.p8w('System', 'Contains', contains);
   return contains;
 };
-protoOf(LibraryBuilder).l91 = function (left, right, dateTimePrecision) {
+protoOf(LibraryBuilder).m91 = function (left, right, dateTimePrecision) {
   var result = resolveInInvocation(this, left, right, dateTimePrecision);
-  return result == null ? null : result.l5w();
+  return result == null ? null : result.m5w();
 };
 protoOf(LibraryBuilder).resolveProperIn = function (left, right, dateTimePrecision) {
   var result = resolveProperInInvocation(this, left, right, dateTimePrecision);
-  return result == null ? null : result.l5w();
+  return result == null ? null : result.m5w();
 };
-protoOf(LibraryBuilder).k91 = function (left, right, dateTimePrecision) {
+protoOf(LibraryBuilder).l91 = function (left, right, dateTimePrecision) {
   var result = resolveContainsInvocation(this, left, right, dateTimePrecision);
-  return result == null ? null : result.l5w();
+  return result == null ? null : result.m5w();
 };
 protoOf(LibraryBuilder).resolveProperContains = function (left, right, dateTimePrecision) {
   var result = resolveProperContainsInvocation(this, left, right, dateTimePrecision);
-  return result == null ? null : result.l5w();
+  return result == null ? null : result.m5w();
 };
 protoOf(LibraryBuilder).resolveIncludes = function (left, right, dateTimePrecision) {
-  var includes = this.objectFactory.u7p().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var includes = this.objectFactory.v7p().g67(listOf([left, right])).f6e(dateTimePrecision);
   var includesInvocation = this.resolveBinaryInvocation('System', 'Includes', includes, false, false);
-  var contains = this.objectFactory.q7i().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var contains = this.objectFactory.r7i().g67(listOf([left, right])).f6e(dateTimePrecision);
   var containsInvocation = this.resolveBinaryInvocation('System', 'Contains', contains, false, false);
   var tmp0_elvis_lhs = lowestScoringInvocation(this, includesInvocation, containsInvocation);
-  return tmp0_elvis_lhs == null ? this.o8w('System', 'Includes', includes) : tmp0_elvis_lhs;
+  return tmp0_elvis_lhs == null ? this.p8w('System', 'Includes', includes) : tmp0_elvis_lhs;
 };
 protoOf(LibraryBuilder).resolveProperIncludes = function (left, right, dateTimePrecision) {
-  var properIncludes = this.objectFactory.j7i().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var properIncludes = this.objectFactory.k7i().g67(listOf([left, right])).f6e(dateTimePrecision);
   var properIncludesInvocation = this.resolveBinaryInvocation('System', 'ProperIncludes', properIncludes, false, false);
-  var properContains = this.objectFactory.m7k().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var properContains = this.objectFactory.n7k().g67(listOf([left, right])).f6e(dateTimePrecision);
   var properContainsInvocation = this.resolveBinaryInvocation('System', 'ProperContains', properContains, false, false);
   var tmp0_elvis_lhs = lowestScoringInvocation(this, properIncludesInvocation, properContainsInvocation);
-  return tmp0_elvis_lhs == null ? this.o8w('System', 'ProperIncludes', properIncludes) : tmp0_elvis_lhs;
+  return tmp0_elvis_lhs == null ? this.p8w('System', 'ProperIncludes', properIncludes) : tmp0_elvis_lhs;
 };
 protoOf(LibraryBuilder).resolveIncludedIn = function (left, right, dateTimePrecision) {
-  var includedIn = this.objectFactory.q7p().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var includedIn = this.objectFactory.r7p().g67(listOf([left, right])).f6e(dateTimePrecision);
   var includedInInvocation = this.resolveBinaryInvocation('System', 'IncludedIn', includedIn, false, false);
-  var inExpression = this.objectFactory.e7n().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var inExpression = this.objectFactory.f7n().g67(listOf([left, right])).f6e(dateTimePrecision);
   var inInvocation = this.resolveBinaryInvocation('System', 'In', inExpression, false, false);
   var tmp0_elvis_lhs = lowestScoringInvocation(this, includedInInvocation, inInvocation);
-  return tmp0_elvis_lhs == null ? this.o8w('System', 'IncludedIn', includedIn) : tmp0_elvis_lhs;
+  return tmp0_elvis_lhs == null ? this.p8w('System', 'IncludedIn', includedIn) : tmp0_elvis_lhs;
 };
 protoOf(LibraryBuilder).resolveProperIncludedIn = function (left, right, dateTimePrecision) {
-  var properIncludedIn = this.objectFactory.y7l().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var properIncludedIn = this.objectFactory.z7l().g67(listOf([left, right])).f6e(dateTimePrecision);
   var properIncludedInInvocation = this.resolveBinaryInvocation('System', 'ProperIncludedIn', properIncludedIn, false, false);
-  var properIn = this.objectFactory.u7h().f67(listOf([left, right])).e6e(dateTimePrecision);
+  var properIn = this.objectFactory.v7h().g67(listOf([left, right])).f6e(dateTimePrecision);
   var properInInvocation = this.resolveBinaryInvocation('System', 'ProperIn', properIn, false, false);
   var tmp0_elvis_lhs = lowestScoringInvocation(this, properIncludedInInvocation, properInInvocation);
-  return tmp0_elvis_lhs == null ? this.o8w('System', 'ProperIncludedIn', properIncludedIn) : tmp0_elvis_lhs;
+  return tmp0_elvis_lhs == null ? this.p8w('System', 'ProperIncludedIn', properIncludedIn) : tmp0_elvis_lhs;
 };
 protoOf(LibraryBuilder).resolveCall = function (libraryName, operatorName, invocation) {
   return resolveCall_0(this, libraryName, operatorName, invocation, true, false, false);
 };
-protoOf(LibraryBuilder).e9b = function (libraryName, operatorName, invocation, allowPromotionAndDemotion, allowFluent) {
-  return this.a98(libraryName, operatorName, invocation, true, allowPromotionAndDemotion, allowFluent);
+protoOf(LibraryBuilder).l9b = function (libraryName, operatorName, invocation, allowPromotionAndDemotion, allowFluent) {
+  return this.n98(libraryName, operatorName, invocation, true, allowPromotionAndDemotion, allowFluent);
 };
-protoOf(LibraryBuilder).a98 = function (libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent) {
-  var operands = invocation.f9b();
+protoOf(LibraryBuilder).n98 = function (libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent) {
+  var operands = invocation.m9b();
   var callContext = buildCallContext(this, libraryName, operatorName, operands, mustResolve, allowPromotionAndDemotion, allowFluent);
   var resolution = resolveCall_1(this, callContext);
   if (resolution == null && !mustResolve) {
@@ -7556,45 +7788,45 @@ protoOf(LibraryBuilder).a98 = function (libraryName, operatorName, invocation, m
   checkOperator(this, callContext, resolution);
   var convertedOperands = ArrayList_init_$Create$();
   var operandIterator = operands.g();
-  var signatureTypes = ensureNotNull(resolution).t92_1.y8w_1.h8z_1.g();
-  var conversionIterator = resolution.g9b() ? resolution.u92_1.g() : null;
+  var signatureTypes = ensureNotNull(resolution).u92_1.z8w_1.i8z_1.g();
+  var conversionIterator = resolution.n9b() ? resolution.v92_1.g() : null;
   while (operandIterator.h()) {
     var operand = operandIterator.i();
     var conversion = conversionIterator == null ? null : conversionIterator.i();
     if (!(conversion == null)) {
-      operand = this.e91(operand, conversion);
+      operand = this.f91(operand, conversion);
     }
     var signatureType = signatureTypes.i();
     operand = pruneChoices(this, operand, signatureType);
     convertedOperands.e(operand);
   }
-  invocation.h9b(convertedOperands);
-  if (this.e8w_1.signatureLevel.equals(SignatureLevel_All_getInstance()) || (this.e8w_1.signatureLevel.equals(SignatureLevel_Differing_getInstance()) && !resolution.t92_1.y8w_1.equals(callContext.g98_1)) || (this.e8w_1.signatureLevel.equals(SignatureLevel_Overloads_getInstance()) && resolution.z92_1)) {
-    invocation.i9b(dataTypesToTypeSpecifiers(this, resolution.t92_1.y8w_1.h8z_1));
-  } else if (resolution.z92_1 && !(resolution.t92_1.e8x_1 === 'System')) {
-    reportWarning(this, replace(trimIndent('\n                    The function ' + resolution.t92_1.e8x_1 + '.' + resolution.t92_1.x8w_1 + ' has multiple overloads\n                    and due to the SignatureLevel setting (' + this.e8w_1.signatureLevel.x2_1 + '),\n                    the overload signature is not being included in the output.\n                    This may result in ambiguous function resolution\n                    at runtime, consider setting the SignatureLevel to Overloads or All\n                    to ensure that the output includes sufficient\n                    information to support correct overload selection at runtime.\n                '), '\n', ' '), invocation.l5w());
+  invocation.o9b(convertedOperands);
+  if (this.f8w_1.signatureLevel.equals(SignatureLevel_All_getInstance()) || (this.f8w_1.signatureLevel.equals(SignatureLevel_Differing_getInstance()) && !resolution.u92_1.z8w_1.equals(callContext.t98_1)) || (this.f8w_1.signatureLevel.equals(SignatureLevel_Overloads_getInstance()) && resolution.a93_1)) {
+    invocation.p9b(dataTypesToTypeSpecifiers(this, resolution.u92_1.z8w_1.i8z_1));
+  } else if (resolution.a93_1 && !(resolution.u92_1.f8x_1 === 'System')) {
+    reportWarning(this, replace(trimIndent('\n                    The function ' + resolution.u92_1.f8x_1 + '.' + resolution.u92_1.y8w_1 + ' has multiple overloads\n                    and due to the SignatureLevel setting (' + this.f8w_1.signatureLevel.x2_1 + '),\n                    the overload signature is not being included in the output.\n                    This may result in ambiguous function resolution\n                    at runtime, consider setting the SignatureLevel to Overloads or All\n                    to ensure that the output includes sufficient\n                    information to support correct overload selection at runtime.\n                '), '\n', ' '), invocation.m5w());
   }
-  invocation.c93(resolution.t92_1.z8w_1);
-  if (!(resolution.x92_1 == null)) {
-    resolution.y92_1 = resolveIncludeAlias(this, ensureNotNull(resolution.x92_1));
+  invocation.d93(resolution.u92_1.a8x_1);
+  if (!(resolution.y92_1 == null)) {
+    resolution.z92_1 = resolveIncludeAlias(this, ensureNotNull(resolution.y92_1));
   }
-  invocation.j9b(resolution);
+  invocation.q9b(resolution);
   return invocation;
 };
 protoOf(LibraryBuilder).resolveInvocation$default = function (libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent, $super) {
   mustResolve = mustResolve === VOID ? true : mustResolve;
   allowPromotionAndDemotion = allowPromotionAndDemotion === VOID ? false : allowPromotionAndDemotion;
   allowFluent = allowFluent === VOID ? false : allowFluent;
-  return $super === VOID ? this.a98(libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent) : $super.a98.call(this, libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent);
+  return $super === VOID ? this.n98(libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent) : $super.n98.call(this, libraryName, operatorName, invocation, mustResolve, allowPromotionAndDemotion, allowFluent);
 };
 protoOf(LibraryBuilder).resolveFunctionDefinition = function (fd) {
-  var libraryName = ensureNotNull(this.compiledLibrary.j8z_1).b8i_1;
-  var operatorName = fd.c6w_1;
+  var libraryName = ensureNotNull(this.compiledLibrary.k8z_1).c8i_1;
+  var operatorName = fd.d6w_1;
   var dataTypes = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = fd.o67().g();
+  var _iterator__ex2g4s = fd.p67().g();
   while (_iterator__ex2g4s.h()) {
     var operand = _iterator__ex2g4s.i();
-    var tmp0 = Trackable_getInstance().n8v(operand);
+    var tmp0 = Trackable_getInstance().o8v(operand);
     $l$block: {
       // Inline function 'kotlin.requireNotNull' call
       if (tmp0 == null) {
@@ -7604,30 +7836,30 @@ protoOf(LibraryBuilder).resolveFunctionDefinition = function (fd) {
         break $l$block;
       }
     }
-    dataTypes.e(ensureNotNull(Trackable_getInstance().n8v(operand)));
+    dataTypes.e(ensureNotNull(Trackable_getInstance().o8v(operand)));
   }
-  var callContext = new CallContext(ensureNotNull(this.compiledLibrary.j8z_1).b8i_1, ensureNotNull(fd.c6w_1), false, !(fd.k6y_1 == null) && ensureNotNull(fd.k6y_1), false, dataTypes);
-  var tmp0_safe_receiver = this.compiledLibrary.h98(callContext, this.conversionMap);
-  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.t92_1;
+  var callContext = new CallContext(ensureNotNull(this.compiledLibrary.k8z_1).c8i_1, ensureNotNull(fd.d6w_1), false, !(fd.l6y_1 == null) && ensureNotNull(fd.l6y_1), false, dataTypes);
+  var tmp0_safe_receiver = this.compiledLibrary.u98(callContext, this.conversionMap);
+  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.u92_1;
 };
 protoOf(LibraryBuilder).checkAccessLevel = function (libraryName, objectName, accessModifier) {
-  if (accessModifier.equals(AccessModifier_PRIVATE_getInstance()) && isInterFunctionAccess(this, ensureNotNull(ensureNotNull(this.library.o79_1).b8i_1), libraryName)) {
+  if (accessModifier.equals(AccessModifier_PRIVATE_getInstance()) && isInterFunctionAccess(this, ensureNotNull(ensureNotNull(this.library.p79_1).c8i_1), libraryName)) {
     throw CqlSemanticException_init_$Create$('Identifier ' + objectName + ' in library ' + libraryName + ' is marked private and cannot be referenced from another library.');
   }
 };
-protoOf(LibraryBuilder).f91 = function (libraryName, functionName, paramList) {
-  var tmp0_safe_receiver = this.p8y(libraryName, functionName, paramList, true, false, false);
-  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.l5w();
+protoOf(LibraryBuilder).g91 = function (libraryName, functionName, paramList) {
+  var tmp0_safe_receiver = this.q8y(libraryName, functionName, paramList, true, false, false);
+  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.m5w();
 };
-protoOf(LibraryBuilder).p8y = function (libraryName, functionName, paramList, mustResolve, allowPromotionAndDemotion, allowFluent) {
+protoOf(LibraryBuilder).q8y = function (libraryName, functionName, paramList, mustResolve, allowPromotionAndDemotion, allowFluent) {
   var functionRef = buildFunctionRef(this, libraryName, functionName, paramList);
   var invocation = new FunctionRefInvocation(ensureNotNull(functionRef));
-  var tmp = resolveCall_0(this, functionRef.n6w_1, ensureNotNull(functionRef.m6w_1), invocation, false, allowPromotionAndDemotion, allowFluent);
+  var tmp = resolveCall_0(this, functionRef.o6w_1, ensureNotNull(functionRef.n6w_1), invocation, false, allowPromotionAndDemotion, allowFluent);
   functionRef = (tmp == null ? true : tmp instanceof FunctionRef) ? tmp : THROW_CCE();
   if (!(functionRef == null)) {
-    if ('System' === ensureNotNull(invocation.s92()).t92_1.e8x_1) {
+    if ('System' === ensureNotNull(invocation.t92()).u92_1.f8x_1) {
       var systemFun = buildFunctionRef(this, libraryName, functionName, paramList);
-      var systemFunctionInvocation = this.s8v_1.m9b(systemFun);
+      var systemFunctionInvocation = this.t8v_1.t9b(systemFun);
       if (!(systemFunctionInvocation == null)) {
         return systemFunctionInvocation;
       }
@@ -7641,13 +7873,13 @@ protoOf(LibraryBuilder).p8y = function (libraryName, functionName, paramList, mu
     functionRef = buildFunctionRef(this, libraryName, functionName, paramList);
     invocation = new FunctionRefInvocation(functionRef);
     if (!allowFluent) {
-      var systemFunction = this.s8v_1.m9b(functionRef);
+      var systemFunction = this.t8v_1.t9b(functionRef);
       if (!(systemFunction == null)) {
         return systemFunction;
       }
       this.checkLiteralContext();
     }
-    var tmp_0 = resolveCall_0(this, functionRef.n6w_1, ensureNotNull(functionRef.m6w_1), invocation, mustResolve, allowPromotionAndDemotion, allowFluent);
+    var tmp_0 = resolveCall_0(this, functionRef.o6w_1, ensureNotNull(functionRef.n6w_1), invocation, mustResolve, allowPromotionAndDemotion, allowFluent);
     functionRef = (tmp_0 == null ? true : tmp_0 instanceof FunctionRef) ? tmp_0 : THROW_CCE();
     if (functionRef == null) {
       return null;
@@ -7656,192 +7888,192 @@ protoOf(LibraryBuilder).p8y = function (libraryName, functionName, paramList, mu
   return invocation;
 };
 protoOf(LibraryBuilder).verifyComparable = function (dataType) {
-  var tmp = Trackable_getInstance().h90(this.objectFactory.j7k(), dataType);
+  var tmp = Trackable_getInstance().i90(this.objectFactory.k7k(), dataType);
   var left = tmp instanceof Expression ? tmp : THROW_CCE();
-  var tmp_0 = Trackable_getInstance().h90(this.objectFactory.j7k(), dataType);
+  var tmp_0 = Trackable_getInstance().i90(this.objectFactory.k7k(), dataType);
   var right = tmp_0 instanceof Expression ? tmp_0 : THROW_CCE();
-  var comparison = this.objectFactory.p7o().f67(listOf([left, right]));
-  this.o8w('System', 'Less', comparison);
+  var comparison = this.objectFactory.q7o().g67(listOf([left, right]));
+  this.p8w('System', 'Less', comparison);
 };
-protoOf(LibraryBuilder).n9b = function (expression, targetType, implicit) {
-  var conversion = this.findConversion(ensureNotNull(Trackable_getInstance().n8v(expression)), targetType, implicit, false);
+protoOf(LibraryBuilder).u9b = function (expression, targetType, implicit) {
+  var conversion = this.findConversion(ensureNotNull(Trackable_getInstance().o8v(expression)), targetType, implicit, false);
   if (!(conversion == null)) {
-    return this.e91(expression, conversion);
+    return this.f91(expression, conversion);
   }
-  DataTypes_instance.n91(Trackable_getInstance().n8v(expression), targetType);
+  DataTypes_instance.o91(Trackable_getInstance().o8v(expression), targetType);
   return expression;
 };
 protoOf(LibraryBuilder).convertExpression$default = function (expression, targetType, implicit, $super) {
   implicit = implicit === VOID ? true : implicit;
-  return $super === VOID ? this.n9b(expression, targetType, implicit) : $super.n9b.call(this, expression, targetType, implicit);
+  return $super === VOID ? this.u9b(expression, targetType, implicit) : $super.u9b.call(this, expression, targetType, implicit);
 };
 protoOf(LibraryBuilder).resolveToList = function (expression) {
-  var toList = this.objectFactory.h7j().a6c(expression);
-  Trackable_getInstance().o8v(toList, new ListType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(expression)))));
+  var toList = this.objectFactory.i7j().b6c(expression);
+  Trackable_getInstance().p8v(toList, new ListType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(expression)))));
   return toList;
 };
 protoOf(LibraryBuilder).buildAs = function (expression, asType) {
-  var result = Trackable_getInstance().h90(this.objectFactory.j7j().a6c(expression), asType);
-  var tmp = Trackable_getInstance().n8v(result);
+  var result = Trackable_getInstance().i90(this.objectFactory.k7j().b6c(expression), asType);
+  var tmp = Trackable_getInstance().o8v(result);
   if (!(tmp == null) ? isInterface(tmp, NamedType) : false) {
-    result.t6b_1 = this.dataTypeToQName(Trackable_getInstance().n8v(result));
+    result.u6b_1 = this.dataTypeToQName(Trackable_getInstance().o8v(result));
   } else {
-    result.v6b_1 = this.dataTypeToTypeSpecifier(Trackable_getInstance().n8v(result));
+    result.w6b_1 = this.dataTypeToTypeSpecifier(Trackable_getInstance().o8v(result));
   }
   return result;
 };
 protoOf(LibraryBuilder).buildIs = function (expression, isType) {
-  var result = Trackable_getInstance().h90(this.objectFactory.g7n().a6c(expression), this.l8w('System', 'Boolean'));
+  var result = Trackable_getInstance().i90(this.objectFactory.h7n().b6c(expression), this.m8w('System', 'Boolean'));
   if (!(isType == null) ? isInterface(isType, NamedType) : false) {
-    result.z75_1 = this.dataTypeToQName(isType);
+    result.a76_1 = this.dataTypeToQName(isType);
   } else {
-    result.a76_1 = this.dataTypeToTypeSpecifier(isType);
+    result.b76_1 = this.dataTypeToTypeSpecifier(isType);
   }
   return result;
 };
 protoOf(LibraryBuilder).buildNull = function (nullType) {
-  var result = Trackable_getInstance().h90(this.objectFactory.a7o(), nullType);
+  var result = Trackable_getInstance().i90(this.objectFactory.b7o(), nullType);
   if (!(nullType == null) ? isInterface(nullType, NamedType) : false) {
-    result.c66_1 = this.dataTypeToQName(nullType);
+    result.d66_1 = this.dataTypeToQName(nullType);
   } else {
-    result.e66_1 = this.dataTypeToTypeSpecifier(nullType);
+    result.f66_1 = this.dataTypeToTypeSpecifier(nullType);
   }
   return result;
 };
 protoOf(LibraryBuilder).buildMinimum = function (dataType) {
-  var minimum = this.objectFactory.l7o();
-  minimum.z7e_1 = this.dataTypeToQName(dataType);
-  Trackable_getInstance().o8v(minimum, dataType);
+  var minimum = this.objectFactory.m7o();
+  minimum.a7f_1 = this.dataTypeToQName(dataType);
+  Trackable_getInstance().p8v(minimum, dataType);
   return minimum;
 };
 protoOf(LibraryBuilder).buildMaximum = function (dataType) {
-  var maximum = this.objectFactory.q7m();
-  maximum.s7c_1 = this.dataTypeToQName(dataType);
-  Trackable_getInstance().o8v(maximum, dataType);
+  var maximum = this.objectFactory.r7m();
+  maximum.t7c_1 = this.dataTypeToQName(dataType);
+  Trackable_getInstance().p8v(maximum, dataType);
   return maximum;
 };
 protoOf(LibraryBuilder).buildPredecessor = function (source) {
-  var result = this.objectFactory.z7i().a6c(source);
+  var result = this.objectFactory.a7j().b6c(source);
   this.resolveUnaryCall('System', 'Predecessor', result);
   return result;
 };
 protoOf(LibraryBuilder).buildSuccessor = function (source) {
-  var result = this.objectFactory.h7l().a6c(source);
+  var result = this.objectFactory.i7l().b6c(source);
   this.resolveUnaryCall('System', 'Successor', result);
   return result;
 };
-protoOf(LibraryBuilder).e91 = function (expression, conversion) {
-  if (conversion.o98_1 && (conversion.i98_1.y5z(conversion.j98_1) || conversion.i98_1.z5z(conversion.j98_1))) {
+protoOf(LibraryBuilder).f91 = function (expression, conversion) {
+  if (conversion.b99_1 && (conversion.v98_1.z5z(conversion.w98_1) || conversion.v98_1.a60(conversion.w98_1))) {
     var tmp;
-    var tmp_0 = conversion.i98_1;
+    var tmp_0 = conversion.v98_1;
     if (tmp_0 instanceof ChoiceType) {
-      var tmp_1 = conversion.j98_1;
+      var tmp_1 = conversion.w98_1;
       tmp = tmp_1 instanceof ChoiceType;
     } else {
       tmp = false;
     }
     if (tmp) {
-      if (conversion.i98_1.g60(conversion.j98_1)) {
+      if (conversion.v98_1.h60(conversion.w98_1)) {
         return expression;
       }
     }
-    var castedOperand = this.buildAs(expression, conversion.j98_1);
+    var castedOperand = this.buildAs(expression, conversion.w98_1);
     return collapseTypeCase(this, castedOperand);
-  } else if (conversion.o98_1 && !(conversion.l98_1 == null) && (conversion.i98_1.y5z(conversion.l98_1.i98_1) || conversion.i98_1.z5z(conversion.l98_1.i98_1))) {
-    var castedOperand_0 = this.buildAs(expression, conversion.l98_1.i98_1);
-    var result = this.e91(castedOperand_0, conversion.l98_1);
-    if (conversion.p9b()) {
-      var caseResult = this.objectFactory.i7n();
-      Trackable_getInstance().o8v(caseResult, Trackable_getInstance().n8v(result));
-      caseResult.l6f().e(this.objectFactory.m7o().u6f(this.buildIs(expression, conversion.l98_1.i98_1)).v6f(result));
-      var _iterator__ex2g4s = conversion.o9b().g();
+  } else if (conversion.b99_1 && !(conversion.y98_1 == null) && (conversion.v98_1.z5z(conversion.y98_1.v98_1) || conversion.v98_1.a60(conversion.y98_1.v98_1))) {
+    var castedOperand_0 = this.buildAs(expression, conversion.y98_1.v98_1);
+    var result = this.f91(castedOperand_0, conversion.y98_1);
+    if (conversion.w9b()) {
+      var caseResult = this.objectFactory.j7n();
+      Trackable_getInstance().p8v(caseResult, Trackable_getInstance().o8v(result));
+      caseResult.m6f().e(this.objectFactory.n7o().v6f(this.buildIs(expression, conversion.y98_1.v98_1)).w6f(result));
+      var _iterator__ex2g4s = conversion.v9b().g();
       while (_iterator__ex2g4s.h()) {
         var alternative = _iterator__ex2g4s.i();
-        caseResult.l6f().e(this.objectFactory.m7o().u6f(this.buildIs(expression, alternative.i98_1)).v6f(this.e91(this.buildAs(expression, alternative.i98_1), alternative)));
+        caseResult.m6f().e(this.objectFactory.n7o().v6f(this.buildIs(expression, alternative.v98_1)).w6f(this.f91(this.buildAs(expression, alternative.v98_1), alternative)));
       }
-      caseResult.m6f(this.buildNull(Trackable_getInstance().n8v(result)));
+      caseResult.n6f(this.buildNull(Trackable_getInstance().o8v(result)));
       result = caseResult;
     }
     return result;
-  } else if (conversion.p98_1) {
+  } else if (conversion.c99_1) {
     return convertListExpression(this, expression, conversion);
-  } else if (conversion.r98_1) {
+  } else if (conversion.e99_1) {
     return demoteListExpression(this, expression, conversion);
-  } else if (conversion.q98_1) {
+  } else if (conversion.d99_1) {
     return promoteListExpression(this, expression, conversion);
-  } else if (conversion.s98_1) {
+  } else if (conversion.f99_1) {
     return convertIntervalExpression(this, expression, conversion);
-  } else if (conversion.u98_1) {
+  } else if (conversion.h99_1) {
     return demoteIntervalExpression(this, expression, conversion);
-  } else if (conversion.t98_1) {
+  } else if (conversion.g99_1) {
     return promoteIntervalExpression(this, expression, conversion);
-  } else if (!(conversion.m98_1 == null)) {
-    var functionRef = this.objectFactory.w7h().t6i(conversion.m98_1.e8x_1).q65(conversion.m98_1.x8w_1).f67(listOf_0(expression));
-    var systemFunctionInvocation = this.s8v_1.m9b(functionRef);
+  } else if (!(conversion.z98_1 == null)) {
+    var functionRef = this.objectFactory.x7h().u6i(conversion.z98_1.f8x_1).r65(conversion.z98_1.y8w_1).g67(listOf_0(expression));
+    var systemFunctionInvocation = this.t8v_1.t9b(functionRef);
     if (!(systemFunctionInvocation == null)) {
-      return systemFunctionInvocation.l5w();
+      return systemFunctionInvocation.m5w();
     }
-    resolveCall(this, functionRef.n6w_1, ensureNotNull(functionRef.m6w_1), new FunctionRefInvocation(functionRef), false, false);
+    resolveCall(this, functionRef.o6w_1, ensureNotNull(functionRef.n6w_1), new FunctionRefInvocation(functionRef), false, false);
     return functionRef;
   } else {
-    if (equals(conversion.j98_1, this.l8w('System', 'Boolean'))) {
-      return Trackable_getInstance().h90(this.objectFactory.n7m().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Integer'))) {
-      return Trackable_getInstance().h90(this.objectFactory.o7m().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Long'))) {
-      return Trackable_getInstance().h90(this.objectFactory.y7h().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Decimal'))) {
-      return Trackable_getInstance().h90(this.objectFactory.q7h().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'String'))) {
-      return Trackable_getInstance().h90(this.objectFactory.x7n().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Date'))) {
-      return Trackable_getInstance().h90(this.objectFactory.w7n().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'DateTime'))) {
-      return Trackable_getInstance().h90(this.objectFactory.r7m().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Time'))) {
-      return Trackable_getInstance().h90(this.objectFactory.h7o().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Quantity'))) {
-      return Trackable_getInstance().h90(this.objectFactory.h7n().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Ratio'))) {
-      return Trackable_getInstance().h90(this.objectFactory.i7o().a6c(expression), conversion.j98_1);
-    } else if (equals(conversion.j98_1, this.l8w('System', 'Concept'))) {
-      return Trackable_getInstance().h90(this.objectFactory.u7o().a6c(expression), conversion.j98_1);
+    if (equals(conversion.w98_1, this.m8w('System', 'Boolean'))) {
+      return Trackable_getInstance().i90(this.objectFactory.o7m().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Integer'))) {
+      return Trackable_getInstance().i90(this.objectFactory.p7m().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Long'))) {
+      return Trackable_getInstance().i90(this.objectFactory.z7h().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Decimal'))) {
+      return Trackable_getInstance().i90(this.objectFactory.r7h().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'String'))) {
+      return Trackable_getInstance().i90(this.objectFactory.y7n().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Date'))) {
+      return Trackable_getInstance().i90(this.objectFactory.x7n().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'DateTime'))) {
+      return Trackable_getInstance().i90(this.objectFactory.s7m().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Time'))) {
+      return Trackable_getInstance().i90(this.objectFactory.i7o().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Quantity'))) {
+      return Trackable_getInstance().i90(this.objectFactory.i7n().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Ratio'))) {
+      return Trackable_getInstance().i90(this.objectFactory.j7o().b6c(expression), conversion.w98_1);
+    } else if (equals(conversion.w98_1, this.m8w('System', 'Concept'))) {
+      return Trackable_getInstance().i90(this.objectFactory.v7o().b6c(expression), conversion.w98_1);
     } else {
-      var convertedOperand = Trackable_getInstance().h90(this.objectFactory.n7j().a6c(expression), conversion.j98_1);
-      var tmp_2 = Trackable_getInstance().n8v(convertedOperand);
+      var convertedOperand = Trackable_getInstance().i90(this.objectFactory.o7j().b6c(expression), conversion.w98_1);
+      var tmp_2 = Trackable_getInstance().o8v(convertedOperand);
       if (!(tmp_2 == null) ? isInterface(tmp_2, NamedType) : false) {
-        convertedOperand.b6m_1 = this.dataTypeToQName(Trackable_getInstance().n8v(convertedOperand));
+        convertedOperand.c6m_1 = this.dataTypeToQName(Trackable_getInstance().o8v(convertedOperand));
       } else {
-        convertedOperand.c6m_1 = this.dataTypeToTypeSpecifier(Trackable_getInstance().n8v(convertedOperand));
+        convertedOperand.d6m_1 = this.dataTypeToTypeSpecifier(Trackable_getInstance().o8v(convertedOperand));
       }
       return convertedOperand;
     }
   }
 };
 protoOf(LibraryBuilder).verifyType = function (actualType, expectedType) {
-  if (expectedType.y5z(actualType) || actualType.z5z(expectedType)) {
+  if (expectedType.z5z(actualType) || actualType.a60(expectedType)) {
     return Unit_instance;
   }
   var conversion = this.findConversion(actualType, expectedType, true, false);
   if (!(conversion == null)) {
     return Unit_instance;
   }
-  DataTypes_instance.n91(actualType, expectedType);
+  DataTypes_instance.o91(actualType, expectedType);
 };
 protoOf(LibraryBuilder).findCompatibleType = function (first, second) {
   if (first == null || second == null) {
     return null;
   }
-  if (equals(first, Companion_getInstance_1().v5z_1)) {
+  if (equals(first, Companion_getInstance_1().w5z_1)) {
     return second;
   }
-  if (equals(second, Companion_getInstance_1().v5z_1)) {
+  if (equals(second, Companion_getInstance_1().w5z_1)) {
     return first;
   }
-  if (first.y5z(second) || second.z5z(first)) {
+  if (first.z5z(second) || second.a60(first)) {
     return first;
   }
-  if (second.y5z(first) || first.z5z(second)) {
+  if (second.z5z(first) || first.a60(second)) {
     return second;
   }
   var tmp;
@@ -7867,19 +8099,19 @@ protoOf(LibraryBuilder).ensureCompatibleTypes = function (first, second) {
   if (!(compatibleType == null)) {
     return compatibleType;
   }
-  if (!(first == null) && !second.x5z(first)) {
+  if (!(first == null) && !second.y5z(first)) {
     return ChoiceType_init_$Create$_0([first, second]);
   }
-  DataTypes_instance.n91(second, first);
+  DataTypes_instance.o91(second, first);
   return first;
 };
 protoOf(LibraryBuilder).ensureCompatible = function (expression, targetType) {
   if (targetType == null) {
-    return this.objectFactory.a7o();
+    return this.objectFactory.b7o();
   }
   var tmp;
-  if (!targetType.y5z(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(expression))))) {
-    tmp = this.n9b(expression, targetType, true);
+  if (!targetType.z5z(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(expression))))) {
+    tmp = this.u9b(expression, targetType, true);
   } else {
     tmp = expression;
   }
@@ -7887,38 +8119,38 @@ protoOf(LibraryBuilder).ensureCompatible = function (expression, targetType) {
 };
 protoOf(LibraryBuilder).enforceCompatible = function (expression, targetType) {
   if (targetType == null) {
-    return this.objectFactory.a7o();
+    return this.objectFactory.b7o();
   }
   var tmp;
-  if (!targetType.y5z(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(expression))))) {
-    tmp = this.n9b(expression, targetType, false);
+  if (!targetType.z5z(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(expression))))) {
+    tmp = this.u9b(expression, targetType, false);
   } else {
     tmp = expression;
   }
   return tmp;
 };
-protoOf(LibraryBuilder).z90 = function (string) {
+protoOf(LibraryBuilder).a91 = function (string) {
   return createLiteral(this, string, 'String');
 };
-protoOf(LibraryBuilder).f8x = function (bool) {
+protoOf(LibraryBuilder).g8x = function (bool) {
   return createLiteral(this, bool.toString(), 'Boolean');
 };
-protoOf(LibraryBuilder).j8w = function (integer) {
+protoOf(LibraryBuilder).k8w = function (integer) {
   return createLiteral(this, integer.toString(), 'Integer');
 };
-protoOf(LibraryBuilder).k8w = function (value) {
+protoOf(LibraryBuilder).l8w = function (value) {
   return createLiteral(this, value.toString(), 'Decimal');
 };
 protoOf(LibraryBuilder).createNumberLiteral = function (value) {
-  var resultType = this.l8w('System', contains_0(value, '.') ? 'Decimal' : 'Integer');
-  var result = this.objectFactory.j7k().r65(value).v7a(this.dataTypeToQName(resultType));
-  Trackable_getInstance().o8v(result, resultType);
+  var resultType = this.m8w('System', contains_0(value, '.') ? 'Decimal' : 'Integer');
+  var result = this.objectFactory.k7k().s65(value).w7a(this.dataTypeToQName(resultType));
+  Trackable_getInstance().p8v(result, resultType);
   return result;
 };
 protoOf(LibraryBuilder).createLongNumberLiteral = function (value) {
-  var resultType = this.l8w('System', 'Long');
-  var result = this.objectFactory.j7k().r65(value).v7a(this.dataTypeToQName(resultType));
-  Trackable_getInstance().o8v(result, resultType);
+  var resultType = this.m8w('System', 'Long');
+  var result = this.objectFactory.k7k().s65(value).w7a(this.dataTypeToQName(resultType));
+  Trackable_getInstance().p8v(result, resultType);
   return result;
 };
 protoOf(LibraryBuilder).ensureUcumUnit = function (unit) {
@@ -7955,30 +8187,30 @@ protoOf(LibraryBuilder).ensureUcumUnit = function (unit) {
 };
 protoOf(LibraryBuilder).createQuantity = function (value, unit) {
   validateUnit(this, unit);
-  var result = this.objectFactory.g7q().x7x(value).y7x(unit);
-  var resultType = this.l8w('System', 'Quantity');
-  Trackable_getInstance().o8v(result, resultType);
+  var result = this.objectFactory.h7q().y7x(value).z7x(unit);
+  var resultType = this.m8w('System', 'Quantity');
+  Trackable_getInstance().p8v(result, resultType);
   return result;
 };
 protoOf(LibraryBuilder).createRatio = function (numerator, denominator) {
-  var result = this.objectFactory.o7n().k7z(numerator).l7z(denominator);
-  var resultType = this.l8w('System', 'Ratio');
-  Trackable_getInstance().o8v(result, resultType);
+  var result = this.objectFactory.p7n().l7z(numerator).m7z(denominator);
+  var resultType = this.m8w('System', 'Ratio');
+  Trackable_getInstance().p8v(result, resultType);
   return result;
 };
 protoOf(LibraryBuilder).createInterval = function (low, lowClosed, high, highClosed) {
-  var result = this.objectFactory.a7n().h75(low).f75(lowClosed).j75(high).g75(highClosed);
-  var pointType = this.ensureCompatibleTypes(Trackable_getInstance().n8v(ensureNotNull(result.x74_1)), ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(result.z74_1))));
-  Trackable_getInstance().o8v(result, new IntervalType(ensureNotNull(pointType)));
-  result.x74_1 = this.ensureCompatible(result.x74_1, pointType);
-  result.z74_1 = this.ensureCompatible(result.z74_1, pointType);
+  var result = this.objectFactory.b7n().i75(low).g75(lowClosed).k75(high).h75(highClosed);
+  var pointType = this.ensureCompatibleTypes(Trackable_getInstance().o8v(ensureNotNull(result.y74_1)), ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(result.a75_1))));
+  Trackable_getInstance().p8v(result, new IntervalType(ensureNotNull(pointType)));
+  result.y74_1 = this.ensureCompatible(result.y74_1, pointType);
+  result.a75_1 = this.ensureCompatible(result.a75_1, pointType);
   return result;
 };
 protoOf(LibraryBuilder).dataTypeToQName = function (type) {
-  return this.g8w_1.q9b(type);
+  return this.h8w_1.x9b(type);
 };
 protoOf(LibraryBuilder).dataTypeToTypeSpecifier = function (type) {
-  return this.g8w_1.r9b(type);
+  return this.h8w_1.y9b(type);
 };
 protoOf(LibraryBuilder).resolvePath = function (sourceType, path) {
   var sourceType_0 = sourceType;
@@ -8011,33 +8243,33 @@ protoOf(LibraryBuilder).resolvePath = function (sourceType, path) {
       var i = inductionVariable;
       inductionVariable = inductionVariable + 1 | 0;
       var resolution = this.resolveProperty(sourceType_0, identifiers[i]);
-      sourceType_0 = ensureNotNull(resolution).a91_1;
+      sourceType_0 = ensureNotNull(resolution).b91_1;
     }
      while (inductionVariable <= last);
   return sourceType_0;
 };
-protoOf(LibraryBuilder).s9b = function (sourceType, identifier, mustResolve) {
+protoOf(LibraryBuilder).z9b = function (sourceType, identifier, mustResolve) {
   var currentType = sourceType;
   $l$loop: while (!(currentType == null)) {
     if (currentType instanceof ClassType) {
       var classType = currentType;
       if (startsWith(identifier, '?') && this.isCompatibleWith('1.5')) {
         var searchPath = substring(identifier, 1);
-        var _iterator__ex2g4s = classType.s61().g();
+        var _iterator__ex2g4s = classType.t61().g();
         while (_iterator__ex2g4s.h()) {
           var s = _iterator__ex2g4s.i();
-          if (s.e63_1 === searchPath) {
+          if (s.f63_1 === searchPath) {
             return PropertyResolution_init_$Create$_1(s);
           }
         }
       } else {
-        var _iterator__ex2g4s_0 = classType.k60_1.g();
+        var _iterator__ex2g4s_0 = classType.l60_1.g();
         while (_iterator__ex2g4s_0.h()) {
           var e = _iterator__ex2g4s_0.i();
-          if (e.x60_1 === identifier) {
+          if (e.y60_1 === identifier) {
             // Inline function 'kotlin.require' call
-            if (!!e.z60_1) {
-              var message = 'Element ' + e.x60_1 + ' cannot be referenced because it is marked prohibited in type ' + (currentType instanceof ClassType ? currentType : THROW_CCE()).j60_1 + '.';
+            if (!!e.a61_1) {
+              var message = 'Element ' + e.y60_1 + ' cannot be referenced because it is marked prohibited in type ' + (currentType instanceof ClassType ? currentType : THROW_CCE()).k60_1 + '.';
               throw IllegalArgumentException_init_$Create$(toString(message));
             }
             return PropertyResolution_init_$Create$(e);
@@ -8046,10 +8278,10 @@ protoOf(LibraryBuilder).s9b = function (sourceType, identifier, mustResolve) {
       }
     } else {
       if (currentType instanceof TupleType) {
-        var _iterator__ex2g4s_1 = currentType.r63_1.g();
+        var _iterator__ex2g4s_1 = currentType.s63_1.g();
         while (_iterator__ex2g4s_1.h()) {
           var e_0 = _iterator__ex2g4s_1.i();
-          if (e_0.i61_1 === identifier) {
+          if (e_0.j61_1 === identifier) {
             return PropertyResolution_init_$Create$_0(e_0);
           }
         }
@@ -8059,11 +8291,11 @@ protoOf(LibraryBuilder).s9b = function (sourceType, identifier, mustResolve) {
           switch (identifier) {
             case 'low':
             case 'high':
-              tmp = PropertyResolution_init_$Create$_2(currentType.g61_1, identifier);
+              tmp = PropertyResolution_init_$Create$_2(currentType.h61_1, identifier);
               break;
             case 'lowClosed':
             case 'highClosed':
-              tmp = PropertyResolution_init_$Create$_2(ensureNotNull(this.l8w('System', 'Boolean')), identifier);
+              tmp = PropertyResolution_init_$Create$_2(ensureNotNull(this.m8w('System', 'Boolean')), identifier);
               break;
             default:
               throw IllegalArgumentException_init_$Create$('Invalid interval property name ' + identifier + '.');
@@ -8074,32 +8306,32 @@ protoOf(LibraryBuilder).s9b = function (sourceType, identifier, mustResolve) {
             var resultTypes = HashSet_init_$Create$();
             var resultTargetMaps = HashMap_init_$Create$();
             var name = null;
-            var _iterator__ex2g4s_2 = currentType.b60_1.g();
+            var _iterator__ex2g4s_2 = currentType.c60_1.g();
             while (_iterator__ex2g4s_2.h()) {
               var choice = _iterator__ex2g4s_2.i();
               var resolution = this.resolveProperty(choice, identifier, false);
               if (!(resolution == null)) {
-                resultTypes.e(resolution.a91_1);
-                if (!(resolution.c91_1 == null)) {
-                  if (resultTargetMaps.o2(resolution.a91_1)) {
+                resultTypes.e(resolution.b91_1);
+                if (!(resolution.d91_1 == null)) {
+                  if (resultTargetMaps.o2(resolution.b91_1)) {
                     // Inline function 'kotlin.require' call
-                    if (!(resultTargetMaps.q2(resolution.a91_1) == resolution.c91_1)) {
-                      var message_0 = 'Inconsistent target maps ' + resultTargetMaps.q2(resolution.a91_1) + ' and ' + resolution.c91_1 + ' for choice type ' + toString(resolution.a91_1);
+                    if (!(resultTargetMaps.q2(resolution.b91_1) == resolution.d91_1)) {
+                      var message_0 = 'Inconsistent target maps ' + resultTargetMaps.q2(resolution.b91_1) + ' and ' + resolution.d91_1 + ' for choice type ' + toString(resolution.b91_1);
                       throw IllegalArgumentException_init_$Create$(toString(message_0));
                     }
                   } else {
-                    var tmp2 = resolution.a91_1;
+                    var tmp2 = resolution.b91_1;
                     // Inline function 'kotlin.collections.set' call
-                    var value = resolution.c91_1;
+                    var value = resolution.d91_1;
                     resultTargetMaps.u2(tmp2, value);
                   }
                 }
                 if (name == null) {
-                  name = resolution.b91_1;
+                  name = resolution.c91_1;
                 } else {
                   // Inline function 'kotlin.require' call
-                  if (!(name === resolution.b91_1)) {
-                    var message_1 = 'Inconsistent property resolution for choice type ' + toString(choice) + ' (was ' + name + ', is ' + resolution.b91_1 + ')';
+                  if (!(name === resolution.c91_1)) {
+                    var message_1 = 'Inconsistent property resolution for choice type ' + toString(choice) + ' (was ' + name + ', is ' + resolution.c91_1 + ')';
                     throw IllegalArgumentException_init_$Create$(toString(message_1));
                   }
                 }
@@ -8114,38 +8346,38 @@ protoOf(LibraryBuilder).s9b = function (sourceType, identifier, mustResolve) {
           } else {
             var tmp_0;
             if (currentType instanceof ListType) {
-              tmp_0 = this.d8w_1;
+              tmp_0 = this.e8w_1;
             } else {
               tmp_0 = false;
             }
             if (tmp_0) {
-              var resolution_0 = this.resolveProperty(currentType.d61_1, identifier);
-              return PropertyResolution_init_$Create$_2(new ListType(ensureNotNull(resolution_0).a91_1), ensureNotNull(resolution_0.c91_1));
+              var resolution_0 = this.resolveProperty(currentType.e61_1, identifier);
+              return PropertyResolution_init_$Create$_2(new ListType(ensureNotNull(resolution_0).b91_1), ensureNotNull(resolution_0.d91_1));
             }
           }
         }
       }
     }
-    if (!equals(currentType.u5z(), Companion_getInstance_1().v5z_1)) {
-      currentType = currentType.u5z();
+    if (!equals(currentType.v5z(), Companion_getInstance_1().w5z_1)) {
+      currentType = currentType.v5z();
     } else {
       break $l$loop;
     }
   }
   // Inline function 'kotlin.require' call
   if (!!mustResolve) {
-    var message_2 = 'Member ' + identifier + ' not found for type ' + (sourceType == null ? null : sourceType.w5z()) + '.';
+    var message_2 = 'Member ' + identifier + ' not found for type ' + (sourceType == null ? null : sourceType.x5z()) + '.';
     throw IllegalArgumentException_init_$Create$(toString(message_2));
   }
   return null;
 };
 protoOf(LibraryBuilder).resolveProperty = function (sourceType, identifier, mustResolve, $super) {
   mustResolve = mustResolve === VOID ? true : mustResolve;
-  return $super === VOID ? this.s9b(sourceType, identifier, mustResolve) : $super.s9b.call(this, sourceType, identifier, mustResolve);
+  return $super === VOID ? this.z9b(sourceType, identifier, mustResolve) : $super.z9b.call(this, sourceType, identifier, mustResolve);
 };
 protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
   if (inTypeSpecifierContext(this)) {
-    return this.z90(identifier);
+    return this.a91(identifier);
   }
   var resultElement = resolveQueryResultElement(this, identifier);
   if (!(resultElement == null)) {
@@ -8156,32 +8388,32 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
     return thisElement;
   }
   if (identifier === '$index') {
-    var result = this.objectFactory.d7l();
-    Trackable_getInstance().o8v(result, this.l8w('System', 'Integer'));
+    var result = this.objectFactory.e7l();
+    Trackable_getInstance().p8v(result, this.m8w('System', 'Integer'));
     return result;
   }
   if (identifier === '$total') {
-    var result_0 = this.objectFactory.m7q();
-    Trackable_getInstance().o8v(result_0, this.l8w('System', 'Decimal'));
+    var result_0 = this.objectFactory.n7q();
+    Trackable_getInstance().p8v(result_0, this.m8w('System', 'Decimal'));
     return result_0;
   }
   var alias = resolveAlias(this, identifier);
   if (!(alias == null)) {
-    var result_1 = this.objectFactory.g7j().q65(identifier);
-    var tmp = Trackable_getInstance().n8v(alias);
+    var result_1 = this.objectFactory.h7j().r65(identifier);
+    var tmp = Trackable_getInstance().o8v(alias);
     if (tmp instanceof ListType) {
       var tmp_0 = Trackable_getInstance();
-      var tmp_1 = Trackable_getInstance().n8v(alias);
-      tmp_0.o8v(result_1, (tmp_1 instanceof ListType ? tmp_1 : THROW_CCE()).d61_1);
+      var tmp_1 = Trackable_getInstance().o8v(alias);
+      tmp_0.p8v(result_1, (tmp_1 instanceof ListType ? tmp_1 : THROW_CCE()).e61_1);
     } else {
-      Trackable_getInstance().o8v(result_1, Trackable_getInstance().n8v(alias));
+      Trackable_getInstance().p8v(result_1, Trackable_getInstance().o8v(alias));
     }
     return result_1;
   }
   var let_0 = resolveQueryLet(this, identifier);
   if (!(let_0 == null)) {
-    var result_2 = this.objectFactory.t7i().q65(identifier);
-    Trackable_getInstance().o8v(result_2, Trackable_getInstance().n8v(let_0));
+    var result_2 = this.objectFactory.u7i().r65(identifier);
+    Trackable_getInstance().p8v(result_2, Trackable_getInstance().o8v(let_0));
     return result_2;
   }
   var operandRef = resolveOperandRef(this, identifier);
@@ -8189,17 +8421,17 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
     return operandRef;
   }
   var resolvedIdentifierContext = this.resolve(identifier);
-  var element = resolvedIdentifierContext.w9b();
+  var element = resolvedIdentifierContext.d9c();
   if (!(element == null)) {
     if (element instanceof ExpressionDef) {
       this.checkLiteralContext();
-      var expressionRef = this.objectFactory.v7p().q65(element.c6w_1);
-      Trackable_getInstance().o8v(expressionRef, getExpressionDefResultType(this, element));
-      var tmp0 = Trackable_getInstance().n8v(expressionRef);
+      var expressionRef = this.objectFactory.w7p().r65(element.d6w_1);
+      Trackable_getInstance().p8v(expressionRef, getExpressionDefResultType(this, element));
+      var tmp0 = Trackable_getInstance().o8v(expressionRef);
       $l$block: {
         // Inline function 'kotlin.requireNotNull' call
         if (tmp0 == null) {
-          var message = 'Could not validate reference to expression ' + expressionRef.m6w_1 + ' because its definition contains errors.';
+          var message = 'Could not validate reference to expression ' + expressionRef.n6w_1 + ' because its definition contains errors.';
           throw IllegalArgumentException_init_$Create$(toString(message));
         } else {
           break $l$block;
@@ -8209,13 +8441,13 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
     }
     if (element instanceof ParameterDef) {
       this.checkLiteralContext();
-      var parameterRef = this.objectFactory.o7j().q65(element.y7s_1);
-      Trackable_getInstance().o8v(parameterRef, Trackable_getInstance().n8v(element));
-      var tmp0_0 = Trackable_getInstance().n8v(parameterRef);
+      var parameterRef = this.objectFactory.p7j().r65(element.z7s_1);
+      Trackable_getInstance().p8v(parameterRef, Trackable_getInstance().o8v(element));
+      var tmp0_0 = Trackable_getInstance().o8v(parameterRef);
       $l$block_0: {
         // Inline function 'kotlin.requireNotNull' call
         if (tmp0_0 == null) {
-          var message_0 = 'Could not validate reference to parameter ' + parameterRef.k7t_1 + ' because its definition contains errors.';
+          var message_0 = 'Could not validate reference to parameter ' + parameterRef.l7t_1 + ' because its definition contains errors.';
           throw IllegalArgumentException_init_$Create$(toString(message_0));
         } else {
           break $l$block_0;
@@ -8225,32 +8457,32 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
     }
     if (element instanceof ValueSetDef) {
       this.checkLiteralContext();
-      var valuesetRef = this.objectFactory.i7i().q65(element.f8h_1);
-      Trackable_getInstance().o8v(valuesetRef, Trackable_getInstance().n8v(element));
-      var tmp0_1 = Trackable_getInstance().n8v(valuesetRef);
+      var valuesetRef = this.objectFactory.j7i().r65(element.g8h_1);
+      Trackable_getInstance().p8v(valuesetRef, Trackable_getInstance().o8v(element));
+      var tmp0_1 = Trackable_getInstance().o8v(valuesetRef);
       $l$block_1: {
         // Inline function 'kotlin.requireNotNull' call
         if (tmp0_1 == null) {
-          var message_1 = 'Could not validate reference to valueset ' + valuesetRef.q8h_1 + ' because its definition contains errors.';
+          var message_1 = 'Could not validate reference to valueset ' + valuesetRef.r8h_1 + ' because its definition contains errors.';
           throw IllegalArgumentException_init_$Create$(toString(message_1));
         } else {
           break $l$block_1;
         }
       }
       if (this.isCompatibleWith('1.5')) {
-        valuesetRef.s8h_1 = true;
+        valuesetRef.t8h_1 = true;
       }
       return valuesetRef;
     }
     if (element instanceof CodeSystemDef) {
       this.checkLiteralContext();
-      var codesystemRef = this.objectFactory.x7l().q65(element.z6i_1);
-      Trackable_getInstance().o8v(codesystemRef, Trackable_getInstance().n8v(element));
-      var tmp0_2 = Trackable_getInstance().n8v(codesystemRef);
+      var codesystemRef = this.objectFactory.y7l().r65(element.a6j_1);
+      Trackable_getInstance().p8v(codesystemRef, Trackable_getInstance().o8v(element));
+      var tmp0_2 = Trackable_getInstance().o8v(codesystemRef);
       $l$block_2: {
         // Inline function 'kotlin.requireNotNull' call
         if (tmp0_2 == null) {
-          var message_2 = 'Could not validate reference to codesystem ' + codesystemRef.j6j_1 + ' because its definition contains errors.';
+          var message_2 = 'Could not validate reference to codesystem ' + codesystemRef.k6j_1 + ' because its definition contains errors.';
           throw IllegalArgumentException_init_$Create$(toString(message_2));
         } else {
           break $l$block_2;
@@ -8260,13 +8492,13 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
     }
     if (element instanceof CodeDef) {
       this.checkLiteralContext();
-      var codeRef = this.objectFactory.v7h().q65(element.t6h_1);
-      Trackable_getInstance().o8v(codeRef, Trackable_getInstance().n8v(element));
-      var tmp0_3 = Trackable_getInstance().n8v(codeRef);
+      var codeRef = this.objectFactory.w7h().r65(element.u6h_1);
+      Trackable_getInstance().p8v(codeRef, Trackable_getInstance().o8v(element));
+      var tmp0_3 = Trackable_getInstance().o8v(codeRef);
       $l$block_3: {
         // Inline function 'kotlin.requireNotNull' call
         if (tmp0_3 == null) {
-          var message_3 = 'Could not validate reference to code ' + codeRef.r6i_1 + ' because its definition contains errors.';
+          var message_3 = 'Could not validate reference to code ' + codeRef.s6i_1 + ' because its definition contains errors.';
           throw IllegalArgumentException_init_$Create$(toString(message_3));
         } else {
           break $l$block_3;
@@ -8276,13 +8508,13 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
     }
     if (element instanceof ConceptDef) {
       this.checkLiteralContext();
-      var conceptRef = this.objectFactory.c7j().q65(element.v6k_1);
-      Trackable_getInstance().o8v(conceptRef, Trackable_getInstance().n8v(element));
-      var tmp0_4 = Trackable_getInstance().n8v(conceptRef);
+      var conceptRef = this.objectFactory.d7j().r65(element.w6k_1);
+      Trackable_getInstance().p8v(conceptRef, Trackable_getInstance().o8v(element));
+      var tmp0_4 = Trackable_getInstance().o8v(conceptRef);
       $l$block_4: {
         // Inline function 'kotlin.requireNotNull' call
         if (tmp0_4 == null) {
-          var message_4 = 'Could not validate reference to concept ' + conceptRef.e6l_1 + ' because its definition contains error.';
+          var message_4 = 'Could not validate reference to concept ' + conceptRef.f6l_1 + ' because its definition contains error.';
           throw IllegalArgumentException_init_$Create$(toString(message_4));
         } else {
           break $l$block_4;
@@ -8292,20 +8524,20 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
     }
     if (element instanceof IncludeDef) {
       this.checkLiteralContext();
-      return new LibraryRef(this.objectFactory.k8j(), element.d72_1);
+      return new LibraryRef(this.objectFactory.l8j(), element.e72_1);
     }
   }
   var parameterRef_0 = this.resolveImplicitContext();
   if (!(parameterRef_0 == null)) {
-    var resolution = this.resolveProperty(Trackable_getInstance().n8v(parameterRef_0), identifier, false);
+    var resolution = this.resolveProperty(Trackable_getInstance().o8v(parameterRef_0), identifier, false);
     if (!(resolution == null)) {
-      var contextAccessor = this.p8w(parameterRef_0, resolution.b91_1, resolution.d91_1, resolution.a91_1);
-      contextAccessor = this.applyTargetMap(contextAccessor, resolution.c91_1);
+      var contextAccessor = this.q8w(parameterRef_0, resolution.c91_1, resolution.e91_1, resolution.b91_1);
+      contextAccessor = this.applyTargetMap(contextAccessor, resolution.d91_1);
       return contextAccessor;
     }
   }
   if (mustResolve) {
-    var message_5 = resolvedIdentifierContext.x9b();
+    var message_5 = resolvedIdentifierContext.e9c();
     if (message_5 == null) {
       message_5 = 'Could not resolve identifier ' + identifier + ' in the current library.';
     }
@@ -8316,17 +8548,17 @@ protoOf(LibraryBuilder).resolveIdentifier = function (identifier, mustResolve) {
 protoOf(LibraryBuilder).resolveImplicitContext = function () {
   if (!inLiteralContext(this) && inSpecificContext(this)) {
     var resolvedIdentifierContext = this.resolve(currentExpressionContext(this));
-    var optParameterDef = resolvedIdentifierContext.y9b(getKClass(ParameterDef));
+    var optParameterDef = resolvedIdentifierContext.f9c(getKClass(ParameterDef));
     if (!(optParameterDef == null)) {
       var contextParameter = optParameterDef;
       this.checkLiteralContext();
-      var parameterRef = this.objectFactory.o7j().q65(contextParameter.y7s_1);
-      Trackable_getInstance().o8v(parameterRef, Trackable_getInstance().n8v(contextParameter));
-      var tmp0 = Trackable_getInstance().n8v(parameterRef);
+      var parameterRef = this.objectFactory.p7j().r65(contextParameter.z7s_1);
+      Trackable_getInstance().p8v(parameterRef, Trackable_getInstance().o8v(contextParameter));
+      var tmp0 = Trackable_getInstance().o8v(parameterRef);
       $l$block: {
         // Inline function 'kotlin.requireNotNull' call
         if (tmp0 == null) {
-          var message = 'Could not validate reference to parameter ' + parameterRef.k7t_1 + ' because its definition contains errors.';
+          var message = 'Could not validate reference to parameter ' + parameterRef.l7t_1 + ' because its definition contains errors.';
           throw IllegalArgumentException_init_$Create$(toString(message));
         } else {
           break $l$block;
@@ -8337,28 +8569,28 @@ protoOf(LibraryBuilder).resolveImplicitContext = function () {
   }
   return null;
 };
-protoOf(LibraryBuilder).p91 = function (scope, path, isSearch, resultType) {
+protoOf(LibraryBuilder).q91 = function (scope, path, isSearch, resultType) {
   var tmp;
   if (isSearch) {
-    var result = this.objectFactory.l7k().p7x(scope).y6c(path);
-    Trackable_getInstance().o8v(result, resultType);
+    var result = this.objectFactory.m7k().q7x(scope).z6c(path);
+    Trackable_getInstance().p8v(result, resultType);
     tmp = result;
   } else {
-    var result_0 = this.objectFactory.q7n().p7x(scope).y6c(path);
-    Trackable_getInstance().o8v(result_0, resultType);
+    var result_0 = this.objectFactory.r7n().q7x(scope).z6c(path);
+    Trackable_getInstance().p8v(result_0, resultType);
     tmp = result_0;
   }
   return tmp;
 };
-protoOf(LibraryBuilder).p8w = function (source, path, isSearch, resultType) {
+protoOf(LibraryBuilder).q8w = function (source, path, isSearch, resultType) {
   var tmp;
   if (isSearch) {
-    var result = this.objectFactory.l7k().a6k(source).y6c(path);
-    Trackable_getInstance().o8v(result, resultType);
+    var result = this.objectFactory.m7k().b6k(source).z6c(path);
+    Trackable_getInstance().p8v(result, resultType);
     tmp = result;
   } else {
-    var result_0 = this.objectFactory.q7n().a6k(source).y6c(path);
-    Trackable_getInstance().o8v(result_0, resultType);
+    var result_0 = this.objectFactory.r7n().b6k(source).z6c(path);
+    Trackable_getInstance().p8v(result_0, resultType);
     tmp = result_0;
   }
   return tmp;
@@ -8393,7 +8625,7 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
     // Inline function 'kotlin.collections.toTypedArray' call
     var this_1 = tmp$ret$4;
     var typeCases = copyToArray(this_1);
-    var c = this.objectFactory.i7n();
+    var c = this.objectFactory.j7n();
     var inductionVariable = 0;
     var last = typeCases.length;
     while (inductionVariable < last) {
@@ -8408,24 +8640,24 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
           throw IllegalArgumentException_init_$Create$(toString(message));
         }
         var typeCaseElement = substring_0(typeCase, 0, splitIndex);
-        var typeCaseType = this.j90(typeCaseElement);
+        var typeCaseType = this.k90(typeCaseElement);
         var typeCaseMap = substring(typeCase, splitIndex + 1 | 0);
-        var ci = this.objectFactory.m7o().u6f(this.objectFactory.g7n().a6c(this.applyTargetMap(source, typeCaseMap)).b76(this.dataTypeToQName(typeCaseType))).v6f(this.applyTargetMap(source, typeCaseMap));
-        Trackable_getInstance().o8v(ensureNotNull(ci.t6f_1), typeCaseType);
-        c.l6f().e(ci);
+        var ci = this.objectFactory.n7o().v6f(this.objectFactory.h7n().b6c(this.applyTargetMap(source, typeCaseMap)).c76(this.dataTypeToQName(typeCaseType))).w6f(this.applyTargetMap(source, typeCaseMap));
+        Trackable_getInstance().p8v(ensureNotNull(ci.u6f_1), typeCaseType);
+        c.m6f().e(ci);
       }
     }
     var tmp;
-    switch (c.l6f().j()) {
+    switch (c.m6f().j()) {
       case 0:
-        tmp = this.buildNull(Trackable_getInstance().n8v(ensureNotNull(source)));
+        tmp = this.buildNull(Trackable_getInstance().o8v(ensureNotNull(source)));
         break;
       case 1:
-        tmp = c.l6f().o(0).t6f_1;
+        tmp = c.m6f().o(0).u6f_1;
         break;
       default:
-        c.k6f_1 = this.buildNull(Trackable_getInstance().n8v(ensureNotNull(source)));
-        Trackable_getInstance().o8v(c, Trackable_getInstance().n8v(source));
+        c.l6f_1 = this.buildNull(Trackable_getInstance().o8v(ensureNotNull(source)));
+        Trackable_getInstance().p8v(c, Trackable_getInstance().o8v(source));
         tmp = c;
         break;
     }
@@ -8465,36 +8697,36 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
     var functionArgument = substring_0(targetMap_0, invocationStart + 1 | 0, lastIndexOf(targetMap_0, _Char___init__impl__6a9atx(41)));
     var argumentSource = functionArgument === '%value' ? source : this.applyTargetMap(source, functionArgument);
     var argumentSignature = null;
-    if (!this.e8w_1.signatureLevel.equals(SignatureLevel_None_getInstance())) {
+    if (!this.f8w_1.signatureLevel.equals(SignatureLevel_None_getInstance())) {
       if (qualifiedFunctionName === 'FHIRHelpers.ToInterval') {
         var fhirVersion = '4.0.1';
-        var qiCoreModel = this.x90('QICore');
-        var version = qiCoreModel.q90_1.k5x_1;
+        var qiCoreModel = this.y90('QICore');
+        var version = qiCoreModel.r90_1.l5x_1;
         if (version === '3.3.0') {
           fhirVersion = '4.0.0';
         } else if (startsWith(ensureNotNull(version), '3')) {
           fhirVersion = '3.0.1';
         }
-        this.a8w_1.z9b('FHIR', fhirVersion);
-        var namedTypeSpecifier = (new NamedTypeSpecifier()).c7g(this.dataTypeToQName(this.l8w('FHIR', 'Period')));
+        this.b8w_1.g9c('FHIR', fhirVersion);
+        var namedTypeSpecifier = (new NamedTypeSpecifier()).d7g(this.dataTypeToQName(this.m8w('FHIR', 'Period')));
         argumentSignature = namedTypeSpecifier;
       }
     }
-    var tmp_0 = Trackable_getInstance().n8v(ensureNotNull(argumentSource));
+    var tmp_0 = Trackable_getInstance().o8v(ensureNotNull(argumentSource));
     if (tmp_0 instanceof ListType) {
-      var query = this.objectFactory.l7h().q7y(listOf_0(this.objectFactory.f7q().r69(argumentSource).q69('$this')));
-      var fr = this.objectFactory.w7h().t6i(libraryName).q65(functionName).f67(listOf_0(this.objectFactory.g7j().q65('$this')));
+      var query = this.objectFactory.m7h().r7y(listOf_0(this.objectFactory.g7q().s69(argumentSource).r69('$this')));
+      var fr = this.objectFactory.x7h().u6i(libraryName).r65(functionName).g67(listOf_0(this.objectFactory.h7j().r65('$this')));
       if (!(argumentSignature == null)) {
-        fr.m66().e(argumentSignature);
+        fr.n66().e(argumentSignature);
       }
-      query.i7y_1 = this.objectFactory.d7o().h82(false).r69(fr);
-      Trackable_getInstance().o8v(query, Trackable_getInstance().n8v(ensureNotNull(source)));
+      query.j7y_1 = this.objectFactory.e7o().i82(false).s69(fr);
+      Trackable_getInstance().p8v(query, Trackable_getInstance().o8v(ensureNotNull(source)));
       return query;
     } else {
-      var fr_0 = this.objectFactory.w7h().t6i(libraryName).q65(functionName).f67(listOf_0(argumentSource));
-      Trackable_getInstance().o8v(fr_0, Trackable_getInstance().n8v(ensureNotNull(source)));
+      var fr_0 = this.objectFactory.x7h().u6i(libraryName).r65(functionName).g67(listOf_0(argumentSource));
+      Trackable_getInstance().p8v(fr_0, Trackable_getInstance().o8v(ensureNotNull(source)));
       if (!(argumentSignature == null)) {
-        fr_0.m66().e(argumentSignature);
+        fr_0.n66().e(argumentSignature);
       }
       return fr_0;
     }
@@ -8538,15 +8770,15 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
           throw IllegalArgumentException_init_$Create$(toString(message_0));
         }
         var sourceProperty = source;
-        var tmp1_elvis_lhs = sourceProperty.o7x_1;
+        var tmp1_elvis_lhs = sourceProperty.p7x_1;
         var tmp_1;
         if (tmp1_elvis_lhs == null) {
           var tmp_2;
-          if (sourceProperty.n7x_1 == null) {
+          if (sourceProperty.o7x_1 == null) {
             tmp_2 = null;
           } else {
             // Inline function 'kotlin.let' call
-            tmp_2 = this.resolveIdentifier(ensureNotNull(sourceProperty.n7x_1), true);
+            tmp_2 = this.resolveIdentifier(ensureNotNull(sourceProperty.o7x_1), true);
           }
           tmp_1 = tmp_2;
         } else {
@@ -8564,11 +8796,11 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
           }
         }
       } else {
-        var p = this.objectFactory.q7n().a6k(result).y6c(path);
+        var p = this.objectFactory.r7n().b6k(result).z6c(path);
         result = p;
       }
     }
-    var querySource = this.objectFactory.f7q().r69(result).q69('$this');
+    var querySource = this.objectFactory.g7q().s69(result).r69('$this');
     var criteria = null;
     // Inline function 'kotlin.text.toRegex' call
     // Inline function 'kotlin.text.split' call
@@ -8655,42 +8887,42 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
         inductionVariable_2 = inductionVariable_2 + 1 | 0;
         var tmp_3;
         if (left == null) {
-          tmp_3 = this.objectFactory.q7n().p7x('$this').y6c(path_0);
+          tmp_3 = this.objectFactory.r7n().q7x('$this').z6c(path_0);
         } else {
-          tmp_3 = this.objectFactory.q7n().a6k(left).y6c(path_0);
+          tmp_3 = this.objectFactory.r7n().b6k(left).z6c(path_0);
         }
         left = tmp_3;
         if (path_0 === 'coding') {
-          left = Trackable_getInstance().h90(this.objectFactory.o7k().a6k(left), this.x90('FHIR').j90('FHIR.coding'));
+          left = Trackable_getInstance().i90(this.objectFactory.p7k().b6k(left), this.y90('FHIR').k90('FHIR.coding'));
         }
         if (path_0 === 'url') {
-          Trackable_getInstance().o8v(left, this.x90('FHIR').j90('FHIR.uri'));
-          var ref = this.objectFactory.w7h().t6i('FHIRHelpers').q65('ToString').f67(listOf_0(left));
-          left = resolveCall(this, ref.n6w_1, ensureNotNull(ref.m6w_1), new FunctionRefInvocation(ref), false, false);
+          Trackable_getInstance().p8v(left, this.y90('FHIR').k90('FHIR.uri'));
+          var ref = this.objectFactory.x7h().u6i('FHIRHelpers').r65('ToString').g67(listOf_0(left));
+          left = resolveCall(this, ref.o6w_1, ensureNotNull(ref.n6w_1), new FunctionRefInvocation(ref), false, false);
         }
       }
       if (indexerItems[0] === 'code.coding.system') {
-        Trackable_getInstance().o8v(ensureNotNull(left), this.x90('FHIR').j90('FHIR.uri'));
-        var ref_0 = this.objectFactory.w7h().t6i('FHIRHelpers').q65('ToString').f67(listOf_0(left));
-        left = resolveCall(this, ref_0.n6w_1, ensureNotNull(ref_0.m6w_1), new FunctionRefInvocation(ref_0), false, false);
+        Trackable_getInstance().p8v(ensureNotNull(left), this.y90('FHIR').k90('FHIR.uri'));
+        var ref_0 = this.objectFactory.x7h().u6i('FHIRHelpers').r65('ToString').g67(listOf_0(left));
+        left = resolveCall(this, ref_0.o6w_1, ensureNotNull(ref_0.n6w_1), new FunctionRefInvocation(ref_0), false, false);
       }
       if (indexerItems[0] === 'code.coding.code') {
-        Trackable_getInstance().o8v(ensureNotNull(left), this.x90('FHIR').j90('FHIR.code'));
-        var ref_1 = this.objectFactory.w7h().t6i('FHIRHelpers').q65('ToString').f67(listOf_0(left));
-        left = resolveCall(this, ref_1.n6w_1, ensureNotNull(ref_1.m6w_1), new FunctionRefInvocation(ref_1), false, false);
+        Trackable_getInstance().p8v(ensureNotNull(left), this.y90('FHIR').k90('FHIR.code'));
+        var ref_1 = this.objectFactory.x7h().u6i('FHIRHelpers').r65('ToString').g67(listOf_0(left));
+        left = resolveCall(this, ref_1.o6w_1, ensureNotNull(ref_1.n6w_1), new FunctionRefInvocation(ref_1), false, false);
       }
       var rightValue = substring_0(indexerItems[1], 1, indexerItems[1].length - 1 | 0);
-      var right = this.z90(StringEscapeUtils_getInstance().p93(rightValue));
-      var criteriaItem = this.objectFactory.e7m().f67(listOf([ensureNotNull(left), right]));
+      var right = this.a91(StringEscapeUtils_getInstance().q93(rightValue));
+      var criteriaItem = this.objectFactory.f7m().g67(listOf([ensureNotNull(left), right]));
       var tmp_4;
       if (criteria == null) {
         tmp_4 = criteriaItem;
       } else {
-        tmp_4 = this.objectFactory.x7o().f67(listOf([criteria, criteriaItem]));
+        tmp_4 = this.objectFactory.y7o().g67(listOf([criteria, criteriaItem]));
       }
       criteria = tmp_4;
     }
-    var query_0 = this.objectFactory.l7h().q7y(listOf_0(querySource)).t7y(criteria);
+    var query_0 = this.objectFactory.m7h().r7y(listOf_0(querySource)).u7y(criteria);
     result = query_0;
     if ((indexerEnd + 1 | 0) < targetMap_0.length) {
       var targetPath = substring(targetMap_0, indexerEnd + 1 | 0);
@@ -8700,31 +8932,31 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
       // Inline function 'kotlin.text.isNotEmpty' call
       var this_12 = targetPath;
       if (charSequenceLength(this_12) > 0) {
-        query_0.i7y_1 = this.objectFactory.d7o().h82(false).r69(this.objectFactory.q7n().a6k(this.objectFactory.g7j().q65('$this')).y6c(targetPath));
+        query_0.j7y_1 = this.objectFactory.e7o().i82(false).s69(this.objectFactory.r7n().b6k(this.objectFactory.h7j().r65('$this')).z6c(targetPath));
       }
     }
-    var tmp_5 = Trackable_getInstance().n8v(ensureNotNull(source));
+    var tmp_5 = Trackable_getInstance().o8v(ensureNotNull(source));
     if (!(tmp_5 instanceof ListType)) {
-      result = this.objectFactory.t7l().a6c(result);
+      result = this.objectFactory.u7l().b6c(result);
     }
-    Trackable_getInstance().o8v(result, Trackable_getInstance().n8v(source));
+    Trackable_getInstance().p8v(result, Trackable_getInstance().o8v(source));
     return result;
   } else if (startsWith(targetMap_0, '%value.')) {
     var propertyName = substring(targetMap_0, 7);
-    var tmp_6 = Trackable_getInstance().n8v(ensureNotNull(source));
+    var tmp_6 = Trackable_getInstance().o8v(ensureNotNull(source));
     if (tmp_6 instanceof ListType) {
-      var s = this.objectFactory.f7q().r69(source).q69('$this');
-      var p_0 = this.objectFactory.q7n().p7x('$this').y6c(propertyName);
+      var s = this.objectFactory.g7q().s69(source).r69('$this');
+      var p_0 = this.objectFactory.r7n().q7x('$this').z6c(propertyName);
       var tmp_7 = Trackable_getInstance();
-      var tmp_8 = Trackable_getInstance().n8v(source);
-      tmp_7.o8v(p_0, (tmp_8 instanceof ListType ? tmp_8 : THROW_CCE()).d61_1);
-      var r = this.objectFactory.d7o().h82(false).r69(p_0);
-      var q = this.objectFactory.l7h().q7y(listOf_0(s)).u7y(r);
-      Trackable_getInstance().o8v(q, Trackable_getInstance().n8v(source));
+      var tmp_8 = Trackable_getInstance().o8v(source);
+      tmp_7.p8v(p_0, (tmp_8 instanceof ListType ? tmp_8 : THROW_CCE()).e61_1);
+      var r = this.objectFactory.e7o().i82(false).s69(p_0);
+      var q = this.objectFactory.m7h().r7y(listOf_0(s)).v7y(r);
+      Trackable_getInstance().p8v(q, Trackable_getInstance().o8v(source));
       return q;
     } else {
-      var p_1 = this.objectFactory.q7n().a6k(source).y6c(propertyName);
-      Trackable_getInstance().o8v(p_1, Trackable_getInstance().n8v(source));
+      var p_1 = this.objectFactory.r7n().b6k(source).z6c(propertyName);
+      Trackable_getInstance().p8v(p_1, Trackable_getInstance().o8v(source));
       return p_1;
     }
   }
@@ -8732,117 +8964,117 @@ protoOf(LibraryBuilder).applyTargetMap = function (source, targetMap) {
 };
 protoOf(LibraryBuilder).resolveAccessor = function (left, memberIdentifier) {
   if (left instanceof LibraryRef) {
-    var libraryName = left.v8y_1;
+    var libraryName = left.w8y_1;
     var referencedLibrary = this.resolveLibrary(libraryName);
-    var resolvedIdentifierContext = referencedLibrary.x9a(memberIdentifier);
-    var element = resolvedIdentifierContext.w9b();
+    var resolvedIdentifierContext = referencedLibrary.e9b(memberIdentifier);
+    var element = resolvedIdentifierContext.d9c();
     if (!(element == null)) {
       if (element instanceof ExpressionDef) {
-        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.z6h()));
-        var result = this.objectFactory.v7p().t6i(libraryName).q65(memberIdentifier);
-        Trackable_getInstance().o8v(result, getExpressionDefResultType(this, element));
+        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.a6i()));
+        var result = this.objectFactory.w7p().u6i(libraryName).r65(memberIdentifier);
+        Trackable_getInstance().p8v(result, getExpressionDefResultType(this, element));
         return result;
       }
       if (element instanceof ParameterDef) {
-        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.z6h()));
-        var result_0 = this.objectFactory.o7j().t6i(libraryName).q65(memberIdentifier);
-        Trackable_getInstance().o8v(result_0, Trackable_getInstance().n8v(element));
+        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.a6i()));
+        var result_0 = this.objectFactory.p7j().u6i(libraryName).r65(memberIdentifier);
+        Trackable_getInstance().p8v(result_0, Trackable_getInstance().o8v(element));
         return result_0;
       }
       if (element instanceof ValueSetDef) {
-        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.z6h()));
-        var result_1 = this.objectFactory.i7i().t6i(libraryName).q65(memberIdentifier);
-        Trackable_getInstance().o8v(result_1, Trackable_getInstance().n8v(element));
+        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.a6i()));
+        var result_1 = this.objectFactory.j7i().u6i(libraryName).r65(memberIdentifier);
+        Trackable_getInstance().p8v(result_1, Trackable_getInstance().o8v(element));
         if (this.isCompatibleWith('1.5')) {
-          result_1.s8h_1 = true;
+          result_1.t8h_1 = true;
         }
         return result_1;
       }
       if (element instanceof CodeSystemDef) {
-        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.z6h()));
-        var result_2 = this.objectFactory.x7l().t6i(libraryName).q65(memberIdentifier);
-        Trackable_getInstance().o8v(result_2, Trackable_getInstance().n8v(element));
+        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.a6i()));
+        var result_2 = this.objectFactory.y7l().u6i(libraryName).r65(memberIdentifier);
+        Trackable_getInstance().p8v(result_2, Trackable_getInstance().o8v(element));
         return result_2;
       }
       if (element instanceof CodeDef) {
-        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.z6h()));
-        var result_3 = this.objectFactory.v7h().t6i(libraryName).q65(memberIdentifier);
-        Trackable_getInstance().o8v(result_3, Trackable_getInstance().n8v(element));
+        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.a6i()));
+        var result_3 = this.objectFactory.w7h().u6i(libraryName).r65(memberIdentifier);
+        Trackable_getInstance().p8v(result_3, Trackable_getInstance().o8v(element));
         return result_3;
       }
       if (element instanceof ConceptDef) {
-        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.z6h()));
-        var result_4 = this.objectFactory.c7j().t6i(libraryName).q65(memberIdentifier);
-        Trackable_getInstance().o8v(result_4, Trackable_getInstance().n8v(element));
+        this.checkAccessLevel(libraryName, memberIdentifier, ensureNotNull(element.a6i()));
+        var result_4 = this.objectFactory.d7j().u6i(libraryName).r65(memberIdentifier);
+        Trackable_getInstance().p8v(result_4, Trackable_getInstance().o8v(element));
         return result_4;
       }
     }
-    throw IllegalArgumentException_init_$Create$('Could not resolve identifier ' + memberIdentifier + ' in library ' + ensureNotNull(referencedLibrary.j8z_1).b8i_1 + '.');
+    throw IllegalArgumentException_init_$Create$('Could not resolve identifier ' + memberIdentifier + ' in library ' + ensureNotNull(referencedLibrary.k8z_1).c8i_1 + '.');
   } else {
     if (left instanceof AliasRef) {
-      var resolution = this.resolveProperty(Trackable_getInstance().n8v(left), memberIdentifier);
-      var result_5 = this.p91(left.i69_1, ensureNotNull(resolution).b91_1, resolution.d91_1, resolution.a91_1);
-      return this.applyTargetMap(result_5, resolution.c91_1);
+      var resolution = this.resolveProperty(Trackable_getInstance().o8v(left), memberIdentifier);
+      var result_5 = this.q91(left.j69_1, ensureNotNull(resolution).c91_1, resolution.e91_1, resolution.b91_1);
+      return this.applyTargetMap(result_5, resolution.d91_1);
     } else {
       var tmp;
-      var tmp_0 = Trackable_getInstance().n8v(left);
+      var tmp_0 = Trackable_getInstance().o8v(left);
       if (tmp_0 instanceof ListType) {
-        tmp = this.d8w_1;
+        tmp = this.e8w_1;
       } else {
         tmp = false;
       }
       if (tmp) {
-        var tmp_1 = Trackable_getInstance().n8v(left);
+        var tmp_1 = Trackable_getInstance().o8v(left);
         var listType = tmp_1 instanceof ListType ? tmp_1 : THROW_CCE();
-        var resolution_0 = this.resolveProperty(listType.d61_1, memberIdentifier);
-        var accessor = this.p8w(this.objectFactory.g7j().q65('$this'), ensureNotNull(resolution_0).b91_1, resolution_0.d91_1, resolution_0.a91_1);
-        accessor = this.applyTargetMap(accessor, resolution_0.c91_1);
+        var resolution_0 = this.resolveProperty(listType.e61_1, memberIdentifier);
+        var accessor = this.q8w(this.objectFactory.h7j().r65('$this'), ensureNotNull(resolution_0).c91_1, resolution_0.e91_1, resolution_0.b91_1);
+        accessor = this.applyTargetMap(accessor, resolution_0.d91_1);
         var not = buildIsNotNull(this, accessor);
-        accessor = this.p8w(this.objectFactory.g7j().q65('$this'), resolution_0.b91_1, resolution_0.d91_1, resolution_0.a91_1);
-        accessor = this.applyTargetMap(accessor, resolution_0.c91_1);
-        var source = this.objectFactory.f7q().r69(left).q69('$this');
-        Trackable_getInstance().o8v(source, Trackable_getInstance().n8v(left));
-        var query = this.objectFactory.l7h().q7y(listOf_0(source)).t7y(not).u7y(this.objectFactory.d7o().h82(false).r69(accessor));
-        Trackable_getInstance().o8v(query, new ListType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(accessor)))));
-        var tmp_2 = Trackable_getInstance().n8v(accessor);
+        accessor = this.q8w(this.objectFactory.h7j().r65('$this'), resolution_0.c91_1, resolution_0.e91_1, resolution_0.b91_1);
+        accessor = this.applyTargetMap(accessor, resolution_0.d91_1);
+        var source = this.objectFactory.g7q().s69(left).r69('$this');
+        Trackable_getInstance().p8v(source, Trackable_getInstance().o8v(left));
+        var query = this.objectFactory.m7h().r7y(listOf_0(source)).u7y(not).v7y(this.objectFactory.e7o().i82(false).s69(accessor));
+        Trackable_getInstance().p8v(query, new ListType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(accessor)))));
+        var tmp_2 = Trackable_getInstance().o8v(accessor);
         if (tmp_2 instanceof ListType) {
-          var result_6 = this.objectFactory.p7m().a6c(query);
-          Trackable_getInstance().o8v(result_6, Trackable_getInstance().n8v(accessor));
+          var result_6 = this.objectFactory.q7m().b6c(query);
+          Trackable_getInstance().p8v(result_6, Trackable_getInstance().o8v(accessor));
           return result_6;
         }
         return query;
       } else {
-        var resolution_1 = this.resolveProperty(Trackable_getInstance().n8v(left), memberIdentifier);
-        var result_7 = this.p8w(left, ensureNotNull(resolution_1).b91_1, resolution_1.d91_1, resolution_1.a91_1);
-        result_7 = this.applyTargetMap(result_7, resolution_1.c91_1);
+        var resolution_1 = this.resolveProperty(Trackable_getInstance().o8v(left), memberIdentifier);
+        var result_7 = this.q8w(left, ensureNotNull(resolution_1).c91_1, resolution_1.e91_1, resolution_1.b91_1);
+        result_7 = this.applyTargetMap(result_7, resolution_1.d91_1);
         return result_7;
       }
     }
   }
 };
-protoOf(LibraryBuilder).a9c = function (identifierRef, element, scope) {
-  var identifier = ensureNotNull(identifierRef.f70_1);
-  var localMatch = this.x8v_1.t99() ? findMatchingIdentifierContext(this, this.x8v_1.q2c(), identifier) : null;
-  var globalMatch = findMatchingIdentifierContext(this, this.w8v_1, identifier);
+protoOf(LibraryBuilder).h9c = function (identifierRef, element, scope) {
+  var identifier = ensureNotNull(identifierRef.g70_1);
+  var localMatch = this.y8v_1.g9a() ? findMatchingIdentifierContext(this, this.y8v_1.r2c(), identifier) : null;
+  var globalMatch = findMatchingIdentifierContext(this, this.x8v_1, identifier);
   if (!(globalMatch == null) || !(localMatch == null)) {
     var matchedContext = !(globalMatch == null) ? globalMatch : ensureNotNull(localMatch);
     var tmp;
-    if (equals(matchedContext.d97_1, getKClass(FunctionDef))) {
+    if (equals(matchedContext.q97_1, getKClass(FunctionDef))) {
       tmp = element instanceof FunctionDef;
     } else {
       tmp = false;
     }
     var matchedOnFunctionOverloads = tmp;
     if (!matchedOnFunctionOverloads) {
-      reportWarning(this, resolveWarningMessage(this, matchedContext.e97(), identifier, element), identifierRef);
+      reportWarning(this, resolveWarningMessage(this, matchedContext.r97(), identifier, element), identifierRef);
     }
   }
   if (shouldAddIdentifierContext(this, element)) {
     var trackableOrNull = element == null ? null : getKClassFromExpression(element);
     if (scope.equals(IdentifierScope_GLOBAL_getInstance())) {
-      this.w8v_1.e(new IdentifierContext(identifierRef, trackableOrNull));
+      this.x8v_1.e(new IdentifierContext(identifierRef, trackableOrNull));
     } else {
-      this.x8v_1.q2c().e(new IdentifierContext(identifierRef, trackableOrNull));
+      this.y8v_1.r2c().e(new IdentifierContext(identifierRef, trackableOrNull));
     }
   }
 };
@@ -8850,66 +9082,66 @@ protoOf(LibraryBuilder).pushIdentifier = function (identifierRef, element, scope
   scope = scope === VOID ? IdentifierScope_LOCAL_getInstance() : scope;
   var tmp;
   if ($super === VOID) {
-    this.a9c(identifierRef, element, scope);
+    this.h9c(identifierRef, element, scope);
     tmp = Unit_instance;
   } else {
-    tmp = $super.a9c.call(this, identifierRef, element, scope);
+    tmp = $super.h9c.call(this, identifierRef, element, scope);
   }
   return tmp;
 };
-protoOf(LibraryBuilder).b9c = function (scope) {
+protoOf(LibraryBuilder).i9c = function (scope) {
   if (scope.equals(IdentifierScope_GLOBAL_getInstance())) {
-    this.w8v_1.wf();
+    this.x8v_1.wf();
   } else {
-    this.x8v_1.q2c().wf();
+    this.y8v_1.r2c().wf();
   }
 };
 protoOf(LibraryBuilder).popIdentifier = function (scope, $super) {
   scope = scope === VOID ? IdentifierScope_LOCAL_getInstance() : scope;
   var tmp;
   if ($super === VOID) {
-    this.b9c(scope);
+    this.i9c(scope);
     tmp = Unit_instance;
   } else {
-    tmp = $super.b9c.call(this, scope);
+    tmp = $super.i9c.call(this, scope);
   }
   return tmp;
 };
 protoOf(LibraryBuilder).pushIdentifierScope = function () {
-  this.x8v_1.i8y(ArrayDeque_init_$Create$());
+  this.y8v_1.j8y(ArrayDeque_init_$Create$());
 };
 protoOf(LibraryBuilder).popIdentifierScope = function () {
-  this.x8v_1.r2c();
+  this.y8v_1.s2c();
 };
 protoOf(LibraryBuilder).determineRootCause = function () {
-  if (this.u8v_1.t99()) {
-    var currentContext = this.u8v_1.q2c();
+  if (this.v8v_1.g9a()) {
+    var currentContext = this.v8v_1.r2c();
     if (!(currentContext == null)) {
-      return currentContext.o99_1;
+      return currentContext.b9a_1;
     }
   }
   return null;
 };
 protoOf(LibraryBuilder).setRootCause = function (rootCause) {
-  if (this.u8v_1.t99()) {
-    var currentContext = this.u8v_1.q2c();
+  if (this.v8v_1.g9a()) {
+    var currentContext = this.v8v_1.r2c();
     if (currentContext == null)
       null;
     else {
-      currentContext.o99_1 = rootCause;
+      currentContext.b9a_1 = rootCause;
     }
   }
 };
 protoOf(LibraryBuilder).pushExpressionDefinition = function (identifier) {
   // Inline function 'kotlin.require' call
-  if (!!this.u8v_1.s99(identifier)) {
+  if (!!this.v8v_1.f9a(identifier)) {
     var message = 'Cannot resolve reference to expression or function ' + identifier + ' because it results in a circular reference.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.u8v_1.i8y(new ExpressionDefinitionContext(this, identifier));
+  this.v8v_1.j8y(new ExpressionDefinitionContext(this, identifier));
 };
 protoOf(LibraryBuilder).popExpressionDefinition = function () {
-  this.u8v_1.r2c();
+  this.v8v_1.s2c();
 };
 protoOf(LibraryBuilder).pushExpressionContext = function (context) {
   $l$block: {
@@ -8921,42 +9153,42 @@ protoOf(LibraryBuilder).pushExpressionContext = function (context) {
       break $l$block;
     }
   }
-  this.t8v_1.i8y(context);
+  this.u8v_1.j8y(context);
 };
 protoOf(LibraryBuilder).popExpressionContext = function () {
   // Inline function 'kotlin.check' call
-  if (!!this.t8v_1.e10()) {
+  if (!!this.u8v_1.f10()) {
     var message = 'Expression context stack is empty.';
     throw IllegalStateException_init_$Create$(toString(message));
   }
-  this.t8v_1.r2c();
+  this.u8v_1.s2c();
 };
 protoOf(LibraryBuilder).pushQueryContext = function (context) {
-  _get_scope__bi2zur(this).d99_1.i8y(context);
+  _get_scope__bi2zur(this).q99_1.j8y(context);
 };
 protoOf(LibraryBuilder).popQueryContext = function () {
-  return _get_scope__bi2zur(this).d99_1.r2c();
+  return _get_scope__bi2zur(this).q99_1.s2c();
 };
 protoOf(LibraryBuilder).peekQueryContext = function () {
-  return _get_scope__bi2zur(this).d99_1.q2c();
+  return _get_scope__bi2zur(this).q99_1.r2c();
 };
 protoOf(LibraryBuilder).pushExpressionTarget = function (target) {
-  _get_scope__bi2zur(this).c99_1.i8y(target);
+  _get_scope__bi2zur(this).p99_1.j8y(target);
 };
 protoOf(LibraryBuilder).popExpressionTarget = function () {
-  return _get_scope__bi2zur(this).c99_1.r2c();
+  return _get_scope__bi2zur(this).p99_1.s2c();
 };
 protoOf(LibraryBuilder).hasExpressionTarget = function () {
-  return hasScope(this) && _get_scope__bi2zur(this).c99_1.t99();
+  return hasScope(this) && _get_scope__bi2zur(this).p99_1.g9a();
 };
 protoOf(LibraryBuilder).beginFunctionDef = function (functionDef) {
-  this.v8v_1.i8y(functionDef);
+  this.w8v_1.j8y(functionDef);
 };
 protoOf(LibraryBuilder).endFunctionDef = function () {
-  this.v8v_1.r2c();
+  this.w8v_1.s2c();
 };
 protoOf(LibraryBuilder).pushLiteralContext = function () {
-  this.y8v_1 = this.y8v_1 + 1 | 0;
+  this.z8v_1 = this.z8v_1 + 1 | 0;
 };
 protoOf(LibraryBuilder).popLiteralContext = function () {
   // Inline function 'kotlin.check' call
@@ -8964,7 +9196,7 @@ protoOf(LibraryBuilder).popLiteralContext = function () {
     var message = 'Not in literal context';
     throw IllegalStateException_init_$Create$(toString(message));
   }
-  this.y8v_1 = this.y8v_1 - 1 | 0;
+  this.z8v_1 = this.z8v_1 - 1 | 0;
 };
 protoOf(LibraryBuilder).checkLiteralContext = function () {
   // Inline function 'kotlin.check' call
@@ -8974,7 +9206,7 @@ protoOf(LibraryBuilder).checkLiteralContext = function () {
   }
 };
 protoOf(LibraryBuilder).pushTypeSpecifierContext = function () {
-  this.z8v_1 = this.z8v_1 + 1 | 0;
+  this.a8w_1 = this.a8w_1 + 1 | 0;
 };
 protoOf(LibraryBuilder).popTypeSpecifierContext = function () {
   // Inline function 'kotlin.check' call
@@ -8982,7 +9214,7 @@ protoOf(LibraryBuilder).popTypeSpecifierContext = function () {
     var message = 'Not in type specifier context';
     throw IllegalStateException_init_$Create$(toString(message));
   }
-  this.z8v_1 = this.z8v_1 - 1 | 0;
+  this.a8w_1 = this.a8w_1 - 1 | 0;
 };
 var LibraryContentType_CQL_instance;
 var LibraryContentType_XML_instance;
@@ -9000,10 +9232,10 @@ function LibraryContentType_initEntries() {
 }
 function LibraryContentType(name, ordinal, mimeType) {
   Enum.call(this, name, ordinal);
-  this.h96_1 = mimeType;
+  this.i96_1 = mimeType;
 }
-protoOf(LibraryContentType).i96 = function () {
-  return this.h96_1;
+protoOf(LibraryContentType).j96 = function () {
+  return this.i96_1;
 };
 function LibraryContentType_CQL_getInstance() {
   LibraryContentType_initEntries();
@@ -9051,14 +9283,14 @@ function CacheMode(name, ordinal) {
 }
 function resolveLibraryInner($this, libraryIdentifier, cacheMode) {
   // Inline function 'kotlin.text.isNullOrEmpty' call
-  var this_0 = libraryIdentifier.b8i_1;
+  var this_0 = libraryIdentifier.c8i_1;
   // Inline function 'kotlin.require' call
   if (!!(this_0 == null || charSequenceLength(this_0) === 0)) {
     var message = 'libraryIdentifier Id is null.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
   var compiledLibraryResults = resolveLibraries($this, mutableListOf([libraryIdentifier]), cacheMode);
-  return compiledLibraryResults.q8t();
+  return compiledLibraryResults.r8t();
 }
 function resolveLibraries($this, libraryIdentifiers, cacheMode) {
   // Inline function 'kotlin.collections.isNotEmpty' call
@@ -9084,7 +9316,7 @@ function resolveLibraries($this, libraryIdentifiers, cacheMode) {
     while (_iterator__ex2g4s.h()) {
       var element = _iterator__ex2g4s.i();
       // Inline function 'kotlin.text.isNullOrEmpty' call
-      var this_0 = element.b8i_1;
+      var this_0 = element.c8i_1;
       if (!!(this_0 == null || charSequenceLength(this_0) === 0)) {
         tmp$ret$3 = false;
         break $l$block_0;
@@ -9132,7 +9364,7 @@ function resolveLibraries($this, libraryIdentifiers, cacheMode) {
         var tmp$ret$15 = new CompiledLibraryResult(item_0, tmp$ret$14);
         destination_1.e(tmp$ret$15);
       }
-      return tmp_0.o8t(destination_1);
+      return tmp_0.p8t(destination_1);
     }
     // Inline function 'kotlin.collections.map' call
     // Inline function 'kotlin.collections.mapTo' call
@@ -9157,21 +9389,21 @@ function resolveLibraries($this, libraryIdentifiers, cacheMode) {
     var libraryIdentifier = _iterator__ex2g4s_5.i();
     if (isLibraryAlreadyRetrievedFromCache($this, libraryIdentifier, compiledLibraryResults)) {
       var tmp_1 = get_logger();
-      tmp_1.c1q(LibraryManager$resolveLibraries$lambda(libraryIdentifier));
+      tmp_1.d1q(LibraryManager$resolveLibraries$lambda(libraryIdentifier));
       continue $l$loop;
     }
     var compiledLibraryResult = compileLibrary($this, libraryIdentifier);
-    if (!Companion_instance_3.hasErrors(compiledLibraryResult.s8t_1) && cacheMode.equals(CacheMode_READ_WRITE_getInstance())) {
+    if (!Companion_instance_3.hasErrors(compiledLibraryResult.t8t_1) && cacheMode.equals(CacheMode_READ_WRITE_getInstance())) {
       var tmp_2 = get_logger();
-      tmp_2.c1q(LibraryManager$resolveLibraries$lambda_0(libraryIdentifier));
+      tmp_2.d1q(LibraryManager$resolveLibraries$lambda_0(libraryIdentifier));
       var tmp0 = $this.compiledLibraries;
       // Inline function 'kotlin.collections.set' call
-      var value = compiledLibraryResult.r8t_1;
+      var value = compiledLibraryResult.s8t_1;
       tmp0.u2(libraryIdentifier, value);
     }
     compiledLibraryResults.e(compiledLibraryResult);
   }
-  return Companion_instance_2.o8t(compiledLibraryResults);
+  return Companion_instance_2.p8t(compiledLibraryResults);
 }
 function isLibraryAlreadyRetrievedFromCache($this, searchedForLibraryIdentifier, compiledLibrariesFromCache) {
   // Inline function 'kotlin.collections.map' call
@@ -9180,7 +9412,7 @@ function isLibraryAlreadyRetrievedFromCache($this, searchedForLibraryIdentifier,
   var _iterator__ex2g4s = compiledLibrariesFromCache.g();
   while (_iterator__ex2g4s.h()) {
     var item = _iterator__ex2g4s.i();
-    var tmp$ret$0 = item.r8t_1.j8z_1;
+    var tmp$ret$0 = item.s8t_1.k8z_1;
     destination.e(tmp$ret$0);
   }
   // Inline function 'kotlin.collections.map' call
@@ -9195,13 +9427,13 @@ function isLibraryAlreadyRetrievedFromCache($this, searchedForLibraryIdentifier,
   return toList(destination_0).p(searchedForLibraryIdentifier);
 }
 function stripVersionIfNeeded($this, compiledLibraryIdentifier, searchedForLibraryIdentifier) {
-  if (searchedForLibraryIdentifier.d8i_1 == null) {
-    return (new VersionedIdentifier()).a6i(compiledLibraryIdentifier.b8i_1);
+  if (searchedForLibraryIdentifier.e8i_1 == null) {
+    return (new VersionedIdentifier()).b6i(compiledLibraryIdentifier.c8i_1);
   }
   return compiledLibraryIdentifier;
 }
 function compileLibrary($this, libraryIdentifier) {
-  var libraryPath = Companion_instance_1.getPath(libraryIdentifier.c8i_1, ensureNotNull(libraryIdentifier.b8i_1));
+  var libraryPath = Companion_instance_1.getPath(libraryIdentifier.d8i_1, ensureNotNull(libraryIdentifier.c8i_1));
   if (!$this.cqlCompilerOptions.enableCqlOnly) {
     var elmCompiledLibrary = tryCompiledLibraryElm($this, libraryIdentifier, $this.cqlCompilerOptions);
     if (!(elmCompiledLibrary == null)) {
@@ -9214,9 +9446,9 @@ function compileLibrary($this, libraryIdentifier) {
   }
   var cqlSource = $this.librarySourceLoader.getLibrarySource(libraryIdentifier);
   if (cqlSource == null) {
-    throw CqlIncludeException_init_$Create$('Could not load source for library ' + libraryIdentifier.b8i_1 + ', version ' + libraryIdentifier.d8i_1 + ', namespace uri ' + libraryIdentifier.c8i_1 + '.', libraryIdentifier.c8i_1, ensureNotNull(libraryIdentifier.b8i_1), libraryIdentifier.d8i_1);
+    throw CqlIncludeException_init_$Create$('Could not load source for library ' + libraryIdentifier.c8i_1 + ', version ' + libraryIdentifier.e8i_1 + ', namespace uri ' + libraryIdentifier.d8i_1 + '.', libraryIdentifier.d8i_1, ensureNotNull(libraryIdentifier.c8i_1), libraryIdentifier.e8i_1);
   }
-  var tmp0_safe_receiver = libraryIdentifier.c8i_1;
+  var tmp0_safe_receiver = libraryIdentifier.d8i_1;
   var tmp;
   if (tmp0_safe_receiver == null) {
     tmp = null;
@@ -9225,14 +9457,14 @@ function compileLibrary($this, libraryIdentifier) {
     tmp = $this.namespaceManager.getNamespaceInfoFromUri(tmp0_safe_receiver);
   }
   var compiler = new CqlCompiler(tmp, libraryIdentifier, $this);
-  compiler.k94(cqlSource);
-  var compiledLibrary = compiler.w93_1;
+  compiler.l94(cqlSource);
+  var compiledLibrary = compiler.x93_1;
   if (compiledLibrary == null) {
-    throw CqlIncludeException_init_$Create$('Could not load source for library ' + libraryPath + ', version ' + libraryIdentifier.d8i_1 + '.', libraryIdentifier.c8i_1, ensureNotNull(libraryIdentifier.b8i_1), libraryIdentifier.d8i_1);
+    throw CqlIncludeException_init_$Create$('Could not load source for library ' + libraryPath + ', version ' + libraryIdentifier.e8i_1 + '.', libraryIdentifier.d8i_1, ensureNotNull(libraryIdentifier.c8i_1), libraryIdentifier.e8i_1);
   }
   validateIdentifiers($this, libraryIdentifier, compiledLibrary, libraryPath);
   sortStatements($this, compiledLibrary);
-  var tmp1_elvis_lhs = compiler.z93_1;
+  var tmp1_elvis_lhs = compiler.a94_1;
   var tmp_0;
   if (tmp1_elvis_lhs == null) {
     // Inline function 'kotlin.collections.mutableListOf' call
@@ -9243,30 +9475,30 @@ function compileLibrary($this, libraryIdentifier) {
   return new CompiledLibraryResult(compiledLibrary, tmp_0);
 }
 function validateIdentifiers($this, libraryIdentifier, result, libraryPath) {
-  var resultIdentifier = ensureNotNull(result.j8z_1);
-  var areIdsEqual = equals_0(libraryIdentifier.b8i_1, resultIdentifier.b8i_1);
-  var libraryIdentifierVersion = libraryIdentifier.d8i_1;
-  var resultIdentifierVersion = resultIdentifier.d8i_1;
+  var resultIdentifier = ensureNotNull(result.k8z_1);
+  var areIdsEqual = equals_0(libraryIdentifier.c8i_1, resultIdentifier.c8i_1);
+  var libraryIdentifierVersion = libraryIdentifier.e8i_1;
+  var resultIdentifierVersion = resultIdentifier.e8i_1;
   var areIdentifiersValid;
   if (libraryIdentifierVersion == null) {
     areIdentifiersValid = areIdsEqual;
   } else {
-    var areVersionsEqual = equals(libraryIdentifierVersion, resultIdentifier.d8i_1);
+    var areVersionsEqual = equals(libraryIdentifierVersion, resultIdentifier.e8i_1);
     areIdentifiersValid = (areIdsEqual && areVersionsEqual);
   }
   if (!areIdentifiersValid) {
-    var tmp = 'Library ' + libraryPath + ' was included with version ' + libraryIdentifierVersion + ', but id: ' + resultIdentifier.b8i_1 + ' and version ' + resultIdentifierVersion + ' of the library was found.';
-    var tmp_0 = libraryIdentifier.c8i_1;
-    var tmp_1 = ensureNotNull(libraryIdentifier.b8i_1);
+    var tmp = 'Library ' + libraryPath + ' was included with version ' + libraryIdentifierVersion + ', but id: ' + resultIdentifier.c8i_1 + ' and version ' + resultIdentifierVersion + ' of the library was found.';
+    var tmp_0 = libraryIdentifier.d8i_1;
+    var tmp_1 = ensureNotNull(libraryIdentifier.c8i_1);
     throw CqlIncludeException_init_$Create$(tmp, tmp_0, tmp_1, libraryIdentifierVersion == null ? 'null' : libraryIdentifierVersion);
   }
 }
 function sortStatements($this, compiledLibrary) {
-  if (ensureNotNull(compiledLibrary.k8z_1).y79_1 == null) {
+  if (ensureNotNull(compiledLibrary.l8z_1).z79_1 == null) {
     return Unit_instance;
   }
   // Inline function 'kotlin.collections.sortBy' call
-  var this_0 = ensureNotNull(ensureNotNull(compiledLibrary.k8z_1).y79_1).a79();
+  var this_0 = ensureNotNull(ensureNotNull(compiledLibrary.l8z_1).z79_1).b79();
   if (this_0.j() > 1) {
     // Inline function 'kotlin.comparisons.compareBy' call
     var tmp = LibraryManager$sortStatements$lambda;
@@ -9276,7 +9508,7 @@ function sortStatements($this, compiledLibrary) {
 }
 function tryCompiledLibraryElm($this, libraryIdentifier, options) {
   var elm;
-  var indexedObject = Companion_getInstance_8().e9c_1;
+  var indexedObject = Companion_getInstance_8().l9c_1;
   var inductionVariable = 0;
   var last = indexedObject.length;
   $l$loop_0: while (inductionVariable < last) {
@@ -9296,7 +9528,7 @@ function tryCompiledLibraryElm($this, libraryIdentifier, options) {
 function generateCompiledLibraryFromElm($this, libraryIdentifier, librarySource, type, options) {
   var tmp;
   try {
-    tmp = $this.elmLibraryReaderProvider.l8j(type.i96()).n8j(librarySource);
+    tmp = $this.elmLibraryReaderProvider.m8j(type.j96()).o8j(librarySource);
   } catch ($p) {
     var tmp_0;
     if ($p instanceof Exception) {
@@ -9317,63 +9549,63 @@ function generateCompiledLibrary($this, library) {
   var compilationSuccess = true;
   var compiledLibrary = new CompiledLibrary();
   try {
-    compiledLibrary.k8z_1 = library;
-    if (!(library.o79_1 == null)) {
-      compiledLibrary.j8z_1 = library.o79_1;
-    }
-    if (!(library.q79_1 == null)) {
-      var _iterator__ex2g4s = ensureNotNull(library.q79_1).a79().g();
-      while (_iterator__ex2g4s.h()) {
-        var usingDef = _iterator__ex2g4s.i();
-        compiledLibrary.o97(usingDef);
-      }
+    compiledLibrary.l8z_1 = library;
+    if (!(library.p79_1 == null)) {
+      compiledLibrary.k8z_1 = library.p79_1;
     }
     if (!(library.r79_1 == null)) {
-      var _iterator__ex2g4s_0 = ensureNotNull(library.r79_1).a79().g();
-      while (_iterator__ex2g4s_0.h()) {
-        var includeDef = _iterator__ex2g4s_0.i();
-        compiledLibrary.a99(includeDef);
-      }
-    }
-    if (!(library.t79_1 == null)) {
-      var _iterator__ex2g4s_1 = ensureNotNull(library.t79_1).a79().g();
-      while (_iterator__ex2g4s_1.h()) {
-        var codeSystemDef = _iterator__ex2g4s_1.i();
-        compiledLibrary.r9a(codeSystemDef);
-      }
-    }
-    var _iterator__ex2g4s_2 = ensureNotNull(library.u79_1).a79().g();
-    while (_iterator__ex2g4s_2.h()) {
-      var valueSetDef = _iterator__ex2g4s_2.i();
-      compiledLibrary.s9a(valueSetDef);
-    }
-    if (!(library.v79_1 == null)) {
-      var _iterator__ex2g4s_3 = ensureNotNull(library.v79_1).a79().g();
-      while (_iterator__ex2g4s_3.h()) {
-        var codeDef = _iterator__ex2g4s_3.i();
-        compiledLibrary.t9a(codeDef);
-      }
-    }
-    if (!(library.w79_1 == null)) {
-      var _iterator__ex2g4s_4 = ensureNotNull(library.w79_1).a79().g();
-      while (_iterator__ex2g4s_4.h()) {
-        var conceptDef = _iterator__ex2g4s_4.i();
-        compiledLibrary.u9a(conceptDef);
+      var _iterator__ex2g4s = ensureNotNull(library.r79_1).b79().g();
+      while (_iterator__ex2g4s.h()) {
+        var usingDef = _iterator__ex2g4s.i();
+        compiledLibrary.b98(usingDef);
       }
     }
     if (!(library.s79_1 == null)) {
-      var _iterator__ex2g4s_5 = ensureNotNull(library.s79_1).a79().g();
-      while (_iterator__ex2g4s_5.h()) {
-        var parameterDef = _iterator__ex2g4s_5.i();
-        compiledLibrary.q9a(parameterDef);
+      var _iterator__ex2g4s_0 = ensureNotNull(library.s79_1).b79().g();
+      while (_iterator__ex2g4s_0.h()) {
+        var includeDef = _iterator__ex2g4s_0.i();
+        compiledLibrary.n99(includeDef);
       }
     }
-    if (!(library.y79_1 == null)) {
-      var _iterator__ex2g4s_6 = ensureNotNull(library.y79_1).a79().g();
+    if (!(library.u79_1 == null)) {
+      var _iterator__ex2g4s_1 = ensureNotNull(library.u79_1).b79().g();
+      while (_iterator__ex2g4s_1.h()) {
+        var codeSystemDef = _iterator__ex2g4s_1.i();
+        compiledLibrary.y9a(codeSystemDef);
+      }
+    }
+    var _iterator__ex2g4s_2 = ensureNotNull(library.v79_1).b79().g();
+    while (_iterator__ex2g4s_2.h()) {
+      var valueSetDef = _iterator__ex2g4s_2.i();
+      compiledLibrary.z9a(valueSetDef);
+    }
+    if (!(library.w79_1 == null)) {
+      var _iterator__ex2g4s_3 = ensureNotNull(library.w79_1).b79().g();
+      while (_iterator__ex2g4s_3.h()) {
+        var codeDef = _iterator__ex2g4s_3.i();
+        compiledLibrary.a9b(codeDef);
+      }
+    }
+    if (!(library.x79_1 == null)) {
+      var _iterator__ex2g4s_4 = ensureNotNull(library.x79_1).b79().g();
+      while (_iterator__ex2g4s_4.h()) {
+        var conceptDef = _iterator__ex2g4s_4.i();
+        compiledLibrary.b9b(conceptDef);
+      }
+    }
+    if (!(library.t79_1 == null)) {
+      var _iterator__ex2g4s_5 = ensureNotNull(library.t79_1).b79().g();
+      while (_iterator__ex2g4s_5.h()) {
+        var parameterDef = _iterator__ex2g4s_5.i();
+        compiledLibrary.x9a(parameterDef);
+      }
+    }
+    if (!(library.z79_1 == null)) {
+      var _iterator__ex2g4s_6 = ensureNotNull(library.z79_1).b79().g();
       $l$loop: while (_iterator__ex2g4s_6.h()) {
         var expressionDef = _iterator__ex2g4s_6.i();
-        if (!(Trackable_getInstance().n8v(expressionDef) == null)) {
-          compiledLibrary.v9a(expressionDef);
+        if (!(Trackable_getInstance().o8v(expressionDef) == null)) {
+          compiledLibrary.c9b(expressionDef);
         } else {
           compilationSuccess = false;
           break $l$loop;
@@ -9394,7 +9626,7 @@ function generateCompiledLibrary($this, library) {
   return null;
 }
 function compilerOptionsMatch($this, library) {
-  var tmp0_elvis_lhs = CompilerOptions_instance.t8t(library);
+  var tmp0_elvis_lhs = CompilerOptions_instance.u8t(library);
   var tmp;
   if (tmp0_elvis_lhs == null) {
     return false;
@@ -9414,16 +9646,16 @@ function isSignatureCompatible($this, library) {
   return !hasOverloadedFunctions($this, library) || hasSignature($this, library);
 }
 function hasOverloadedFunctions($this, library) {
-  if (library.y79_1 == null) {
+  if (library.z79_1 == null) {
     return false;
   }
   var functionNames = HashSet_init_$Create$();
-  var _iterator__ex2g4s = ensureNotNull(library.y79_1).a79().g();
+  var _iterator__ex2g4s = ensureNotNull(library.z79_1).b79().g();
   while (_iterator__ex2g4s.h()) {
     var ed = _iterator__ex2g4s.i();
     if (ed instanceof FunctionDef) {
       var fd = ed;
-      var sig = new FunctionSig(ensureNotNull(fd.c6w_1), fd.o67().j());
+      var sig = new FunctionSig(ensureNotNull(fd.d6w_1), fd.p67().j());
       if (functionNames.p(sig)) {
         return true;
       } else {
@@ -9434,16 +9666,16 @@ function hasOverloadedFunctions($this, library) {
   return false;
 }
 function hasSignature($this, library) {
-  if (!(library.y79_1 == null)) {
-    var _iterator__ex2g4s = ensureNotNull(library.y79_1).a79().g();
+  if (!(library.z79_1 == null)) {
+    var _iterator__ex2g4s = ensureNotNull(library.z79_1).b79().g();
     while (_iterator__ex2g4s.h()) {
       var ed = _iterator__ex2g4s.i();
-      var tmp = ed.f6w_1;
+      var tmp = ed.g6w_1;
       if (tmp instanceof FunctionRef) {
-        var tmp_0 = ed.f6w_1;
+        var tmp_0 = ed.g6w_1;
         var fr = tmp_0 instanceof FunctionRef ? tmp_0 : THROW_CCE();
         // Inline function 'kotlin.collections.isNotEmpty' call
-        if (!fr.m66().q()) {
+        if (!fr.n66().q()) {
           return true;
         }
       }
@@ -9455,7 +9687,7 @@ function isVersionCompatible($this, library) {
   // Inline function 'kotlin.text.isNotEmpty' call
   var this_0 = $this.cqlCompilerOptions.compatibilityLevel;
   if (charSequenceLength(this_0) > 0) {
-    var version = CompilerOptions_instance.v8t(library);
+    var version = CompilerOptions_instance.w8t(library);
     if (!(version == null)) {
       return version === $this.cqlCompilerOptions.compatibilityLevel;
     }
@@ -9463,14 +9695,14 @@ function isVersionCompatible($this, library) {
   return false;
 }
 function FunctionSig(name, numArguments) {
-  this.f9c_1 = name;
-  this.g9c_1 = numArguments;
+  this.m9c_1 = name;
+  this.n9c_1 = numArguments;
 }
 protoOf(FunctionSig).hashCode = function () {
   var prime = 31;
   var result = 1;
-  result = imul(prime, result) + getStringHashCode(this.f9c_1) | 0;
-  result = imul(prime, result) + this.g9c_1 | 0;
+  result = imul(prime, result) + getStringHashCode(this.m9c_1) | 0;
+  result = imul(prime, result) + this.n9c_1 | 0;
   return result;
 };
 protoOf(FunctionSig).equals = function (other) {
@@ -9479,7 +9711,7 @@ protoOf(FunctionSig).equals = function (other) {
   if (other == null)
     return false;
   if (other instanceof FunctionSig) {
-    return other.f9c_1 === this.f9c_1 && other.g9c_1 === this.g9c_1;
+    return other.m9c_1 === this.m9c_1 && other.n9c_1 === this.n9c_1;
   }
   return false;
 };
@@ -9489,7 +9721,7 @@ function Companion_5() {
   // Inline function 'kotlin.arrayOf' call
   // Inline function 'kotlin.js.unsafeCast' call
   // Inline function 'kotlin.js.asDynamic' call
-  tmp.e9c_1 = [LibraryContentType_JSON_getInstance(), LibraryContentType_XML_getInstance(), LibraryContentType_CQL_getInstance()];
+  tmp.l9c_1 = [LibraryContentType_JSON_getInstance(), LibraryContentType_XML_getInstance(), LibraryContentType_CQL_getInstance()];
 }
 var Companion_instance_8;
 function Companion_getInstance_8() {
@@ -9498,16 +9730,16 @@ function Companion_getInstance_8() {
   return Companion_instance_8;
 }
 function sam$kotlin_Comparator$0(function_0) {
-  this.h9c_1 = function_0;
+  this.o9c_1 = function_0;
 }
 protoOf(sam$kotlin_Comparator$0).oe = function (a, b) {
-  return this.h9c_1(a, b);
+  return this.o9c_1(a, b);
 };
 protoOf(sam$kotlin_Comparator$0).compare = function (a, b) {
   return this.oe(a, b);
 };
 protoOf(sam$kotlin_Comparator$0).y3 = function () {
-  return this.h9c_1;
+  return this.o9c_1;
 };
 protoOf(sam$kotlin_Comparator$0).equals = function (other) {
   var tmp;
@@ -9534,18 +9766,18 @@ function LibraryManager$_get_ucumService_$ref_eymaov() {
 }
 function LibraryManager$resolveLibraries$lambda($libraryIdentifier) {
   return function () {
-    return 'library ' + $libraryIdentifier.b8i_1 + ' already in cache, skipping compilation';
+    return 'library ' + $libraryIdentifier.c8i_1 + ' already in cache, skipping compilation';
   };
 }
 function LibraryManager$resolveLibraries$lambda_0($libraryIdentifier) {
   return function () {
-    return 'adding library to cache: ' + $libraryIdentifier.b8i_1;
+    return 'adding library to cache: ' + $libraryIdentifier.c8i_1;
   };
 }
 function LibraryManager$sortStatements$lambda(a, b) {
   // Inline function 'kotlin.comparisons.compareValuesBy' call
-  var tmp = a.c6w_1;
-  var tmp$ret$1 = b.c6w_1;
+  var tmp = a.d6w_1;
+  var tmp$ret$1 = b.d6w_1;
   return compareValues(tmp, tmp$ret$1);
 }
 function CacheMode_NONE_getInstance() {
@@ -9562,7 +9794,7 @@ function CacheMode_READ_WRITE_getInstance() {
 }
 function LibraryManager(modelManager, cqlCompilerOptions, libraryCache, lazyUcumService, elmLibraryReaderProvider) {
   Companion_getInstance_8();
-  cqlCompilerOptions = cqlCompilerOptions === VOID ? Companion_getInstance_4().v94() : cqlCompilerOptions;
+  cqlCompilerOptions = cqlCompilerOptions === VOID ? Companion_getInstance_4().w94() : cqlCompilerOptions;
   libraryCache = libraryCache === VOID ? null : libraryCache;
   lazyUcumService = lazyUcumService === VOID ? get_defaultLazyUcumService() : lazyUcumService;
   elmLibraryReaderProvider = elmLibraryReaderProvider === VOID ? DefaultElmLibraryReaderProvider_instance : elmLibraryReaderProvider;
@@ -9573,28 +9805,28 @@ function LibraryManager(modelManager, cqlCompilerOptions, libraryCache, lazyUcum
   var tmp = this;
   tmp.compiledLibraries = libraryCache == null ? HashMap_init_$Create$() : libraryCache;
   this.librarySourceLoader = new PriorityLibrarySourceLoader();
-  this.e94_1 = lazyUcumService;
+  this.f94_1 = lazyUcumService;
 }
-protoOf(LibraryManager).i9c = function () {
+protoOf(LibraryManager).p9c = function () {
   return this.modelManager;
 };
-protoOf(LibraryManager).z96 = function () {
+protoOf(LibraryManager).a97 = function () {
   return this.cqlCompilerOptions;
 };
-protoOf(LibraryManager).j9c = function () {
+protoOf(LibraryManager).q9c = function () {
   return this.elmLibraryReaderProvider;
 };
-protoOf(LibraryManager).k9c = function () {
+protoOf(LibraryManager).r9c = function () {
   return this.namespaceManager;
 };
-protoOf(LibraryManager).l9c = function () {
+protoOf(LibraryManager).s9c = function () {
   return this.compiledLibraries;
 };
-protoOf(LibraryManager).m9c = function () {
+protoOf(LibraryManager).t9c = function () {
   return this.librarySourceLoader;
 };
-protoOf(LibraryManager).n9c = function () {
-  var tmp0 = this.e94_1;
+protoOf(LibraryManager).u9c = function () {
+  var tmp0 = this.f94_1;
   var tmp = KProperty1;
   // Inline function 'kotlin.getValue' call
   getPropertyCallableRef('ucumService', 1, tmp, LibraryManager$_get_ucumService_$ref_eymaov(), null);
@@ -9606,20 +9838,20 @@ protoOf(LibraryManager).isWellKnownLibraryName = function (unqualifiedIdentifier
   }
   return unqualifiedIdentifier === 'FHIRHelpers';
 };
-protoOf(LibraryManager).o9c = function (libraryIdentifier, cacheMode) {
-  return resolveLibraryInner(this, libraryIdentifier, cacheMode).r8t_1;
+protoOf(LibraryManager).v9c = function (libraryIdentifier, cacheMode) {
+  return resolveLibraryInner(this, libraryIdentifier, cacheMode).s8t_1;
 };
-protoOf(LibraryManager).p9c = function (libraryIdentifier) {
-  return resolveLibraryInner(this, libraryIdentifier, CacheMode_READ_WRITE_getInstance()).r8t_1;
+protoOf(LibraryManager).w9c = function (libraryIdentifier) {
+  return resolveLibraryInner(this, libraryIdentifier, CacheMode_READ_WRITE_getInstance()).s8t_1;
 };
 protoOf(LibraryManager).canResolveLibrary = function (libraryIdentifier) {
-  this.p9c(libraryIdentifier);
+  this.w9c(libraryIdentifier);
   return true;
 };
-protoOf(LibraryManager).p9a = function (libraryIdentifier, errors) {
+protoOf(LibraryManager).w9a = function (libraryIdentifier, errors) {
   var compiledLibraryResult = resolveLibraryInner(this, libraryIdentifier, CacheMode_READ_WRITE_getInstance());
-  errors.n(compiledLibraryResult.s8t_1);
-  return compiledLibraryResult.r8t_1;
+  errors.n(compiledLibraryResult.t8t_1);
+  return compiledLibraryResult.s8t_1;
 };
 protoOf(LibraryManager).resolveLibraries = function (libraryIdentifiers) {
   return resolveLibraries(this, libraryIdentifiers, CacheMode_READ_WRITE_getInstance());
@@ -9632,27 +9864,27 @@ function createLibrarySourceProvider(getLibraryCql) {
   return new createLibrarySourceProvider$1(getLibraryCql);
 }
 function createLibrarySourceProvider$1($getLibraryCql) {
-  this.q9c_1 = $getLibraryCql;
+  this.x9c_1 = $getLibraryCql;
 }
 protoOf(createLibrarySourceProvider$1).getLibrarySource = function (libraryIdentifier) {
-  return this.q9c_1(ensureNotNull(libraryIdentifier.b8i_1), libraryIdentifier.c8i_1, libraryIdentifier.d8i_1);
+  return this.x9c_1(ensureNotNull(libraryIdentifier.c8i_1), libraryIdentifier.d8i_1, libraryIdentifier.e8i_1);
 };
 function getProviders($this) {
-  if (!$this.u9c_1) {
-    $this.u9c_1 = true;
+  if (!$this.b9d_1) {
+    $this.b9d_1 = true;
     var it = getModelInfoProviders(false);
     while (it.h()) {
       var provider = it.i();
       $this.registerModelInfoProvider(provider);
     }
   }
-  return $this.t9c_1;
+  return $this.a9d_1;
 }
 function ModelInfoLoader() {
-  this.r9c_1 = null;
-  this.s9c_1 = null;
-  this.t9c_1 = ArrayList_init_$Create$();
-  this.u9c_1 = false;
+  this.y9c_1 = null;
+  this.z9c_1 = null;
+  this.a9d_1 = ArrayList_init_$Create$();
+  this.b9d_1 = false;
 }
 protoOf(ModelInfoLoader).getModelInfo = function (modelIdentifier) {
   var modelInfo = null;
@@ -9668,7 +9900,7 @@ protoOf(ModelInfoLoader).getModelInfo = function (modelIdentifier) {
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (tmp0 == null) {
-      var message = 'Could not resolve model info provider for model ' + (modelIdentifier.v62_1 == null ? modelIdentifier.u62_1 : Companion_instance_1.getPath(modelIdentifier.v62_1, modelIdentifier.u62_1)) + ', version ' + modelIdentifier.w62_1 + '.';
+      var message = 'Could not resolve model info provider for model ' + (modelIdentifier.w62_1 == null ? modelIdentifier.v62_1 : Companion_instance_1.getPath(modelIdentifier.w62_1, modelIdentifier.v62_1)) + ', version ' + modelIdentifier.x62_1 + '.';
       throw IllegalArgumentException_init_$Create$(toString(message));
     } else {
       break $l$block;
@@ -9676,72 +9908,72 @@ protoOf(ModelInfoLoader).getModelInfo = function (modelIdentifier) {
   }
   return modelInfo;
 };
-protoOf(ModelInfoLoader).v9c = function (provider, priority) {
+protoOf(ModelInfoLoader).c9d = function (provider, priority) {
   var tmp;
-  if (!(this.s9c_1 == null)) {
+  if (!(this.z9c_1 == null)) {
     tmp = isInterface(provider, NamespaceAware);
   } else {
     tmp = false;
   }
   if (tmp) {
-    provider.x62(ensureNotNull(this.s9c_1));
+    provider.y62(ensureNotNull(this.z9c_1));
   }
   var tmp_0;
-  if (!(this.r9c_1 == null)) {
+  if (!(this.y9c_1 == null)) {
     tmp_0 = isInterface(provider, PathAware);
   } else {
     tmp_0 = false;
   }
   if (tmp_0) {
-    provider.w9c(ensureNotNull(this.r9c_1));
+    provider.e97(ensureNotNull(this.y9c_1));
   }
   if (priority) {
-    this.t9c_1.k2(0, provider);
+    this.a9d_1.k2(0, provider);
   } else {
-    this.t9c_1.e(provider);
+    this.a9d_1.e(provider);
   }
 };
 protoOf(ModelInfoLoader).registerModelInfoProvider = function (provider, priority, $super) {
   priority = priority === VOID ? false : priority;
   var tmp;
   if ($super === VOID) {
-    this.v9c(provider, priority);
+    this.c9d(provider, priority);
     tmp = Unit_instance;
   } else {
-    tmp = $super.v9c.call(this, provider, priority);
+    tmp = $super.c9d.call(this, provider, priority);
   }
   return tmp;
 };
 protoOf(ModelInfoLoader).unregisterModelInfoProvider = function (provider) {
-  this.t9c_1.e2(provider);
+  this.a9d_1.e2(provider);
 };
 protoOf(ModelInfoLoader).clearModelInfoProviders = function () {
-  this.t9c_1.i2();
-  this.u9c_1 = false;
+  this.a9d_1.i2();
+  this.b9d_1 = false;
 };
-protoOf(ModelInfoLoader).x62 = function (namespaceManager) {
-  this.s9c_1 = namespaceManager;
+protoOf(ModelInfoLoader).y62 = function (namespaceManager) {
+  this.z9c_1 = namespaceManager;
   var _iterator__ex2g4s = getProviders(this).g();
   while (_iterator__ex2g4s.h()) {
     var provider = _iterator__ex2g4s.i();
     if (isInterface(provider, NamespaceAware)) {
-      (isInterface(provider, NamespaceAware) ? provider : THROW_CCE()).x62(namespaceManager);
+      (isInterface(provider, NamespaceAware) ? provider : THROW_CCE()).y62(namespaceManager);
     }
   }
 };
-protoOf(ModelInfoLoader).w9c = function (path) {
-  var tmp0_safe_receiver = get_SystemFileSystem().rq(path);
+protoOf(ModelInfoLoader).e97 = function (path) {
+  var tmp0_safe_receiver = get_SystemFileSystem().sq(path);
   // Inline function 'kotlin.require' call
-  if (!((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.uq_1) === true)) {
+  if (!((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.wq_1) === true)) {
     var message = "path '" + path.toString() + "' is not a valid directory";
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.r9c_1 = path;
+  this.y9c_1 = path;
   var _iterator__ex2g4s = getProviders(this).g();
   while (_iterator__ex2g4s.h()) {
     var provider = _iterator__ex2g4s.i();
     if (isInterface(provider, PathAware)) {
-      provider.w9c(path);
+      provider.e97(path);
     }
   }
 };
@@ -9749,10 +9981,10 @@ function createModelInfoProvider(getModelInfoXml) {
   return new createModelInfoProvider$1(getModelInfoXml);
 }
 function createModelInfoProvider$1($getModelInfoXml) {
-  this.x9c_1 = $getModelInfoXml;
+  this.d9d_1 = $getModelInfoXml;
 }
 protoOf(createModelInfoProvider$1).load = function (modelIdentifier) {
-  var modelInfoXml = this.x9c_1(modelIdentifier.u62_1, modelIdentifier.v62_1, modelIdentifier.w62_1);
+  var modelInfoXml = this.d9d_1(modelIdentifier.v62_1, modelIdentifier.w62_1, modelIdentifier.x62_1);
   var tmp;
   if (modelInfoXml == null) {
     tmp = null;
@@ -9765,17 +9997,17 @@ protoOf(createModelInfoProvider$1).load = function (modelIdentifier) {
 function buildModel($this, identifier) {
   var model;
   // Inline function 'kotlin.text.isNotEmpty' call
-  var this_0 = identifier.u62_1;
+  var this_0 = identifier.v62_1;
   // Inline function 'kotlin.require' call
   if (!(charSequenceLength(this_0) > 0)) {
     var message = 'Model identifier Id is required';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var modelPath = Companion_instance_1.getPath(identifier.v62_1, identifier.u62_1);
+  var modelPath = Companion_instance_1.getPath(identifier.w62_1, identifier.v62_1);
   pushLoading($this, modelPath);
   try {
     var modelInfo = $this.modelInfoLoader.getModelInfo(identifier);
-    if (equals(identifier.u62_1, 'System')) {
+    if (equals(identifier.v62_1, 'System')) {
       model = new SystemModel(modelInfo);
     } else {
       model = new Model(modelInfo, $this);
@@ -9783,7 +10015,7 @@ function buildModel($this, identifier) {
   } catch ($p) {
     if ($p instanceof Exception) {
       var e = $p;
-      throw IllegalArgumentException_init_$Create$('Could not load model information for model ' + identifier.u62_1 + ', version ' + identifier.w62_1 + '.');
+      throw IllegalArgumentException_init_$Create$('Could not load model information for model ' + identifier.v62_1 + ', version ' + identifier.x62_1 + '.');
     } else {
       throw $p;
     }
@@ -9795,19 +10027,19 @@ function buildModel($this, identifier) {
 }
 function pushLoading($this, modelId) {
   // Inline function 'kotlin.require' call
-  if (!!$this.j97_1.p(modelId)) {
+  if (!!$this.w97_1.p(modelId)) {
     var message = 'Circular model reference ' + modelId;
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  $this.j97_1.e(modelId);
+  $this.w97_1.e(modelId);
 }
 function popLoading($this, modelId) {
-  $this.j97_1.e2(modelId);
+  $this.w97_1.e2(modelId);
 }
 function checkModelVersion($this, modelIdentifier, model) {
   // Inline function 'kotlin.require' call
-  if (!!(!(modelIdentifier.w62_1 == null) && !equals_0(modelIdentifier.w62_1, model.q90_1.k5x_1))) {
-    var message = 'Could not load model information for model ' + modelIdentifier.u62_1 + ', version ' + modelIdentifier.w62_1 + ' because version ' + model.q90_1.k5x_1 + ' is already loaded.';
+  if (!!(!(modelIdentifier.x62_1 == null) && !equals_0(modelIdentifier.x62_1, model.r90_1.l5x_1))) {
+    var message = 'Could not load model information for model ' + modelIdentifier.v62_1 + ', version ' + modelIdentifier.x62_1 + ' because version ' + model.r90_1.l5x_1 + ' is already loaded.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
 }
@@ -9823,28 +10055,28 @@ function ModelManager(namespaceManager, enableDefaultModelInfoLoading, path, glo
   var tmp = this;
   // Inline function 'kotlin.also' call
   var this_0 = new ModelInfoLoader();
-  this_0.x62(this.namespaceManager);
+  this_0.y62(this.namespaceManager);
   if (!(this.path == null)) {
-    this_0.w9c(this.path);
+    this_0.e97(this.path);
   }
   tmp.modelInfoLoader = this_0;
-  this.i97_1 = HashMap_init_$Create$();
-  this.j97_1 = HashSet_init_$Create$();
-  this.k97_1 = HashMap_init_$Create$();
+  this.v97_1 = HashMap_init_$Create$();
+  this.w97_1 = HashSet_init_$Create$();
+  this.x97_1 = HashMap_init_$Create$();
 }
-protoOf(ModelManager).k9c = function () {
+protoOf(ModelManager).r9c = function () {
   return this.namespaceManager;
 };
-protoOf(ModelManager).y9c = function () {
+protoOf(ModelManager).e9d = function () {
   return this.enableDefaultModelInfoLoading;
 };
-protoOf(ModelManager).z9c = function () {
+protoOf(ModelManager).f9d = function () {
   return this.path;
 };
-protoOf(ModelManager).a9d = function () {
+protoOf(ModelManager).g9d = function () {
   return this.globalCache;
 };
-protoOf(ModelManager).b9d = function () {
+protoOf(ModelManager).h9d = function () {
   return this.modelInfoLoader;
 };
 protoOf(ModelManager).isWellKnownModelName = function (unqualifiedIdentifier) {
@@ -9862,35 +10094,35 @@ protoOf(ModelManager).isWellKnownModelName = function (unqualifiedIdentifier) {
       return false;
   }
 };
-protoOf(ModelManager).z9b = function (modelName, version) {
-  return this.l97(new ModelIdentifier(modelName, null, version));
+protoOf(ModelManager).g9c = function (modelName, version) {
+  return this.y97(new ModelIdentifier(modelName, null, version));
 };
 protoOf(ModelManager).resolveModel$default = function (modelName, version, $super) {
   version = version === VOID ? null : version;
-  return $super === VOID ? this.z9b(modelName, version) : $super.z9b.call(this, modelName, version);
+  return $super === VOID ? this.g9c(modelName, version) : $super.g9c.call(this, modelName, version);
 };
-protoOf(ModelManager).l97 = function (modelIdentifier) {
-  var modelPath = Companion_instance_1.getPath(modelIdentifier.v62_1, modelIdentifier.u62_1);
-  var model = this.i97_1.q2(modelPath);
+protoOf(ModelManager).y97 = function (modelIdentifier) {
+  var modelPath = Companion_instance_1.getPath(modelIdentifier.w62_1, modelIdentifier.v62_1);
+  var model = this.v97_1.q2(modelPath);
   if (!(model == null)) {
     checkModelVersion(this, modelIdentifier, model);
   }
   if (model == null && this.globalCache.o2(modelIdentifier)) {
     model = this.globalCache.q2(modelIdentifier);
-    this.i97_1.u2(modelPath, ensureNotNull(model));
-    this.k97_1.u2(ensureNotNull(model.q90_1.l5x_1), model);
+    this.v97_1.u2(modelPath, ensureNotNull(model));
+    this.x97_1.u2(ensureNotNull(model.r90_1.m5x_1), model);
   }
   if (model == null) {
     model = buildModel(this, modelIdentifier);
     this.globalCache.u2(modelIdentifier, model);
     checkModelVersion(this, modelIdentifier, model);
-    this.i97_1.u2(modelPath, model);
-    this.k97_1.u2(ensureNotNull(model.q90_1.l5x_1), model);
+    this.v97_1.u2(modelPath, model);
+    this.x97_1.u2(ensureNotNull(model.r90_1.m5x_1), model);
   }
   return model;
 };
 protoOf(ModelManager).resolveModelByUri = function (namespaceUri) {
-  var model = this.k97_1.q2(namespaceUri);
+  var model = this.x97_1.q2(namespaceUri);
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (model == null) {
@@ -9905,62 +10137,62 @@ protoOf(ModelManager).resolveModelByUri = function (namespaceUri) {
 function PathAware() {
 }
 function getProviders_0($this) {
-  if (!$this.d9d_1) {
-    $this.d9d_1 = true;
+  if (!$this.j9d_1) {
+    $this.j9d_1 = true;
     var it = getLibrarySourceProviders(false);
     while (it.h()) {
       var provider = it.i();
       $this.registerProvider(provider);
     }
   }
-  return $this.c9d_1;
+  return $this.i9d_1;
 }
 function PriorityLibrarySourceLoader() {
-  this.c9d_1 = ArrayList_init_$Create$();
-  this.d9d_1 = false;
-  this.e9d_1 = null;
-  this.f9d_1 = null;
+  this.i9d_1 = ArrayList_init_$Create$();
+  this.j9d_1 = false;
+  this.k9d_1 = null;
+  this.l9d_1 = null;
 }
 protoOf(PriorityLibrarySourceLoader).registerProvider = function (provider) {
   var tmp;
-  if (!(this.f9d_1 == null)) {
+  if (!(this.l9d_1 == null)) {
     tmp = isInterface(provider, NamespaceAware);
   } else {
     tmp = false;
   }
   if (tmp) {
-    provider.x62(ensureNotNull(this.f9d_1));
+    provider.y62(ensureNotNull(this.l9d_1));
   }
   var tmp_0;
-  if (!(this.e9d_1 == null)) {
+  if (!(this.k9d_1 == null)) {
     tmp_0 = isInterface(provider, PathAware);
   } else {
     tmp_0 = false;
   }
   if (tmp_0) {
-    provider.w9c(ensureNotNull(this.e9d_1));
+    provider.e97(ensureNotNull(this.k9d_1));
   }
-  this.c9d_1.e(provider);
+  this.i9d_1.e(provider);
 };
-protoOf(PriorityLibrarySourceLoader).w9c = function (path) {
-  var tmp0_safe_receiver = get_SystemFileSystem().rq(path);
+protoOf(PriorityLibrarySourceLoader).e97 = function (path) {
+  var tmp0_safe_receiver = get_SystemFileSystem().sq(path);
   // Inline function 'kotlin.require' call
-  if (!((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.uq_1) === true)) {
+  if (!((tmp0_safe_receiver == null ? null : tmp0_safe_receiver.wq_1) === true)) {
     var message = "path '" + path.toString() + "' is not a valid directory";
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.e9d_1 = path;
+  this.k9d_1 = path;
   var _iterator__ex2g4s = getProviders_0(this).g();
   while (_iterator__ex2g4s.h()) {
     var provider = _iterator__ex2g4s.i();
     if (isInterface(provider, PathAware)) {
-      provider.w9c(path);
+      provider.e97(path);
     }
   }
 };
 protoOf(PriorityLibrarySourceLoader).clearProviders = function () {
-  this.c9d_1.i2();
-  this.d9d_1 = false;
+  this.i9d_1.i2();
+  this.j9d_1 = false;
 };
 protoOf(PriorityLibrarySourceLoader).getLibrarySource = function (libraryIdentifier) {
   return this.getLibraryContent(libraryIdentifier, LibraryContentType_CQL_getInstance());
@@ -9977,22 +10209,22 @@ protoOf(PriorityLibrarySourceLoader).getLibraryContent = function (libraryIdenti
   }
   return null;
 };
-protoOf(PriorityLibrarySourceLoader).x62 = function (namespaceManager) {
-  this.f9d_1 = namespaceManager;
+protoOf(PriorityLibrarySourceLoader).y62 = function (namespaceManager) {
+  this.l9d_1 = namespaceManager;
   var _iterator__ex2g4s = getProviders_0(this).g();
   while (_iterator__ex2g4s.h()) {
     var provider = _iterator__ex2g4s.i();
     if (isInterface(provider, NamespaceAware)) {
-      provider.x62(namespaceManager);
+      provider.y62(namespaceManager);
     }
   }
 };
 function Companion_6() {
 }
-protoOf(Companion_6).g9d = function () {
+protoOf(Companion_6).m9d = function () {
   return new ResultWithPossibleError(null);
 };
-protoOf(Companion_6).h9d = function (underlyingThingOrNull) {
+protoOf(Companion_6).n9d = function (underlyingThingOrNull) {
   return new ResultWithPossibleError(underlyingThingOrNull);
 };
 var Companion_instance_9;
@@ -10000,30 +10232,30 @@ function Companion_getInstance_9() {
   return Companion_instance_9;
 }
 function ResultWithPossibleError(underlyingThingOrNull) {
-  this.n90_1 = underlyingThingOrNull;
+  this.o90_1 = underlyingThingOrNull;
 }
-protoOf(ResultWithPossibleError).p90 = function () {
-  return this.n90_1 == null;
+protoOf(ResultWithPossibleError).q90 = function () {
+  return this.o90_1 == null;
 };
-protoOf(ResultWithPossibleError).o90 = function () {
+protoOf(ResultWithPossibleError).p90 = function () {
   // Inline function 'kotlin.require' call
-  if (!!this.p90()) {
+  if (!!this.q90()) {
     var message = 'Should have called hasError() first';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  return this.n90_1;
+  return this.o90_1;
 };
 function sam$kotlin_Comparator$0_0(function_0) {
-  this.i9d_1 = function_0;
+  this.o9d_1 = function_0;
 }
 protoOf(sam$kotlin_Comparator$0_0).oe = function (a, b) {
-  return this.i9d_1(a, b);
+  return this.o9d_1(a, b);
 };
 protoOf(sam$kotlin_Comparator$0_0).compare = function (a, b) {
   return this.oe(a, b);
 };
 protoOf(sam$kotlin_Comparator$0_0).y3 = function () {
-  return this.i9d_1;
+  return this.o9d_1;
 };
 protoOf(sam$kotlin_Comparator$0_0).equals = function (other) {
   var tmp;
@@ -10057,9 +10289,9 @@ function StringEscapeUtils$unescapeCql$lambda(matchResult) {
   var tmp;
   // Inline function 'kotlin.collections.contains' call
   // Inline function 'kotlin.collections.containsKey' call
-  var this_0 = StringEscapeUtils_getInstance().k93_1;
+  var this_0 = StringEscapeUtils_getInstance().l93_1;
   if ((isInterface(this_0, KtMap) ? this_0 : THROW_CCE()).o2(match)) {
-    tmp = toString_0(StringEscapeUtils_getInstance().k93_1.q2(match));
+    tmp = toString_0(StringEscapeUtils_getInstance().l93_1.q2(match));
   } else {
     if (startsWith(match, '\\u')) {
       var hex = substring(match, 2);
@@ -10072,10 +10304,10 @@ function StringEscapeUtils$unescapeCql$lambda(matchResult) {
 }
 function StringEscapeUtils() {
   StringEscapeUtils_instance = this;
-  this.k93_1 = mapOf([to('\\"', new Char(_Char___init__impl__6a9atx(34))), to("\\'", new Char(_Char___init__impl__6a9atx(39))), to('\\`', new Char(_Char___init__impl__6a9atx(96))), to('\\\\', new Char(_Char___init__impl__6a9atx(92))), to('\\/', new Char(_Char___init__impl__6a9atx(47))), to('\\f', new Char(_Char___init__impl__6a9atx(12))), to('\\n', new Char(_Char___init__impl__6a9atx(10))), to('\\r', new Char(_Char___init__impl__6a9atx(13))), to('\\t', new Char(_Char___init__impl__6a9atx(9)))]);
+  this.l93_1 = mapOf([to('\\"', new Char(_Char___init__impl__6a9atx(34))), to("\\'", new Char(_Char___init__impl__6a9atx(39))), to('\\`', new Char(_Char___init__impl__6a9atx(96))), to('\\\\', new Char(_Char___init__impl__6a9atx(92))), to('\\/', new Char(_Char___init__impl__6a9atx(47))), to('\\f', new Char(_Char___init__impl__6a9atx(12))), to('\\n', new Char(_Char___init__impl__6a9atx(10))), to('\\r', new Char(_Char___init__impl__6a9atx(13))), to('\\t', new Char(_Char___init__impl__6a9atx(9)))]);
   var tmp = this;
   // Inline function 'kotlin.collections.associate' call
-  var this_0 = this.k93_1.t2();
+  var this_0 = this.l93_1.t2();
   var capacity = coerceAtLeast(mapCapacity(collectionSizeOrDefault(this_0, 10)), 16);
   // Inline function 'kotlin.collections.associateTo' call
   var destination = LinkedHashMap_init_$Create$(capacity);
@@ -10086,20 +10318,20 @@ function StringEscapeUtils() {
     var pair = to(element.n2(), element.m2());
     destination.u2(pair.rg_1, pair.sg_1);
   }
-  tmp.l93_1 = destination;
+  tmp.m93_1 = destination;
   var tmp_0 = this;
   // Inline function 'kotlin.collections.sortedByDescending' call
-  var this_1 = this.k93_1.r2();
+  var this_1 = this.l93_1.r2();
   // Inline function 'kotlin.comparisons.compareByDescending' call
   var tmp_1 = StringEscapeUtils$MULTI_CHAR_UNESCAPE$lambda;
   var tmp$ret$4 = new sam$kotlin_Comparator$0_0(tmp_1);
-  tmp_0.m93_1 = sortedWith(this_1, tmp$ret$4);
+  tmp_0.n93_1 = sortedWith(this_1, tmp$ret$4);
   var tmp_2 = this;
-  tmp_2.n93_1 = Regex_init_$Create$(joinToString(this.m93_1, '|', VOID, VOID, VOID, VOID, StringEscapeUtils$UNESCAPE_REGEX$lambda) + '|\\\\u[0-9a-fA-F]{4}');
-  this.o93_1 = 16;
+  tmp_2.o93_1 = Regex_init_$Create$(joinToString(this.n93_1, '|', VOID, VOID, VOID, VOID, StringEscapeUtils$UNESCAPE_REGEX$lambda) + '|\\\\u[0-9a-fA-F]{4}');
+  this.p93_1 = 16;
 }
-protoOf(StringEscapeUtils).p93 = function (input) {
-  return this.n93_1.ud(input, StringEscapeUtils$unescapeCql$lambda);
+protoOf(StringEscapeUtils).q93 = function (input) {
+  return this.o93_1.ud(input, StringEscapeUtils$unescapeCql$lambda);
 };
 var StringEscapeUtils_instance;
 function StringEscapeUtils_getInstance() {
@@ -10108,7 +10340,7 @@ function StringEscapeUtils_getInstance() {
   return StringEscapeUtils_instance;
 }
 function resolveAgeRelatedFunctionPrecision($this, functionRef) {
-  var name = functionRef.m6w_1;
+  var name = functionRef.n6w_1;
   var tmp;
   if (contains_0(ensureNotNull(name), 'Years')) {
     tmp = DateTimePrecision_YEAR_getInstance();
@@ -10132,270 +10364,270 @@ function resolveAgeRelatedFunctionPrecision($this, functionRef) {
   return tmp;
 }
 function resolveCalculateAge($this, e, p) {
-  var operator = $this.l9b_1.s7n().e6e(p).a6c(e);
+  var operator = $this.s9b_1.t7n().f6e(p).b6c(e);
   var invocation = new UnaryExpressionInvocation(operator);
-  $this.k9b_1.resolveInvocation$default('System', 'CalculateAge', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'CalculateAge', invocation);
   return invocation;
 }
 function resolveCalculateAgeAt($this, e, p) {
-  var operator = $this.l9b_1.s7k().e6e(p).f67(e);
+  var operator = $this.s9b_1.t7k().f6e(p).g67(e);
   var invocation = new BinaryExpressionInvocation(operator);
-  $this.k9b_1.resolveInvocation$default('System', 'CalculateAgeAt', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'CalculateAgeAt', invocation);
   return invocation;
 }
 function _get_patientBirthDateProperty__jvl76($this) {
-  var source = ensureNotNull($this.k9b_1.resolveIdentifier('Patient', true));
-  var birthDateProperty = ensureNotNull($this.k9b_1.b8w_1).q90_1.s5x_1;
+  var source = ensureNotNull($this.r9b_1.resolveIdentifier('Patient', true));
+  var birthDateProperty = ensureNotNull($this.r9b_1.c8w_1).r90_1.t5x_1;
   var tmp;
   if (indexOf_0(ensureNotNull(birthDateProperty), _Char___init__impl__6a9atx(46)) >= 1) {
-    var property = $this.l9b_1.q7n().a6k(source).y6c(birthDateProperty);
-    Trackable_getInstance().o8v(property, $this.k9b_1.resolvePath(Trackable_getInstance().n8v(source), ensureNotNull(property.m7x_1)));
+    var property = $this.s9b_1.r7n().b6k(source).z6c(birthDateProperty);
+    Trackable_getInstance().p8v(property, $this.r9b_1.resolvePath(Trackable_getInstance().o8v(source), ensureNotNull(property.n7x_1)));
     tmp = property;
   } else {
-    var resolution = $this.k9b_1.resolveProperty(Trackable_getInstance().n8v(source), birthDateProperty);
-    var result = $this.k9b_1.p8w(source, ensureNotNull(resolution).b91_1, resolution.d91_1, resolution.a91_1);
-    result = $this.k9b_1.applyTargetMap(result, resolution.c91_1);
+    var resolution = $this.r9b_1.resolveProperty(Trackable_getInstance().o8v(source), birthDateProperty);
+    var result = $this.r9b_1.q8w(source, ensureNotNull(resolution).c91_1, resolution.e91_1, resolution.b91_1);
+    result = $this.r9b_1.applyTargetMap(result, resolution.d91_1);
     tmp = result;
   }
   return tmp;
 }
 function resolveRound($this, functionRef) {
-  var containsArg = functionRef.o67().j();
+  var containsArg = functionRef.p67().j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'Could not resolve call to system operator Round.  Expected 1 or 2 arguments.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var round = $this.l9b_1.x7p().a6c(functionRef.o67().o(0));
-  if (functionRef.o67().j() === 2) {
-    round.p82_1 = functionRef.o67().o(1);
+  var round = $this.s9b_1.y7p().b6c(functionRef.p67().o(0));
+  if (functionRef.p67().j() === 2) {
+    round.q82_1 = functionRef.p67().o(1);
   }
   var invocation = new RoundInvocation(round);
-  $this.k9b_1.resolveInvocation$default('System', 'Round', new RoundInvocation(round));
+  $this.r9b_1.resolveInvocation$default('System', 'Round', new RoundInvocation(round));
   return invocation;
 }
 function resolveDateTime($this, functionRef) {
-  var dt = $this.l9b_1.b7m();
-  Companion_instance_17.j9d(dt, functionRef.o67());
+  var dt = $this.s9b_1.c7m();
+  Companion_instance_17.p9d(dt, functionRef.p67());
   var invocation = new DateTimeInvocation(dt);
-  $this.k9b_1.resolveInvocation$default('System', 'DateTime', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'DateTime', invocation);
   return invocation;
 }
 function resolveDate($this, functionRef) {
-  var d = $this.l9b_1.h7q();
-  Companion_instance_16.k9d(d, functionRef.o67());
+  var d = $this.s9b_1.i7q();
+  Companion_instance_16.q9d(d, functionRef.p67());
   var invocation = new DateInvocation(d);
-  $this.k9b_1.resolveInvocation$default('System', 'Date', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Date', invocation);
   return invocation;
 }
 function resolveTime($this, functionRef) {
-  var t = $this.l9b_1.c7l();
-  Companion_instance_18.l9d(t, functionRef.o67());
+  var t = $this.s9b_1.d7l();
+  Companion_instance_18.r9d(t, functionRef.p67());
   var invocation = new TimeInvocation(t);
-  $this.k9b_1.resolveInvocation$default('System', 'Time', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Time', invocation);
   return invocation;
 }
 function resolveNow($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 0);
-  var now = $this.l9b_1.y7k();
+  var now = $this.s9b_1.z7k();
   var invocation = new ZeroOperandExpressionInvocation(now);
-  $this.k9b_1.resolveInvocation$default('System', 'Now', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Now', invocation);
   return invocation;
 }
 function resolveToday($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 0);
-  var today = $this.l9b_1.i7q();
+  var today = $this.s9b_1.j7q();
   var invocation = new ZeroOperandExpressionInvocation(today);
-  $this.k9b_1.resolveInvocation$default('System', 'Today', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Today', invocation);
   return invocation;
 }
 function resolveTimeOfDay($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 0);
-  var timeOfDay = $this.l9b_1.b7q();
+  var timeOfDay = $this.s9b_1.c7q();
   var invocation = new ZeroOperandExpressionInvocation(timeOfDay);
-  $this.k9b_1.resolveInvocation$default('System', 'TimeOfDay', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'TimeOfDay', invocation);
   return invocation;
 }
 function resolveIndexOf($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 2);
-  var indexOf = $this.l9b_1.l7m();
-  indexOf.q73_1 = functionRef.o67().o(0);
-  indexOf.r73_1 = functionRef.o67().o(1);
+  var indexOf = $this.s9b_1.m7m();
+  indexOf.r73_1 = functionRef.p67().o(0);
+  indexOf.s73_1 = functionRef.p67().o(1);
   var invocation = new IndexOfInvocation(indexOf);
-  $this.k9b_1.resolveInvocation$default('System', 'IndexOf', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'IndexOf', invocation);
   return invocation;
 }
 function resolveFirst($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 1);
-  var first = $this.l9b_1.o7k();
-  first.d6x_1 = functionRef.o67().o(0);
+  var first = $this.s9b_1.p7k();
+  first.e6x_1 = functionRef.p67().o(0);
   var invocation = new FirstInvocation(first);
-  $this.k9b_1.resolveInvocation$default('System', 'First', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'First', invocation);
   return invocation;
 }
 function resolveLast($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 1);
-  var last = $this.l9b_1.g7k();
-  last.l77_1 = functionRef.o67().o(0);
+  var last = $this.s9b_1.h7k();
+  last.m77_1 = functionRef.p67().o(0);
   var invocation = new LastInvocation(last);
-  $this.k9b_1.resolveInvocation$default('System', 'Last', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Last', invocation);
   return invocation;
 }
 function resolveSkip($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 2);
-  var slice = $this.l9b_1.y7o();
-  slice.q84_1 = functionRef.o67().o(0);
-  slice.r84_1 = functionRef.o67().o(1);
-  slice.s84_1 = $this.k9b_1.buildNull(Trackable_getInstance().n8v(functionRef.o67().o(1)));
+  var slice = $this.s9b_1.z7o();
+  slice.r84_1 = functionRef.p67().o(0);
+  slice.s84_1 = functionRef.p67().o(1);
+  slice.t84_1 = $this.r9b_1.buildNull(Trackable_getInstance().o8v(functionRef.p67().o(1)));
   var invocation = new SkipInvocation(slice);
-  $this.k9b_1.resolveInvocation$default('System', 'Skip', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Skip', invocation);
   return invocation;
 }
 function resolveTake($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 2);
-  var slice = $this.l9b_1.y7o();
-  slice.q84_1 = functionRef.o67().o(0);
-  slice.r84_1 = $this.k9b_1.j8w(0);
-  var coalesce = $this.l9b_1.t7k().f67(listOf([functionRef.o67().o(1), $this.k9b_1.j8w(0)]));
+  var slice = $this.s9b_1.z7o();
+  slice.r84_1 = functionRef.p67().o(0);
+  slice.s84_1 = $this.r9b_1.k8w(0);
+  var coalesce = $this.s9b_1.u7k().g67(listOf([functionRef.p67().o(1), $this.r9b_1.k8w(0)]));
   var naryInvocation = new NaryExpressionInvocation(coalesce);
-  $this.k9b_1.resolveInvocation$default('System', 'Coalesce', naryInvocation);
-  slice.s84_1 = coalesce;
+  $this.r9b_1.resolveInvocation$default('System', 'Coalesce', naryInvocation);
+  slice.t84_1 = coalesce;
   var invocation = new TakeInvocation(slice);
-  $this.k9b_1.resolveInvocation$default('System', 'Take', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Take', invocation);
   return invocation;
 }
 function resolveTail($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 1);
-  var slice = $this.l9b_1.y7o();
-  slice.q84_1 = functionRef.o67().o(0);
-  slice.r84_1 = $this.k9b_1.j8w(1);
-  slice.s84_1 = $this.k9b_1.buildNull($this.k9b_1.l8w('System', 'Integer'));
+  var slice = $this.s9b_1.z7o();
+  slice.r84_1 = functionRef.p67().o(0);
+  slice.s84_1 = $this.r9b_1.k8w(1);
+  slice.t84_1 = $this.r9b_1.buildNull($this.r9b_1.m8w('System', 'Integer'));
   var invocation = new TailInvocation(slice);
-  $this.k9b_1.resolveInvocation$default('System', 'Tail', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Tail', invocation);
   return invocation;
 }
 function resolveCombine($this, functionRef) {
-  var containsArg = functionRef.o67().j();
+  var containsArg = functionRef.p67().j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'Could not resolve call to system operator Combine.  Expected 1 or 2 arguments.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var combine = $this.l9b_1.b7l().a6k(functionRef.o67().o(0));
-  if (functionRef.o67().j() === 2) {
-    combine.z6j_1 = functionRef.o67().o(1);
+  var combine = $this.s9b_1.c7l().b6k(functionRef.p67().o(0));
+  if (functionRef.p67().j() === 2) {
+    combine.a6k_1 = functionRef.p67().o(1);
   }
   var invocation = new CombineInvocation(combine);
-  $this.k9b_1.resolveInvocation$default('System', 'Combine', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Combine', invocation);
   return invocation;
 }
 function resolveSplit($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 2);
-  var split = $this.l9b_1.v7i().r85(functionRef.o67().o(0)).s85(functionRef.o67().o(1));
+  var split = $this.s9b_1.w7i().s85(functionRef.p67().o(0)).t85(functionRef.p67().o(1));
   var invocation = new SplitInvocation(split);
-  $this.k9b_1.resolveInvocation$default('System', 'Split', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Split', invocation);
   return invocation;
 }
 function resolveSplitOnMatches($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 2);
-  var splitOnMatches = $this.l9b_1.v7l().r85(functionRef.o67().o(0)).b86(functionRef.o67().o(1));
+  var splitOnMatches = $this.s9b_1.w7l().s85(functionRef.p67().o(0)).c86(functionRef.p67().o(1));
   var invocation = new SplitOnMatchesInvocation(splitOnMatches);
-  $this.k9b_1.resolveInvocation$default('System', 'SplitOnMatches', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'SplitOnMatches', invocation);
   return invocation;
 }
 function resolvePositionOf($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 2);
-  var pos = $this.l9b_1.z7h().u77(functionRef.o67().o(0)).v77(functionRef.o67().o(1));
+  var pos = $this.s9b_1.a7i().v77(functionRef.p67().o(0)).w77(functionRef.p67().o(1));
   var invocation = new PositionOfInvocation(pos);
-  $this.k9b_1.resolveInvocation$default('System', 'PositionOf', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'PositionOf', invocation);
   return invocation;
 }
 function resolveLastPositionOf($this, functionRef) {
   checkNumberOfOperands($this, functionRef, 2);
-  var pos = $this.l9b_1.u7m().u77(functionRef.o67().o(0)).v77(functionRef.o67().o(1));
+  var pos = $this.s9b_1.v7m().v77(functionRef.p67().o(0)).w77(functionRef.p67().o(1));
   var invocation = new LastPositionOfInvocation(pos);
-  $this.k9b_1.resolveInvocation$default('System', 'LastPositionOf', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'LastPositionOf', invocation);
   return invocation;
 }
 function resolveSubstring($this, functionRef) {
-  var containsArg = functionRef.o67().j();
+  var containsArg = functionRef.p67().j();
   // Inline function 'kotlin.require' call
   if (!(2 <= containsArg ? containsArg <= 3 : false)) {
     var message = 'Could not resolve call to system operator Substring.  Expected 2 or 3 arguments.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var substring = $this.l9b_1.i7m().p87(functionRef.o67().o(0)).q87(functionRef.o67().o(1));
-  if (functionRef.o67().j() === 3) {
-    substring.o87_1 = functionRef.o67().o(2);
+  var substring = $this.s9b_1.j7m().q87(functionRef.p67().o(0)).r87(functionRef.p67().o(1));
+  if (functionRef.p67().j() === 3) {
+    substring.p87_1 = functionRef.p67().o(2);
   }
   var invocation = new SubstringInvocation(substring);
-  $this.k9b_1.resolveInvocation$default('System', 'Substring', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Substring', invocation);
   return invocation;
 }
 function resolveMessage($this, functionRef) {
   // Inline function 'kotlin.require' call
-  if (!(functionRef.o67().j() === 5)) {
+  if (!(functionRef.p67().j() === 5)) {
     var message = 'Could not resolve call to system operator Message. Expected 5 arguments.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var message_0 = $this.l9b_1.r7p().a6k(functionRef.o67().o(0)).p70(functionRef.o67().o(1)).o71(functionRef.o67().o(2)).k7e(functionRef.o67().o(3)).l7e(functionRef.o67().o(4));
+  var message_0 = $this.s9b_1.s7p().b6k(functionRef.p67().o(0)).q70(functionRef.p67().o(1)).p71(functionRef.p67().o(2)).l7e(functionRef.p67().o(3)).m7e(functionRef.p67().o(4));
   var invocation = new MessageInvocation(message_0);
-  $this.k9b_1.resolveInvocation$default('System', 'Message', invocation);
+  $this.r9b_1.resolveInvocation$default('System', 'Message', invocation);
   return invocation;
 }
 function resolveUnary($this, functionRef) {
   // Inline function 'org.cqframework.cql.cql2elm.SystemFunctionResolver.createExpression' call
-  var tmp = createExpression($this.l9b_1, ensureNotNull(functionRef.m6w_1));
+  var tmp = createExpression($this.s9b_1, ensureNotNull(functionRef.n6w_1));
   var operator = tmp instanceof UnaryExpression ? tmp : THROW_CCE();
   checkNumberOfOperands($this, functionRef, 1);
-  operator.u66_1 = functionRef.o67().o(0);
+  operator.v66_1 = functionRef.p67().o(0);
   var invocation = new UnaryExpressionInvocation(operator);
-  $this.k9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.m6w_1), invocation);
+  $this.r9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.n6w_1), invocation);
   return invocation;
 }
 function resolveBinary($this, functionRef) {
   // Inline function 'org.cqframework.cql.cql2elm.SystemFunctionResolver.createExpression' call
-  var tmp = createExpression($this.l9b_1, ensureNotNull(functionRef.m6w_1));
+  var tmp = createExpression($this.s9b_1, ensureNotNull(functionRef.n6w_1));
   var operator = tmp instanceof BinaryExpression ? tmp : THROW_CCE();
   checkNumberOfOperands($this, functionRef, 2);
-  operator.o67().n(functionRef.o67());
+  operator.p67().n(functionRef.p67());
   var invocation = new BinaryExpressionInvocation(operator);
-  $this.k9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.m6w_1), invocation);
+  $this.r9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.n6w_1), invocation);
   return invocation;
 }
 function resolveTernary($this, functionRef) {
   // Inline function 'org.cqframework.cql.cql2elm.SystemFunctionResolver.createExpression' call
-  var tmp = createExpression($this.l9b_1, ensureNotNull(functionRef.m6w_1));
+  var tmp = createExpression($this.s9b_1, ensureNotNull(functionRef.n6w_1));
   var operator = tmp instanceof TernaryExpression ? tmp : THROW_CCE();
   checkNumberOfOperands($this, functionRef, 3);
-  operator.o67().n(functionRef.o67());
+  operator.p67().n(functionRef.p67());
   var invocation = new TernaryExpressionInvocation(operator);
-  $this.k9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.m6w_1), invocation);
+  $this.r9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.n6w_1), invocation);
   return invocation;
 }
 function resolveNary($this, functionRef) {
   // Inline function 'org.cqframework.cql.cql2elm.SystemFunctionResolver.createExpression' call
-  var tmp = createExpression($this.l9b_1, ensureNotNull(functionRef.m6w_1));
+  var tmp = createExpression($this.s9b_1, ensureNotNull(functionRef.n6w_1));
   var operator = tmp instanceof NaryExpression ? tmp : THROW_CCE();
-  operator.o67().n(functionRef.o67());
+  operator.p67().n(functionRef.p67());
   var invocation = new NaryExpressionInvocation(operator);
-  $this.k9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.m6w_1), invocation);
+  $this.r9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.n6w_1), invocation);
   return invocation;
 }
 function resolveAggregate($this, functionRef) {
   // Inline function 'org.cqframework.cql.cql2elm.SystemFunctionResolver.createExpression' call
-  var tmp = createExpression($this.l9b_1, ensureNotNull(functionRef.m6w_1));
+  var tmp = createExpression($this.s9b_1, ensureNotNull(functionRef.n6w_1));
   var operator = tmp instanceof AggregateExpression ? tmp : THROW_CCE();
   checkNumberOfOperands($this, functionRef, 1);
-  operator.r68_1 = functionRef.o67().o(0);
+  operator.s68_1 = functionRef.p67().o(0);
   var invocation = new AggregateExpressionInvocation(operator);
-  $this.k9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.m6w_1), invocation);
+  $this.r9b_1.resolveInvocation$default('System', ensureNotNull(functionRef.n6w_1), invocation);
   return invocation;
 }
 function checkNumberOfOperands($this, functionRef, expectedOperands) {
   // Inline function 'kotlin.require' call
-  if (!(functionRef.o67().j() === expectedOperands)) {
-    var message = 'Could not resolve call to system operator ' + functionRef.m6w_1 + '.  Expected ' + expectedOperands + ' arguments.';
+  if (!(functionRef.p67().j() === expectedOperands)) {
+    var message = 'Could not resolve call to system operator ' + functionRef.n6w_1 + '.  Expected ' + expectedOperands + ' arguments.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
 }
@@ -10406,12 +10638,12 @@ function Companion_getInstance_10() {
   return Companion_instance_10;
 }
 function SystemFunctionResolver(builder) {
-  this.k9b_1 = builder;
-  this.l9b_1 = this.k9b_1.objectFactory;
+  this.r9b_1 = builder;
+  this.s9b_1 = this.r9b_1.objectFactory;
 }
-protoOf(SystemFunctionResolver).m9b = function (functionRef) {
-  if (functionRef.n6w_1 == null || 'System' === functionRef.n6w_1) {
-    switch (functionRef.m6w_1) {
+protoOf(SystemFunctionResolver).t9b = function (functionRef) {
+  if (functionRef.o6w_1 == null || 'System' === functionRef.o6w_1) {
+    switch (functionRef.n6w_1) {
       case 'AllTrue':
       case 'AnyTrue':
       case 'Avg':
@@ -10451,7 +10683,7 @@ protoOf(SystemFunctionResolver).m9b = function (functionRef) {
       case 'AgeInYears':
       case 'AgeInMonths':
         checkNumberOfOperands(this, functionRef, 0);
-        return resolveCalculateAge(this, this.k9b_1.enforceCompatible(_get_patientBirthDateProperty__jvl76(this), this.k9b_1.l8w('System', 'Date')), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
+        return resolveCalculateAge(this, this.r9b_1.enforceCompatible(_get_patientBirthDateProperty__jvl76(this), this.r9b_1.m8w('System', 'Date')), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
       case 'AgeInWeeks':
       case 'AgeInDays':
       case 'AgeInHours':
@@ -10459,42 +10691,42 @@ protoOf(SystemFunctionResolver).m9b = function (functionRef) {
       case 'AgeInSeconds':
       case 'AgeInMilliseconds':
         checkNumberOfOperands(this, functionRef, 0);
-        return resolveCalculateAge(this, this.k9b_1.ensureCompatible(_get_patientBirthDateProperty__jvl76(this), this.k9b_1.l8w('System', 'DateTime')), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
+        return resolveCalculateAge(this, this.r9b_1.ensureCompatible(_get_patientBirthDateProperty__jvl76(this), this.r9b_1.m8w('System', 'DateTime')), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
       case 'AgeInYearsAt':
       case 'AgeInMonthsAt':
       case 'AgeInWeeksAt':
       case 'AgeInDaysAt':
         checkNumberOfOperands(this, functionRef, 1);
         var ops = ArrayList_init_$Create$();
-        var op = functionRef.o67().o(0);
-        if (!(ensureNotNull(Trackable_getInstance().n8v(op)).x5z(ensureNotNull(this.k9b_1.l8w('System', 'Date'))) || ensureNotNull(Trackable_getInstance().n8v(op)).x5z(ensureNotNull(this.k9b_1.l8w('System', 'DateTime'))))) {
-          var dateConversion = this.k9b_1.findConversion(ensureNotNull(Trackable_getInstance().n8v(op)), ensureNotNull(this.k9b_1.l8w('System', 'Date')), true, false);
-          var dateTimeConversion = this.k9b_1.findConversion(ensureNotNull(Trackable_getInstance().n8v(op)), ensureNotNull(this.k9b_1.l8w('System', 'DateTime')), true, false);
+        var op = functionRef.p67().o(0);
+        if (!(ensureNotNull(Trackable_getInstance().o8v(op)).y5z(ensureNotNull(this.r9b_1.m8w('System', 'Date'))) || ensureNotNull(Trackable_getInstance().o8v(op)).y5z(ensureNotNull(this.r9b_1.m8w('System', 'DateTime'))))) {
+          var dateConversion = this.r9b_1.findConversion(ensureNotNull(Trackable_getInstance().o8v(op)), ensureNotNull(this.r9b_1.m8w('System', 'Date')), true, false);
+          var dateTimeConversion = this.r9b_1.findConversion(ensureNotNull(Trackable_getInstance().o8v(op)), ensureNotNull(this.r9b_1.m8w('System', 'DateTime')), true, false);
           var tmp;
           if (!(dateConversion == null) && !(dateTimeConversion == null)) {
             // Inline function 'kotlin.require' call
-            if (!!(dateConversion.m9d() === dateTimeConversion.m9d())) {
-              var message = replace(trimMargin('Ambiguous implicit conversion from\n                                            |' + toString_0(Trackable_getInstance().n8v(op)) + ' to ' + toString(dateConversion.j98_1) + '\n                                            |or ' + toString_0(dateTimeConversion) + '.'), '\n', '');
+            if (!!(dateConversion.s9d() === dateTimeConversion.s9d())) {
+              var message = replace(trimMargin('Ambiguous implicit conversion from\n                                            |' + toString_0(Trackable_getInstance().o8v(op)) + ' to ' + toString(dateConversion.w98_1) + '\n                                            |or ' + toString_0(dateTimeConversion) + '.'), '\n', '');
               throw IllegalArgumentException_init_$Create$(toString(message));
             }
             var tmp_0;
-            if (dateConversion.m9d() < dateTimeConversion.m9d()) {
-              tmp_0 = this.k9b_1.e91(op, dateConversion);
+            if (dateConversion.s9d() < dateTimeConversion.s9d()) {
+              tmp_0 = this.r9b_1.f91(op, dateConversion);
             } else {
-              tmp_0 = this.k9b_1.e91(op, dateTimeConversion);
+              tmp_0 = this.r9b_1.f91(op, dateTimeConversion);
             }
             tmp = tmp_0;
           } else if (!(dateConversion == null)) {
-            tmp = this.k9b_1.e91(op, dateConversion);
+            tmp = this.r9b_1.f91(op, dateConversion);
           } else if (!(dateTimeConversion == null)) {
-            tmp = this.k9b_1.e91(op, dateTimeConversion);
+            tmp = this.r9b_1.f91(op, dateTimeConversion);
           } else {
-            throw IllegalArgumentException_init_$Create$(trimIndent('Could not resolve call to operator ' + functionRef.m6w_1 + '\n                                           with argument of type ' + toString_0(Trackable_getInstance().n8v(op)) + '.'));
+            throw IllegalArgumentException_init_$Create$(trimIndent('Could not resolve call to operator ' + functionRef.n6w_1 + '\n                                           with argument of type ' + toString_0(Trackable_getInstance().o8v(op)) + '.'));
           }
           op = tmp;
         }
 
-        ops.e(this.k9b_1.enforceCompatible(_get_patientBirthDateProperty__jvl76(this), Trackable_getInstance().n8v(op)));
+        ops.e(this.r9b_1.enforceCompatible(_get_patientBirthDateProperty__jvl76(this), Trackable_getInstance().o8v(op)));
         ops.e(op);
         return resolveCalculateAgeAt(this, ops, resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
       case 'AgeInHoursAt':
@@ -10503,7 +10735,7 @@ protoOf(SystemFunctionResolver).m9b = function (functionRef) {
       case 'AgeInMillisecondsAt':
         var ops_0 = ArrayList_init_$Create$();
         ops_0.e(ensureNotNull(_get_patientBirthDateProperty__jvl76(this)));
-        ops_0.n(functionRef.o67());
+        ops_0.n(functionRef.p67());
         return resolveCalculateAgeAt(this, ops_0, resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
       case 'CalculateAgeInYears':
       case 'CalculateAgeInMonths':
@@ -10514,7 +10746,7 @@ protoOf(SystemFunctionResolver).m9b = function (functionRef) {
       case 'CalculateAgeInSeconds':
       case 'CalculateAgeInMilliseconds':
         checkNumberOfOperands(this, functionRef, 1);
-        return resolveCalculateAge(this, functionRef.o67().o(0), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
+        return resolveCalculateAge(this, functionRef.p67().o(0), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
       case 'CalculateAgeInYearsAt':
       case 'CalculateAgeInMonthsAt':
       case 'CalculateAgeInWeeksAt':
@@ -10523,7 +10755,7 @@ protoOf(SystemFunctionResolver).m9b = function (functionRef) {
       case 'CalculateAgeInMinutesAt':
       case 'CalculateAgeInSecondsAt':
       case 'CalculateAgeInMillisecondsAt':
-        return resolveCalculateAgeAt(this, functionRef.o67(), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
+        return resolveCalculateAgeAt(this, functionRef.p67(), resolveAgeRelatedFunctionPrecision(Companion_instance_10, functionRef));
       case 'DateTime':
         return resolveDateTime(this, functionRef);
       case 'Date':
@@ -10653,11 +10885,11 @@ protoOf(SystemFunctionResolver).m9b = function (functionRef) {
 function getParams($this, target, ctx) {
   var params = ArrayList_init_$Create$();
   params.e(target);
-  if (!((ctx == null ? null : ctx.j3w()) == null)) {
-    var _iterator__ex2g4s = ctx.j3w().g();
+  if (!((ctx == null ? null : ctx.k3w()) == null)) {
+    var _iterator__ex2g4s = ctx.k3w().g();
     while (_iterator__ex2g4s.h()) {
       var param = _iterator__ex2g4s.i();
-      var tmp = $this.w8y_1.d32(param);
+      var tmp = $this.x8y_1.e32(param);
       params.e(tmp instanceof Expression ? tmp : THROW_CCE());
     }
   }
@@ -10665,8 +10897,8 @@ function getParams($this, target, ctx) {
 }
 function checkArgumentCount($this, ctx, functionName, expectedCount) {
   var actualCount = 0;
-  if (!((ctx == null ? null : ctx.j3w()) == null)) {
-    actualCount = ctx.j3w().j();
+  if (!((ctx == null ? null : ctx.k3w()) == null)) {
+    actualCount = ctx.k3w().j();
   }
   // Inline function 'kotlin.require' call
   if (!(actualCount === expectedCount)) {
@@ -10676,42 +10908,42 @@ function checkArgumentCount($this, ctx, functionName, expectedCount) {
 }
 function enterQueryContext($this, target) {
   var queryContext = new QueryContext();
-  queryContext.v91_1 = true;
+  queryContext.w91_1 = true;
   var sources = ArrayList_init_$Create$();
-  var source = $this.y8y_1.f7q().r69(target).q69('$this');
-  Trackable_getInstance().o8v(source, Trackable_getInstance().n8v(target));
+  var source = $this.z8y_1.g7q().s69(target).r69('$this');
+  Trackable_getInstance().p8v(source, Trackable_getInstance().o8v(target));
   sources.e(source);
-  queryContext.a92(sources);
-  $this.x8y_1.pushQueryContext(queryContext);
+  queryContext.b92(sources);
+  $this.y8y_1.pushQueryContext(queryContext);
   return source;
 }
 function createQuery($this, source, let_0, where, ret) {
-  var queryContext = $this.x8y_1.peekQueryContext();
+  var queryContext = $this.y8y_1.peekQueryContext();
   // Inline function 'kotlin.collections.arrayListOf' call
   var lets = ArrayList_init_$Create$();
   if (!(let_0 == null)) {
     lets.e(let_0);
   }
-  var query = $this.y8y_1.l7h().q7y(toList(queryContext.n9d())).r7y(lets).t7y(where).u7y(ret);
+  var query = $this.z8y_1.m7h().r7y(toList(queryContext.t9d())).s7y(lets).u7y(where).v7y(ret);
   if (!(ret == null)) {
-    Trackable_getInstance().o8v(query, Trackable_getInstance().n8v(ret));
+    Trackable_getInstance().p8v(query, Trackable_getInstance().o8v(ret));
   } else {
-    Trackable_getInstance().o8v(query, Trackable_getInstance().n8v(source));
+    Trackable_getInstance().p8v(query, Trackable_getInstance().o8v(source));
   }
   return query;
 }
 function exitQueryContext($this) {
-  $this.x8y_1.popQueryContext();
+  $this.y8y_1.popQueryContext();
 }
 function createWhere($this, target, functionName, ctx) {
   var source = enterQueryContext($this, target);
   var tmp;
   try {
     checkArgumentCount($this, ctx, functionName, 1);
-    var tmp_0 = $this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+    var tmp_0 = $this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
     var where = (tmp_0 == null ? true : tmp_0 instanceof Expression) ? tmp_0 : THROW_CCE();
-    if ($this.w8y_1.i8u_1) {
-      where = $this.w8y_1.b92(where, source);
+    if ($this.x8y_1.j8u_1) {
+      where = $this.x8y_1.c92(where, source);
     }
     tmp = createQuery($this, source, null, where, null);
   }finally {
@@ -10724,13 +10956,13 @@ function createOfType($this, target, functionName, ctx) {
   var tmp;
   try {
     checkArgumentCount($this, ctx, functionName, 1);
-    $this.x8y_1.pushTypeSpecifierContext();
+    $this.y8y_1.pushTypeSpecifierContext();
     var tmp_0;
     try {
-      var tmp_1 = $this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+      var tmp_1 = $this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
       tmp_0 = (tmp_1 == null ? true : tmp_1 instanceof Expression) ? tmp_1 : THROW_CCE();
     }finally {
-      $this.x8y_1.popTypeSpecifierContext();
+      $this.y8y_1.popTypeSpecifierContext();
     }
     var typeArgument = tmp_0;
     // Inline function 'kotlin.require' call
@@ -10739,31 +10971,31 @@ function createOfType($this, target, functionName, ctx) {
       throw IllegalArgumentException_init_$Create$(toString(message));
     }
     // Inline function 'kotlin.require' call
-    if (!DataTypes_instance.q8z(Trackable_getInstance().n8v(typeArgument), $this.x8y_1.l8w('System', 'String'))) {
+    if (!DataTypes_instance.r8z(Trackable_getInstance().o8v(typeArgument), $this.y8y_1.m8w('System', 'String'))) {
       var message_0 = 'Expected string literal argument';
       throw IllegalArgumentException_init_$Create$(toString(message_0));
     }
-    var typeSpecifier = typeArgument.u7a_1;
-    var isType = $this.x8y_1.resolveTypeSpecifier(typeSpecifier);
-    var thisRef = $this.y8y_1.g7j().q65(source.o69_1);
-    var tmp_2 = Trackable_getInstance().n8v(source);
+    var typeSpecifier = typeArgument.v7a_1;
+    var isType = $this.y8y_1.resolveTypeSpecifier(typeSpecifier);
+    var thisRef = $this.z8y_1.h7j().r65(source.p69_1);
+    var tmp_2 = Trackable_getInstance().o8v(source);
     var isSingular = !(tmp_2 instanceof ListType);
     var tmp_3;
     if (isSingular) {
-      tmp_3 = Trackable_getInstance().n8v(source);
+      tmp_3 = Trackable_getInstance().o8v(source);
     } else {
-      var tmp_4 = Trackable_getInstance().n8v(source);
-      tmp_3 = (tmp_4 instanceof ListType ? tmp_4 : THROW_CCE()).d61_1;
+      var tmp_4 = Trackable_getInstance().o8v(source);
+      tmp_3 = (tmp_4 instanceof ListType ? tmp_4 : THROW_CCE()).e61_1;
     }
     var elementType = tmp_3;
-    Trackable_getInstance().o8v(thisRef, elementType);
-    var isExpression = $this.y8y_1.g7n().a6c(thisRef);
+    Trackable_getInstance().p8v(thisRef, elementType);
+    var isExpression = $this.z8y_1.h7n().b6c(thisRef);
     if (!(isType == null) ? isInterface(isType, NamedType) : false) {
-      isExpression.z75_1 = $this.x8y_1.dataTypeToQName(isType);
+      isExpression.a76_1 = $this.y8y_1.dataTypeToQName(isType);
     } else {
-      isExpression.a76_1 = $this.x8y_1.dataTypeToTypeSpecifier(isType);
+      isExpression.b76_1 = $this.y8y_1.dataTypeToTypeSpecifier(isType);
     }
-    Trackable_getInstance().o8v(isExpression, $this.x8y_1.l8w('System', 'Boolean'));
+    Trackable_getInstance().p8v(isExpression, $this.y8y_1.m8w('System', 'Boolean'));
     tmp = createQuery($this, source, null, isExpression, null);
   }finally {
     exitQueryContext($this);
@@ -10774,19 +11006,19 @@ function createRepeat($this, target, functionName, ctx) {
   var source = enterQueryContext($this, target);
   var tmp;
   try {
-    var tmp_0 = Trackable_getInstance().n8v(source);
+    var tmp_0 = Trackable_getInstance().o8v(source);
     var isSingular = !(tmp_0 instanceof ListType);
     checkArgumentCount($this, ctx, functionName, 1);
-    var tmp_1 = $this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+    var tmp_1 = $this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
     var select = (tmp_1 == null ? true : tmp_1 instanceof Expression) ? tmp_1 : THROW_CCE();
-    var repeat = $this.y8y_1.r7h();
-    repeat.b80_1 = target;
-    repeat.c80_1 = select;
-    repeat.a80_1 = '$this';
+    var repeat = $this.z8y_1.s7h();
+    repeat.c80_1 = target;
+    repeat.d80_1 = select;
+    repeat.b80_1 = '$this';
     if (isSingular) {
-      Trackable_getInstance().o8v(repeat, new ListType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(select)))));
+      Trackable_getInstance().p8v(repeat, new ListType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(select)))));
     } else {
-      Trackable_getInstance().o8v(repeat, Trackable_getInstance().n8v(ensureNotNull(select)));
+      Trackable_getInstance().p8v(repeat, Trackable_getInstance().o8v(ensureNotNull(select)));
     }
     tmp = repeat;
   }finally {
@@ -10800,36 +11032,36 @@ function createSelect($this, target, functionName, ctx) {
   var source = enterQueryContext($this, target);
   var tmp;
   try {
-    var tmp_0 = Trackable_getInstance().n8v(source);
+    var tmp_0 = Trackable_getInstance().o8v(source);
     isSingular = !(tmp_0 instanceof ListType);
     checkArgumentCount($this, ctx, functionName, 1);
-    var tmp_1 = $this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+    var tmp_1 = $this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
     var select = (tmp_1 == null ? true : tmp_1 instanceof Expression) ? tmp_1 : THROW_CCE();
-    var queryContext = $this.x8y_1.peekQueryContext();
-    var let_0 = $this.y8y_1.s7o().r69(select).y78('$a');
-    Trackable_getInstance().o8v(let_0, Trackable_getInstance().n8v(ensureNotNull(select)));
-    queryContext.g92(let_0);
-    var tmp_2 = Trackable_getInstance().n8v(select);
+    var queryContext = $this.y8y_1.peekQueryContext();
+    var let_0 = $this.z8y_1.t7o().s69(select).z78('$a');
+    Trackable_getInstance().p8v(let_0, Trackable_getInstance().o8v(ensureNotNull(select)));
+    queryContext.h92(let_0);
+    var tmp_2 = Trackable_getInstance().o8v(select);
     isListResult = tmp_2 instanceof ListType;
-    var letRef = $this.y8y_1.t7i().q65('$a');
-    Trackable_getInstance().o8v(letRef, Trackable_getInstance().n8v(select));
+    var letRef = $this.z8y_1.u7i().r65('$a');
+    Trackable_getInstance().p8v(letRef, Trackable_getInstance().o8v(select));
     var params = ArrayList_init_$Create$();
     params.e(letRef);
-    var where = ensureNotNull($this.x8y_1.f91(null, 'IsNull', params));
+    var where = ensureNotNull($this.y8y_1.g91(null, 'IsNull', params));
     params = ArrayList_init_$Create$();
     params.e(where);
-    where = ensureNotNull($this.x8y_1.f91(null, 'Not', params));
-    var returnClause = $this.y8y_1.d7o();
-    letRef = $this.y8y_1.t7i().q65('$a');
-    Trackable_getInstance().o8v(letRef, Trackable_getInstance().n8v(select));
-    returnClause.g82_1 = letRef;
-    Trackable_getInstance().o8v(returnClause, isSingular ? Trackable_getInstance().n8v(letRef) : new ListType(ensureNotNull(Trackable_getInstance().n8v(letRef))));
+    where = ensureNotNull($this.y8y_1.g91(null, 'Not', params));
+    var returnClause = $this.z8y_1.e7o();
+    letRef = $this.z8y_1.u7i().r65('$a');
+    Trackable_getInstance().p8v(letRef, Trackable_getInstance().o8v(select));
+    returnClause.h82_1 = letRef;
+    Trackable_getInstance().p8v(returnClause, isSingular ? Trackable_getInstance().o8v(letRef) : new ListType(ensureNotNull(Trackable_getInstance().o8v(letRef))));
     var query = createQuery($this, source, let_0, where, returnClause);
     var tmp_3;
     if (!isSingular && isListResult) {
       params = ArrayList_init_$Create$();
       params.e(query);
-      tmp_3 = $this.x8y_1.f91(null, 'Flatten', params);
+      tmp_3 = $this.y8y_1.g91(null, 'Flatten', params);
     } else {
       tmp_3 = query;
     }
@@ -10841,16 +11073,16 @@ function createSelect($this, target, functionName, ctx) {
 }
 function gatherChildTypes($this, dataType, recurse, dataTypes) {
   if (dataType instanceof ClassType) {
-    var _iterator__ex2g4s = dataType.k60_1.g();
+    var _iterator__ex2g4s = dataType.l60_1.g();
     while (_iterator__ex2g4s.h()) {
       var element = _iterator__ex2g4s.i();
       var tmp;
-      var tmp_0 = element.y60_1;
+      var tmp_0 = element.z60_1;
       if (tmp_0 instanceof ListType) {
-        var tmp_1 = element.y60_1;
-        tmp = (tmp_1 instanceof ListType ? tmp_1 : THROW_CCE()).d61_1;
+        var tmp_1 = element.z60_1;
+        tmp = (tmp_1 instanceof ListType ? tmp_1 : THROW_CCE()).e61_1;
       } else {
-        tmp = element.y60_1;
+        tmp = element.z60_1;
       }
       var elementType = tmp;
       dataTypes.e(elementType);
@@ -10860,16 +11092,16 @@ function gatherChildTypes($this, dataType, recurse, dataTypes) {
     }
   } else {
     if (dataType instanceof TupleType) {
-      var _iterator__ex2g4s_0 = dataType.r63_1.g();
+      var _iterator__ex2g4s_0 = dataType.s63_1.g();
       while (_iterator__ex2g4s_0.h()) {
         var element_0 = _iterator__ex2g4s_0.i();
         var tmp_2;
-        var tmp_3 = element_0.j61_1;
+        var tmp_3 = element_0.k61_1;
         if (tmp_3 instanceof ListType) {
-          var tmp_4 = element_0.j61_1;
-          tmp_2 = (tmp_4 instanceof ListType ? tmp_4 : THROW_CCE()).d61_1;
+          var tmp_4 = element_0.k61_1;
+          tmp_2 = (tmp_4 instanceof ListType ? tmp_4 : THROW_CCE()).e61_1;
         } else {
-          tmp_2 = element_0.j61_1;
+          tmp_2 = element_0.k61_1;
         }
         var elementType_0 = tmp_2;
         dataTypes.e(elementType_0);
@@ -10879,73 +11111,73 @@ function gatherChildTypes($this, dataType, recurse, dataTypes) {
       }
     } else {
       if (dataType instanceof ListType) {
-        var elementType_1 = dataType.d61_1;
+        var elementType_1 = dataType.e61_1;
         dataTypes.e(elementType_1);
         if (recurse) {
           gatherChildTypes($this, elementType_1, true, dataTypes);
         }
       } else {
-        dataTypes.e(ensureNotNull($this.x8y_1.j90('System.Any')));
+        dataTypes.e(ensureNotNull($this.y8y_1.k90('System.Any')));
       }
     }
   }
 }
 function SystemMethodResolver(visitor, builder) {
-  this.w8y_1 = visitor;
-  this.x8y_1 = builder;
-  this.y8y_1 = this.x8y_1.objectFactory;
+  this.x8y_1 = visitor;
+  this.y8y_1 = builder;
+  this.z8y_1 = this.y8y_1.objectFactory;
 }
-protoOf(SystemMethodResolver).z8y = function (target, functionName, ctx, mustResolve) {
+protoOf(SystemMethodResolver).a8z = function (target, functionName, ctx, mustResolve) {
   var tmp;
   switch (functionName) {
     case 'aggregate':
-      tmp = this.x8y_1.f91(null, 'Aggregate', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Aggregate', getParams(this, target, ctx));
       break;
     case 'abs':
-      tmp = this.x8y_1.f91(null, 'Abs', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Abs', getParams(this, target, ctx));
       break;
     case 'all':
       var query = createWhere(this, target, functionName, ctx);
-      var returnClause = this.y8y_1.d7o();
-      returnClause.g82_1 = this.x8y_1.f8x(true);
-      var tmp_0 = Trackable_getInstance().n8v(query);
+      var returnClause = this.z8y_1.e7o();
+      returnClause.h82_1 = this.y8y_1.g8x(true);
+      var tmp_0 = Trackable_getInstance().o8v(query);
       if (tmp_0 instanceof ListType) {
-        Trackable_getInstance().o8v(returnClause, new ListType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(returnClause.g82_1)))));
+        Trackable_getInstance().p8v(returnClause, new ListType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(returnClause.h82_1)))));
       } else {
-        Trackable_getInstance().o8v(returnClause, Trackable_getInstance().n8v(ensureNotNull(returnClause.g82_1)));
+        Trackable_getInstance().p8v(returnClause, Trackable_getInstance().o8v(ensureNotNull(returnClause.h82_1)));
       }
 
-      query.i7y_1 = returnClause;
-      Trackable_getInstance().o8v(query, Trackable_getInstance().n8v(returnClause));
+      query.j7y_1 = returnClause;
+      Trackable_getInstance().p8v(query, Trackable_getInstance().o8v(returnClause));
       var params = ArrayList_init_$Create$();
       params.e(query);
-      tmp = this.x8y_1.f91(null, 'AllTrue', params);
+      tmp = this.y8y_1.g91(null, 'AllTrue', params);
       break;
     case 'allTrue':
-      tmp = this.x8y_1.f91(null, 'AllTrue', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'AllTrue', getParams(this, target, ctx));
       break;
     case 'anyTrue':
-      tmp = this.x8y_1.f91(null, 'AnyTrue', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'AnyTrue', getParams(this, target, ctx));
       break;
     case 'allFalse':
-      tmp = this.x8y_1.f91(null, 'AllFalse', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'AllFalse', getParams(this, target, ctx));
       break;
     case 'anyFalse':
-      tmp = this.x8y_1.f91(null, 'AnyFalse', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'AnyFalse', getParams(this, target, ctx));
       break;
     case 'ceiling':
-      tmp = this.x8y_1.f91(null, 'Ceiling', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Ceiling', getParams(this, target, ctx));
       break;
     case 'children':
       checkArgumentCount(this, ctx, functionName, 0);
-      var children = this.y8y_1.k7l();
-      children.j6g_1 = target;
+      var children = this.z8y_1.l7l();
+      children.k6g_1 = target;
       var dataTypes = HashSet_init_$Create$();
-      gatherChildTypes(this, ensureNotNull(Trackable_getInstance().n8v(target)), false, dataTypes);
+      gatherChildTypes(this, ensureNotNull(Trackable_getInstance().o8v(target)), false, dataTypes);
       if (dataTypes.j() === 1) {
-        Trackable_getInstance().o8v(children, new ListType(dataTypes.g().i()));
+        Trackable_getInstance().p8v(children, new ListType(dataTypes.g().i()));
       } else {
-        Trackable_getInstance().o8v(children, new ListType(ChoiceType_init_$Create$(dataTypes)));
+        Trackable_getInstance().p8v(children, new ListType(ChoiceType_init_$Create$(dataTypes)));
       }
 
       tmp = children;
@@ -10953,191 +11185,191 @@ protoOf(SystemMethodResolver).z8y = function (target, functionName, ctx, mustRes
     case 'combine':
       checkArgumentCount(this, ctx, functionName, 1);
       var elements = ArrayList_init_$Create$();
-      var tmp_1 = this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+      var tmp_1 = this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
       var argument = tmp_1 instanceof Expression ? tmp_1 : THROW_CCE();
       elements.e(target);
       elements.e(argument);
-      var elementType = ensureNotNull(this.x8y_1.ensureCompatibleTypes(Trackable_getInstance().n8v(target), ensureNotNull(Trackable_getInstance().n8v(argument))));
-      var list = this.y8y_1.n7k();
-      Trackable_getInstance().o8v(list, new ListType(elementType));
-      list.g5v().e(this.x8y_1.ensureCompatible(target, elementType));
-      list.g5v().e(this.x8y_1.ensureCompatible(argument, elementType));
+      var elementType = ensureNotNull(this.y8y_1.ensureCompatibleTypes(Trackable_getInstance().o8v(target), ensureNotNull(Trackable_getInstance().o8v(argument))));
+      var list = this.z8y_1.o7k();
+      Trackable_getInstance().p8v(list, new ListType(elementType));
+      list.h5v().e(this.y8y_1.ensureCompatible(target, elementType));
+      list.h5v().e(this.y8y_1.ensureCompatible(argument, elementType));
       var params_0 = ArrayList_init_$Create$();
       params_0.e(list);
-      tmp = this.x8y_1.f91(null, 'Flatten', params_0);
+      tmp = this.y8y_1.g91(null, 'Flatten', params_0);
       break;
     case 'contains':
       checkArgumentCount(this, ctx, functionName, 1);
       var params_1 = ArrayList_init_$Create$();
-      var tmp_2 = this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+      var tmp_2 = this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
       var argument_0 = tmp_2 instanceof Expression ? tmp_2 : THROW_CCE();
       params_1.e(argument_0);
       params_1.e(target);
-      var result = ensureNotNull(this.x8y_1.f91(null, 'PositionOf', params_1));
+      var result = ensureNotNull(this.y8y_1.g91(null, 'PositionOf', params_1));
       params_1 = ArrayList_init_$Create$();
       params_1.e(result);
-      params_1.e(this.x8y_1.j8w(0));
-      tmp = this.x8y_1.f91(null, 'GreaterOrEqual', params_1);
+      params_1.e(this.y8y_1.k8w(0));
+      tmp = this.y8y_1.g91(null, 'GreaterOrEqual', params_1);
       break;
     case 'convertsToBoolean':
-      tmp = this.x8y_1.f91(null, 'ConvertsToBoolean', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToBoolean', getParams(this, target, ctx));
       break;
     case 'convertsToDate':
-      tmp = this.x8y_1.f91(null, 'ConvertsToDate', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToDate', getParams(this, target, ctx));
       break;
     case 'convertsToDateTime':
-      tmp = this.x8y_1.f91(null, 'ConvertsToDateTime', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToDateTime', getParams(this, target, ctx));
       break;
     case 'convertsToDecimal':
-      tmp = this.x8y_1.f91(null, 'ConvertsToDecimal', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToDecimal', getParams(this, target, ctx));
       break;
     case 'convertsToInteger':
-      tmp = this.x8y_1.f91(null, 'ConvertsToInteger', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToInteger', getParams(this, target, ctx));
       break;
     case 'convertsToQuantity':
-      tmp = this.x8y_1.f91(null, 'ConvertsToQuantity', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToQuantity', getParams(this, target, ctx));
       break;
     case 'convertsToString':
-      tmp = this.x8y_1.f91(null, 'ConvertsToString', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToString', getParams(this, target, ctx));
       break;
     case 'convertsToTime':
-      tmp = this.x8y_1.f91(null, 'ConvertsToTime', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ConvertsToTime', getParams(this, target, ctx));
       break;
     case 'count':
-      tmp = this.x8y_1.f91(null, 'Count', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Count', getParams(this, target, ctx));
       break;
     case 'descendents':
       checkArgumentCount(this, ctx, functionName, 0);
-      var descendents = this.y8y_1.w7k();
-      descendents.z6r_1 = target;
+      var descendents = this.z8y_1.x7k();
+      descendents.a6s_1 = target;
       var dataTypes_0 = HashSet_init_$Create$();
-      gatherChildTypes(this, ensureNotNull(Trackable_getInstance().n8v(target)), true, dataTypes_0);
+      gatherChildTypes(this, ensureNotNull(Trackable_getInstance().o8v(target)), true, dataTypes_0);
       if (dataTypes_0.j() === 1) {
         var tmp_3 = Trackable_getInstance();
         // Inline function 'kotlin.collections.toTypedArray' call
         var tmp$ret$0 = copyToArray(dataTypes_0);
-        tmp_3.o8v(descendents, new ListType(tmp$ret$0[0]));
+        tmp_3.p8v(descendents, new ListType(tmp$ret$0[0]));
       } else {
-        Trackable_getInstance().o8v(descendents, new ListType(ChoiceType_init_$Create$(dataTypes_0)));
+        Trackable_getInstance().p8v(descendents, new ListType(ChoiceType_init_$Create$(dataTypes_0)));
       }
 
       tmp = descendents;
       break;
     case 'descendants':
       checkArgumentCount(this, ctx, functionName, 0);
-      var descendants = this.y8y_1.k7i();
-      descendants.s6r_1 = target;
+      var descendants = this.z8y_1.l7i();
+      descendants.t6r_1 = target;
       var dataTypes_1 = HashSet_init_$Create$();
-      gatherChildTypes(this, ensureNotNull(Trackable_getInstance().n8v(target)), true, dataTypes_1);
+      gatherChildTypes(this, ensureNotNull(Trackable_getInstance().o8v(target)), true, dataTypes_1);
       if (dataTypes_1.j() === 1) {
         var tmp_4 = Trackable_getInstance();
         // Inline function 'kotlin.collections.toTypedArray' call
         var tmp$ret$1 = copyToArray(dataTypes_1);
-        tmp_4.o8v(descendants, new ListType(tmp$ret$1[0]));
+        tmp_4.p8v(descendants, new ListType(tmp$ret$1[0]));
       } else {
-        Trackable_getInstance().o8v(descendants, new ListType(ChoiceType_init_$Create$(dataTypes_1)));
+        Trackable_getInstance().p8v(descendants, new ListType(ChoiceType_init_$Create$(dataTypes_1)));
       }
 
       tmp = descendants;
       break;
     case 'distinct':
-      tmp = this.x8y_1.f91(null, 'Distinct', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Distinct', getParams(this, target, ctx));
       break;
     case 'empty':
       var params_2 = getParams(this, target, ctx);
-      var exists = ensureNotNull(this.x8y_1.f91(null, 'Exists', params_2));
+      var exists = ensureNotNull(this.y8y_1.g91(null, 'Exists', params_2));
       params_2 = ArrayList_init_$Create$();
       params_2.e(exists);
-      tmp = this.x8y_1.f91(null, 'Not', params_2);
+      tmp = this.y8y_1.g91(null, 'Not', params_2);
       break;
     case 'endsWith':
-      tmp = this.x8y_1.f91(null, 'EndsWith', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'EndsWith', getParams(this, target, ctx));
       break;
     case 'exclude':
-      tmp = this.x8y_1.f91(null, 'Except', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Except', getParams(this, target, ctx));
       break;
     case 'exists':
       var tmp_5;
       var tmp_6;
-      if ((ctx == null ? null : ctx.j3w()) == null) {
+      if ((ctx == null ? null : ctx.k3w()) == null) {
         tmp_6 = true;
       } else {
-        tmp_6 = ctx.j3w().q();
+        tmp_6 = ctx.k3w().q();
       }
 
       if (tmp_6) {
         var params_3 = getParams(this, target, ctx);
-        tmp_5 = this.x8y_1.f91(null, 'Exists', params_3);
+        tmp_5 = this.y8y_1.g91(null, 'Exists', params_3);
       } else {
         var query_0 = createWhere(this, target, functionName, ctx);
         var params_4 = ArrayList_init_$Create$();
         params_4.e(query_0);
-        tmp_5 = this.x8y_1.f91(null, 'Exists', params_4);
+        tmp_5 = this.y8y_1.g91(null, 'Exists', params_4);
       }
 
       tmp = tmp_5;
       break;
     case 'exp':
-      tmp = this.x8y_1.f91(null, 'Exp', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Exp', getParams(this, target, ctx));
       break;
     case 'first':
-      tmp = this.x8y_1.f91(null, 'First', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'First', getParams(this, target, ctx));
       break;
     case 'floor':
-      tmp = this.x8y_1.f91(null, 'Floor', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Floor', getParams(this, target, ctx));
       break;
     case 'hasValue':
       var params_5 = getParams(this, target, ctx);
-      var isNull = ensureNotNull(this.x8y_1.f91(null, 'IsNull', params_5));
+      var isNull = ensureNotNull(this.y8y_1.g91(null, 'IsNull', params_5));
       params_5 = ArrayList_init_$Create$();
       params_5.e(isNull);
-      tmp = this.x8y_1.f91(null, 'Not', params_5);
+      tmp = this.y8y_1.g91(null, 'Not', params_5);
       break;
     case 'iif':
       var result_0 = target;
       var params_6 = ArrayList_init_$Create$();
-      var tmp_7 = Trackable_getInstance().n8v(ensureNotNull(result_0));
+      var tmp_7 = Trackable_getInstance().o8v(ensureNotNull(result_0));
       if (tmp_7 instanceof ListType) {
         params_6.e(result_0);
-        result_0 = this.x8y_1.f91(null, 'SingletonFrom', params_6);
+        result_0 = this.y8y_1.g91(null, 'SingletonFrom', params_6);
       }
 
-      var tmp_8 = this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+      var tmp_8 = this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
       var thenExpression = (tmp_8 == null ? true : tmp_8 instanceof Expression) ? tmp_8 : THROW_CCE();
       var tmp_9;
-      if (ctx.j3w().j() === 2) {
-        var tmp_10 = this.w8y_1.d32(ensureNotNull(ctx.a4m(1)));
+      if (ctx.k3w().j() === 2) {
+        var tmp_10 = this.x8y_1.e32(ensureNotNull(ctx.b4m(1)));
         tmp_9 = (tmp_10 == null ? true : tmp_10 instanceof Expression) ? tmp_10 : THROW_CCE();
       } else {
-        tmp_9 = this.y8y_1.a7o();
+        tmp_9 = this.z8y_1.b7o();
       }
 
       var elseExpression = tmp_9;
-      result_0 = this.y8y_1.y7m().p70(result_0).v6f(thenExpression).m6f(elseExpression);
-      tmp = this.w8y_1.m91(result_0);
+      result_0 = this.z8y_1.z7m().q70(result_0).w6f(thenExpression).n6f(elseExpression);
+      tmp = this.x8y_1.n91(result_0);
       break;
     case 'indexOf':
       checkArgumentCount(this, ctx, functionName, 1);
       var params_7 = ArrayList_init_$Create$();
-      var tmp_11 = this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+      var tmp_11 = this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
       var argument_1 = tmp_11 instanceof Expression ? tmp_11 : THROW_CCE();
       params_7.e(argument_1);
       params_7.e(target);
-      tmp = this.x8y_1.f91(null, 'PositionOf', params_7);
+      tmp = this.y8y_1.g91(null, 'PositionOf', params_7);
       break;
     case 'intersect':
-      tmp = this.x8y_1.f91(null, 'Intersect', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Intersect', getParams(this, target, ctx));
       break;
     case 'is':
     case 'as':
       checkArgumentCount(this, ctx, functionName, 1);
-      this.x8y_1.pushTypeSpecifierContext();
+      this.y8y_1.pushTypeSpecifierContext();
       var tmp_12;
       try {
-        var tmp_13 = this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+        var tmp_13 = this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
         tmp_12 = (tmp_13 == null ? true : tmp_13 instanceof Expression) ? tmp_13 : THROW_CCE();
       }finally {
-        this.x8y_1.popTypeSpecifierContext();
+        this.y8y_1.popTypeSpecifierContext();
       }
 
       var typeArgument = tmp_12;
@@ -11150,167 +11382,167 @@ protoOf(SystemMethodResolver).z8y = function (target, functionName, ctx, mustRes
 
       // Inline function 'kotlin.require' call
 
-      if (!DataTypes_instance.q8z(Trackable_getInstance().n8v(typeArgument), this.x8y_1.l8w('System', 'String'))) {
+      if (!DataTypes_instance.r8z(Trackable_getInstance().o8v(typeArgument), this.y8y_1.m8w('System', 'String'))) {
         var message_0 = 'Expected string literal argument';
         throw IllegalArgumentException_init_$Create$(toString(message_0));
       }
 
-      var typeSpecifier = typeArgument.u7a_1;
-      var isType = this.x8y_1.resolveTypeSpecifier(typeSpecifier);
-      tmp = functionName === 'is' ? this.x8y_1.buildIs(target, isType) : this.x8y_1.buildAs(target, isType);
+      var typeSpecifier = typeArgument.v7a_1;
+      var isType = this.y8y_1.resolveTypeSpecifier(typeSpecifier);
+      tmp = functionName === 'is' ? this.y8y_1.buildIs(target, isType) : this.y8y_1.buildAs(target, isType);
       break;
     case 'last':
-      tmp = this.x8y_1.f91(null, 'Last', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Last', getParams(this, target, ctx));
       break;
     case 'lastIndexOf':
       checkArgumentCount(this, ctx, functionName, 1);
       var params_8 = ArrayList_init_$Create$();
-      var tmp_14 = this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+      var tmp_14 = this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
       var argument_2 = tmp_14 instanceof Expression ? tmp_14 : THROW_CCE();
       params_8.e(argument_2);
       params_8.e(target);
-      tmp = this.x8y_1.f91(null, 'LastPositionOf', params_8);
+      tmp = this.y8y_1.g91(null, 'LastPositionOf', params_8);
       break;
     case 'length':
-      tmp = this.x8y_1.f91(null, 'Length', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Length', getParams(this, target, ctx));
       break;
     case 'ln':
-      tmp = this.x8y_1.f91(null, 'Ln', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Ln', getParams(this, target, ctx));
       break;
     case 'log':
-      tmp = this.x8y_1.f91(null, 'Log', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Log', getParams(this, target, ctx));
       break;
     case 'lower':
-      tmp = this.x8y_1.f91(null, 'Lower', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Lower', getParams(this, target, ctx));
       break;
     case 'matches':
-      tmp = this.x8y_1.f91(null, 'Matches', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Matches', getParams(this, target, ctx));
       break;
     case 'memberOf':
-      tmp = this.x8y_1.f91(null, 'InValueSet', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'InValueSet', getParams(this, target, ctx));
       break;
     case 'not':
-      tmp = this.x8y_1.f91(null, 'Not', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Not', getParams(this, target, ctx));
       break;
     case 'ofType':
       tmp = createOfType(this, target, functionName, ctx);
       break;
     case 'power':
-      tmp = this.x8y_1.f91(null, 'Power', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Power', getParams(this, target, ctx));
       break;
     case 'repeat':
       tmp = createRepeat(this, target, functionName, ctx);
       break;
     case 'replace':
-      tmp = this.x8y_1.f91(null, 'Replace', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Replace', getParams(this, target, ctx));
       break;
     case 'replaceMatches':
-      tmp = this.x8y_1.f91(null, 'ReplaceMatches', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ReplaceMatches', getParams(this, target, ctx));
       break;
     case 'round':
-      tmp = this.x8y_1.f91(null, 'Round', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Round', getParams(this, target, ctx));
       break;
     case 'select':
       tmp = createSelect(this, target, functionName, ctx);
       break;
     case 'single':
-      tmp = this.x8y_1.f91(null, 'SingletonFrom', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'SingletonFrom', getParams(this, target, ctx));
       break;
     case 'skip':
-      tmp = this.x8y_1.f91(null, 'Skip', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Skip', getParams(this, target, ctx));
       break;
     case 'sqrt':
       checkArgumentCount(this, ctx, functionName, 0);
       var params_9 = ArrayList_init_$Create$();
       params_9.e(target);
-      params_9.e(this.x8y_1.k8w(0.5));
-      tmp = this.x8y_1.f91(null, 'Power', params_9);
+      params_9.e(this.y8y_1.l8w(0.5));
+      tmp = this.y8y_1.g91(null, 'Power', params_9);
       break;
     case 'startsWith':
-      tmp = this.x8y_1.f91(null, 'StartsWith', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'StartsWith', getParams(this, target, ctx));
       break;
     case 'subsetOf':
-      tmp = this.x8y_1.f91(null, 'IncludedIn', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'IncludedIn', getParams(this, target, ctx));
       break;
     case 'substring':
-      tmp = this.x8y_1.f91(null, 'Substring', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Substring', getParams(this, target, ctx));
       break;
     case 'subsumes':
-      tmp = this.x8y_1.f91(null, 'Subsumes', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Subsumes', getParams(this, target, ctx));
       break;
     case 'subsumedBy':
-      tmp = this.x8y_1.f91(null, 'SubsumedBy', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'SubsumedBy', getParams(this, target, ctx));
       break;
     case 'supersetOf':
-      tmp = this.x8y_1.f91(null, 'Includes', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Includes', getParams(this, target, ctx));
       break;
     case 'tail':
-      tmp = this.x8y_1.f91(null, 'Tail', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Tail', getParams(this, target, ctx));
       break;
     case 'take':
-      tmp = this.x8y_1.f91(null, 'Take', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Take', getParams(this, target, ctx));
       break;
     case 'toBoolean':
-      tmp = this.x8y_1.f91(null, 'ToBoolean', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToBoolean', getParams(this, target, ctx));
       break;
     case 'toChars':
-      tmp = this.x8y_1.f91(null, 'ToChars', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToChars', getParams(this, target, ctx));
       break;
     case 'toDate':
-      tmp = this.x8y_1.f91(null, 'ToDate', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToDate', getParams(this, target, ctx));
       break;
     case 'toDateTime':
-      tmp = this.x8y_1.f91(null, 'ToDateTime', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToDateTime', getParams(this, target, ctx));
       break;
     case 'toDecimal':
-      tmp = this.x8y_1.f91(null, 'ToDecimal', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToDecimal', getParams(this, target, ctx));
       break;
     case 'toInteger':
-      tmp = this.x8y_1.f91(null, 'ToInteger', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToInteger', getParams(this, target, ctx));
       break;
     case 'toQuantity':
-      tmp = this.x8y_1.f91(null, 'ToQuantity', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToQuantity', getParams(this, target, ctx));
       break;
     case 'toString':
-      tmp = this.x8y_1.f91(null, 'ToString', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToString', getParams(this, target, ctx));
       break;
     case 'toTime':
-      tmp = this.x8y_1.f91(null, 'ToTime', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'ToTime', getParams(this, target, ctx));
       break;
     case 'trace':
       checkArgumentCount(this, ctx, functionName, 1);
       var params_10 = ArrayList_init_$Create$();
       params_10.e(target);
-      params_10.e(this.x8y_1.f8x(true));
-      params_10.e(this.x8y_1.z90('TRACE'));
-      params_10.e(this.x8y_1.z90('Trace'));
-      var tmp_15 = this.w8y_1.d32(ensureNotNull(ensureNotNull(ctx).a4m(0)));
+      params_10.e(this.y8y_1.g8x(true));
+      params_10.e(this.y8y_1.a91('TRACE'));
+      params_10.e(this.y8y_1.a91('Trace'));
+      var tmp_15 = this.x8y_1.e32(ensureNotNull(ensureNotNull(ctx).b4m(0)));
       params_10.e(tmp_15 instanceof Expression ? tmp_15 : THROW_CCE());
-      tmp = this.x8y_1.f91(null, 'Message', params_10);
+      tmp = this.y8y_1.g91(null, 'Message', params_10);
       break;
     case 'truncate':
-      tmp = this.x8y_1.f91(null, 'Truncate', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Truncate', getParams(this, target, ctx));
       break;
     case 'union':
-      tmp = this.x8y_1.f91(null, 'Union', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Union', getParams(this, target, ctx));
       break;
     case 'upper':
-      tmp = this.x8y_1.f91(null, 'Upper', getParams(this, target, ctx));
+      tmp = this.y8y_1.g91(null, 'Upper', getParams(this, target, ctx));
       break;
     case 'where':
       tmp = createWhere(this, target, functionName, ctx);
       break;
     default:
-      tmp = this.w8y_1.p8y(null, functionName, getParams(this, target, ctx), mustResolve, false, true);
+      tmp = this.x8y_1.q8y(null, functionName, getParams(this, target, ctx), mustResolve, false, true);
       break;
   }
   return tmp;
 };
 function InternalModelResolver(modelManager) {
-  this.o9d_1 = modelManager;
+  this.u9d_1 = modelManager;
 }
-protoOf(InternalModelResolver).x90 = function (modelName) {
-  return this.o9d_1.resolveModel$default(modelName);
+protoOf(InternalModelResolver).y90 = function (modelName) {
+  return this.u9d_1.resolveModel$default(modelName);
 };
 function TypeBuilder_init_$Init$(of, modelManager, $this) {
   TypeBuilder.call($this, of, new InternalModelResolver(modelManager));
@@ -11320,62 +11552,62 @@ function TypeBuilder_init_$Create$(of, modelManager) {
   return TypeBuilder_init_$Init$(of, modelManager, objectCreate(protoOf(TypeBuilder)));
 }
 function listTypeToTypeSpecifier($this, type) {
-  return Trackable_getInstance().h90($this.w98_1.v7m().n7a($this.r9b(type.d61_1)), type);
+  return Trackable_getInstance().i90($this.j99_1.w7m().o7a($this.y9b(type.e61_1)), type);
 }
 function intervalTypeToTypeSpecifier($this, type) {
-  return Trackable_getInstance().h90($this.w98_1.j7n().r75($this.r9b(type.g61_1)), type);
+  return Trackable_getInstance().i90($this.j99_1.k7n().s75($this.y9b(type.h61_1)), type);
 }
 function tupleTypeToTypeSpecifier($this, type) {
-  return Trackable_getInstance().h90($this.w98_1.a7m().c8g(tupleTypeElementsToTupleElementDefinitions($this, type.r63_1)), type);
+  return Trackable_getInstance().i90($this.j99_1.b7m().d8g(tupleTypeElementsToTupleElementDefinitions($this, type.s63_1)), type);
 }
 function tupleTypeElementsToTupleElementDefinitions($this, elements) {
   var definitions = ArrayList_init_$Create$();
   var _iterator__ex2g4s = elements.g();
   while (_iterator__ex2g4s.h()) {
     var element = _iterator__ex2g4s.i();
-    definitions.e($this.w98_1.s7l().q65(element.i61_1).n7a($this.r9b(element.j61_1)));
+    definitions.e($this.j99_1.t7l().r65(element.j61_1).o7a($this.y9b(element.k61_1)));
   }
   return definitions;
 }
 function choiceTypeToTypeSpecifier($this, type) {
-  return Trackable_getInstance().h90($this.w98_1.u7j().r6g(choiceTypeTypesToTypeSpecifiers($this, type)), type);
+  return Trackable_getInstance().i90($this.j99_1.v7j().s6g(choiceTypeTypesToTypeSpecifiers($this, type)), type);
 }
 function choiceTypeTypesToTypeSpecifiers($this, choiceType) {
   var specifiers = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = choiceType.b60_1.g();
+  var _iterator__ex2g4s = choiceType.c60_1.g();
   while (_iterator__ex2g4s.h()) {
     var type = _iterator__ex2g4s.i();
-    specifiers.e($this.r9b(type));
+    specifiers.e($this.y9b(type));
   }
   return specifiers;
 }
 function typeParameterToTypeSpecifier($this, type) {
-  return (new ParameterTypeSpecifier()).s7t(type.z61_1);
+  return (new ParameterTypeSpecifier()).t7t(type.a62_1);
 }
 function TypeBuilder(of, mr) {
-  this.w98_1 = of;
-  this.x98_1 = mr;
+  this.j99_1 = of;
+  this.k99_1 = mr;
 }
-protoOf(TypeBuilder).q9b = function (type) {
+protoOf(TypeBuilder).x9b = function (type) {
   if (!(type == null) ? isInterface(type, NamedType) : false) {
     var namedType = type;
-    var modelInfo = this.x98_1.x90(namedType.n61()).q90_1;
-    return QNameJs_init_$Create$(!(modelInfo.m5x_1 == null) ? ensureNotNull(modelInfo.m5x_1) : ensureNotNull(modelInfo.l5x_1), !(namedType.p61() == null) ? ensureNotNull(namedType.p61()) : namedType.lb());
+    var modelInfo = this.k99_1.y90(namedType.o61()).r90_1;
+    return QNameJs_init_$Create$(!(modelInfo.n5x_1 == null) ? ensureNotNull(modelInfo.n5x_1) : ensureNotNull(modelInfo.m5x_1), !(namedType.q61() == null) ? ensureNotNull(namedType.q61()) : namedType.lb());
   }
   throw IllegalArgumentException_init_$Create$('A named type is required in this context.');
 };
-protoOf(TypeBuilder).y98 = function (types) {
+protoOf(TypeBuilder).l99 = function (types) {
   var result = ArrayList_init_$Create$();
   var _iterator__ex2g4s = types.g();
   while (_iterator__ex2g4s.h()) {
     var type = _iterator__ex2g4s.i();
-    result.e(this.r9b(type));
+    result.e(this.y9b(type));
   }
   return result;
 };
-protoOf(TypeBuilder).r9b = function (type) {
+protoOf(TypeBuilder).y9b = function (type) {
   if (!(type == null) ? isInterface(type, NamedType) : false) {
-    return Trackable_getInstance().h90(this.w98_1.c7k().c7g(this.q9b(type)), type);
+    return Trackable_getInstance().i90(this.j99_1.d7k().d7g(this.x9b(type)), type);
   } else {
     if (type instanceof ListType) {
       return listTypeToTypeSpecifier(this, type);
@@ -11408,8 +11640,8 @@ function removeAnnotations($this, annotations) {
       inductionVariable = inductionVariable + -1 | 0;
       var x = annotations.o(i);
       if (x instanceof Annotation) {
-        x.y63_1 = null;
-        if (x.a64().q()) {
+        x.z63_1 = null;
+        if (x.b64().q()) {
           annotations.l2(i);
         }
       }
@@ -11420,26 +11652,26 @@ function ElmEdit$REMOVE_LOCATOR() {
   ElmEdit.call(this, 'REMOVE_LOCATOR', 0);
   ElmEdit_REMOVE_LOCATOR_instance = this;
 }
-protoOf(ElmEdit$REMOVE_LOCATOR).r9d = function (element) {
-  element.b66_1 = null;
+protoOf(ElmEdit$REMOVE_LOCATOR).x9d = function (element) {
+  element.c66_1 = null;
 };
 var ElmEdit_REMOVE_LOCATOR_instance;
 function ElmEdit$REMOVE_ANNOTATION() {
   ElmEdit.call(this, 'REMOVE_ANNOTATION', 1);
   ElmEdit_REMOVE_ANNOTATION_instance = this;
 }
-protoOf(ElmEdit$REMOVE_ANNOTATION).r9d = function (element) {
-  element.a66_1 = null;
-  removeAnnotations(this, element.n66());
+protoOf(ElmEdit$REMOVE_ANNOTATION).x9d = function (element) {
+  element.b66_1 = null;
+  removeAnnotations(this, element.o66());
 };
 var ElmEdit_REMOVE_ANNOTATION_instance;
 function ElmEdit$REMOVE_RESULT_TYPE() {
   ElmEdit.call(this, 'REMOVE_RESULT_TYPE', 2);
   ElmEdit_REMOVE_RESULT_TYPE_instance = this;
 }
-protoOf(ElmEdit$REMOVE_RESULT_TYPE).r9d = function (element) {
-  element.c66_1 = null;
-  element.e66_1 = null;
+protoOf(ElmEdit$REMOVE_RESULT_TYPE).x9d = function (element) {
+  element.d66_1 = null;
+  element.f66_1 = null;
 };
 var ElmEdit_REMOVE_RESULT_TYPE_instance;
 var ElmEdit_entriesInitialized;
@@ -11471,7 +11703,7 @@ function aggregateResults($this, aggregate, nextResult) {
     null;
   else {
     // Inline function 'kotlin.let' call
-    $this.w9d(nextResult);
+    $this.c9e(nextResult);
   }
   return aggregate;
 }
@@ -11484,21 +11716,21 @@ function ElmEditor$visitor$lambda_0(this$0) {
   };
 }
 function ElmEditor(edits) {
-  this.l94_1 = edits;
+  this.m94_1 = edits;
   var tmp = this;
   var tmp_0 = Companion_instance_0;
   var tmp_1 = ElmEditor$visitor$lambda;
-  tmp.m94_1 = tmp_0.l8t(tmp_1, ElmEditor$visitor$lambda_0(this));
+  tmp.n94_1 = tmp_0.m8t(tmp_1, ElmEditor$visitor$lambda_0(this));
 }
-protoOf(ElmEditor).n94 = function (library) {
-  this.m94_1.i8t(library, Unit_instance);
-  this.w9d(library);
+protoOf(ElmEditor).o94 = function (library) {
+  this.n94_1.j8t(library, Unit_instance);
+  this.c9e(library);
 };
-protoOf(ElmEditor).w9d = function (trackable) {
-  var _iterator__ex2g4s = this.l94_1.g();
+protoOf(ElmEditor).c9e = function (trackable) {
+  var _iterator__ex2g4s = this.m94_1.g();
   while (_iterator__ex2g4s.h()) {
     var edit = _iterator__ex2g4s.i();
-    edit.r9d(trackable);
+    edit.x9d(trackable);
   }
 };
 function CallContext_init_$Init$(libraryName, operatorName, allowPromotionAndDemotion, allowFluent, mustResolve, operandTypes, $this) {
@@ -11509,19 +11741,19 @@ function CallContext_init_$Create$(libraryName, operatorName, allowPromotionAndD
   return CallContext_init_$Init$(libraryName, operatorName, allowPromotionAndDemotion, allowFluent, mustResolve, operandTypes, objectCreate(protoOf(CallContext)));
 }
 function CallContext(libraryName, operatorName, allowPromotionAndDemotion, allowFluent, mustResolve, operandTypes) {
-  this.b98_1 = libraryName;
-  this.c98_1 = operatorName;
-  this.d98_1 = allowPromotionAndDemotion;
-  this.e98_1 = allowFluent;
-  this.f98_1 = mustResolve;
+  this.o98_1 = libraryName;
+  this.p98_1 = operatorName;
+  this.q98_1 = allowPromotionAndDemotion;
+  this.r98_1 = allowFluent;
+  this.s98_1 = mustResolve;
   // Inline function 'kotlin.text.isNotEmpty' call
-  var this_0 = this.c98_1;
+  var this_0 = this.p98_1;
   // Inline function 'kotlin.require' call
   if (!(charSequenceLength(this_0) > 0)) {
     var message = 'operatorName is empty';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.g98_1 = new Signature(operandTypes);
+  this.t98_1 = new Signature(operandTypes);
 }
 function Chunk_init_$Init$(interval, $this) {
   Chunk.call($this, interval, false);
@@ -11531,27 +11763,27 @@ function Chunk_init_$Create$(interval) {
   return Chunk_init_$Init$(interval, objectCreate(protoOf(Chunk)));
 }
 function ensureChunks($this) {
-  if ($this.a9e_1.q()) {
-    $this.a9e_1.e(Chunk_init_$Create$($this.x9d_1));
+  if ($this.g9e_1.q()) {
+    $this.g9e_1.e(Chunk_init_$Create$($this.d9e_1));
   }
 }
 function Chunk(interval, isHeaderChunk) {
-  this.x9d_1 = interval;
-  this.y9d_1 = isHeaderChunk;
-  this.z9d_1 = null;
-  this.a9e_1 = ArrayList_init_$Create$();
+  this.d9e_1 = interval;
+  this.e9e_1 = isHeaderChunk;
+  this.f9e_1 = null;
+  this.g9e_1 = ArrayList_init_$Create$();
 }
-protoOf(Chunk).b9e = function () {
+protoOf(Chunk).h9e = function () {
   ensureChunks(this);
-  return this.a9e_1;
+  return this.g9e_1;
 };
-protoOf(Chunk).c9e = function () {
+protoOf(Chunk).i9e = function () {
   // Inline function 'kotlin.collections.isNotEmpty' call
-  return !this.a9e_1.q();
+  return !this.g9e_1.q();
 };
-protoOf(Chunk).d9e = function (chunk) {
+protoOf(Chunk).j9e = function (chunk) {
   // Inline function 'kotlin.require' call
-  if (!(chunk.x9d_1.a24_1 >= this.x9d_1.a24_1 && chunk.x9d_1.b24_1 <= this.x9d_1.b24_1)) {
+  if (!(chunk.d9e_1.b24_1 >= this.d9e_1.b24_1 && chunk.d9e_1.c24_1 <= this.d9e_1.c24_1)) {
     var message = 'Child chunk cannot be added because it is not contained within the parent chunk.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
@@ -11559,14 +11791,14 @@ protoOf(Chunk).d9e = function (chunk) {
   var chunkIndex = -1;
   var targetChunk = null;
   var inductionVariable = 0;
-  var last = this.a9e_1.j() - 1 | 0;
+  var last = this.g9e_1.j() - 1 | 0;
   if (inductionVariable <= last)
     $l$loop: do {
       var i = inductionVariable;
       inductionVariable = inductionVariable + 1 | 0;
-      if (chunk.x9d_1.a24_1 >= this.a9e_1.o(i).x9d_1.a24_1 && chunk.x9d_1.a24_1 <= this.a9e_1.o(i).x9d_1.b24_1) {
+      if (chunk.d9e_1.b24_1 >= this.g9e_1.o(i).d9e_1.b24_1 && chunk.d9e_1.b24_1 <= this.g9e_1.o(i).d9e_1.c24_1) {
         chunkIndex = i;
-        targetChunk = this.a9e_1.o(chunkIndex);
+        targetChunk = this.g9e_1.o(chunkIndex);
         break $l$loop;
       }
     }
@@ -11581,36 +11813,36 @@ protoOf(Chunk).d9e = function (chunk) {
       break $l$block;
     }
   }
-  if (chunk.x9d_1.a24_1 === targetChunk.x9d_1.a24_1) {
-    this.a9e_1.k2(chunkIndex, chunk);
+  if (chunk.d9e_1.b24_1 === targetChunk.d9e_1.b24_1) {
+    this.g9e_1.k2(chunkIndex, chunk);
     chunkIndex = chunkIndex + 1 | 0;
-    var newA = chunk.x9d_1.b24_1 + 1 | 0;
-    $l$loop_0: while (newA > this.a9e_1.o(chunkIndex).x9d_1.b24_1) {
-      this.a9e_1.l2(chunkIndex);
-      if (chunkIndex >= this.a9e_1.j()) {
+    var newA = chunk.d9e_1.c24_1 + 1 | 0;
+    $l$loop_0: while (newA > this.g9e_1.o(chunkIndex).d9e_1.c24_1) {
+      this.g9e_1.l2(chunkIndex);
+      if (chunkIndex >= this.g9e_1.j()) {
         break $l$loop_0;
       }
     }
-    if (chunkIndex < this.a9e_1.j()) {
-      this.a9e_1.o(chunkIndex).x9d_1 = new Interval(newA, this.a9e_1.o(chunkIndex).x9d_1.b24_1);
+    if (chunkIndex < this.g9e_1.j()) {
+      this.g9e_1.o(chunkIndex).d9e_1 = new Interval(newA, this.g9e_1.o(chunkIndex).d9e_1.c24_1);
     }
   } else {
-    var newB = chunk.x9d_1.a24_1 - 1 | 0;
-    var newA_0 = chunk.x9d_1.b24_1 + 1 | 0;
-    var oldA = this.a9e_1.o(chunkIndex).x9d_1.a24_1;
-    var oldB = this.a9e_1.o(chunkIndex).x9d_1.b24_1;
-    this.a9e_1.o(chunkIndex).x9d_1 = new Interval(oldA, newB);
+    var newB = chunk.d9e_1.b24_1 - 1 | 0;
+    var newA_0 = chunk.d9e_1.c24_1 + 1 | 0;
+    var oldA = this.g9e_1.o(chunkIndex).d9e_1.b24_1;
+    var oldB = this.g9e_1.o(chunkIndex).d9e_1.c24_1;
+    this.g9e_1.o(chunkIndex).d9e_1 = new Interval(oldA, newB);
     chunkIndex = chunkIndex + 1 | 0;
-    this.a9e_1.k2(chunkIndex, chunk);
+    this.g9e_1.k2(chunkIndex, chunk);
     chunkIndex = chunkIndex + 1 | 0;
     if (newA_0 <= oldB) {
-      this.a9e_1.k2(chunkIndex, Chunk_init_$Create$(new Interval(newA_0, oldB)));
+      this.g9e_1.k2(chunkIndex, Chunk_init_$Create$(new Interval(newA_0, oldB)));
     }
   }
 };
 function checkNamespace($this, identifier) {
-  var existingResolvedIdentifierContext = $this.x9a(identifier);
-  if (existingResolvedIdentifierContext.w9b() == null)
+  var existingResolvedIdentifierContext = $this.e9b(identifier);
+  if (existingResolvedIdentifierContext.d9c() == null)
     null;
   else {
     // Inline function 'kotlin.let' call
@@ -11619,31 +11851,31 @@ function checkNamespace($this, identifier) {
 }
 function ensureLibrary($this, operator) {
   var tmp = operator;
-  var tmp0_elvis_lhs = operator.e8x_1;
+  var tmp0_elvis_lhs = operator.f8x_1;
   var tmp_0;
   if (tmp0_elvis_lhs == null) {
-    var tmp1_safe_receiver = $this.j8z_1;
-    tmp_0 = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.b8i_1;
+    var tmp1_safe_receiver = $this.k8z_1;
+    tmp_0 = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.c8i_1;
   } else {
     tmp_0 = tmp0_elvis_lhs;
   }
-  tmp.e8x_1 = tmp_0;
-  var tmp_1 = operator.e8x_1;
-  var tmp2_safe_receiver = $this.j8z_1;
+  tmp.f8x_1 = tmp_0;
+  var tmp_1 = operator.f8x_1;
+  var tmp2_safe_receiver = $this.k8z_1;
   // Inline function 'kotlin.require' call
-  if (!(tmp_1 == (tmp2_safe_receiver == null ? null : tmp2_safe_receiver.b8i_1))) {
-    var tmp0_safe_receiver = $this.j8z_1;
-    var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.b8i_1;
-    var message = 'Operator ' + operator.x8w_1 + ' cannot be registered in library ' + (tmp1_elvis_lhs == null ? '<anonymous>' : tmp1_elvis_lhs) + ('because it is defined in library ' + operator.e8x_1 + '.');
+  if (!(tmp_1 == (tmp2_safe_receiver == null ? null : tmp2_safe_receiver.c8i_1))) {
+    var tmp0_safe_receiver = $this.k8z_1;
+    var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.c8i_1;
+    var message = 'Operator ' + operator.y8w_1 + ' cannot be registered in library ' + (tmp1_elvis_lhs == null ? '<anonymous>' : tmp1_elvis_lhs) + ('because it is defined in library ' + operator.f8x_1 + '.');
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
 }
 function resolveIdentifier_0($this, identifier, clazz) {
-  return $this.x9a(identifier).e9e(clazz);
+  return $this.e9b(identifier).k9e(clazz);
 }
 function _get_annotation__nxha9o($this) {
-  var tmp0_safe_receiver = $this.k8z_1;
-  var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.n66();
+  var tmp0_safe_receiver = $this.l8z_1;
+  var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.o66();
   var tmp;
   if (tmp1_safe_receiver == null) {
     tmp = null;
@@ -11668,7 +11900,7 @@ function _get_annotation__nxha9o($this) {
 }
 function getTag($this, tagName) {
   var tmp0_safe_receiver = _get_annotation__nxha9o($this);
-  var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.a64();
+  var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.b64();
   var tmp;
   if (tmp1_safe_receiver == null) {
     tmp = null;
@@ -11679,7 +11911,7 @@ function getTag($this, tagName) {
       var _iterator__ex2g4s = tmp1_safe_receiver.g();
       while (_iterator__ex2g4s.h()) {
         var element = _iterator__ex2g4s.i();
-        if (element.o65_1 === tagName) {
+        if (element.p65_1 === tagName) {
           tmp$ret$1 = element;
           break $l$block;
         }
@@ -11689,7 +11921,7 @@ function getTag($this, tagName) {
     tmp = tmp$ret$1;
   }
   var tmp2_safe_receiver = tmp;
-  return tmp2_safe_receiver == null ? null : tmp2_safe_receiver.p65_1;
+  return tmp2_safe_receiver == null ? null : tmp2_safe_receiver.q65_1;
 }
 function getBooleanTag($this, tagName) {
   var tmp0_safe_receiver = getTag($this, tagName);
@@ -11697,110 +11929,110 @@ function getBooleanTag($this, tagName) {
   return tmp1_elvis_lhs == null ? false : tmp1_elvis_lhs;
 }
 function CompiledLibrary() {
-  this.j8z_1 = null;
   this.k8z_1 = null;
-  this.l8z_1 = HashMap_init_$Create$();
-  this.m8z_1 = new OperatorMap();
-  this.n8z_1 = HashMap_init_$Create$();
-  this.o8z_1 = ArrayList_init_$Create$();
+  this.l8z_1 = null;
+  this.m8z_1 = HashMap_init_$Create$();
+  this.n8z_1 = new OperatorMap();
+  this.o8z_1 = HashMap_init_$Create$();
+  this.p8z_1 = ArrayList_init_$Create$();
 }
-protoOf(CompiledLibrary).o97 = function (using) {
-  checkNamespace(this, ensureNotNull(using.w8g_1));
-  var tmp0 = this.l8z_1;
+protoOf(CompiledLibrary).b98 = function (using) {
+  checkNamespace(this, ensureNotNull(using.x8g_1));
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(using.w8g_1);
+  var key = ensureNotNull(using.x8g_1);
   tmp0.u2(key, using);
 };
-protoOf(CompiledLibrary).a99 = function (include) {
-  checkNamespace(this, ensureNotNull(include.d72_1));
-  var tmp0 = this.l8z_1;
+protoOf(CompiledLibrary).n99 = function (include) {
+  checkNamespace(this, ensureNotNull(include.e72_1));
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(include.d72_1);
+  var key = ensureNotNull(include.e72_1);
   tmp0.u2(key, include);
 };
-protoOf(CompiledLibrary).r9a = function (codesystem) {
-  checkNamespace(this, ensureNotNull(codesystem.z6i_1));
-  var tmp0 = this.l8z_1;
+protoOf(CompiledLibrary).y9a = function (codesystem) {
+  checkNamespace(this, ensureNotNull(codesystem.a6j_1));
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(codesystem.z6i_1);
+  var key = ensureNotNull(codesystem.a6j_1);
   tmp0.u2(key, codesystem);
 };
-protoOf(CompiledLibrary).s9a = function (valueset) {
-  checkNamespace(this, ensureNotNull(valueset.f8h_1));
-  var tmp0 = this.l8z_1;
+protoOf(CompiledLibrary).z9a = function (valueset) {
+  checkNamespace(this, ensureNotNull(valueset.g8h_1));
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(valueset.f8h_1);
+  var key = ensureNotNull(valueset.g8h_1);
   tmp0.u2(key, valueset);
 };
-protoOf(CompiledLibrary).t9a = function (code) {
-  checkNamespace(this, ensureNotNull(code.t6h_1));
-  var tmp0 = this.l8z_1;
+protoOf(CompiledLibrary).a9b = function (code) {
+  checkNamespace(this, ensureNotNull(code.u6h_1));
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(code.t6h_1);
+  var key = ensureNotNull(code.u6h_1);
   tmp0.u2(key, code);
 };
-protoOf(CompiledLibrary).u9a = function (concept) {
-  checkNamespace(this, ensureNotNull(concept.v6k_1));
-  var tmp0 = this.l8z_1;
+protoOf(CompiledLibrary).b9b = function (concept) {
+  checkNamespace(this, ensureNotNull(concept.w6k_1));
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(concept.v6k_1);
+  var key = ensureNotNull(concept.w6k_1);
   tmp0.u2(key, concept);
 };
-protoOf(CompiledLibrary).q9a = function (parameter) {
-  checkNamespace(this, ensureNotNull(parameter.y7s_1));
-  var tmp0 = this.l8z_1;
+protoOf(CompiledLibrary).x9a = function (parameter) {
+  checkNamespace(this, ensureNotNull(parameter.z7s_1));
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(parameter.y7s_1);
+  var key = ensureNotNull(parameter.z7s_1);
   tmp0.u2(key, parameter);
 };
-protoOf(CompiledLibrary).v9a = function (expression) {
+protoOf(CompiledLibrary).c9b = function (expression) {
   if (expression instanceof FunctionDef) {
-    this.f9e(expression, Operator_init_$Create$_0(expression));
+    this.l9e(expression, Operator_init_$Create$_0(expression));
   } else {
-    checkNamespace(this, ensureNotNull(expression.c6w_1));
-    var tmp0 = this.l8z_1;
+    checkNamespace(this, ensureNotNull(expression.d6w_1));
+    var tmp0 = this.m8z_1;
     // Inline function 'kotlin.collections.set' call
-    var key = ensureNotNull(expression.c6w_1);
+    var key = ensureNotNull(expression.d6w_1);
     tmp0.u2(key, expression);
   }
 };
-protoOf(CompiledLibrary).w9a = function (expression) {
+protoOf(CompiledLibrary).d9b = function (expression) {
   // Inline function 'kotlin.require' call
   if (!!(expression instanceof FunctionDef)) {
     var message = 'FunctionDef cannot be removed.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var tmp0 = this.l8z_1;
+  var tmp0 = this.m8z_1;
   // Inline function 'kotlin.collections.remove' call
-  var key = expression.c6w_1;
+  var key = expression.d6w_1;
   (isInterface(tmp0, KtMutableMap) ? tmp0 : THROW_CCE()).v2(key);
 };
-protoOf(CompiledLibrary).f9e = function (functionDef, operator) {
+protoOf(CompiledLibrary).l9e = function (functionDef, operator) {
   ensureLibrary(this, operator);
-  this.m8z_1.h9e(operator);
+  this.n8z_1.n9e(operator);
   // Inline function 'kotlin.collections.set' call
-  this.n8z_1.u2(operator, functionDef);
+  this.o8z_1.u2(operator, functionDef);
 };
-protoOf(CompiledLibrary).s8z = function (functionDef) {
-  return this.i9e(Operator_init_$Create$_0(functionDef));
+protoOf(CompiledLibrary).t8z = function (functionDef) {
+  return this.o9e(Operator_init_$Create$_0(functionDef));
 };
-protoOf(CompiledLibrary).i9e = function (operator) {
-  return this.m8z_1.j9e(operator);
+protoOf(CompiledLibrary).o9e = function (operator) {
+  return this.n8z_1.p9e(operator);
 };
-protoOf(CompiledLibrary).n97 = function (conversion) {
+protoOf(CompiledLibrary).a98 = function (conversion) {
   // Inline function 'kotlin.require' call
-  if (!!conversion.o98_1) {
+  if (!!conversion.b99_1) {
     var message = 'Casting conversions cannot be registered as part of a library.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.o8z_1.e(conversion);
+  this.p8z_1.e(conversion);
 };
-protoOf(CompiledLibrary).x9a = function (identifier) {
-  if (this.l8z_1.o2(identifier)) {
-    return Companion_instance_14.k9e(identifier, this.l8z_1.q2(identifier));
+protoOf(CompiledLibrary).e9b = function (identifier) {
+  if (this.m8z_1.o2(identifier)) {
+    return Companion_instance_14.q9e(identifier, this.m8z_1.q2(identifier));
   }
   // Inline function 'kotlin.collections.filter' call
-  var tmp0 = this.l8z_1.t2();
+  var tmp0 = this.m8z_1.t2();
   // Inline function 'kotlin.collections.filterTo' call
   var destination = ArrayList_init_$Create$();
   var _iterator__ex2g4s = tmp0.g();
@@ -11825,38 +12057,38 @@ protoOf(CompiledLibrary).x9a = function (identifier) {
   var _iterator__ex2g4s_1 = destination_0.g();
   while (_iterator__ex2g4s_1.h()) {
     var item_0 = _iterator__ex2g4s_1.i();
-    var tmp$ret$6 = Companion_instance_14.l9e(identifier, item_0);
+    var tmp$ret$6 = Companion_instance_14.r9e(identifier, item_0);
     destination_1.e(tmp$ret$6);
   }
   var tmp0_elvis_lhs = firstOrNull(destination_1);
-  return tmp0_elvis_lhs == null ? Companion_instance_14.l9e(identifier, null) : tmp0_elvis_lhs;
+  return tmp0_elvis_lhs == null ? Companion_instance_14.r9e(identifier, null) : tmp0_elvis_lhs;
 };
-protoOf(CompiledLibrary).m9a = function (identifier) {
+protoOf(CompiledLibrary).t9a = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(UsingDef));
 };
-protoOf(CompiledLibrary).z98 = function (identifier) {
+protoOf(CompiledLibrary).m99 = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(IncludeDef));
 };
-protoOf(CompiledLibrary).s97 = function (identifier) {
+protoOf(CompiledLibrary).f98 = function (identifier) {
   var tmp;
   var tmp_0;
   if (!(identifier == null)) {
-    var tmp1_safe_receiver = this.k8z_1;
-    var tmp2_safe_receiver = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.r79_1;
-    tmp_0 = !((tmp2_safe_receiver == null ? null : tmp2_safe_receiver.a79()) == null);
+    var tmp1_safe_receiver = this.l8z_1;
+    var tmp2_safe_receiver = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.s79_1;
+    tmp_0 = !((tmp2_safe_receiver == null ? null : tmp2_safe_receiver.b79()) == null);
   } else {
     tmp_0 = false;
   }
   if (tmp_0) {
-    var libraryPath = Companion_instance_1.getPath(identifier.c8i_1, ensureNotNull(identifier.b8i_1));
-    var tmp0 = ensureNotNull(ensureNotNull(this.k8z_1).r79_1).a79();
+    var libraryPath = Companion_instance_1.getPath(identifier.d8i_1, ensureNotNull(identifier.c8i_1));
+    var tmp0 = ensureNotNull(ensureNotNull(this.l8z_1).s79_1).b79();
     var tmp$ret$1;
     $l$block: {
       // Inline function 'kotlin.collections.firstOrNull' call
       var _iterator__ex2g4s = tmp0.g();
       while (_iterator__ex2g4s.h()) {
         var element = _iterator__ex2g4s.i();
-        if (element.f72_1 === libraryPath) {
+        if (element.g72_1 === libraryPath) {
           tmp$ret$1 = element;
           break $l$block;
         }
@@ -11864,38 +12096,38 @@ protoOf(CompiledLibrary).s97 = function (identifier) {
       tmp$ret$1 = null;
     }
     var tmp0_safe_receiver = tmp$ret$1;
-    tmp = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.d72_1;
+    tmp = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.e72_1;
   } else {
     tmp = null;
   }
   return tmp;
 };
-protoOf(CompiledLibrary).g90 = function (identifier) {
+protoOf(CompiledLibrary).h90 = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(CodeSystemDef));
 };
-protoOf(CompiledLibrary).y9a = function (identifier) {
+protoOf(CompiledLibrary).f9b = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(ValueSetDef));
 };
-protoOf(CompiledLibrary).i90 = function (identifier) {
+protoOf(CompiledLibrary).j90 = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(CodeDef));
 };
-protoOf(CompiledLibrary).z9a = function (identifier) {
+protoOf(CompiledLibrary).g9b = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(ConceptDef));
 };
-protoOf(CompiledLibrary).a9b = function (identifier) {
+protoOf(CompiledLibrary).h9b = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(ParameterDef));
 };
-protoOf(CompiledLibrary).b9b = function (identifier) {
+protoOf(CompiledLibrary).i9b = function (identifier) {
   return resolveIdentifier_0(this, identifier, getKClass(ExpressionDef));
 };
-protoOf(CompiledLibrary).m9e = function (identifier) {
+protoOf(CompiledLibrary).s9e = function (identifier) {
   var results = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ensureNotNull(ensureNotNull(this.k8z_1).y79_1).a79().g();
+  var _iterator__ex2g4s = ensureNotNull(ensureNotNull(this.l8z_1).z79_1).b79().g();
   while (_iterator__ex2g4s.h()) {
     var ed = _iterator__ex2g4s.i();
     var tmp;
     if (ed instanceof FunctionDef) {
-      tmp = ed.c6w_1 === identifier;
+      tmp = ed.d6w_1 === identifier;
     } else {
       tmp = false;
     }
@@ -11905,36 +12137,36 @@ protoOf(CompiledLibrary).m9e = function (identifier) {
   }
   return results;
 };
-protoOf(CompiledLibrary).p8z = function (functionName, signature) {
+protoOf(CompiledLibrary).q8z = function (functionName, signature) {
   var tmp;
   if (signature == null) {
-    tmp = this.m9e(functionName);
+    tmp = this.s9e(functionName);
   } else {
-    var cc = new CallContext(ensureNotNull(this.j8z_1).b8i_1, functionName, false, false, false, signature);
-    var resolution = this.h98(cc, new ConversionMap());
+    var cc = new CallContext(ensureNotNull(this.k8z_1).c8i_1, functionName, false, false, false, signature);
+    var resolution = this.u98(cc, new ConversionMap());
     var results = ArrayList_init_$Create$();
     if (!(resolution == null)) {
-      results.e(resolution.t92_1.a8x_1);
+      results.e(resolution.u92_1.b8x_1);
     }
     tmp = results;
   }
   return tmp;
 };
-protoOf(CompiledLibrary).h98 = function (callContext, conversionMap) {
-  var resolution = this.m8z_1.n9e(callContext, conversionMap);
+protoOf(CompiledLibrary).u98 = function (callContext, conversionMap) {
+  var resolution = this.n8z_1.t9e(callContext, conversionMap);
   if (!(resolution == null)) {
-    if (callContext.e98_1 && !resolution.t92_1.c8x_1) {
-      resolution.w92_1 = getBooleanTag(this, 'allowFluent');
+    if (callContext.r98_1 && !resolution.u92_1.d8x_1) {
+      resolution.x92_1 = getBooleanTag(this, 'allowFluent');
     }
-    resolution.x92_1 = this.j8z_1;
+    resolution.y92_1 = this.k8z_1;
   }
   return resolution;
 };
-protoOf(CompiledLibrary).m97 = function () {
-  return this.o8z_1;
+protoOf(CompiledLibrary).z97 = function () {
+  return this.p8z_1;
 };
 function Conversion_init_$Init$(operator, isImplicit, $this) {
-  Conversion.call($this, Companion_instance_11.o9e(operator), Companion_instance_11.p9e(operator), isImplicit, null, operator);
+  Conversion.call($this, Companion_instance_11.u9e(operator), Companion_instance_11.v9e(operator), isImplicit, null, operator);
   return $this;
 }
 function Conversion_init_$Create$(operator, isImplicit) {
@@ -11942,7 +12174,7 @@ function Conversion_init_$Create$(operator, isImplicit) {
 }
 function Conversion_init_$Init$_0(fromType, toType, $this) {
   Conversion.call($this, fromType, toType, true);
-  $this.o98_1 = true;
+  $this.b99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_0(fromType, toType) {
@@ -11950,7 +12182,7 @@ function Conversion_init_$Create$_0(fromType, toType) {
 }
 function Conversion_init_$Init$_1(fromType, toType, choiceConversion, $this) {
   Conversion.call($this, fromType, toType, true, choiceConversion);
-  $this.o98_1 = true;
+  $this.b99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_1(fromType, toType, choiceConversion) {
@@ -11958,7 +12190,7 @@ function Conversion_init_$Create$_1(fromType, toType, choiceConversion) {
 }
 function Conversion_init_$Init$_2(fromType, toType, choiceConversion, $this) {
   Conversion.call($this, fromType, toType, true, choiceConversion);
-  $this.o98_1 = true;
+  $this.b99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_2(fromType, toType, choiceConversion) {
@@ -11966,7 +12198,7 @@ function Conversion_init_$Create$_2(fromType, toType, choiceConversion) {
 }
 function Conversion_init_$Init$_3(fromType, toType, elementConversion, $this) {
   Conversion.call($this, fromType, toType, true, elementConversion);
-  $this.p98_1 = true;
+  $this.c99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_3(fromType, toType, elementConversion) {
@@ -11974,7 +12206,7 @@ function Conversion_init_$Create$_3(fromType, toType, elementConversion) {
 }
 function Conversion_init_$Init$_4(fromType, toType, elementConversion, $this) {
   Conversion.call($this, fromType, toType, true, elementConversion);
-  $this.r98_1 = true;
+  $this.e99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_4(fromType, toType, elementConversion) {
@@ -11982,7 +12214,7 @@ function Conversion_init_$Create$_4(fromType, toType, elementConversion) {
 }
 function Conversion_init_$Init$_5(fromType, toType, elementConversion, $this) {
   Conversion.call($this, fromType, toType, true, elementConversion);
-  $this.q98_1 = true;
+  $this.d99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_5(fromType, toType, elementConversion) {
@@ -11990,7 +12222,7 @@ function Conversion_init_$Create$_5(fromType, toType, elementConversion) {
 }
 function Conversion_init_$Init$_6(fromType, toType, elementConversion, $this) {
   Conversion.call($this, fromType, toType, true, elementConversion);
-  $this.u98_1 = true;
+  $this.h99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_6(fromType, toType, elementConversion) {
@@ -11998,7 +12230,7 @@ function Conversion_init_$Create$_6(fromType, toType, elementConversion) {
 }
 function Conversion_init_$Init$_7(fromType, toType, elementConversion, $this) {
   Conversion.call($this, fromType, toType, true, elementConversion);
-  $this.t98_1 = true;
+  $this.g99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_7(fromType, toType, elementConversion) {
@@ -12006,7 +12238,7 @@ function Conversion_init_$Create$_7(fromType, toType, elementConversion) {
 }
 function Conversion_init_$Init$_8(fromType, toType, pointConversion, $this) {
   Conversion.call($this, fromType, toType, true, pointConversion);
-  $this.s98_1 = true;
+  $this.f99_1 = true;
   return $this;
 }
 function Conversion_init_$Create$_8(fromType, toType, pointConversion) {
@@ -12014,16 +12246,16 @@ function Conversion_init_$Create$_8(fromType, toType, pointConversion) {
 }
 function Companion_8() {
 }
-protoOf(Companion_8).o9e = function (operator) {
+protoOf(Companion_8).u9e = function (operator) {
   // Inline function 'kotlin.require' call
-  if (!(operator.y8w_1.h8z_1.j() === 1)) {
+  if (!(operator.z8w_1.i8z_1.j() === 1)) {
     var message = 'Conversion operator must be unary.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  return operator.y8w_1.h8z_1.o(0);
+  return operator.z8w_1.i8z_1.o(0);
 };
-protoOf(Companion_8).p9e = function (operator) {
-  var tmp0 = operator.z8w_1;
+protoOf(Companion_8).v9e = function (operator) {
+  var tmp0 = operator.a8x_1;
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (tmp0 == null) {
@@ -12033,7 +12265,7 @@ protoOf(Companion_8).p9e = function (operator) {
       break $l$block;
     }
   }
-  return ensureNotNull(operator.z8w_1);
+  return ensureNotNull(operator.a8x_1);
 };
 var Companion_instance_11;
 function Companion_getInstance_11() {
@@ -12043,103 +12275,103 @@ function Conversion(fromType, toType, isImplicit, conversion, operator) {
   isImplicit = isImplicit === VOID ? false : isImplicit;
   conversion = conversion === VOID ? null : conversion;
   operator = operator === VOID ? null : operator;
-  this.i98_1 = fromType;
-  this.j98_1 = toType;
-  this.k98_1 = isImplicit;
-  this.l98_1 = conversion;
-  this.m98_1 = operator;
+  this.v98_1 = fromType;
+  this.w98_1 = toType;
+  this.x98_1 = isImplicit;
+  this.y98_1 = conversion;
+  this.z98_1 = operator;
   var tmp = this;
   // Inline function 'kotlin.collections.mutableListOf' call
-  tmp.n98_1 = ArrayList_init_$Create$();
-  this.o98_1 = false;
-  this.p98_1 = false;
-  this.q98_1 = false;
-  this.r98_1 = false;
-  this.s98_1 = false;
-  this.t98_1 = false;
-  this.u98_1 = false;
+  tmp.a99_1 = ArrayList_init_$Create$();
+  this.b99_1 = false;
+  this.c99_1 = false;
+  this.d99_1 = false;
+  this.e99_1 = false;
+  this.f99_1 = false;
+  this.g99_1 = false;
+  this.h99_1 = false;
 }
-protoOf(Conversion).o9b = function () {
-  return this.n98_1;
+protoOf(Conversion).v9b = function () {
+  return this.a99_1;
 };
-protoOf(Conversion).p9b = function () {
+protoOf(Conversion).w9b = function () {
   // Inline function 'kotlin.collections.isNotEmpty' call
-  return !this.n98_1.q();
+  return !this.a99_1.q();
 };
-protoOf(Conversion).q9e = function (alternativeConversion) {
-  var tmp = this.i98_1;
+protoOf(Conversion).w9e = function (alternativeConversion) {
+  var tmp = this.v98_1;
   // Inline function 'kotlin.require' call
   if (!(tmp instanceof ChoiceType)) {
     var message = 'Alternative conversions can only be used with choice types';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.n98_1.e(alternativeConversion);
+  this.a99_1.e(alternativeConversion);
 };
-protoOf(Conversion).m9d = function () {
-  var tmp0_safe_receiver = this.l98_1;
-  var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.m9d();
+protoOf(Conversion).s9d = function () {
+  var tmp0_safe_receiver = this.y98_1;
+  var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.s9d();
   var nestedScore = tmp1_elvis_lhs == null ? 0 : tmp1_elvis_lhs;
   var tmp;
-  if (this.o98_1) {
-    tmp = ConversionScore_Cast_getInstance().y97_1 + nestedScore | 0;
+  if (this.b99_1) {
+    tmp = ConversionScore_Cast_getInstance().l98_1 + nestedScore | 0;
   } else {
-    if (this.u98_1) {
-      tmp = ConversionScore_IntervalDemotion_getInstance().y97_1 + nestedScore | 0;
+    if (this.h99_1) {
+      tmp = ConversionScore_IntervalDemotion_getInstance().l98_1 + nestedScore | 0;
     } else {
-      if (this.r98_1) {
-        tmp = ConversionScore_ListDemotion_getInstance().y97_1 + nestedScore | 0;
+      if (this.e99_1) {
+        tmp = ConversionScore_ListDemotion_getInstance().l98_1 + nestedScore | 0;
       } else {
-        if (this.t98_1) {
-          tmp = ConversionScore_IntervalPromotion_getInstance().y97_1 + nestedScore | 0;
+        if (this.g99_1) {
+          tmp = ConversionScore_IntervalPromotion_getInstance().l98_1 + nestedScore | 0;
         } else {
-          if (this.q98_1) {
-            tmp = ConversionScore_ListPromotion_getInstance().y97_1 + nestedScore | 0;
+          if (this.d99_1) {
+            tmp = ConversionScore_ListPromotion_getInstance().l98_1 + nestedScore | 0;
           } else {
             var tmp_0;
             var tmp_1;
-            if (this.p98_1) {
-              var tmp_2 = this.j98_1;
+            if (this.c99_1) {
+              var tmp_2 = this.w98_1;
               tmp_1 = tmp_2 instanceof ListType;
             } else {
               tmp_1 = false;
             }
             if (tmp_1) {
-              var tmp_3 = this.j98_1.d61_1;
+              var tmp_3 = this.w98_1.e61_1;
               tmp_0 = tmp_3 instanceof SimpleType;
             } else {
               tmp_0 = false;
             }
             if (tmp_0) {
-              tmp = ConversionScore_SimpleConversion_getInstance().y97_1 + nestedScore | 0;
+              tmp = ConversionScore_SimpleConversion_getInstance().l98_1 + nestedScore | 0;
             } else {
-              if (this.p98_1) {
-                tmp = ConversionScore_ComplexConversion_getInstance().y97_1 + nestedScore | 0;
+              if (this.c99_1) {
+                tmp = ConversionScore_ComplexConversion_getInstance().l98_1 + nestedScore | 0;
               } else {
                 var tmp_4;
                 var tmp_5;
-                if (this.s98_1) {
-                  var tmp_6 = this.j98_1;
+                if (this.f99_1) {
+                  var tmp_6 = this.w98_1;
                   tmp_5 = tmp_6 instanceof IntervalType;
                 } else {
                   tmp_5 = false;
                 }
                 if (tmp_5) {
-                  var tmp_7 = this.j98_1.g61_1;
+                  var tmp_7 = this.w98_1.h61_1;
                   tmp_4 = tmp_7 instanceof SimpleType;
                 } else {
                   tmp_4 = false;
                 }
                 if (tmp_4) {
-                  tmp = ConversionScore_SimpleConversion_getInstance().y97_1 + nestedScore | 0;
+                  tmp = ConversionScore_SimpleConversion_getInstance().l98_1 + nestedScore | 0;
                 } else {
-                  if (this.s98_1) {
-                    tmp = ConversionScore_ComplexConversion_getInstance().y97_1 + nestedScore | 0;
+                  if (this.f99_1) {
+                    tmp = ConversionScore_ComplexConversion_getInstance().l98_1 + nestedScore | 0;
                   } else {
-                    var tmp_8 = this.j98_1;
+                    var tmp_8 = this.w98_1;
                     if (tmp_8 instanceof ClassType) {
-                      tmp = ConversionScore_ComplexConversion_getInstance().y97_1 + nestedScore | 0;
+                      tmp = ConversionScore_ComplexConversion_getInstance().l98_1 + nestedScore | 0;
                     } else {
-                      tmp = ConversionScore_SimpleConversion_getInstance().y97_1 + nestedScore | 0;
+                      tmp = ConversionScore_SimpleConversion_getInstance().l98_1 + nestedScore | 0;
                     }
                   }
                 }
@@ -12152,8 +12384,8 @@ protoOf(Conversion).m9d = function () {
   }
   return tmp;
 };
-protoOf(Conversion).d60 = function () {
-  var tmp = this.m98_1;
+protoOf(Conversion).e60 = function () {
+  var tmp = this.z98_1;
   return tmp instanceof GenericOperator;
 };
 var TypePrecedenceScore_Simple_instance;
@@ -12204,11 +12436,11 @@ function ConversionScore_initEntries() {
 }
 function TypePrecedenceScore(name, ordinal, score) {
   Enum.call(this, name, ordinal);
-  this.t9e_1 = score;
+  this.z9e_1 = score;
 }
 function ConversionScore(name, ordinal, score) {
   Enum.call(this, name, ordinal);
-  this.y97_1 = score;
+  this.l98_1 = score;
 }
 function hasConversion($this, conversion, conversions) {
   var tmp$ret$0;
@@ -12227,7 +12459,7 @@ function hasConversion($this, conversion, conversions) {
     var _iterator__ex2g4s = conversions.g();
     while (_iterator__ex2g4s.h()) {
       var element = _iterator__ex2g4s.i();
-      if (equals(element.j98_1, conversion.j98_1)) {
+      if (equals(element.w98_1, conversion.w98_1)) {
         tmp$ret$0 = true;
         break $l$block_0;
       }
@@ -12239,39 +12471,39 @@ function hasConversion($this, conversion, conversions) {
 function getAllConversions($this, fromType) {
   var conversions = ArrayList_init_$Create$();
   var currentType = fromType;
-  while (!(currentType == null) && !equals(currentType, Companion_getInstance_1().v5z_1)) {
-    conversions.n($this.u9e(currentType));
-    currentType = currentType.u5z();
+  while (!(currentType == null) && !equals(currentType, Companion_getInstance_1().w5z_1)) {
+    conversions.n($this.a9f(currentType));
+    currentType = currentType.v5z();
   }
   return conversions;
 }
 function findCompatibleConversion($this, fromType, toType) {
-  if (fromType.z5z(toType)) {
+  if (fromType.a60(toType)) {
     return Conversion_init_$Create$_0(fromType, toType);
   }
   return null;
 }
 function findChoiceConversion($this, fromType, toType, allowPromotionAndDemotion, operatorMap) {
   var result = null;
-  var _iterator__ex2g4s = fromType.b60_1.g();
+  var _iterator__ex2g4s = fromType.c60_1.g();
   while (_iterator__ex2g4s.h()) {
     var choice = _iterator__ex2g4s.i();
-    var choiceConversion = $this.c9b(choice, toType, true, allowPromotionAndDemotion, operatorMap);
+    var choiceConversion = $this.j9b(choice, toType, true, allowPromotionAndDemotion, operatorMap);
     if (!(choiceConversion == null)) {
       if (result == null) {
         result = Conversion_init_$Create$_1(fromType, toType, choiceConversion);
       } else {
-        result.q9e(choiceConversion);
+        result.w9e(choiceConversion);
       }
     }
   }
   return result;
 }
 function findTargetChoiceConversion($this, fromType, toType, allowPromotionAndDemotion, operatorMap) {
-  var _iterator__ex2g4s = toType.b60_1.g();
+  var _iterator__ex2g4s = toType.c60_1.g();
   while (_iterator__ex2g4s.h()) {
     var choice = _iterator__ex2g4s.i();
-    var tmp0_safe_receiver = $this.c9b(fromType, choice, true, allowPromotionAndDemotion, operatorMap);
+    var tmp0_safe_receiver = $this.j9b(fromType, choice, true, allowPromotionAndDemotion, operatorMap);
     if (tmp0_safe_receiver == null)
       null;
     else {
@@ -12282,7 +12514,7 @@ function findTargetChoiceConversion($this, fromType, toType, allowPromotionAndDe
   return null;
 }
 function findListConversion($this, fromType, toType, operatorMap) {
-  var tmp0_safe_receiver = $this.c9b(fromType.d61_1, toType.d61_1, true, false, operatorMap);
+  var tmp0_safe_receiver = $this.j9b(fromType.e61_1, toType.e61_1, true, false, operatorMap);
   var tmp;
   if (tmp0_safe_receiver == null) {
     tmp = null;
@@ -12293,7 +12525,7 @@ function findListConversion($this, fromType, toType, operatorMap) {
   return tmp;
 }
 function findIntervalConversion($this, fromType, toType, operatorMap) {
-  var tmp0_safe_receiver = $this.c9b(fromType.g61_1, toType.g61_1, true, false, operatorMap);
+  var tmp0_safe_receiver = $this.j9b(fromType.h61_1, toType.h61_1, true, false, operatorMap);
   var tmp;
   if (tmp0_safe_receiver == null) {
     tmp = null;
@@ -12304,12 +12536,12 @@ function findIntervalConversion($this, fromType, toType, operatorMap) {
   return tmp;
 }
 function findListDemotion($this, fromType, toType, operatorMap) {
-  var elementType = fromType.d61_1;
+  var elementType = fromType.e61_1;
   var tmp;
-  if (elementType.x5z(toType)) {
+  if (elementType.y5z(toType)) {
     tmp = Conversion_init_$Create$_4(fromType, toType, null);
   } else {
-    var tmp0_safe_receiver = $this.c9b(elementType, toType, true, false, operatorMap);
+    var tmp0_safe_receiver = $this.j9b(elementType, toType, true, false, operatorMap);
     var tmp_0;
     if (tmp0_safe_receiver == null) {
       tmp_0 = null;
@@ -12323,10 +12555,10 @@ function findListDemotion($this, fromType, toType, operatorMap) {
 }
 function findListPromotion($this, fromType, toType, operatorMap) {
   var tmp;
-  if (fromType.x5z(toType.d61_1)) {
+  if (fromType.y5z(toType.e61_1)) {
     tmp = Conversion_init_$Create$_5(fromType, toType, null);
   } else {
-    var tmp0_safe_receiver = $this.c9b(fromType, toType.d61_1, true, false, operatorMap);
+    var tmp0_safe_receiver = $this.j9b(fromType, toType.e61_1, true, false, operatorMap);
     var tmp_0;
     if (tmp0_safe_receiver == null) {
       tmp_0 = null;
@@ -12339,12 +12571,12 @@ function findListPromotion($this, fromType, toType, operatorMap) {
   return tmp;
 }
 function findIntervalDemotion($this, fromType, toType, operatorMap) {
-  var pointType = fromType.g61_1;
+  var pointType = fromType.h61_1;
   var tmp;
-  if (pointType.x5z(toType)) {
+  if (pointType.y5z(toType)) {
     tmp = Conversion_init_$Create$_6(fromType, toType, null);
   } else {
-    var tmp0_safe_receiver = $this.c9b(pointType, toType, true, false, operatorMap);
+    var tmp0_safe_receiver = $this.j9b(pointType, toType, true, false, operatorMap);
     var tmp_0;
     if (tmp0_safe_receiver == null) {
       tmp_0 = null;
@@ -12358,10 +12590,10 @@ function findIntervalDemotion($this, fromType, toType, operatorMap) {
 }
 function findIntervalPromotion($this, fromType, toType, operatorMap) {
   var tmp;
-  if (fromType.x5z(toType.g61_1)) {
+  if (fromType.y5z(toType.h61_1)) {
     tmp = Conversion_init_$Create$_7(fromType, toType, null);
   } else {
-    var tmp0_safe_receiver = $this.c9b(fromType, toType.g61_1, true, false, operatorMap);
+    var tmp0_safe_receiver = $this.j9b(fromType, toType.h61_1, true, false, operatorMap);
     var tmp_0;
     if (tmp0_safe_receiver == null) {
       tmp_0 = null;
@@ -12375,17 +12607,17 @@ function findIntervalPromotion($this, fromType, toType, operatorMap) {
 }
 function ensureGenericConversionInstantiated($this, fromType, toType, isImplicit, operatorMap) {
   var operatorsInstantiated = false;
-  var _iterator__ex2g4s = $this.r8w_1.g();
+  var _iterator__ex2g4s = $this.s8w_1.g();
   while (_iterator__ex2g4s.h()) {
     var c = _iterator__ex2g4s.i();
-    if (!(c.m98_1 == null)) {
-      var tmp = c.m98_1;
-      var instantiationResult = (tmp instanceof GenericOperator ? tmp : THROW_CCE()).e9f(Signature_init_$Create$([fromType]), operatorMap, $this, false);
-      var operator = instantiationResult.g9f_1;
-      if (!(operator == null) && !operatorMap.j9e(operator)) {
-        operatorMap.h9e(operator);
+    if (!(c.z98_1 == null)) {
+      var tmp = c.z98_1;
+      var instantiationResult = (tmp instanceof GenericOperator ? tmp : THROW_CCE()).k9f(Signature_init_$Create$([fromType]), operatorMap, $this, false);
+      var operator = instantiationResult.m9f_1;
+      if (!(operator == null) && !operatorMap.p9e(operator)) {
+        operatorMap.n9e(operator);
         var conversion = Conversion_init_$Create$(operator, true);
-        $this.n97(conversion);
+        $this.a98(conversion);
         operatorsInstantiated = true;
       }
     }
@@ -12398,15 +12630,15 @@ function internalFindConversion($this, fromType, toType, isImplicit) {
   var _iterator__ex2g4s = getAllConversions($this, fromType).g();
   while (_iterator__ex2g4s.h()) {
     var conversion = _iterator__ex2g4s.i();
-    if ((!isImplicit || conversion.k98_1) && (conversion.j98_1.y5z(toType) || conversion.j98_1.d60())) {
-      var newScore = (equals(conversion.i98_1, fromType) ? 0 : conversion.i98_1.d60() ? 1 : 2) + (equals(conversion.j98_1, toType) ? 0 : conversion.j98_1.d60() ? 1 : 2) | 0;
+    if ((!isImplicit || conversion.x98_1) && (conversion.w98_1.z5z(toType) || conversion.w98_1.e60())) {
+      var newScore = (equals(conversion.v98_1, fromType) ? 0 : conversion.v98_1.e60() ? 1 : 2) + (equals(conversion.w98_1, toType) ? 0 : conversion.w98_1.e60() ? 1 : 2) | 0;
       if (newScore < score) {
         result = conversion;
         score = newScore;
       } else {
         // Inline function 'kotlin.require' call
         if (!!(newScore === score)) {
-          var message = 'Ambiguous implicit conversion from ' + toString(fromType) + ' to ' + toString(ensureNotNull(result).j98_1) + ' or ' + toString(conversion.j98_1) + '.';
+          var message = 'Ambiguous implicit conversion from ' + toString(fromType) + ' to ' + toString(ensureNotNull(result).w98_1) + ' or ' + toString(conversion.w98_1) + '.';
           throw IllegalArgumentException_init_$Create$(toString(message));
         }
       }
@@ -12416,34 +12648,34 @@ function internalFindConversion($this, fromType, toType, isImplicit) {
 }
 function Companion_9() {
 }
-protoOf(Companion_9).z97 = function (operand) {
+protoOf(Companion_9).m98 = function (operand) {
   switch (getKClassFromExpression(operand).lb()) {
     case 'SimpleType':
-      return TypePrecedenceScore_Simple_getInstance().t9e_1;
+      return TypePrecedenceScore_Simple_getInstance().z9e_1;
     case 'TupleType':
-      return TypePrecedenceScore_Tuple_getInstance().t9e_1;
+      return TypePrecedenceScore_Tuple_getInstance().z9e_1;
     case 'ClassType':
-      return TypePrecedenceScore_Class_getInstance().t9e_1;
+      return TypePrecedenceScore_Class_getInstance().z9e_1;
     case 'IntervalType':
-      return TypePrecedenceScore_Interval_getInstance().t9e_1;
+      return TypePrecedenceScore_Interval_getInstance().z9e_1;
     case 'ListType':
-      return TypePrecedenceScore_List_getInstance().t9e_1;
+      return TypePrecedenceScore_List_getInstance().z9e_1;
     case 'ChoiceType':
-      return TypePrecedenceScore_Choice_getInstance().t9e_1;
+      return TypePrecedenceScore_Choice_getInstance().z9e_1;
     default:
-      return TypePrecedenceScore_Other_getInstance().t9e_1;
+      return TypePrecedenceScore_Other_getInstance().z9e_1;
   }
 };
-protoOf(Companion_9).i9f = function (callOperand, operand, conversion) {
+protoOf(Companion_9).o9f = function (callOperand, operand, conversion) {
   var tmp;
   if (equals(operand, callOperand)) {
-    tmp = ConversionScore_ExactMatch_getInstance().y97_1;
-  } else if (operand.y5z(callOperand)) {
-    tmp = ConversionScore_SubType_getInstance().y97_1;
-  } else if (callOperand.z5z(operand)) {
-    tmp = ConversionScore_Compatible_getInstance().y97_1;
+    tmp = ConversionScore_ExactMatch_getInstance().l98_1;
+  } else if (operand.z5z(callOperand)) {
+    tmp = ConversionScore_SubType_getInstance().l98_1;
+  } else if (callOperand.a60(operand)) {
+    tmp = ConversionScore_Compatible_getInstance().l98_1;
   } else if (!(conversion == null)) {
-    tmp = conversion.m9d();
+    tmp = conversion.s9d();
   } else {
     throw IllegalArgumentException_init_$Create$('Could not determine conversion score for conversion');
   }
@@ -12522,22 +12754,22 @@ function ConversionScore_ListPromotion_getInstance() {
   return ConversionScore_ListPromotion_instance;
 }
 function ConversionMap() {
-  this.q8w_1 = HashMap_init_$Create$();
-  this.r8w_1 = ArrayList_init_$Create$();
-  this.s8w_1 = true;
+  this.r8w_1 = HashMap_init_$Create$();
+  this.s8w_1 = ArrayList_init_$Create$();
   this.t8w_1 = true;
-  this.u8w_1 = false;
+  this.u8w_1 = true;
   this.v8w_1 = false;
+  this.w8w_1 = false;
 }
-protoOf(ConversionMap).w8w = function (fromType, toType) {
-  var tmp0 = this.u9e(fromType);
+protoOf(ConversionMap).x8w = function (fromType, toType) {
+  var tmp0 = this.a9f(fromType);
   var tmp$ret$1;
   $l$block: {
     // Inline function 'kotlin.collections.firstOrNull' call
     var _iterator__ex2g4s = tmp0.g();
     while (_iterator__ex2g4s.h()) {
       var element = _iterator__ex2g4s.i();
-      if (equals(element.j98_1, toType)) {
+      if (equals(element.w98_1, toType)) {
         tmp$ret$1 = element;
         break $l$block;
       }
@@ -12545,30 +12777,30 @@ protoOf(ConversionMap).w8w = function (fromType, toType) {
     tmp$ret$1 = null;
   }
   var tmp0_safe_receiver = tmp$ret$1;
-  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.m98_1;
+  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.z98_1;
 };
-protoOf(ConversionMap).n97 = function (conversion) {
-  if (conversion.d60()) {
-    var conversions = this.r8w_1;
+protoOf(ConversionMap).a98 = function (conversion) {
+  if (conversion.e60()) {
+    var conversions = this.s8w_1;
     // Inline function 'kotlin.check' call
     if (!!hasConversion(this, conversion, conversions)) {
-      var message = 'Conversion from ' + toString(conversion.i98_1) + ' to ' + toString(conversion.j98_1) + ' is already defined.';
+      var message = 'Conversion from ' + toString(conversion.v98_1) + ' to ' + toString(conversion.w98_1) + ' is already defined.';
       throw IllegalStateException_init_$Create$(toString(message));
     }
     conversions.e(conversion);
   } else {
-    var conversions_0 = this.u9e(conversion.i98_1);
+    var conversions_0 = this.a9f(conversion.v98_1);
     // Inline function 'kotlin.check' call
     if (!!hasConversion(this, conversion, conversions_0)) {
-      var message_0 = 'Conversion from ' + toString(conversion.i98_1) + ' to ' + toString(conversion.j98_1) + ' is already defined.';
+      var message_0 = 'Conversion from ' + toString(conversion.v98_1) + ' to ' + toString(conversion.w98_1) + ' is already defined.';
       throw IllegalStateException_init_$Create$(toString(message_0));
     }
     conversions_0.e(conversion);
   }
 };
-protoOf(ConversionMap).u9e = function (fromType) {
+protoOf(ConversionMap).a9f = function (fromType) {
   // Inline function 'kotlin.collections.getOrPut' call
-  var this_0 = this.q8w_1;
+  var this_0 = this.r8w_1;
   var value = this_0.q2(fromType);
   var tmp;
   if (value == null) {
@@ -12580,7 +12812,7 @@ protoOf(ConversionMap).u9e = function (fromType) {
   }
   return tmp;
 };
-protoOf(ConversionMap).c9b = function (fromType, toType, isImplicit, allowPromotionAndDemotion, operatorMap) {
+protoOf(ConversionMap).j9b = function (fromType, toType, isImplicit, allowPromotionAndDemotion, operatorMap) {
   var tmp0_elvis_lhs = findCompatibleConversion(this, fromType, toType);
   var result = tmp0_elvis_lhs == null ? internalFindConversion(this, fromType, toType, isImplicit) : tmp0_elvis_lhs;
   if (result == null && ensureGenericConversionInstantiated(this, fromType, toType, isImplicit, operatorMap)) {
@@ -12596,7 +12828,7 @@ protoOf(ConversionMap).c9b = function (fromType, toType, isImplicit, allowPromot
       tmp_1 = false;
     }
     if (tmp_1) {
-      tmp_0 = allowPromotionAndDemotion || this.s8w_1;
+      tmp_0 = allowPromotionAndDemotion || this.t8w_1;
     } else {
       tmp_0 = false;
     }
@@ -12611,7 +12843,7 @@ protoOf(ConversionMap).c9b = function (fromType, toType, isImplicit, allowPromot
         tmp_3 = false;
       }
       if (tmp_3) {
-        tmp_2 = allowPromotionAndDemotion || this.t8w_1;
+        tmp_2 = allowPromotionAndDemotion || this.u8w_1;
       } else {
         tmp_2 = false;
       }
@@ -12626,7 +12858,7 @@ protoOf(ConversionMap).c9b = function (fromType, toType, isImplicit, allowPromot
           tmp_5 = false;
         }
         if (tmp_5) {
-          tmp_4 = allowPromotionAndDemotion || this.u8w_1;
+          tmp_4 = allowPromotionAndDemotion || this.v8w_1;
         } else {
           tmp_4 = false;
         }
@@ -12641,7 +12873,7 @@ protoOf(ConversionMap).c9b = function (fromType, toType, isImplicit, allowPromot
             tmp_7 = false;
           }
           if (tmp_7) {
-            tmp_6 = allowPromotionAndDemotion || this.v8w_1;
+            tmp_6 = allowPromotionAndDemotion || this.w8w_1;
           } else {
             tmp_6 = false;
           }
@@ -12701,18 +12933,18 @@ function FunctionHeader_init_$Create$(functionDef) {
 function FunctionHeader$mangledName$delegate$lambda(this$0) {
   return function () {
     var sb = StringBuilder_init_$Create$();
-    sb.j9(this$0.d8z_1.c6w_1);
+    sb.j9(this$0.e8z_1.d6w_1);
     sb.j9('_');
-    var _iterator__ex2g4s = this$0.d8z_1.o67().g();
+    var _iterator__ex2g4s = this$0.e8z_1.p67().g();
     while (_iterator__ex2g4s.h()) {
       var od = _iterator__ex2g4s.i();
       var tmp;
-      var tmp_0 = od.x7q_1;
+      var tmp_0 = od.y7q_1;
       if (tmp_0 instanceof NamedTypeSpecifier) {
-        var tmp_1 = od.x7q_1;
-        tmp = (tmp_1 instanceof NamedTypeSpecifier ? tmp_1 : THROW_CCE()).b7g_1;
+        var tmp_1 = od.y7q_1;
+        tmp = (tmp_1 instanceof NamedTypeSpecifier ? tmp_1 : THROW_CCE()).c7g_1;
       } else {
-        tmp = toString_0(od.x7q_1);
+        tmp = toString_0(od.y7q_1);
       }
       sb.i9(tmp);
     }
@@ -12722,29 +12954,29 @@ function FunctionHeader$mangledName$delegate$lambda(this$0) {
 }
 function FunctionHeader$_get_mangledName_$ref_5w5ze0() {
   return function (p0) {
-    return p0.t8z();
+    return p0.u8z();
   };
 }
 function FunctionHeader(functionDef, resultType) {
-  this.d8z_1 = functionDef;
-  this.e8z_1 = resultType;
-  this.f8z_1 = false;
+  this.e8z_1 = functionDef;
+  this.f8z_1 = resultType;
+  this.g8z_1 = false;
   var tmp = this;
-  tmp.g8z_1 = lazy_0(FunctionHeader$mangledName$delegate$lambda(this));
+  tmp.h8z_1 = lazy_0(FunctionHeader$mangledName$delegate$lambda(this));
 }
-protoOf(FunctionHeader).t8z = function () {
-  var tmp0 = this.g8z_1;
+protoOf(FunctionHeader).u8z = function () {
+  var tmp0 = this.h8z_1;
   var tmp = KProperty1;
   // Inline function 'kotlin.getValue' call
   getPropertyCallableRef('mangledName', 1, tmp, FunctionHeader$_get_mangledName_$ref_5w5ze0(), null);
   return tmp0.n2();
 };
 protoOf(FunctionHeader).toString = function () {
-  return joinToString(listOf(['functionDef=' + toString(this.d8z_1), 'resultType=' + toString_0(this.e8z_1)]), ', ', plus(getKClass(FunctionHeader).lb(), '['), ']');
+  return joinToString(listOf(['functionDef=' + toString(this.e8z_1), 'resultType=' + toString_0(this.f8z_1)]), ', ', plus(getKClass(FunctionHeader).lb(), '['), ']');
 };
 protoOf(FunctionHeader).hashCode = function () {
-  var result = this.d8z_1.hashCode();
-  result = imul(result, 31) + (this.e8z_1 == null ? 0 : this.e8z_1.hashCode()) | 0;
+  var result = this.e8z_1.hashCode();
+  result = imul(result, 31) + (this.f8z_1 == null ? 0 : this.f8z_1.hashCode()) | 0;
   return result;
 };
 protoOf(FunctionHeader).equals = function (other) {
@@ -12753,9 +12985,9 @@ protoOf(FunctionHeader).equals = function (other) {
   if (!(other instanceof FunctionHeader))
     return false;
   var tmp0_other_with_cast = other instanceof FunctionHeader ? other : THROW_CCE();
-  if (!this.d8z_1.equals(tmp0_other_with_cast.d8z_1))
+  if (!this.e8z_1.equals(tmp0_other_with_cast.e8z_1))
     return false;
-  if (!equals(this.e8z_1, tmp0_other_with_cast.e8z_1))
+  if (!equals(this.f8z_1, tmp0_other_with_cast.f8z_1))
     return false;
   return true;
 };
@@ -12768,7 +13000,7 @@ function GenericOperator_init_$Create$(name, signature, resultType, typeParamete
 }
 function instantiate($this, callSignature, parameters, operatorMap, conversionMap, allowPromotionAndDemotion) {
   var typeMap = HashMap_init_$Create$();
-  var _iterator__ex2g4s = $this.d9f_1.g();
+  var _iterator__ex2g4s = $this.j9f_1.g();
   while (_iterator__ex2g4s.h()) {
     var p = _iterator__ex2g4s.i();
     // Inline function 'kotlin.collections.set' call
@@ -12778,69 +13010,69 @@ function instantiate($this, callSignature, parameters, operatorMap, conversionMa
     typeMap.w2(parameters);
   }
   var context = new InstantiationContextImpl(typeMap, operatorMap, conversionMap, allowPromotionAndDemotion);
-  var instantiable = $this.y8w_1.j9f(callSignature, context);
+  var instantiable = $this.z8w_1.p9f(callSignature, context);
   if (instantiable) {
-    var result = Operator_init_$Create$($this.x8w_1, $this.y8w_1.f60(context), ensureNotNull($this.z8w_1).f60(context));
-    result.b8x_1 = $this.b8x_1;
-    result.e8x_1 = $this.e8x_1;
-    return new InstantiationResult($this, result, context.o9f_1);
+    var result = Operator_init_$Create$($this.y8w_1, $this.z8w_1.g60(context), ensureNotNull($this.a8x_1).g60(context));
+    result.c8x_1 = $this.c8x_1;
+    result.f8x_1 = $this.f8x_1;
+    return new InstantiationResult($this, result, context.u9f_1);
   }
-  return new InstantiationResult($this, null, context.o9f_1);
+  return new InstantiationResult($this, null, context.u9f_1);
 }
 function GenericOperator(name, signature, resultType, typeParameters) {
   Operator_init_$Init$(name, signature, resultType, this);
-  this.d9f_1 = typeParameters;
+  this.j9f_1 = typeParameters;
 }
-protoOf(GenericOperator).e9f = function (callSignature, operatorMap, conversionMap, allowPromotionAndDemotion) {
+protoOf(GenericOperator).k9f = function (callSignature, operatorMap, conversionMap, allowPromotionAndDemotion) {
   return instantiate(this, callSignature, null, operatorMap, conversionMap, allowPromotionAndDemotion);
 };
 function InstantiationContextImpl(typeMap, operatorMap, conversionMap, allowPromotionAndDemotion) {
-  this.k9f_1 = typeMap;
-  this.l9f_1 = operatorMap;
-  this.m9f_1 = conversionMap;
-  this.n9f_1 = allowPromotionAndDemotion;
-  this.o9f_1 = 0;
+  this.q9f_1 = typeMap;
+  this.r9f_1 = operatorMap;
+  this.s9f_1 = conversionMap;
+  this.t9f_1 = allowPromotionAndDemotion;
+  this.u9f_1 = 0;
 }
-protoOf(InstantiationContextImpl).v63 = function (parameter, callType) {
-  var boundType = this.k9f_1.q2(parameter);
+protoOf(InstantiationContextImpl).w63 = function (parameter, callType) {
+  var boundType = this.q9f_1.q2(parameter);
   if (boundType == null) {
     var tmp;
-    if (parameter.u63(callType)) {
+    if (parameter.v63(callType)) {
       // Inline function 'kotlin.collections.set' call
-      this.k9f_1.u2(parameter, callType);
+      this.q9f_1.u2(parameter, callType);
       tmp = true;
     } else {
       tmp = false;
     }
     return tmp;
   } else {
-    if (boundType.y5z(callType) || callType.z5z(boundType)) {
+    if (boundType.z5z(callType) || callType.a60(boundType)) {
       return true;
-    } else if (callType.y5z(boundType) || boundType.z5z(callType)) {
+    } else if (callType.z5z(boundType) || boundType.a60(callType)) {
       var tmp_0;
-      if (parameter.u63(callType)) {
+      if (parameter.v63(callType)) {
         // Inline function 'kotlin.collections.set' call
-        this.k9f_1.u2(parameter, callType);
+        this.q9f_1.u2(parameter, callType);
         tmp_0 = true;
       } else {
         tmp_0 = false;
       }
       return tmp_0;
     } else {
-      var conversion = this.m9f_1.c9b(callType, boundType, true, this.n9f_1, this.l9f_1);
+      var conversion = this.s9f_1.j9b(callType, boundType, true, this.t9f_1, this.r9f_1);
       if (!(conversion == null)) {
         var tmp_1;
         if (boundType instanceof ListType) {
-          tmp_1 = boundType.d61_1.y5z(callType) || callType.z5z(boundType.d61_1);
+          tmp_1 = boundType.e61_1.z5z(callType) || callType.a60(boundType.e61_1);
         } else {
           tmp_1 = false;
         }
         if (tmp_1) {
           var tmp_2;
-          if (parameter.u63(callType)) {
+          if (parameter.v63(callType)) {
             // Inline function 'kotlin.collections.set' call
-            this.k9f_1.u2(parameter, callType);
-            this.o9f_1 = this.o9f_1 - ConversionScore_ListPromotion_getInstance().y97_1 | 0;
+            this.q9f_1.u2(parameter, callType);
+            this.u9f_1 = this.u9f_1 - ConversionScore_ListPromotion_getInstance().l98_1 | 0;
             tmp_2 = true;
           } else {
             tmp_2 = false;
@@ -12849,22 +13081,22 @@ protoOf(InstantiationContextImpl).v63 = function (parameter, callType) {
         }
         return true;
       }
-      conversion = this.m9f_1.c9b(boundType, callType, true, this.n9f_1, this.l9f_1);
+      conversion = this.s9f_1.j9b(boundType, callType, true, this.t9f_1, this.r9f_1);
       if (!(conversion == null)) {
         var tmp_3;
-        if (parameter.u63(callType)) {
+        if (parameter.v63(callType)) {
           // Inline function 'kotlin.collections.set' call
-          this.k9f_1.u2(parameter, callType);
+          this.q9f_1.u2(parameter, callType);
           var tmp_4 = this;
-          var tmp_5 = this.o9f_1;
+          var tmp_5 = this.u9f_1;
           var tmp_6;
-          var tmp_7 = conversion.j98_1;
+          var tmp_7 = conversion.w98_1;
           if (tmp_7 instanceof SimpleType) {
-            tmp_6 = ConversionScore_SimpleConversion_getInstance().y97_1;
+            tmp_6 = ConversionScore_SimpleConversion_getInstance().l98_1;
           } else {
-            tmp_6 = ConversionScore_ComplexConversion_getInstance().y97_1;
+            tmp_6 = ConversionScore_ComplexConversion_getInstance().l98_1;
           }
-          tmp_4.o9f_1 = tmp_5 - tmp_6 | 0;
+          tmp_4.u9f_1 = tmp_5 - tmp_6 | 0;
           tmp_3 = true;
         } else {
           tmp_3 = false;
@@ -12875,48 +13107,48 @@ protoOf(InstantiationContextImpl).v63 = function (parameter, callType) {
   }
   return false;
 };
-protoOf(InstantiationContextImpl).w63 = function (parameter) {
-  var tmp0_elvis_lhs = this.k9f_1.q2(parameter);
+protoOf(InstantiationContextImpl).x63 = function (parameter) {
+  var tmp0_elvis_lhs = this.q9f_1.q2(parameter);
   var tmp;
   if (tmp0_elvis_lhs == null) {
-    throw IllegalArgumentException_init_$Create$('Could not resolve type parameter ' + parameter.z61_1 + '.');
+    throw IllegalArgumentException_init_$Create$('Could not resolve type parameter ' + parameter.a62_1 + '.');
   } else {
     tmp = tmp0_elvis_lhs;
   }
   var result = tmp;
   return result;
 };
-protoOf(InstantiationContextImpl).o62 = function (callType) {
+protoOf(InstantiationContextImpl).p62 = function (callType) {
   var results = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = this.m9f_1.u9e(callType).g();
+  var _iterator__ex2g4s = this.s9f_1.a9f(callType).g();
   while (_iterator__ex2g4s.h()) {
     var c = _iterator__ex2g4s.i();
-    var tmp = c.j98_1;
+    var tmp = c.w98_1;
     if (tmp instanceof IntervalType) {
-      results.e(c.j98_1);
-      this.o9f_1 = this.o9f_1 + ConversionScore_ComplexConversion_getInstance().y97_1 | 0;
+      results.e(c.w98_1);
+      this.u9f_1 = this.u9f_1 + ConversionScore_ComplexConversion_getInstance().l98_1 | 0;
     }
   }
   if (results.q()) {
-    var _iterator__ex2g4s_0 = this.m9f_1.r8w_1.g();
+    var _iterator__ex2g4s_0 = this.s9f_1.s8w_1.g();
     while (_iterator__ex2g4s_0.h()) {
       var c_0 = _iterator__ex2g4s_0.i();
       var tmp_0;
-      if (!(c_0.m98_1 == null)) {
-        var tmp_1 = c_0.j98_1;
+      if (!(c_0.z98_1 == null)) {
+        var tmp_1 = c_0.w98_1;
         tmp_0 = tmp_1 instanceof IntervalType;
       } else {
         tmp_0 = false;
       }
       if (tmp_0) {
-        var tmp_2 = c_0.m98_1;
-        var instantiationResult = (tmp_2 instanceof GenericOperator ? tmp_2 : THROW_CCE()).e9f(Signature_init_$Create$([callType]), this.l9f_1, this.m9f_1, false);
-        var operator = instantiationResult.g9f_1;
+        var tmp_2 = c_0.z98_1;
+        var instantiationResult = (tmp_2 instanceof GenericOperator ? tmp_2 : THROW_CCE()).k9f(Signature_init_$Create$([callType]), this.r9f_1, this.s9f_1, false);
+        var operator = instantiationResult.m9f_1;
         if (!(operator == null)) {
-          this.l9f_1.h9e(operator);
+          this.r9f_1.n9e(operator);
           var conversion = Conversion_init_$Create$(operator, true);
-          this.m9f_1.n97(conversion);
-          var tmp_3 = conversion.j98_1;
+          this.s9f_1.a98(conversion);
+          var tmp_3 = conversion.w98_1;
           results.e(tmp_3 instanceof IntervalType ? tmp_3 : THROW_CCE());
         }
       }
@@ -12931,52 +13163,52 @@ protoOf(InstantiationContextImpl).o62 = function (callType) {
     tmp_6 = false;
   }
   if (tmp_6) {
-    tmp_5 = this.l9f_1.p9f(callType);
+    tmp_5 = this.r9f_1.v9f(callType);
   } else {
     tmp_5 = false;
   }
   if (tmp_5) {
-    tmp_4 = this.n9f_1 || this.m9f_1.v8w_1;
+    tmp_4 = this.t9f_1 || this.s9f_1.w8w_1;
   } else {
     tmp_4 = false;
   }
   if (tmp_4) {
     results.e(new IntervalType(callType));
-    this.o9f_1 = this.o9f_1 + ConversionScore_IntervalPromotion_getInstance().y97_1 | 0;
+    this.u9f_1 = this.u9f_1 + ConversionScore_IntervalPromotion_getInstance().l98_1 | 0;
   }
   return results;
 };
-protoOf(InstantiationContextImpl).p62 = function (callType) {
+protoOf(InstantiationContextImpl).q62 = function (callType) {
   var results = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = this.m9f_1.u9e(callType).g();
+  var _iterator__ex2g4s = this.s9f_1.a9f(callType).g();
   while (_iterator__ex2g4s.h()) {
     var c = _iterator__ex2g4s.i();
-    var tmp = c.j98_1;
+    var tmp = c.w98_1;
     if (tmp instanceof ListType) {
-      results.e(c.j98_1);
-      this.o9f_1 = this.o9f_1 + ConversionScore_ComplexConversion_getInstance().y97_1 | 0;
+      results.e(c.w98_1);
+      this.u9f_1 = this.u9f_1 + ConversionScore_ComplexConversion_getInstance().l98_1 | 0;
     }
   }
   if (results.q()) {
-    var _iterator__ex2g4s_0 = this.m9f_1.r8w_1.g();
+    var _iterator__ex2g4s_0 = this.s9f_1.s8w_1.g();
     while (_iterator__ex2g4s_0.h()) {
       var c_0 = _iterator__ex2g4s_0.i();
       var tmp_0;
-      if (!(c_0.m98_1 == null)) {
-        var tmp_1 = c_0.j98_1;
+      if (!(c_0.z98_1 == null)) {
+        var tmp_1 = c_0.w98_1;
         tmp_0 = tmp_1 instanceof ListType;
       } else {
         tmp_0 = false;
       }
       if (tmp_0) {
-        var tmp_2 = c_0.m98_1;
-        var instantiationResult = (tmp_2 instanceof GenericOperator ? tmp_2 : THROW_CCE()).e9f(Signature_init_$Create$([callType]), this.l9f_1, this.m9f_1, false);
-        var operator = instantiationResult.g9f_1;
+        var tmp_2 = c_0.z98_1;
+        var instantiationResult = (tmp_2 instanceof GenericOperator ? tmp_2 : THROW_CCE()).k9f(Signature_init_$Create$([callType]), this.r9f_1, this.s9f_1, false);
+        var operator = instantiationResult.m9f_1;
         if (!(operator == null)) {
-          this.l9f_1.h9e(operator);
+          this.r9f_1.n9e(operator);
           var conversion = Conversion_init_$Create$(operator, true);
-          this.m9f_1.n97(conversion);
-          var tmp_3 = conversion.j98_1;
+          this.s9f_1.a98(conversion);
+          var tmp_3 = conversion.w98_1;
           results.e(tmp_3 instanceof ListType ? tmp_3 : THROW_CCE());
         }
       }
@@ -12990,47 +13222,47 @@ protoOf(InstantiationContextImpl).p62 = function (callType) {
     tmp_5 = false;
   }
   if (tmp_5) {
-    tmp_4 = this.n9f_1 || this.m9f_1.t8w_1;
+    tmp_4 = this.t9f_1 || this.s9f_1.u8w_1;
   } else {
     tmp_4 = false;
   }
   if (tmp_4) {
     results.e(new ListType(callType));
-    this.o9f_1 = this.o9f_1 + ConversionScore_ListPromotion_getInstance().y97_1 | 0;
+    this.u9f_1 = this.u9f_1 + ConversionScore_ListPromotion_getInstance().l98_1 | 0;
   }
   return results;
 };
-protoOf(InstantiationContextImpl).m63 = function (callType) {
+protoOf(InstantiationContextImpl).n63 = function (callType) {
   var results = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = this.m9f_1.u9e(callType).g();
+  var _iterator__ex2g4s = this.s9f_1.a9f(callType).g();
   while (_iterator__ex2g4s.h()) {
     var c = _iterator__ex2g4s.i();
-    var tmp = c.j98_1;
+    var tmp = c.w98_1;
     if (tmp instanceof SimpleType) {
-      results.e(c.j98_1);
-      this.o9f_1 = this.o9f_1 + ConversionScore_SimpleConversion_getInstance().y97_1 | 0;
+      results.e(c.w98_1);
+      this.u9f_1 = this.u9f_1 + ConversionScore_SimpleConversion_getInstance().l98_1 | 0;
     }
   }
   if (results.q()) {
-    var _iterator__ex2g4s_0 = this.m9f_1.r8w_1.g();
+    var _iterator__ex2g4s_0 = this.s9f_1.s8w_1.g();
     while (_iterator__ex2g4s_0.h()) {
       var c_0 = _iterator__ex2g4s_0.i();
       var tmp_0;
-      if (!(c_0.m98_1 == null)) {
-        var tmp_1 = c_0.j98_1;
+      if (!(c_0.z98_1 == null)) {
+        var tmp_1 = c_0.w98_1;
         tmp_0 = tmp_1 instanceof SimpleType;
       } else {
         tmp_0 = false;
       }
       if (tmp_0) {
-        var tmp_2 = c_0.m98_1;
-        var instantiationResult = (tmp_2 instanceof GenericOperator ? tmp_2 : THROW_CCE()).e9f(Signature_init_$Create$([callType]), this.l9f_1, this.m9f_1, false);
-        var operator = instantiationResult.g9f_1;
+        var tmp_2 = c_0.z98_1;
+        var instantiationResult = (tmp_2 instanceof GenericOperator ? tmp_2 : THROW_CCE()).k9f(Signature_init_$Create$([callType]), this.r9f_1, this.s9f_1, false);
+        var operator = instantiationResult.m9f_1;
         if (!(operator == null)) {
-          this.l9f_1.h9e(operator);
+          this.r9f_1.n9e(operator);
           var conversion = Conversion_init_$Create$(operator, true);
-          this.m9f_1.n97(conversion);
-          var tmp_3 = conversion.j98_1;
+          this.s9f_1.a98(conversion);
+          var tmp_3 = conversion.w98_1;
           results.e(tmp_3 instanceof SimpleType ? tmp_3 : THROW_CCE());
         }
       }
@@ -13045,20 +13277,20 @@ protoOf(InstantiationContextImpl).m63 = function (callType) {
     tmp_6 = false;
   }
   if (tmp_6) {
-    var tmp_7 = callType.g61_1;
+    var tmp_7 = callType.h61_1;
     tmp_5 = tmp_7 instanceof SimpleType;
   } else {
     tmp_5 = false;
   }
   if (tmp_5) {
-    tmp_4 = this.n9f_1 || this.m9f_1.u8w_1;
+    tmp_4 = this.t9f_1 || this.s9f_1.v8w_1;
   } else {
     tmp_4 = false;
   }
   if (tmp_4) {
-    var tmp_8 = callType.g61_1;
+    var tmp_8 = callType.h61_1;
     results.e(tmp_8 instanceof SimpleType ? tmp_8 : THROW_CCE());
-    this.o9f_1 = this.o9f_1 + ConversionScore_IntervalDemotion_getInstance().y97_1 | 0;
+    this.u9f_1 = this.u9f_1 + ConversionScore_IntervalDemotion_getInstance().l98_1 | 0;
   }
   var tmp_9;
   var tmp_10;
@@ -13069,35 +13301,35 @@ protoOf(InstantiationContextImpl).m63 = function (callType) {
     tmp_11 = false;
   }
   if (tmp_11) {
-    var tmp_12 = callType.d61_1;
+    var tmp_12 = callType.e61_1;
     tmp_10 = tmp_12 instanceof SimpleType;
   } else {
     tmp_10 = false;
   }
   if (tmp_10) {
-    tmp_9 = this.n9f_1 || this.m9f_1.s8w_1;
+    tmp_9 = this.t9f_1 || this.s9f_1.t8w_1;
   } else {
     tmp_9 = false;
   }
   if (tmp_9) {
-    var tmp_13 = callType.d61_1;
+    var tmp_13 = callType.e61_1;
     results.e(tmp_13 instanceof SimpleType ? tmp_13 : THROW_CCE());
-    this.o9f_1 = this.o9f_1 + ConversionScore_ListDemotion_getInstance().y97_1 | 0;
+    this.u9f_1 = this.u9f_1 + ConversionScore_ListDemotion_getInstance().l98_1 | 0;
   }
   return results;
 };
 function InstantiationResult(genericOperator, operator, conversionScore) {
-  this.f9f_1 = genericOperator;
-  this.g9f_1 = operator;
-  this.h9f_1 = conversionScore;
+  this.l9f_1 = genericOperator;
+  this.m9f_1 = operator;
+  this.n9f_1 = conversionScore;
 }
 protoOf(InstantiationResult).toString = function () {
-  return 'InstantiationResult(genericOperator=' + toString(this.f9f_1) + ', operator=' + toString_0(this.g9f_1) + ', conversionScore=' + this.h9f_1 + ')';
+  return 'InstantiationResult(genericOperator=' + toString(this.l9f_1) + ', operator=' + toString_0(this.m9f_1) + ', conversionScore=' + this.n9f_1 + ')';
 };
 protoOf(InstantiationResult).hashCode = function () {
-  var result = hashCode(this.f9f_1);
-  result = imul(result, 31) + (this.g9f_1 == null ? 0 : hashCode(this.g9f_1)) | 0;
-  result = imul(result, 31) + this.h9f_1 | 0;
+  var result = hashCode(this.l9f_1);
+  result = imul(result, 31) + (this.m9f_1 == null ? 0 : hashCode(this.m9f_1)) | 0;
+  result = imul(result, 31) + this.n9f_1 | 0;
   return result;
 };
 protoOf(InstantiationResult).equals = function (other) {
@@ -13106,22 +13338,22 @@ protoOf(InstantiationResult).equals = function (other) {
   if (!(other instanceof InstantiationResult))
     return false;
   var tmp0_other_with_cast = other instanceof InstantiationResult ? other : THROW_CCE();
-  if (!equals(this.f9f_1, tmp0_other_with_cast.f9f_1))
+  if (!equals(this.l9f_1, tmp0_other_with_cast.l9f_1))
     return false;
-  if (!equals(this.g9f_1, tmp0_other_with_cast.g9f_1))
+  if (!equals(this.m9f_1, tmp0_other_with_cast.m9f_1))
     return false;
-  if (!(this.h9f_1 === tmp0_other_with_cast.h9f_1))
+  if (!(this.n9f_1 === tmp0_other_with_cast.n9f_1))
     return false;
   return true;
 };
 function LibraryRef(localId, libraryName) {
   Expression.call(this);
-  this.v8y_1 = libraryName;
-  this.a66_1 = localId;
+  this.w8y_1 = libraryName;
+  this.b66_1 = localId;
 }
 function casify($this, typeName) {
   var tmp;
-  if (!($this.q90_1.e5y() == null) && ensureNotNull($this.q90_1.e5y())) {
+  if (!($this.r90_1.f5y() == null) && ensureNotNull($this.r90_1.f5y())) {
     // Inline function 'kotlin.text.lowercase' call
     // Inline function 'kotlin.js.asDynamic' call
     tmp = typeName.toLowerCase();
@@ -13131,72 +13363,72 @@ function casify($this, typeName) {
   return tmp;
 }
 function Model(modelInfo, modelManager) {
-  this.q90_1 = modelInfo;
-  this.r90_1 = HashMap_init_$Create$();
+  this.r90_1 = modelInfo;
   this.s90_1 = HashMap_init_$Create$();
-  this.t90_1 = ArrayList_init_$Create$();
+  this.t90_1 = HashMap_init_$Create$();
   this.u90_1 = ArrayList_init_$Create$();
-  this.v90_1 = HashMap_init_$Create$();
-  var importer = new ModelImporter(this.q90_1, modelManager);
-  this.r90_1 = importer.z9f();
-  var _iterator__ex2g4s = importer.w9f_1.g();
+  this.v90_1 = ArrayList_init_$Create$();
+  this.w90_1 = HashMap_init_$Create$();
+  var importer = new ModelImporter(this.r90_1, modelManager);
+  this.s90_1 = importer.f9g();
+  var _iterator__ex2g4s = importer.c9g_1.g();
   while (_iterator__ex2g4s.h()) {
     var c = _iterator__ex2g4s.i();
-    this.t90_1.e(c);
+    this.u90_1.e(c);
   }
-  var _iterator__ex2g4s_0 = importer.x9f_1.g();
+  var _iterator__ex2g4s_0 = importer.d9g_1.g();
   while (_iterator__ex2g4s_0.h()) {
     var c_0 = _iterator__ex2g4s_0.i();
-    this.u90_1.e(c_0);
+    this.v90_1.e(c_0);
   }
-  this.w90_1 = importer.a9g();
-  var _iterator__ex2g4s_1 = this.r90_1.s2().g();
+  this.x90_1 = importer.g9g();
+  var _iterator__ex2g4s_1 = this.s90_1.s2().g();
   while (_iterator__ex2g4s_1.h()) {
     var t = _iterator__ex2g4s_1.i();
     var tmp;
     if (t instanceof ClassType) {
-      tmp = !(t.n60_1 == null);
+      tmp = !(t.o60_1 == null);
     } else {
       tmp = false;
     }
     if (tmp) {
-      var tmp0 = this.s90_1;
+      var tmp0 = this.t90_1;
       // Inline function 'kotlin.collections.set' call
-      var key = casify(this, ensureNotNull(t.n60_1));
+      var key = casify(this, ensureNotNull(t.o60_1));
       tmp0.u2(key, t);
     }
     if (isInterface(t, NamedType)) {
-      var tmp0_0 = this.v90_1;
+      var tmp0_0 = this.w90_1;
       // Inline function 'kotlin.collections.set' call
       var key_0 = casify(this, (isInterface(t, NamedType) ? t : THROW_CCE()).lb());
       tmp0_0.u2(key_0, t);
     }
   }
 }
-protoOf(Model).m97 = function () {
-  return this.t90_1;
+protoOf(Model).z97 = function () {
+  return this.u90_1;
 };
-protoOf(Model).j90 = function (typeName) {
+protoOf(Model).k90 = function (typeName) {
   var normalizedTypeName = casify(this, typeName);
-  var tmp0_elvis_lhs = this.r90_1.q2(normalizedTypeName);
-  return tmp0_elvis_lhs == null ? this.v90_1.q2(normalizedTypeName) : tmp0_elvis_lhs;
+  var tmp0_elvis_lhs = this.s90_1.q2(normalizedTypeName);
+  return tmp0_elvis_lhs == null ? this.w90_1.q2(normalizedTypeName) : tmp0_elvis_lhs;
 };
-protoOf(Model).b9g = function (contextName, mustResolve) {
-  var _iterator__ex2g4s = this.u90_1.g();
+protoOf(Model).h9g = function (contextName, mustResolve) {
+  var _iterator__ex2g4s = this.v90_1.g();
   while (_iterator__ex2g4s.h()) {
     var context = _iterator__ex2g4s.i();
-    if (context.q62_1 === contextName) {
+    if (context.r62_1 === contextName) {
       return context;
     }
   }
-  var contextType = this.j90(contextName);
+  var contextType = this.k90(contextName);
   if (contextType instanceof ClassType) {
     var keyName = null;
-    var _iterator__ex2g4s_0 = contextType.k60_1.g();
+    var _iterator__ex2g4s_0 = contextType.l60_1.g();
     $l$loop: while (_iterator__ex2g4s_0.h()) {
       var cte = _iterator__ex2g4s_0.i();
-      if (cte.x60_1 === 'id') {
-        keyName = cte.x60_1;
+      if (cte.y60_1 === 'id') {
+        keyName = cte.y60_1;
         break $l$loop;
       }
     }
@@ -13204,17 +13436,17 @@ protoOf(Model).b9g = function (contextName, mustResolve) {
   }
   // Inline function 'kotlin.require' call
   if (!!mustResolve) {
-    var message = 'Could not resolve context name ' + contextName + ' in model ' + this.q90_1.j5x_1 + '.';
+    var message = 'Could not resolve context name ' + contextName + ' in model ' + this.r90_1.k5x_1 + '.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
   return null;
 };
-protoOf(Model).l9a = function (contextName, mustResolve, $super) {
+protoOf(Model).s9a = function (contextName, mustResolve, $super) {
   mustResolve = mustResolve === VOID ? true : mustResolve;
-  return $super === VOID ? this.b9g(contextName, mustResolve) : $super.b9g.call(this, contextName, mustResolve);
+  return $super === VOID ? this.h9g(contextName, mustResolve) : $super.h9g.call(this, contextName, mustResolve);
 };
-protoOf(Model).p97 = function (label) {
-  return this.s90_1.q2(casify(this, label));
+protoOf(Model).c98 = function (label) {
+  return this.t90_1.q2(casify(this, label));
 };
 function casify_0($this, typeName, caseSensitive) {
   var tmp;
@@ -13230,7 +13462,7 @@ function casify_0($this, typeName, caseSensitive) {
 function casify$default($this, typeName, caseSensitive, $super) {
   var tmp;
   if (caseSensitive === VOID) {
-    var tmp0_elvis_lhs = $this.q9f_1.e5y();
+    var tmp0_elvis_lhs = $this.w9f_1.f5y();
     tmp = tmp0_elvis_lhs == null ? false : tmp0_elvis_lhs;
   } else {
     tmp = caseSensitive;
@@ -13269,26 +13501,26 @@ function resolveTypeInfo($this, t) {
 }
 function resolveTypeSpecifier($this, typeSpecifier) {
   if (typeSpecifier instanceof NamedTypeSpecifier_0) {
-    var qualifier = typeSpecifier.k5y_1;
+    var qualifier = typeSpecifier.l5y_1;
     // Inline function 'kotlin.text.isNullOrEmpty' call
     var this_0 = qualifier;
     if (this_0 == null || charSequenceLength(this_0) === 0) {
-      qualifier = typeSpecifier.j5y_1;
+      qualifier = typeSpecifier.k5y_1;
     }
     // Inline function 'kotlin.text.isNullOrEmpty' call
     var this_1 = qualifier;
     if (this_1 == null || charSequenceLength(this_1) === 0) {
-      qualifier = $this.q9f_1.j5x_1;
+      qualifier = $this.w9f_1.k5x_1;
     }
-    var qualifiedTypeName = '' + qualifier + '.' + typeSpecifier.l5y_1;
+    var qualifiedTypeName = '' + qualifier + '.' + typeSpecifier.m5y_1;
     return resolveTypeName($this, qualifiedTypeName);
   }
   if (typeSpecifier instanceof IntervalTypeSpecifier) {
-    var pointType = resolveTypeNameOrSpecifier($this, typeSpecifier.b5x_1, typeSpecifier.c5x_1);
+    var pointType = resolveTypeNameOrSpecifier($this, typeSpecifier.c5x_1, typeSpecifier.d5x_1);
     return new IntervalType(ensureNotNull(pointType));
   }
   if (typeSpecifier instanceof ListTypeSpecifier) {
-    var elementType = resolveTypeNameOrSpecifier($this, typeSpecifier.h5x_1, typeSpecifier.i5x_1);
+    var elementType = resolveTypeNameOrSpecifier($this, typeSpecifier.i5x_1, typeSpecifier.j5x_1);
     if (!(elementType == null)) {
       return new ListType(elementType);
     }
@@ -13296,17 +13528,17 @@ function resolveTypeSpecifier($this, typeSpecifier) {
   if (typeSpecifier instanceof TupleTypeSpecifier) {
     // Inline function 'kotlin.collections.mutableListOf' call
     var elements = ArrayList_init_$Create$();
-    var _iterator__ex2g4s = typeSpecifier.g5v().g();
+    var _iterator__ex2g4s = typeSpecifier.h5v().g();
     while (_iterator__ex2g4s.h()) {
       var specifierElement = _iterator__ex2g4s.i();
-      var element = new TupleTypeElement(ensureNotNull(specifierElement.n5z_1), ensureNotNull(resolveTypeSpecifier($this, ensureNotNull(specifierElement.o5z_1))));
+      var element = new TupleTypeElement(ensureNotNull(specifierElement.o5z_1), ensureNotNull(resolveTypeSpecifier($this, ensureNotNull(specifierElement.p5z_1))));
       elements.e(element);
     }
     return TupleType_init_$Create$(elements);
   }
   if (typeSpecifier instanceof ChoiceTypeSpecifier) {
     var choices = ArrayList_init_$Create$();
-    var _iterator__ex2g4s_0 = typeSpecifier.f5u().g();
+    var _iterator__ex2g4s_0 = typeSpecifier.g5u().g();
     while (_iterator__ex2g4s_0.h()) {
       var choice = _iterator__ex2g4s_0.i();
       var choiceType = ensureNotNull(resolveTypeSpecifier($this, choice));
@@ -13367,7 +13599,7 @@ function resolveTypeNameOrSpecifier($this, typeName, typeSpecifier) {
   return tmp;
 }
 function lookupType($this, typeName) {
-  var resolvedType = $this.u9f_1.q2(casify$default($this, typeName));
+  var resolvedType = $this.a9g_1.q2(casify$default($this, typeName));
   if (!(resolvedType == null)) {
     return resolvedType;
   }
@@ -13379,7 +13611,7 @@ function lookupType($this, typeName) {
   if (qualifier === '') {
     return null;
   }
-  if (!(qualifier === $this.q9f_1.j5x_1)) {
+  if (!(qualifier === $this.w9f_1.k5x_1)) {
     var tmp0_elvis_lhs = resolveModel($this, qualifier);
     var tmp;
     if (tmp0_elvis_lhs == null) {
@@ -13388,31 +13620,31 @@ function lookupType($this, typeName) {
       tmp = tmp0_elvis_lhs;
     }
     var model = tmp;
-    return model.j90(typeName);
+    return model.k90(typeName);
   }
   return null;
 }
 function resolveModel($this, localIdentifier) {
-  return $this.s9f_1.q2(localIdentifier);
+  return $this.y9f_1.q2(localIdentifier);
 }
 function lookupTypeInfo($this, typeName) {
-  return $this.t9f_1.q2(typeName);
+  return $this.z9f_1.q2(typeName);
 }
 function ensureQualified($this, name) {
-  var qualifier = '' + $this.q9f_1.j5x_1 + '.';
+  var qualifier = '' + $this.w9f_1.k5x_1 + '.';
   if (!startsWith(name, qualifier)) {
     return qualifier + name;
   }
   return name;
 }
 function ensureUnqualified($this, name) {
-  if (startsWith(name, '' + $this.q9f_1.j5x_1 + '.')) {
+  if (startsWith(name, '' + $this.w9f_1.k5x_1 + '.')) {
     return substring(name, indexOf_0(name, _Char___init__impl__6a9atx(46)) + 1 | 0);
   }
   return name;
 }
 function resolveSimpleType($this, t) {
-  var qualifiedTypeName = ensureQualified($this, ensureNotNull(t.a5z_1));
+  var qualifiedTypeName = ensureQualified($this, ensureNotNull(t.b5z_1));
   var lookupType_0 = lookupType($this, qualifiedTypeName);
   // Inline function 'kotlin.require' call
   if (!!(lookupType_0 instanceof ClassType)) {
@@ -13423,14 +13655,14 @@ function resolveSimpleType($this, t) {
   var result = (tmp == null ? true : tmp instanceof SimpleType) ? tmp : THROW_CCE();
   if (result == null) {
     var tmp_0;
-    if (qualifiedTypeName === Companion_getInstance_1().v5z_1.i63_1) {
-      tmp_0 = Companion_getInstance_1().v5z_1;
+    if (qualifiedTypeName === Companion_getInstance_1().w5z_1.j63_1) {
+      tmp_0 = Companion_getInstance_1().w5z_1;
     } else {
-      tmp_0 = new SimpleType(qualifiedTypeName, resolveTypeNameOrSpecifier($this, t.g5u_1, t.h5u_1), t.b5z_1);
+      tmp_0 = new SimpleType(qualifiedTypeName, resolveTypeNameOrSpecifier($this, t.h5u_1, t.i5u_1), t.c5z_1);
     }
     result = tmp_0;
-    var tmp0 = $this.u9f_1;
-    var tmp2 = casify$default($this, result.i63_1);
+    var tmp0 = $this.a9g_1;
+    var tmp2 = casify$default($this, result.j63_1);
     // Inline function 'kotlin.collections.set' call
     var value = result;
     tmp0.u2(tmp2, value);
@@ -13438,9 +13670,9 @@ function resolveSimpleType($this, t) {
   return result;
 }
 function resolveTypeNameOrSpecifier_0($this, element) {
-  var result = resolveTypeNameOrSpecifier($this, element.h5z_1, element.l5z_1);
+  var result = resolveTypeNameOrSpecifier($this, element.i5z_1, element.m5z_1);
   if (result == null) {
-    result = resolveTypeNameOrSpecifier($this, element.g5z_1, element.k5z_1);
+    result = resolveTypeNameOrSpecifier($this, element.h5z_1, element.l5z_1);
   }
   return result;
 }
@@ -13449,19 +13681,19 @@ function resolveTupleTypeElements($this, infoElements) {
   var _iterator__ex2g4s = infoElements.g();
   while (_iterator__ex2g4s.h()) {
     var e = _iterator__ex2g4s.i();
-    elements.e(new TupleTypeElement(ensureNotNull(e.f5z_1), ensureNotNull(resolveTypeNameOrSpecifier_0($this, e))));
+    elements.e(new TupleTypeElement(ensureNotNull(e.g5z_1), ensureNotNull(resolveTypeNameOrSpecifier_0($this, e))));
   }
   return elements;
 }
 function resolveTupleType($this, t) {
-  var tmp = t.g5v();
+  var tmp = t.h5v();
   var result = TupleType_init_$Create$(toMutableList(resolveTupleTypeElements($this, isInterface(tmp, Collection) ? tmp : THROW_CCE())));
   return result;
 }
 function resolveTypeNameOrSpecifier_1($this, element) {
-  var result = resolveTypeNameOrSpecifier($this, element.p5v_1, element.b5w_1);
+  var result = resolveTypeNameOrSpecifier($this, element.q5v_1, element.c5w_1);
   if (result == null) {
-    result = resolveTypeNameOrSpecifier($this, element.o5v_1, element.a5w_1);
+    result = resolveTypeNameOrSpecifier($this, element.p5v_1, element.b5w_1);
   }
   return result;
 }
@@ -13470,7 +13702,7 @@ function resolveGenericParameterDeclarations($this, parameterInfoList) {
   var _iterator__ex2g4s = parameterInfoList.g();
   while (_iterator__ex2g4s.h()) {
     var parameterInfo = _iterator__ex2g4s.i();
-    var constraint = parameterInfo.q5z_1;
+    var constraint = parameterInfo.r5z_1;
     var tmp;
     if (equals_0(constraint, 'NONE', true)) {
       tmp = TypeParameterConstraint_NONE_getInstance();
@@ -13490,7 +13722,7 @@ function resolveGenericParameterDeclarations($this, parameterInfoList) {
       tmp = TypeParameterConstraint_NONE_getInstance();
     }
     var typeConstraint = tmp;
-    genericParameters.e(new TypeParameter(ensureNotNull(parameterInfo.p5z_1), typeConstraint, resolveTypeName($this, ensureNotNull(parameterInfo.r5z_1))));
+    genericParameters.e(new TypeParameter(ensureNotNull(parameterInfo.q5z_1), typeConstraint, resolveTypeName($this, ensureNotNull(parameterInfo.s5z_1))));
   }
   return genericParameters;
 }
@@ -13512,58 +13744,58 @@ function resolveClassTypeElements($this, classType, infoElements) {
     if (elementType == null) {
       elementType = resolveTypeName($this, 'System.Any');
     }
-    var tmp_0 = ensureNotNull(e.n5v_1);
+    var tmp_0 = ensureNotNull(e.o5v_1);
     var tmp_1 = ensureNotNull(elementType);
-    var tmp0_elvis_lhs = e.e5w();
+    var tmp0_elvis_lhs = e.f5w();
     var tmp_2 = tmp0_elvis_lhs == null ? false : tmp0_elvis_lhs;
-    var tmp1_elvis_lhs = e.f5w();
-    elements.e(new ClassTypeElement(tmp_0, tmp_1, tmp_2, tmp1_elvis_lhs == null ? false : tmp1_elvis_lhs, e.s5v_1));
+    var tmp1_elvis_lhs = e.g5w();
+    elements.e(new ClassTypeElement(tmp_0, tmp_1, tmp_2, tmp1_elvis_lhs == null ? false : tmp1_elvis_lhs, e.t5v_1));
   }
   return elements;
 }
 function isBoundParameterType($this, element) {
-  var tmp = element.b5w_1;
+  var tmp = element.c5w_1;
   return tmp instanceof BoundParameterTypeSpecifier;
 }
 function resolveBoundType($this, classType, e) {
   var boundType;
-  var tmp = e.b5w_1;
+  var tmp = e.c5w_1;
   var boundParameterTypeSpecifier = tmp instanceof BoundParameterTypeSpecifier ? tmp : THROW_CCE();
-  var parameterName = boundParameterTypeSpecifier.y5t_1;
-  var genericParameter = ensureNotNull(classType).w61(ensureNotNull(parameterName));
+  var parameterName = boundParameterTypeSpecifier.z5t_1;
+  var genericParameter = ensureNotNull(classType).x61(ensureNotNull(parameterName));
   if (genericParameter == null) {
     throw RuntimeException_init_$Create$('Unknown symbol ' + parameterName);
   } else {
-    boundType = resolveTypeName($this, ensureNotNull(boundParameterTypeSpecifier.z5t_1));
+    boundType = resolveTypeName($this, ensureNotNull(boundParameterTypeSpecifier.a5u_1));
   }
   return boundType;
 }
 function isOpenType($this, element) {
-  var tmp = element.b5w_1;
+  var tmp = element.c5w_1;
   return tmp instanceof ParameterTypeSpecifier_0;
 }
 function resolveOpenType($this, classType, e) {
   var elementType;
-  var tmp = e.b5w_1;
+  var tmp = e.c5w_1;
   var parameterTypeSpecifier = tmp instanceof ParameterTypeSpecifier_0 ? tmp : THROW_CCE();
-  var parameterName = parameterTypeSpecifier.m5y_1;
+  var parameterName = parameterTypeSpecifier.n5y_1;
   // Inline function 'kotlin.text.isNullOrEmpty' call
   // Inline function 'kotlin.require' call
   if (!!(parameterName == null || charSequenceLength(parameterName) === 0)) {
     var message = 'Parameter name must not be null or empty';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  if (classType.w61(parameterName) == null) {
+  if (classType.x61(parameterName) == null) {
     throw RuntimeException_init_$Create$('Open types must reference a valid generic parameter and cannot be null or blank');
   }
-  elementType = new TypeParameter(ensureNotNull(parameterTypeSpecifier.m5y_1), TypeParameterConstraint_TYPE_getInstance(), null);
+  elementType = new TypeParameter(ensureNotNull(parameterTypeSpecifier.n5y_1), TypeParameterConstraint_TYPE_getInstance(), null);
   return elementType;
 }
 function resolveClassTypeSearch($this, t, s) {
-  return new SearchType(ensureNotNull(s.p5y_1), ensureNotNull(s.q5y_1), ensureNotNull(resolveTypeNameOrSpecifier($this, s.r5y_1, s.w5y_1)));
+  return new SearchType(ensureNotNull(s.q5y_1), ensureNotNull(s.r5y_1), ensureNotNull(resolveTypeNameOrSpecifier($this, s.s5y_1, s.x5y_1)));
 }
 function resolveClassType($this, t) {
-  var tmp0 = t.m5u_1;
+  var tmp0 = t.n5u_1;
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (tmp0 == null) {
@@ -13573,74 +13805,74 @@ function resolveClassType($this, t) {
       break $l$block;
     }
   }
-  var qualifiedName = ensureQualified($this, ensureNotNull(t.m5u_1));
+  var qualifiedName = ensureQualified($this, ensureNotNull(t.n5u_1));
   var tmp = lookupType($this, qualifiedName);
   var result = (tmp == null ? true : tmp instanceof ClassType) ? tmp : THROW_CCE();
   if (result == null) {
     var tmp_0;
     if (t instanceof ProfileInfo) {
-      var tmp0_elvis_lhs = resolveTypeNameOrSpecifier($this, t.g5u_1, t.h5u_1);
-      tmp_0 = new ProfileType(qualifiedName, tmp0_elvis_lhs == null ? Companion_getInstance_1().v5z_1 : tmp0_elvis_lhs);
+      var tmp0_elvis_lhs = resolveTypeNameOrSpecifier($this, t.h5u_1, t.i5u_1);
+      tmp_0 = new ProfileType(qualifiedName, tmp0_elvis_lhs == null ? Companion_getInstance_1().w5z_1 : tmp0_elvis_lhs);
     } else {
       var tmp_1;
-      if (contains_0(ensureNotNull(t.m5u_1), '<')) {
-        tmp_1 = handleGenericType($this, ensureNotNull(t.m5u_1), ensureNotNull(t.g5u_1));
+      if (contains_0(ensureNotNull(t.n5u_1), '<')) {
+        tmp_1 = handleGenericType($this, ensureNotNull(t.n5u_1), ensureNotNull(t.h5u_1));
       } else {
         var tmp_2;
-        if (!(t.g5u_1 == null) && contains_0(ensureNotNull(t.g5u_1), '<')) {
-          tmp_2 = handleGenericType($this, ensureNotNull(t.m5u_1), ensureNotNull(t.g5u_1));
+        if (!(t.h5u_1 == null) && contains_0(ensureNotNull(t.h5u_1), '<')) {
+          tmp_2 = handleGenericType($this, ensureNotNull(t.n5u_1), ensureNotNull(t.h5u_1));
         } else {
-          var tmp1_elvis_lhs = resolveTypeNameOrSpecifier($this, t.g5u_1, t.h5u_1);
-          tmp_2 = new ClassType(qualifiedName, tmp1_elvis_lhs == null ? Companion_getInstance_1().v5z_1 : tmp1_elvis_lhs);
+          var tmp1_elvis_lhs = resolveTypeNameOrSpecifier($this, t.h5u_1, t.i5u_1);
+          tmp_2 = new ClassType(qualifiedName, tmp1_elvis_lhs == null ? Companion_getInstance_1().w5z_1 : tmp1_elvis_lhs);
         }
         tmp_1 = tmp_2;
       }
       tmp_0 = tmp_1;
     }
     result = tmp_0;
-    var tmp0_0 = $this.u9f_1;
-    var tmp2 = casify$default($this, result.j60_1);
+    var tmp0_0 = $this.a9g_1;
+    var tmp2 = casify$default($this, result.k60_1);
     // Inline function 'kotlin.collections.set' call
     var value = result;
     tmp0_0.u2(tmp2, value);
     var tmp_3 = result;
-    var tmp_4 = t.f5v();
-    tmp_3.v61(resolveGenericParameterDeclarations($this, isInterface(tmp_4, KtList) ? tmp_4 : THROW_CCE()));
+    var tmp_4 = t.g5v();
+    tmp_3.w61(resolveGenericParameterDeclarations($this, isInterface(tmp_4, KtList) ? tmp_4 : THROW_CCE()));
     var tmp_5 = result;
     var tmp_6 = result;
-    var tmp_7 = t.g5v();
-    tmp_5.f62(resolveClassTypeElements($this, tmp_6, isInterface(tmp_7, Collection) ? tmp_7 : THROW_CCE()));
-    var _iterator__ex2g4s = t.j5v().g();
+    var tmp_7 = t.h5v();
+    tmp_5.g62(resolveClassTypeElements($this, tmp_6, isInterface(tmp_7, Collection) ? tmp_7 : THROW_CCE()));
+    var _iterator__ex2g4s = t.k5v().g();
     while (_iterator__ex2g4s.h()) {
       var si = _iterator__ex2g4s.i();
-      result.t61(resolveClassTypeSearch($this, result, si));
+      result.u61(resolveClassTypeSearch($this, result, si));
     }
-    if ($this.d9g(result) && !contains_0(ensureNotNull(t.g5u_1), '<')) {
-      $this.c9g(result, t);
+    if ($this.j9g(result) && !contains_0(ensureNotNull(t.h5u_1), '<')) {
+      $this.i9g(result, t);
     }
     // Inline function 'kotlin.apply' call
     var this_0 = result;
-    this_0.m60_1 = t.n5u_1;
     this_0.n60_1 = t.o5u_1;
-    this_0.o61(t.s5u_1);
-    this_0.p60_1 = ensureNotNull(t.m5v());
-    this_0.q60_1 = t.u5u_1;
+    this_0.o60_1 = t.p5u_1;
+    this_0.p61(t.t5u_1);
+    this_0.q60_1 = ensureNotNull(t.n5v());
+    this_0.r60_1 = t.v5u_1;
   }
   return result;
 }
 function resolveContext($this, contextName) {
-  var _iterator__ex2g4s = $this.x9f_1.g();
+  var _iterator__ex2g4s = $this.d9g_1.g();
   while (_iterator__ex2g4s.h()) {
     var context = _iterator__ex2g4s.i();
-    if (context.q62_1 === contextName) {
+    if (context.r62_1 === contextName) {
       return context;
     }
   }
   throw IllegalArgumentException_init_$Create$('Could not resolve context name ' + contextName + '.');
 }
 function resolveRelationship($this, relationshipInfo) {
-  var modelContext = resolveContext($this, ensureNotNull(relationshipInfo.n5y_1));
-  var tmp0 = split(ensureNotNull(relationshipInfo.o5y_1), [';']);
+  var modelContext = resolveContext($this, ensureNotNull(relationshipInfo.o5y_1));
+  var tmp0 = split(ensureNotNull(relationshipInfo.p5y_1), [';']);
   var tmp$ret$2;
   $l$block: {
     // Inline function 'kotlin.collections.dropLastWhile' call
@@ -13661,36 +13893,36 @@ function resolveRelationship($this, relationshipInfo) {
   return relationship;
 }
 function importRelationships($this, c, t) {
-  var _iterator__ex2g4s = c.h5v().g();
+  var _iterator__ex2g4s = c.i5v().g();
   while (_iterator__ex2g4s.h()) {
     var r = _iterator__ex2g4s.i();
-    t.q61(resolveRelationship($this, r));
+    t.r61(resolveRelationship($this, r));
   }
-  var _iterator__ex2g4s_0 = c.i5v().g();
+  var _iterator__ex2g4s_0 = c.j5v().g();
   while (_iterator__ex2g4s_0.h()) {
     var r_0 = _iterator__ex2g4s_0.i();
-    t.r61(resolveRelationship($this, r_0));
+    t.s61(resolveRelationship($this, r_0));
   }
 }
 function resolveIntervalType($this, t) {
-  var result = new IntervalType(ensureNotNull(resolveTypeNameOrSpecifier($this, t.z5w_1, t.a5x_1)));
+  var result = new IntervalType(ensureNotNull(resolveTypeNameOrSpecifier($this, t.a5x_1, t.b5x_1)));
   return result;
 }
 function resolveListType($this, t) {
-  var result = new ListType(ensureNotNull(resolveTypeNameOrSpecifier($this, t.f5x_1, t.g5x_1)));
+  var result = new ListType(ensureNotNull(resolveTypeNameOrSpecifier($this, t.g5x_1, t.h5x_1)));
   return result;
 }
 function resolveChoiceType($this, t) {
   var types = ArrayList_init_$Create$();
   // Inline function 'kotlin.collections.isNotEmpty' call
-  if (!t.f5u().q()) {
-    var _iterator__ex2g4s = t.f5u().g();
+  if (!t.g5u().q()) {
+    var _iterator__ex2g4s = t.g5u().g();
     while (_iterator__ex2g4s.h()) {
       var typeSpecifier = _iterator__ex2g4s.i();
       types.e(ensureNotNull(resolveTypeSpecifier($this, typeSpecifier)));
     }
   } else {
-    var _iterator__ex2g4s_0 = t.s23().g();
+    var _iterator__ex2g4s_0 = t.t23().g();
     while (_iterator__ex2g4s_0.h()) {
       var typeSpecifier_0 = _iterator__ex2g4s_0.i();
       types.e(ensureNotNull(resolveTypeSpecifier($this, typeSpecifier_0)));
@@ -13699,86 +13931,86 @@ function resolveChoiceType($this, t) {
   return ChoiceType_init_$Create$(types);
 }
 function handleGenericType($this, genericSignature, baseType) {
-  var parser = new GenericClassSignatureParser(genericSignature, baseType, $this.u9f_1);
-  var genericClassType = parser.m62();
+  var parser = new GenericClassSignatureParser(genericSignature, baseType, $this.a9g_1);
+  var genericClassType = parser.n62();
   return genericClassType;
 }
 function ModelImporter(modelInfo, modelManager) {
-  this.q9f_1 = modelInfo;
-  this.r9f_1 = modelManager;
-  this.s9f_1 = HashMap_init_$Create$();
-  this.t9f_1 = HashMap_init_$Create$();
-  this.u9f_1 = HashMap_init_$Create$();
-  this.v9f_1 = ArrayList_init_$Create$();
-  this.w9f_1 = ArrayList_init_$Create$();
-  this.x9f_1 = ArrayList_init_$Create$();
-  this.y9f_1 = null;
-  if (!(this.r9f_1 == null)) {
-    var _iterator__ex2g4s = this.q9f_1.a5y().g();
+  this.w9f_1 = modelInfo;
+  this.x9f_1 = modelManager;
+  this.y9f_1 = HashMap_init_$Create$();
+  this.z9f_1 = HashMap_init_$Create$();
+  this.a9g_1 = HashMap_init_$Create$();
+  this.b9g_1 = ArrayList_init_$Create$();
+  this.c9g_1 = ArrayList_init_$Create$();
+  this.d9g_1 = ArrayList_init_$Create$();
+  this.e9g_1 = null;
+  if (!(this.x9f_1 == null)) {
+    var _iterator__ex2g4s = this.w9f_1.b5y().g();
     while (_iterator__ex2g4s.h()) {
       var requiredModel = _iterator__ex2g4s.i();
-      var tmp0_system = requiredModel.g5y_1;
-      var tmp1_id = ensureNotNull(requiredModel.h5y_1);
-      var tmp2_version = requiredModel.i5y_1;
-      var model = this.r9f_1.l97(new ModelIdentifier(tmp1_id, tmp0_system, tmp2_version));
-      var tmp0 = this.s9f_1;
+      var tmp0_system = requiredModel.h5y_1;
+      var tmp1_id = ensureNotNull(requiredModel.i5y_1);
+      var tmp2_version = requiredModel.j5y_1;
+      var model = this.x9f_1.y97(new ModelIdentifier(tmp1_id, tmp0_system, tmp2_version));
+      var tmp0 = this.y9f_1;
       // Inline function 'kotlin.collections.set' call
-      var key = ensureNotNull(requiredModel.h5y_1);
+      var key = ensureNotNull(requiredModel.i5y_1);
       tmp0.u2(key, model);
     }
-    if (!this.s9f_1.o2('System')) {
-      var systemModel = this.r9f_1.l97(new ModelIdentifier('System'));
+    if (!this.y9f_1.o2('System')) {
+      var systemModel = this.x9f_1.y97(new ModelIdentifier('System'));
       // Inline function 'kotlin.collections.set' call
-      this.s9f_1.u2('System', systemModel);
+      this.y9f_1.u2('System', systemModel);
     }
   }
-  var _iterator__ex2g4s_0 = this.q9f_1.b5y().g();
+  var _iterator__ex2g4s_0 = this.w9f_1.c5y().g();
   while (_iterator__ex2g4s_0.h()) {
     var t = _iterator__ex2g4s_0.i();
     if (t instanceof SimpleTypeInfo) {
-      var tmp0_0 = this.t9f_1;
+      var tmp0_0 = this.z9f_1;
       // Inline function 'kotlin.collections.set' call
-      var key_0 = ensureUnqualified(this, ensureNotNull(t.a5z_1));
+      var key_0 = ensureUnqualified(this, ensureNotNull(t.b5z_1));
       tmp0_0.u2(key_0, t);
     } else {
       var tmp;
       if (t instanceof ClassInfo) {
-        tmp = !(t.m5u_1 == null);
+        tmp = !(t.n5u_1 == null);
       } else {
         tmp = false;
       }
       if (tmp) {
-        var tmp0_1 = this.t9f_1;
+        var tmp0_1 = this.z9f_1;
         // Inline function 'kotlin.collections.set' call
-        var key_1 = ensureUnqualified(this, ensureNotNull(t.m5u_1));
+        var key_1 = ensureUnqualified(this, ensureNotNull(t.n5u_1));
         tmp0_1.u2(key_1, t);
       }
     }
   }
-  var _iterator__ex2g4s_1 = this.q9f_1.c5y().g();
+  var _iterator__ex2g4s_1 = this.w9f_1.d5y().g();
   while (_iterator__ex2g4s_1.h()) {
     var c = _iterator__ex2g4s_1.i();
-    var fromType = resolveTypeNameOrSpecifier(this, c.r5w_1, c.t5w_1);
-    var toType = resolveTypeNameOrSpecifier(this, c.s5w_1, c.u5w_1);
-    var qualifierIndex = indexOf_0(ensureNotNull(c.q5w_1), _Char___init__impl__6a9atx(46));
-    var libraryName = qualifierIndex >= 0 ? substring_0(ensureNotNull(c.q5w_1), 0, qualifierIndex) : null;
-    var functionName = qualifierIndex >= 0 ? substring(ensureNotNull(c.q5w_1), qualifierIndex + 1 | 0) : null;
+    var fromType = resolveTypeNameOrSpecifier(this, c.s5w_1, c.u5w_1);
+    var toType = resolveTypeNameOrSpecifier(this, c.t5w_1, c.v5w_1);
+    var qualifierIndex = indexOf_0(ensureNotNull(c.r5w_1), _Char___init__impl__6a9atx(46));
+    var libraryName = qualifierIndex >= 0 ? substring_0(ensureNotNull(c.r5w_1), 0, qualifierIndex) : null;
+    var functionName = qualifierIndex >= 0 ? substring(ensureNotNull(c.r5w_1), qualifierIndex + 1 | 0) : null;
     var operator = Operator_init_$Create$(ensureNotNull(functionName), Signature_init_$Create$([ensureNotNull(fromType)]), toType);
-    operator.e8x_1 = libraryName;
+    operator.f8x_1 = libraryName;
     var conversion = Conversion_init_$Create$(operator, true);
-    this.w9f_1.e(conversion);
+    this.c9g_1.e(conversion);
   }
-  var _iterator__ex2g4s_2 = this.q9f_1.d5y().g();
+  var _iterator__ex2g4s_2 = this.w9f_1.e5y().g();
   while (_iterator__ex2g4s_2.h()) {
     var c_0 = _iterator__ex2g4s_2.i();
-    var contextType = resolveTypeSpecifier(this, ensureNotNull(c_0.p5w_1));
+    var contextType = resolveTypeSpecifier(this, ensureNotNull(c_0.q5w_1));
     // Inline function 'kotlin.require' call
     if (!(contextType instanceof ClassType)) {
-      var message = 'Model context ' + c_0.m5w_1 + ' must be a class type.';
+      var message = 'Model context ' + c_0.n5w_1 + ' must be a class type.';
       throw IllegalArgumentException_init_$Create$(toString(message));
     }
-    var tmp_0 = ensureNotNull(c_0.m5w_1);
-    var tmp0_2 = ensureNotNull(c_0.n5w_1);
+    var tmp_0 = ensureNotNull(c_0.n5w_1);
+    var tmp0_2 = ensureNotNull(c_0.o5w_1);
     // Inline function 'kotlin.text.toRegex' call
     // Inline function 'kotlin.text.split' call
     var tmp0_3 = Regex_init_$Create$(';').wd(tmp0_2, 0);
@@ -13798,49 +14030,49 @@ function ModelImporter(modelInfo, modelManager) {
       }
       tmp$ret$10 = emptyList();
     }
-    var modelContext = new ModelContext(tmp_0, contextType, tmp$ret$10, c_0.o5w_1);
-    this.x9f_1.e(modelContext);
+    var modelContext = new ModelContext(tmp_0, contextType, tmp$ret$10, c_0.p5w_1);
+    this.d9g_1.e(modelContext);
   }
-  if (this.x9f_1.q() && !(this.q9f_1.q5x_1 == null)) {
-    var contextType_0 = resolveTypeName(this, ensureNotNull(this.q9f_1.q5x_1));
+  if (this.d9g_1.q() && !(this.w9f_1.r5x_1 == null)) {
+    var contextType_0 = resolveTypeName(this, ensureNotNull(this.w9f_1.r5x_1));
     if (contextType_0 instanceof ClassType) {
-      var modelContext_0 = new ModelContext(contextType_0.lb(), contextType_0, mutableListOf(['id']), this.q9f_1.s5x_1);
-      this.x9f_1.e(modelContext_0);
-      this.y9f_1 = modelContext_0;
+      var modelContext_0 = new ModelContext(contextType_0.lb(), contextType_0, mutableListOf(['id']), this.w9f_1.t5x_1);
+      this.d9g_1.e(modelContext_0);
+      this.e9g_1 = modelContext_0;
     }
   }
-  var _iterator__ex2g4s_3 = this.q9f_1.b5y().g();
+  var _iterator__ex2g4s_3 = this.w9f_1.c5y().g();
   while (_iterator__ex2g4s_3.h()) {
     var t_0 = _iterator__ex2g4s_3.i();
     var type = resolveTypeInfo(this, t_0);
     if (!(type == null)) {
-      this.v9f_1.e(type);
+      this.b9g_1.e(type);
     }
     if (t_0 instanceof ClassInfo) {
       importRelationships(this, t_0, type instanceof ClassType ? type : THROW_CCE());
     }
   }
 }
-protoOf(ModelImporter).z9f = function () {
-  return this.u9f_1;
+protoOf(ModelImporter).f9g = function () {
+  return this.a9g_1;
 };
-protoOf(ModelImporter).a9g = function () {
-  if (!(this.q9f_1.v5x_1 == null)) {
-    return this.q9f_1.v5x_1;
+protoOf(ModelImporter).g9g = function () {
+  if (!(this.w9f_1.w5x_1 == null)) {
+    return this.w9f_1.w5x_1;
   }
-  var tmp0_safe_receiver = this.y9f_1;
-  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.q62_1;
+  var tmp0_safe_receiver = this.e9g_1;
+  return tmp0_safe_receiver == null ? null : tmp0_safe_receiver.r62_1;
 };
-protoOf(ModelImporter).c9g = function (type, definition) {
+protoOf(ModelImporter).i9g = function (type, definition) {
   var coveredParameters = ArrayList_init_$Create$();
   var boundParameters = ArrayList_init_$Create$();
-  var tmp = ensureNotNull(type).u5z();
+  var tmp = ensureNotNull(type).v5z();
   // Inline function 'kotlin.collections.forEach' call
-  var _iterator__ex2g4s = (tmp instanceof ClassType ? tmp : THROW_CCE()).l60_1.g();
+  var _iterator__ex2g4s = (tmp instanceof ClassType ? tmp : THROW_CCE()).m60_1.g();
   while (_iterator__ex2g4s.h()) {
     var element = _iterator__ex2g4s.i();
-    var parameterName = element.z61_1;
-    if (!(type.x61(parameterName, true) == null)) {
+    var parameterName = element.a62_1;
+    if (!(type.y61(parameterName, true) == null)) {
       coveredParameters.e(parameterName);
     } else {
       boundParameters.e(parameterName);
@@ -13849,13 +14081,13 @@ protoOf(ModelImporter).c9g = function (type, definition) {
   // Inline function 'kotlin.collections.isNotEmpty' call
   if (!boundParameters.q()) {
     // Inline function 'kotlin.collections.forEach' call
-    var _iterator__ex2g4s_0 = definition.g5v().g();
+    var _iterator__ex2g4s_0 = definition.h5v().g();
     while (_iterator__ex2g4s_0.h()) {
       var element_0 = _iterator__ex2g4s_0.i();
-      var tmp_0 = element_0.b5w_1;
+      var tmp_0 = element_0.c5w_1;
       if (tmp_0 instanceof BoundParameterTypeSpecifier) {
-        var tmp_1 = element_0.b5w_1;
-        var name = ensureNotNull((tmp_1 instanceof BoundParameterTypeSpecifier ? tmp_1 : THROW_CCE()).y5t_1);
+        var tmp_1 = element_0.c5w_1;
+        var name = ensureNotNull((tmp_1 instanceof BoundParameterTypeSpecifier ? tmp_1 : THROW_CCE()).z5t_1);
         var paramIndex = boundParameters.r(name);
         if (paramIndex >= 0) {
           boundParameters.l2(paramIndex);
@@ -13868,11 +14100,11 @@ protoOf(ModelImporter).c9g = function (type, definition) {
     }
   }
 };
-protoOf(ModelImporter).d9g = function (type) {
+protoOf(ModelImporter).j9g = function (type) {
   var tmp;
-  var tmp_0 = type.u5z();
+  var tmp_0 = type.v5z();
   if (tmp_0 instanceof ClassType) {
-    tmp = type.u5z().d60();
+    tmp = type.v5z().e60();
   } else {
     tmp = false;
   }
@@ -13886,23 +14118,23 @@ function Operator_init_$Create$(name, signature, resultType) {
   return Operator_init_$Init$(name, signature, resultType, objectCreate(protoOf(Operator)));
 }
 function Operator_init_$Init$_0(functionDef, $this) {
-  var tmp = ensureNotNull(functionDef.c6w_1);
+  var tmp = ensureNotNull(functionDef.d6w_1);
   // Inline function 'kotlin.collections.map' call
-  var this_0 = functionDef.o67();
+  var this_0 = functionDef.p67();
   // Inline function 'kotlin.collections.mapTo' call
   var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
   var _iterator__ex2g4s = this_0.g();
   while (_iterator__ex2g4s.h()) {
     var item = _iterator__ex2g4s.i();
-    var tmp$ret$0 = ensureNotNull(Trackable_getInstance().n8v(item));
+    var tmp$ret$0 = ensureNotNull(Trackable_getInstance().o8v(item));
     destination.e(tmp$ret$0);
   }
   var tmp_0 = new Signature(destination);
-  var tmp_1 = Trackable_getInstance().n8v(functionDef);
-  var tmp_2 = ensureNotNull(functionDef.z6h());
-  var tmp0_elvis_lhs = functionDef.n6y();
+  var tmp_1 = Trackable_getInstance().o8v(functionDef);
+  var tmp_2 = ensureNotNull(functionDef.a6i());
+  var tmp0_elvis_lhs = functionDef.o6y();
   var tmp_3 = tmp0_elvis_lhs == null ? false : tmp0_elvis_lhs;
-  var tmp1_elvis_lhs = functionDef.m6y();
+  var tmp1_elvis_lhs = functionDef.n6y();
   Operator.call($this, tmp, tmp_0, tmp_1, functionDef, tmp_2, tmp_3, tmp1_elvis_lhs == null ? false : tmp1_elvis_lhs);
   return $this;
 }
@@ -13913,28 +14145,28 @@ function Operator(name, signature, resultType, functionDef, accessLevel, fluent,
   accessLevel = accessLevel === VOID ? AccessModifier_PUBLIC_getInstance() : accessLevel;
   fluent = fluent === VOID ? false : fluent;
   external = external === VOID ? false : external;
-  this.x8w_1 = name;
-  this.y8w_1 = signature;
-  this.z8w_1 = resultType;
-  this.a8x_1 = functionDef;
-  this.b8x_1 = accessLevel;
-  this.c8x_1 = fluent;
-  this.d8x_1 = external;
+  this.y8w_1 = name;
+  this.z8w_1 = signature;
+  this.a8x_1 = resultType;
+  this.b8x_1 = functionDef;
+  this.c8x_1 = accessLevel;
+  this.d8x_1 = fluent;
+  this.e8x_1 = external;
   // Inline function 'kotlin.text.isNotEmpty' call
-  var this_0 = this.x8w_1;
+  var this_0 = this.y8w_1;
   // Inline function 'kotlin.require' call
   if (!(charSequenceLength(this_0) > 0)) {
     var message = 'name is null or empty';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.e8x_1 = null;
+  this.f8x_1 = null;
 }
 function getInvocationSignature($this, callSignature, operatorSignature) {
   if (callSignature.j() === operatorSignature.j()) {
     // Inline function 'kotlin.collections.mutableListOf' call
     var invocationTypes = ArrayList_init_$Create$();
-    var callTypes = callSignature.h8z_1;
-    var operatorTypes = operatorSignature.h8z_1;
+    var callTypes = callSignature.i8z_1;
+    var operatorTypes = operatorSignature.i8z_1;
     var isResolved = false;
     var inductionVariable = 0;
     var last = callTypes.j() - 1 | 0;
@@ -13944,7 +14176,7 @@ function getInvocationSignature($this, callSignature, operatorSignature) {
         inductionVariable = inductionVariable + 1 | 0;
         var callType = callTypes.o(i);
         var operatorType = operatorTypes.o(i);
-        if (equals(callType, Companion_getInstance_1().v5z_1) && !equals(operatorType, Companion_getInstance_1().v5z_1)) {
+        if (equals(callType, Companion_getInstance_1().w5z_1) && !equals(operatorType, Companion_getInstance_1().w5z_1)) {
           isResolved = true;
           invocationTypes.e(operatorType);
         } else {
@@ -13959,7 +14191,7 @@ function getInvocationSignature($this, callSignature, operatorSignature) {
   return callSignature;
 }
 function getOperatorResolution($this, operator, callSignature, invocationSignature, conversionMap, operatorMap, allowPromotionAndDemotion, requireConversions) {
-  var conversions = getConversions($this, callSignature, operator.y8w_1, conversionMap, operatorMap, allowPromotionAndDemotion);
+  var conversions = getConversions($this, callSignature, operator.z8w_1, conversionMap, operatorMap, allowPromotionAndDemotion);
   if (requireConversions && conversions == null) {
     return null;
   }
@@ -13973,74 +14205,74 @@ function getConversions($this, callSignature, operatorSignature, conversionMap, 
   // Inline function 'kotlin.arrayOfNulls' call
   var size = callSignature.j();
   var conversions = Array(size);
-  var isConvertible = callSignature.e9g(operatorSignature, conversionMap, operatorMap, allowPromotionAndDemotion, conversions);
+  var isConvertible = callSignature.k9g(operatorSignature, conversionMap, operatorMap, allowPromotionAndDemotion, conversions);
   if (isConvertible) {
     return conversions;
   }
   return null;
 }
 function SignatureNode(operator) {
-  this.f9g_1 = operator;
-  this.g9g_1 = new SignatureNodes();
+  this.l9g_1 = operator;
+  this.m9g_1 = new SignatureNodes();
 }
-protoOf(SignatureNode).m66 = function () {
-  return this.f9g_1.y8w_1;
+protoOf(SignatureNode).n66 = function () {
+  return this.l9g_1.z8w_1;
 };
-protoOf(SignatureNode).h9g = function (callContext, conversionMap, operatorMap) {
+protoOf(SignatureNode).n9g = function (callContext, conversionMap, operatorMap) {
   var results = ArrayList_init_$Create$();
-  var invocationSignature = getInvocationSignature(this, callContext.g98_1, this.f9g_1.y8w_1);
-  if (this.f9g_1.y8w_1.equals(invocationSignature)) {
-    var result = getOperatorResolution(this, this.f9g_1, callContext.g98_1, invocationSignature, conversionMap, operatorMap, callContext.d98_1, false);
+  var invocationSignature = getInvocationSignature(this, callContext.t98_1, this.l9g_1.z8w_1);
+  if (this.l9g_1.z8w_1.equals(invocationSignature)) {
+    var result = getOperatorResolution(this, this.l9g_1, callContext.t98_1, invocationSignature, conversionMap, operatorMap, callContext.q98_1, false);
     if (!(result == null)) {
       results.e(result);
       return results;
     }
   }
-  results = this.g9g_1.h9g(callContext, conversionMap, operatorMap);
-  if (results.q() && this.f9g_1.y8w_1.j9g(invocationSignature)) {
-    var result_0 = getOperatorResolution(this, this.f9g_1, callContext.g98_1, invocationSignature, conversionMap, operatorMap, callContext.d98_1, false);
+  results = this.m9g_1.n9g(callContext, conversionMap, operatorMap);
+  if (results.q() && this.l9g_1.z8w_1.p9g(invocationSignature)) {
+    var result_0 = getOperatorResolution(this, this.l9g_1, callContext.t98_1, invocationSignature, conversionMap, operatorMap, callContext.q98_1, false);
     if (!(result_0 == null)) {
       results.e(result_0);
       return results;
     }
   }
   if (results.q()) {
-    var result_1 = getOperatorResolution(this, this.f9g_1, callContext.g98_1, invocationSignature, conversionMap, operatorMap, callContext.d98_1, true);
+    var result_1 = getOperatorResolution(this, this.l9g_1, callContext.t98_1, invocationSignature, conversionMap, operatorMap, callContext.q98_1, true);
     if (!(result_1 == null)) {
       results.e(result_1);
     }
   }
   return results;
 };
-protoOf(SignatureNode).k9g = function () {
-  return this.g9g_1.l9g();
+protoOf(SignatureNode).q9g = function () {
+  return this.m9g_1.r9g();
 };
 protoOf(SignatureNode).hashCode = function () {
-  return this.f9g_1.y8w_1.hashCode();
+  return this.l9g_1.z8w_1.hashCode();
 };
 protoOf(SignatureNode).equals = function (other) {
   if (other instanceof SignatureNode) {
-    return this.f9g_1.x8w_1 === other.f9g_1.x8w_1 && this.m66().equals(other.m66());
+    return this.l9g_1.y8w_1 === other.l9g_1.y8w_1 && this.n66().equals(other.n66());
   }
   return false;
 };
 protoOf(SignatureNode).toString = function () {
-  return toString(this.f9g_1);
+  return toString(this.l9g_1);
 };
 function SignatureNodes() {
-  this.i9g_1 = HashMap_init_$Create$();
+  this.o9g_1 = HashMap_init_$Create$();
 }
-protoOf(SignatureNodes).l9g = function () {
+protoOf(SignatureNodes).r9g = function () {
   // Inline function 'kotlin.collections.isNotEmpty' call
-  return !this.i9g_1.q();
+  return !this.o9g_1.q();
 };
-protoOf(SignatureNodes).m9g = function (operator) {
-  var result = this.i9g_1.o2(ensureNotNull(operator).y8w_1);
+protoOf(SignatureNodes).s9g = function (operator) {
+  var result = this.o9g_1.o2(ensureNotNull(operator).z8w_1);
   if (!result) {
-    var _iterator__ex2g4s = this.i9g_1.s2().g();
+    var _iterator__ex2g4s = this.o9g_1.s2().g();
     $l$loop: while (_iterator__ex2g4s.h()) {
       var n = _iterator__ex2g4s.i();
-      result = n.g9g_1.m9g(operator);
+      result = n.m9g_1.s9g(operator);
       if (result) {
         break $l$loop;
       }
@@ -14048,7 +14280,7 @@ protoOf(SignatureNodes).m9g = function (operator) {
   }
   return result;
 };
-protoOf(SignatureNodes).n9g = function (node) {
+protoOf(SignatureNodes).t9g = function (node) {
   $l$block: {
     // Inline function 'kotlin.requireNotNull' call
     if (node == null) {
@@ -14059,89 +14291,89 @@ protoOf(SignatureNodes).n9g = function (node) {
     }
   }
   // Inline function 'kotlin.require' call
-  if (!!this.i9g_1.o2(node.m66())) {
-    var message_0 = 'Operator ' + node.f9g_1.x8w_1 + ' already has a registration for signature: ' + node.m66().toString() + '.';
+  if (!!this.o9g_1.o2(node.n66())) {
+    var message_0 = 'Operator ' + node.l9g_1.y8w_1 + ' already has a registration for signature: ' + node.n66().toString() + '.';
     throw IllegalArgumentException_init_$Create$(toString(message_0));
   }
   var added = false;
-  var _iterator__ex2g4s = this.i9g_1.s2().g();
+  var _iterator__ex2g4s = this.o9g_1.s2().g();
   $l$loop: while (_iterator__ex2g4s.h()) {
     var n = _iterator__ex2g4s.i();
-    if (n.m66().j9g(node.m66())) {
-      n.g9g_1.n9g(node);
+    if (n.n66().p9g(node.n66())) {
+      n.m9g_1.t9g(node);
       added = true;
       break $l$loop;
     }
   }
   if (!added) {
     // Inline function 'kotlin.collections.toTypedArray' call
-    var this_0 = this.i9g_1.s2();
+    var this_0 = this.o9g_1.s2();
     var indexedObject = copyToArray(this_0);
     var inductionVariable = 0;
     var last = indexedObject.length;
     while (inductionVariable < last) {
       var n_0 = indexedObject[inductionVariable];
       inductionVariable = inductionVariable + 1 | 0;
-      if (node.m66().j9g(n_0.m66())) {
-        this.i9g_1.v2(n_0.m66());
-        node.g9g_1.n9g(n_0);
+      if (node.n66().p9g(n_0.n66())) {
+        this.o9g_1.v2(n_0.n66());
+        node.m9g_1.t9g(n_0);
       }
     }
-    var tmp0 = this.i9g_1;
+    var tmp0 = this.o9g_1;
     // Inline function 'kotlin.collections.set' call
-    var key = node.m66();
+    var key = node.n66();
     tmp0.u2(key, node);
   }
 };
-protoOf(SignatureNodes).h9g = function (callContext, conversionMap, operatorMap) {
+protoOf(SignatureNodes).n9g = function (callContext, conversionMap, operatorMap) {
   // Inline function 'kotlin.collections.arrayListOf' call
   var results = ArrayList_init_$Create$();
   var signatureCount = 0;
-  var _iterator__ex2g4s = this.i9g_1.s2().g();
+  var _iterator__ex2g4s = this.o9g_1.s2().g();
   while (_iterator__ex2g4s.h()) {
     var n = _iterator__ex2g4s.i();
-    if (n.m66().j() === callContext.g98_1.j()) {
+    if (n.n66().j() === callContext.t98_1.j()) {
       signatureCount = signatureCount + 1 | 0;
-      if (n.k9g()) {
+      if (n.q9g()) {
         signatureCount = signatureCount + 1 | 0;
       }
     }
-    var nodeResults = n.h9g(callContext, conversionMap, operatorMap);
+    var nodeResults = n.n9g(callContext, conversionMap, operatorMap);
     results.n(nodeResults);
   }
   if (signatureCount > 1) {
     var _iterator__ex2g4s_0 = results.g();
     while (_iterator__ex2g4s_0.h()) {
       var result = _iterator__ex2g4s_0.i();
-      result.z92_1 = true;
+      result.a93_1 = true;
     }
   }
   return results;
 };
 function containsGenericOperator($this, operator) {
-  return $this.q9g_1.o2(operator.y8w_1);
+  return $this.w9g_1.o2(operator.z8w_1);
 }
 function addGenericOperator($this, operator) {
   // Inline function 'kotlin.require' call
-  if (!!$this.q9g_1.o2(operator.y8w_1)) {
-    var message = 'Operator ' + $this.o9g_1 + ' already has a generic registration for signature: ' + operator.y8w_1.toString() + '.';
+  if (!!$this.w9g_1.o2(operator.z8w_1)) {
+    var message = 'Operator ' + $this.u9g_1 + ' already has a generic registration for signature: ' + operator.z8w_1.toString() + '.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  var tmp0 = $this.q9g_1;
+  var tmp0 = $this.w9g_1;
   // Inline function 'kotlin.collections.set' call
-  var key = operator.y8w_1;
+  var key = operator.z8w_1;
   tmp0.u2(key, operator);
 }
 function expandChoices($this, callSignature) {
   var signatures = ArrayList_init_$Create$();
-  if (callSignature.r9g()) {
+  if (callSignature.x9g()) {
     var operandList = ArrayList_init_$Create$();
-    var _iterator__ex2g4s = callSignature.h8z_1.g();
+    var _iterator__ex2g4s = callSignature.i8z_1.g();
     while (_iterator__ex2g4s.h()) {
       var operand = _iterator__ex2g4s.i();
       var list = ArrayList_init_$Create$();
       if (operand instanceof ChoiceType) {
-        var _iterator__ex2g4s_0 = operand.b60_1.g();
+        var _iterator__ex2g4s_0 = operand.c60_1.g();
         while (_iterator__ex2g4s_0.h()) {
           var type = _iterator__ex2g4s_0.i();
           list.e(type);
@@ -14179,13 +14411,13 @@ function collectSignatures($this, operandList, result, k, signatures) {
 }
 function instantiate_0($this, signature, operatorMap, conversionMap, allowPromotionAndDemotion) {
   // Inline function 'kotlin.collections.map' call
-  var this_0 = $this.q9g_1.s2();
+  var this_0 = $this.w9g_1.s2();
   // Inline function 'kotlin.collections.mapTo' call
   var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
   var _iterator__ex2g4s = this_0.g();
   while (_iterator__ex2g4s.h()) {
     var item = _iterator__ex2g4s.i();
-    var tmp$ret$0 = item.e9f(signature, operatorMap, conversionMap, allowPromotionAndDemotion);
+    var tmp$ret$0 = item.k9f(signature, operatorMap, conversionMap, allowPromotionAndDemotion);
     destination.e(tmp$ret$0);
   }
   // Inline function 'kotlin.collections.mapNotNull' call
@@ -14195,7 +14427,7 @@ function instantiate_0($this, signature, operatorMap, conversionMap, allowPromot
   var _iterator__ex2g4s_0 = destination.g();
   while (_iterator__ex2g4s_0.h()) {
     var element = _iterator__ex2g4s_0.i();
-    var tmp0_safe_receiver = element.g9f_1;
+    var tmp0_safe_receiver = element.m9f_1;
     if (tmp0_safe_receiver == null)
       null;
     else {
@@ -14206,52 +14438,52 @@ function instantiate_0($this, signature, operatorMap, conversionMap, allowPromot
   return destination_0;
 }
 function OperatorEntry(name) {
-  this.o9g_1 = name;
-  this.p9g_1 = new SignatureNodes();
-  this.q9g_1 = HashMap_init_$Create$();
+  this.u9g_1 = name;
+  this.v9g_1 = new SignatureNodes();
+  this.w9g_1 = HashMap_init_$Create$();
   // Inline function 'kotlin.text.isNotEmpty' call
-  var this_0 = this.o9g_1;
+  var this_0 = this.u9g_1;
   // Inline function 'kotlin.require' call
   if (!(charSequenceLength(this_0) > 0)) {
     var message = 'name is empty';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
 }
-protoOf(OperatorEntry).s9g = function (operator) {
+protoOf(OperatorEntry).y9g = function (operator) {
   var tmp;
   if (operator instanceof GenericOperator) {
     tmp = containsGenericOperator(this, operator);
   } else {
-    tmp = this.p9g_1.m9g(operator);
+    tmp = this.v9g_1.s9g(operator);
   }
   return tmp;
 };
-protoOf(OperatorEntry).h9e = function (operator) {
+protoOf(OperatorEntry).n9e = function (operator) {
   if (operator instanceof GenericOperator) {
     addGenericOperator(this, operator);
   } else {
-    this.p9g_1.n9g(new SignatureNode(operator));
+    this.v9g_1.t9g(new SignatureNode(operator));
   }
 };
-protoOf(OperatorEntry).t9g = function (callContext, operatorMap, conversionMap) {
-  var callSignatures = expandChoices(this, callContext.g98_1);
+protoOf(OperatorEntry).z9g = function (callContext, operatorMap, conversionMap) {
+  var callSignatures = expandChoices(this, callContext.t98_1);
   var _iterator__ex2g4s = callSignatures.g();
   while (_iterator__ex2g4s.h()) {
     var callSignature = _iterator__ex2g4s.i();
-    var instantiations = instantiate_0(this, callSignature, operatorMap, conversionMap, callContext.d98_1);
+    var instantiations = instantiate_0(this, callSignature, operatorMap, conversionMap, callContext.q98_1);
     var _iterator__ex2g4s_0 = instantiations.g();
     while (_iterator__ex2g4s_0.h()) {
       var instantiation = _iterator__ex2g4s_0.i();
-      if (!this.p9g_1.m9g(instantiation)) {
-        this.p9g_1.n9g(new SignatureNode(instantiation));
+      if (!this.v9g_1.s9g(instantiation)) {
+        this.v9g_1.t9g(new SignatureNode(instantiation));
       }
     }
   }
-  return this.p9g_1.h9g(callContext, conversionMap, operatorMap);
+  return this.v9g_1.n9g(callContext, conversionMap, operatorMap);
 };
 function getEntry($this, operatorName) {
   // Inline function 'kotlin.collections.getOrPut' call
-  var this_0 = $this.g9e_1;
+  var this_0 = $this.m9e_1;
   var value = this_0.q2(operatorName);
   var tmp;
   if (value == null) {
@@ -14265,25 +14497,25 @@ function getEntry($this, operatorName) {
 }
 function supportsOperator($this, libraryName, operatorName, signature) {
   var call = CallContext_init_$Create$(libraryName, operatorName, false, false, false, signature.slice());
-  return !($this.n9e(call, new ConversionMap()) == null);
+  return !($this.t9e(call, new ConversionMap()) == null);
 }
 function OperatorMap() {
-  this.g9e_1 = HashMap_init_$Create$();
+  this.m9e_1 = HashMap_init_$Create$();
 }
-protoOf(OperatorMap).j9e = function (operator) {
-  var entry = getEntry(this, operator.x8w_1);
-  return entry.s9g(operator);
+protoOf(OperatorMap).p9e = function (operator) {
+  var entry = getEntry(this, operator.y8w_1);
+  return entry.y9g(operator);
 };
-protoOf(OperatorMap).h9e = function (operator) {
-  var entry = getEntry(this, operator.x8w_1);
-  entry.h9e(operator);
+protoOf(OperatorMap).n9e = function (operator) {
+  var entry = getEntry(this, operator.y8w_1);
+  entry.n9e(operator);
 };
-protoOf(OperatorMap).p9f = function (type) {
+protoOf(OperatorMap).v9f = function (type) {
   return supportsOperator(this, 'System', 'LessOrEqual', [type, type]) && supportsOperator(this, 'System', 'Successor', [type]);
 };
-protoOf(OperatorMap).n9e = function (callContext, conversionMap) {
-  var entry = getEntry(this, callContext.c98_1);
-  var results = entry.t9g(callContext, this, conversionMap);
+protoOf(OperatorMap).t9e = function (callContext, conversionMap) {
+  var entry = getEntry(this, callContext.p98_1);
+  var results = entry.z9g(callContext, this, conversionMap);
   var result = null;
   // Inline function 'kotlin.collections.isNotEmpty' call
   if (!results.q()) {
@@ -14292,10 +14524,10 @@ protoOf(OperatorMap).n9e = function (callContext, conversionMap) {
     var _iterator__ex2g4s = results.g();
     while (_iterator__ex2g4s.h()) {
       var resolution = _iterator__ex2g4s.i();
-      var operands = resolution.t92_1.y8w_1.h8z_1;
-      var callOperands = callContext.g98_1.h8z_1;
-      var conversions = resolution.g9b() ? resolution.u92_1 : null;
-      var score = ConversionScore_ExactMatch_getInstance().y97_1;
+      var operands = resolution.u92_1.z8w_1.i8z_1;
+      var callOperands = callContext.t98_1.i8z_1;
+      var conversions = resolution.n9b() ? resolution.v92_1 : null;
+      var score = ConversionScore_ExactMatch_getInstance().l98_1;
       var inductionVariable = 0;
       var last = operands.j() - 1 | 0;
       if (inductionVariable <= last)
@@ -14305,10 +14537,10 @@ protoOf(OperatorMap).n9e = function (callContext, conversionMap) {
           var operand = operands.o(i);
           var callOperand = callOperands.o(i);
           var conversion = conversions == null ? null : conversions.o(i);
-          score = score + Companion_instance_12.i9f(callOperand, operand, conversion) | 0;
+          score = score + Companion_instance_12.o9f(callOperand, operand, conversion) | 0;
         }
          while (inductionVariable <= last);
-      resolution.v92_1 = score;
+      resolution.w92_1 = score;
       if (score < lowestScore) {
         lowestScore = score;
         lowestScoringResults.i2();
@@ -14323,11 +14555,11 @@ protoOf(OperatorMap).n9e = function (callContext, conversionMap) {
       var _iterator__ex2g4s_0 = lowestScoringResults.g();
       while (_iterator__ex2g4s_0.h()) {
         var resolution_0 = _iterator__ex2g4s_0.i();
-        var typeScore = ConversionScore_ExactMatch_getInstance().y97_1;
-        var _iterator__ex2g4s_1 = resolution_0.t92_1.y8w_1.h8z_1.g();
+        var typeScore = ConversionScore_ExactMatch_getInstance().l98_1;
+        var _iterator__ex2g4s_1 = resolution_0.u92_1.z8w_1.i8z_1.g();
         while (_iterator__ex2g4s_1.h()) {
           var operand_0 = _iterator__ex2g4s_1.i();
-          typeScore = typeScore + Companion_instance_12.z97(operand_0) | 0;
+          typeScore = typeScore + Companion_instance_12.m98(operand_0) | 0;
         }
         if (typeScore < lowestTypeScore) {
           lowestTypeScore = typeScore;
@@ -14340,12 +14572,12 @@ protoOf(OperatorMap).n9e = function (callContext, conversionMap) {
       lowestScoringResults = lowestTypeScoringResults;
     }
     if (lowestScoringResults.j() > 1) {
-      if (callContext.f98_1) {
-        var message = (new StringBuilder('Call to operator ')).j9(callContext.c98_1).i9(callContext.g98_1).j9(' is ambiguous with: ');
+      if (callContext.s98_1) {
+        var message = (new StringBuilder('Call to operator ')).j9(callContext.p98_1).i9(callContext.t98_1).j9(' is ambiguous with: ');
         var _iterator__ex2g4s_2 = lowestScoringResults.g();
         while (_iterator__ex2g4s_2.h()) {
           var operator = _iterator__ex2g4s_2.i().tg();
-          message.j9('\n  - ').j9(operator.x8w_1).i9(operator.y8w_1);
+          message.j9('\n  - ').j9(operator.y8w_1).i9(operator.z8w_1);
         }
         throw IllegalArgumentException_init_$Create$(message.toString());
       } else {
@@ -14366,27 +14598,27 @@ function OperatorResolution_init_$Create$(operator, conversions) {
   return OperatorResolution_init_$Init$(operator, conversions, objectCreate(protoOf(OperatorResolution)));
 }
 function OperatorResolution(operator, conversions) {
-  this.t92_1 = operator;
-  this.u92_1 = conversions;
-  this.v92_1 = 0;
-  this.w92_1 = false;
-  this.x92_1 = null;
+  this.u92_1 = operator;
+  this.v92_1 = conversions;
+  this.w92_1 = 0;
+  this.x92_1 = false;
   this.y92_1 = null;
-  this.z92_1 = false;
+  this.z92_1 = null;
+  this.a93_1 = false;
 }
-protoOf(OperatorResolution).g9b = function () {
+protoOf(OperatorResolution).n9b = function () {
   // Inline function 'kotlin.collections.isNotEmpty' call
-  return !filterNotNull_0(this.u92_1).q();
+  return !filterNotNull_0(this.v92_1).q();
 };
 protoOf(OperatorResolution).tg = function () {
-  return this.t92_1;
+  return this.u92_1;
 };
 protoOf(OperatorResolution).toString = function () {
-  return 'OperatorResolution(operator=' + toString(this.t92_1) + ', conversions=' + toString(this.u92_1) + ')';
+  return 'OperatorResolution(operator=' + toString(this.u92_1) + ', conversions=' + toString(this.v92_1) + ')';
 };
 protoOf(OperatorResolution).hashCode = function () {
-  var result = hashCode(this.t92_1);
-  result = imul(result, 31) + hashCode(this.u92_1) | 0;
+  var result = hashCode(this.u92_1);
+  result = imul(result, 31) + hashCode(this.v92_1) | 0;
   return result;
 };
 protoOf(OperatorResolution).equals = function (other) {
@@ -14395,9 +14627,9 @@ protoOf(OperatorResolution).equals = function (other) {
   if (!(other instanceof OperatorResolution))
     return false;
   var tmp0_other_with_cast = other instanceof OperatorResolution ? other : THROW_CCE();
-  if (!equals(this.t92_1, tmp0_other_with_cast.t92_1))
-    return false;
   if (!equals(this.u92_1, tmp0_other_with_cast.u92_1))
+    return false;
+  if (!equals(this.v92_1, tmp0_other_with_cast.v92_1))
     return false;
   return true;
 };
@@ -14431,21 +14663,21 @@ function toTargetMapString($this, _this__u8e3s4) {
   return tmp;
 }
 function PropertyResolution_init_$Init$(e, $this) {
-  PropertyResolution.call($this, e.y60_1, e.x60_1, e.b61_1);
+  PropertyResolution.call($this, e.z60_1, e.y60_1, e.c61_1);
   return $this;
 }
 function PropertyResolution_init_$Create$(e) {
   return PropertyResolution_init_$Init$(e, objectCreate(protoOf(PropertyResolution)));
 }
 function PropertyResolution_init_$Init$_0(e, $this) {
-  PropertyResolution_init_$Init$_2(e.j61_1, e.i61_1, VOID, $this);
+  PropertyResolution_init_$Init$_2(e.k61_1, e.j61_1, VOID, $this);
   return $this;
 }
 function PropertyResolution_init_$Create$_0(e) {
   return PropertyResolution_init_$Init$_0(e, objectCreate(protoOf(PropertyResolution)));
 }
 function PropertyResolution_init_$Init$_1(s, $this) {
-  PropertyResolution.call($this, s.g63_1, s.e63_1, VOID, true);
+  PropertyResolution.call($this, s.h63_1, s.f63_1, VOID, true);
   return $this;
 }
 function PropertyResolution_init_$Create$_1(s) {
@@ -14468,19 +14700,19 @@ function Companion_getInstance_13() {
 function PropertyResolution(type, name, targetMap, isSearch) {
   targetMap = targetMap === VOID ? null : targetMap;
   isSearch = isSearch === VOID ? false : isSearch;
-  this.a91_1 = type;
-  this.b91_1 = name;
-  this.c91_1 = targetMap;
-  this.d91_1 = isSearch;
+  this.b91_1 = type;
+  this.c91_1 = name;
+  this.d91_1 = targetMap;
+  this.e91_1 = isSearch;
 }
 protoOf(PropertyResolution).toString = function () {
-  return 'PropertyResolution(type=' + toString(this.a91_1) + ', name=' + this.b91_1 + ', targetMap=' + this.c91_1 + ', isSearch=' + this.d91_1 + ')';
+  return 'PropertyResolution(type=' + toString(this.b91_1) + ', name=' + this.c91_1 + ', targetMap=' + this.d91_1 + ', isSearch=' + this.e91_1 + ')';
 };
 protoOf(PropertyResolution).hashCode = function () {
-  var result = hashCode(this.a91_1);
-  result = imul(result, 31) + getStringHashCode(this.b91_1) | 0;
-  result = imul(result, 31) + (this.c91_1 == null ? 0 : getStringHashCode(this.c91_1)) | 0;
-  result = imul(result, 31) + getBooleanHashCode(this.d91_1) | 0;
+  var result = hashCode(this.b91_1);
+  result = imul(result, 31) + getStringHashCode(this.c91_1) | 0;
+  result = imul(result, 31) + (this.d91_1 == null ? 0 : getStringHashCode(this.d91_1)) | 0;
+  result = imul(result, 31) + getBooleanHashCode(this.e91_1) | 0;
   return result;
 };
 protoOf(PropertyResolution).equals = function (other) {
@@ -14489,104 +14721,104 @@ protoOf(PropertyResolution).equals = function (other) {
   if (!(other instanceof PropertyResolution))
     return false;
   var tmp0_other_with_cast = other instanceof PropertyResolution ? other : THROW_CCE();
-  if (!equals(this.a91_1, tmp0_other_with_cast.a91_1))
+  if (!equals(this.b91_1, tmp0_other_with_cast.b91_1))
     return false;
-  if (!(this.b91_1 === tmp0_other_with_cast.b91_1))
+  if (!(this.c91_1 === tmp0_other_with_cast.c91_1))
     return false;
-  if (!(this.c91_1 == tmp0_other_with_cast.c91_1))
+  if (!(this.d91_1 == tmp0_other_with_cast.d91_1))
     return false;
-  if (!(this.d91_1 === tmp0_other_with_cast.d91_1))
+  if (!(this.e91_1 === tmp0_other_with_cast.e91_1))
     return false;
   return true;
 };
 function internalAddQuerySource($this, source) {
-  var tmp0 = $this.q91_1;
+  var tmp0 = $this.r91_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(source.o69_1);
+  var key = ensureNotNull(source.p69_1);
   tmp0.u2(key, source);
 }
 function removeLetClause($this, let_0) {
-  var tmp0 = $this.r91_1;
+  var tmp0 = $this.s91_1;
   // Inline function 'kotlin.collections.remove' call
-  var key = let_0.w78_1;
+  var key = let_0.x78_1;
   (isInterface(tmp0, KtMutableMap) ? tmp0 : THROW_CCE()).v2(key);
 }
 function QueryContext() {
-  this.q91_1 = HashMap_init_$Create$();
   this.r91_1 = HashMap_init_$Create$();
-  this.s91_1 = true;
-  this.t91_1 = false;
+  this.s91_1 = HashMap_init_$Create$();
+  this.t91_1 = true;
   this.u91_1 = false;
   this.v91_1 = false;
-  this.w91_1 = null;
-  this.x91_1 = false;
+  this.w91_1 = false;
+  this.x91_1 = null;
+  this.y91_1 = false;
 }
-protoOf(QueryContext).h92 = function (source) {
+protoOf(QueryContext).i92 = function (source) {
   internalAddQuerySource(this, source);
 };
-protoOf(QueryContext).a92 = function (sources) {
+protoOf(QueryContext).b92 = function (sources) {
   var _iterator__ex2g4s = sources.g();
   while (_iterator__ex2g4s.h()) {
     var source = _iterator__ex2g4s.i();
     internalAddQuerySource(this, source);
-    var tmp = Trackable_getInstance().n8v(source);
+    var tmp = Trackable_getInstance().o8v(source);
     if (tmp instanceof ListType) {
-      this.s91_1 = false;
+      this.t91_1 = false;
     }
   }
 };
-protoOf(QueryContext).n9d = function () {
-  return this.q91_1.s2();
+protoOf(QueryContext).t9d = function () {
+  return this.r91_1.s2();
 };
-protoOf(QueryContext).i92 = function (source) {
-  var tmp0 = this.q91_1;
+protoOf(QueryContext).j92 = function (source) {
+  var tmp0 = this.r91_1;
   // Inline function 'kotlin.collections.remove' call
-  var key = source.o69_1;
+  var key = source.p69_1;
   (isInterface(tmp0, KtMutableMap) ? tmp0 : THROW_CCE()).v2(key);
 };
-protoOf(QueryContext).c92 = function (sources) {
+protoOf(QueryContext).d92 = function (sources) {
   var _iterator__ex2g4s = sources.g();
   while (_iterator__ex2g4s.h()) {
     var source = _iterator__ex2g4s.i();
-    this.i92(source);
+    this.j92(source);
   }
 };
-protoOf(QueryContext).g92 = function (let_0) {
-  var tmp0 = this.r91_1;
+protoOf(QueryContext).h92 = function (let_0) {
+  var tmp0 = this.s91_1;
   // Inline function 'kotlin.collections.set' call
-  var key = ensureNotNull(let_0.w78_1);
+  var key = ensureNotNull(let_0.x78_1);
   tmp0.u2(key, let_0);
 };
-protoOf(QueryContext).d92 = function (lets) {
+protoOf(QueryContext).e92 = function (lets) {
   var _iterator__ex2g4s = lets.g();
   while (_iterator__ex2g4s.h()) {
     var let_0 = _iterator__ex2g4s.i();
     removeLetClause(this, let_0);
   }
 };
-protoOf(QueryContext).h99 = function (identifier) {
-  return this.q91_1.q2(identifier);
-};
-protoOf(QueryContext).i99 = function (identifier) {
+protoOf(QueryContext).u99 = function (identifier) {
   return this.r91_1.q2(identifier);
 };
-protoOf(QueryContext).y91 = function () {
-  this.t91_1 = true;
+protoOf(QueryContext).v99 = function (identifier) {
+  return this.s91_1.q2(identifier);
 };
 protoOf(QueryContext).z91 = function () {
-  this.t91_1 = false;
-};
-protoOf(QueryContext).j99 = function () {
-  return this.t91_1;
-};
-protoOf(QueryContext).e92 = function () {
   this.u91_1 = true;
 };
-protoOf(QueryContext).f92 = function () {
+protoOf(QueryContext).a92 = function () {
   this.u91_1 = false;
 };
-protoOf(QueryContext).b99 = function () {
+protoOf(QueryContext).w99 = function () {
   return this.u91_1;
+};
+protoOf(QueryContext).f92 = function () {
+  this.v91_1 = true;
+};
+protoOf(QueryContext).g92 = function () {
+  this.v91_1 = false;
+};
+protoOf(QueryContext).o99 = function () {
+  return this.v91_1;
 };
 var ResolvedIdentifierMatchType_EXACT_instance;
 var ResolvedIdentifierMatchType_CASE_INSENSITIVE_instance;
@@ -14601,31 +14833,31 @@ function ResolvedIdentifierMatchType_initEntries() {
 function getName($this, element) {
   var tmp;
   if (element instanceof ExpressionDef) {
-    tmp = element.c6w_1;
+    tmp = element.d6w_1;
   } else {
     if (element instanceof ValueSetDef) {
-      tmp = element.f8h_1;
+      tmp = element.g8h_1;
     } else {
       if (element instanceof OperandDef) {
-        tmp = element.v7q_1;
+        tmp = element.w7q_1;
       } else {
         if (element instanceof TupleElementDefinition) {
-          tmp = element.t8f_1;
+          tmp = element.u8f_1;
         } else {
           if (element instanceof CodeDef) {
-            tmp = element.t6h_1;
+            tmp = element.u6h_1;
           } else {
             if (element instanceof ConceptDef) {
-              tmp = element.v6k_1;
+              tmp = element.w6k_1;
             } else {
               if (element instanceof ParameterDef) {
-                tmp = element.y7s_1;
+                tmp = element.z7s_1;
               } else {
                 if (element instanceof CodeSystemDef) {
-                  tmp = element.z6i_1;
+                  tmp = element.a6j_1;
                 } else {
                   if (element instanceof ContextDef) {
-                    tmp = element.t6l_1;
+                    tmp = element.u6l_1;
                   } else {
                     tmp = null;
                   }
@@ -14643,14 +14875,14 @@ function ResolvedIdentifierMatchType(name, ordinal) {
   Enum.call(this, name, ordinal);
 }
 function _get_isExactMatch__jvcvwl($this) {
-  return ResolvedIdentifierMatchType_EXACT_getInstance().equals($this.v9b_1);
+  return ResolvedIdentifierMatchType_EXACT_getInstance().equals($this.c9c_1);
 }
 function Companion_11() {
 }
-protoOf(Companion_11).k9e = function (identifier, element) {
+protoOf(Companion_11).q9e = function (identifier, element) {
   return new ResolvedIdentifierContext(identifier, element, ResolvedIdentifierMatchType_EXACT_getInstance());
 };
-protoOf(Companion_11).l9e = function (identifier, element) {
+protoOf(Companion_11).r9e = function (identifier, element) {
   return new ResolvedIdentifierContext(identifier, element, ResolvedIdentifierMatchType_CASE_INSENSITIVE_getInstance());
 };
 var Companion_instance_14;
@@ -14666,49 +14898,49 @@ function ResolvedIdentifierMatchType_CASE_INSENSITIVE_getInstance() {
   return ResolvedIdentifierMatchType_CASE_INSENSITIVE_instance;
 }
 function ResolvedIdentifierContext(identifier, element, matchType) {
-  this.t9b_1 = identifier;
-  this.u9b_1 = element;
-  this.v9b_1 = matchType;
+  this.a9c_1 = identifier;
+  this.b9c_1 = element;
+  this.c9c_1 = matchType;
 }
-protoOf(ResolvedIdentifierContext).w9b = function () {
-  return _get_isExactMatch__jvcvwl(this) ? this.u9b_1 : null;
+protoOf(ResolvedIdentifierContext).d9c = function () {
+  return _get_isExactMatch__jvcvwl(this) ? this.b9c_1 : null;
 };
-protoOf(ResolvedIdentifierContext).x9b = function () {
-  if (!(this.u9b_1 == null) && !_get_isExactMatch__jvcvwl(this)) {
-    var tmp0_safe_receiver = getName(Companion_instance_14, this.u9b_1);
+protoOf(ResolvedIdentifierContext).e9c = function () {
+  if (!(this.b9c_1 == null) && !_get_isExactMatch__jvcvwl(this)) {
+    var tmp0_safe_receiver = getName(Companion_instance_14, this.b9c_1);
     var tmp;
     if (tmp0_safe_receiver == null) {
       tmp = null;
     } else {
       // Inline function 'kotlin.let' call
-      tmp = 'Could not resolve identifier ' + this.t9b_1 + '. Consider whether the identifier ' + tmp0_safe_receiver + ' (differing only in case) was intended.';
+      tmp = 'Could not resolve identifier ' + this.a9c_1 + '. Consider whether the identifier ' + tmp0_safe_receiver + ' (differing only in case) was intended.';
     }
     return tmp;
   }
   return null;
 };
-protoOf(ResolvedIdentifierContext).e9e = function (clazz) {
+protoOf(ResolvedIdentifierContext).k9e = function (clazz) {
   var tmp;
-  if (!(this.w9b() == null) && clazz.mb(this.u9b_1)) {
-    tmp = cast(clazz, this.u9b_1);
+  if (!(this.d9c() == null) && clazz.mb(this.b9c_1)) {
+    tmp = cast(clazz, this.b9c_1);
   } else {
     tmp = null;
   }
   return tmp;
 };
-protoOf(ResolvedIdentifierContext).y9b = function (clazz) {
-  if (clazz.mb(this.u9b_1)) {
-    return cast(clazz, this.u9b_1);
+protoOf(ResolvedIdentifierContext).f9c = function (clazz) {
+  if (clazz.mb(this.b9c_1)) {
+    return cast(clazz, this.b9c_1);
   }
   return null;
 };
 protoOf(ResolvedIdentifierContext).toString = function () {
-  return 'ResolvedIdentifierContext(identifier=' + this.t9b_1 + ', element=' + toString_0(this.u9b_1) + ', matchType=' + this.v9b_1.toString() + ')';
+  return 'ResolvedIdentifierContext(identifier=' + this.a9c_1 + ', element=' + toString_0(this.b9c_1) + ', matchType=' + this.c9c_1.toString() + ')';
 };
 protoOf(ResolvedIdentifierContext).hashCode = function () {
-  var result = getStringHashCode(this.t9b_1);
-  result = imul(result, 31) + (this.u9b_1 == null ? 0 : this.u9b_1.hashCode()) | 0;
-  result = imul(result, 31) + this.v9b_1.hashCode() | 0;
+  var result = getStringHashCode(this.a9c_1);
+  result = imul(result, 31) + (this.b9c_1 == null ? 0 : this.b9c_1.hashCode()) | 0;
+  result = imul(result, 31) + this.c9c_1.hashCode() | 0;
   return result;
 };
 protoOf(ResolvedIdentifierContext).equals = function (other) {
@@ -14717,11 +14949,11 @@ protoOf(ResolvedIdentifierContext).equals = function (other) {
   if (!(other instanceof ResolvedIdentifierContext))
     return false;
   var tmp0_other_with_cast = other instanceof ResolvedIdentifierContext ? other : THROW_CCE();
-  if (!(this.t9b_1 === tmp0_other_with_cast.t9b_1))
+  if (!(this.a9c_1 === tmp0_other_with_cast.a9c_1))
     return false;
-  if (!equals(this.u9b_1, tmp0_other_with_cast.u9b_1))
+  if (!equals(this.b9c_1, tmp0_other_with_cast.b9c_1))
     return false;
-  if (!this.v9b_1.equals(tmp0_other_with_cast.v9b_1))
+  if (!this.c9c_1.equals(tmp0_other_with_cast.c9c_1))
     return false;
   return true;
 };
@@ -14734,7 +14966,7 @@ function Signature_init_$Create$(types) {
 }
 function Signature$containsChoices$delegate$lambda(this$0) {
   return function () {
-    var tmp0 = this$0.h8z_1;
+    var tmp0 = this$0.i8z_1;
     var tmp$ret$0;
     $l$block_0: {
       // Inline function 'kotlin.collections.any' call
@@ -14763,31 +14995,31 @@ function Signature$containsChoices$delegate$lambda(this$0) {
 }
 function Signature$_get_containsChoices_$ref_3mrkov() {
   return function (p0) {
-    return p0.r9g();
+    return p0.x9g();
   };
 }
 function Signature$toString$lambda(it) {
   return toString(it);
 }
 function Signature(operandTypes) {
-  this.h8z_1 = operandTypes;
+  this.i8z_1 = operandTypes;
   var tmp = this;
-  tmp.i8z_1 = lazy_0(Signature$containsChoices$delegate$lambda(this));
+  tmp.j8z_1 = lazy_0(Signature$containsChoices$delegate$lambda(this));
 }
-protoOf(Signature).r9g = function () {
-  var tmp0 = this.i8z_1;
+protoOf(Signature).x9g = function () {
+  var tmp0 = this.j8z_1;
   var tmp = KProperty1;
   // Inline function 'kotlin.getValue' call
   getPropertyCallableRef('containsChoices', 1, tmp, Signature$_get_containsChoices_$ref_3mrkov(), null);
   return tmp0.n2();
 };
 protoOf(Signature).j = function () {
-  return this.h8z_1.j();
+  return this.i8z_1.j();
 };
-protoOf(Signature).j9g = function (other) {
+protoOf(Signature).p9g = function (other) {
   var tmp;
   if (this.j() === other.j()) {
-    var tmp0 = zip(this.h8z_1, other.h8z_1);
+    var tmp0 = zip(this.i8z_1, other.i8z_1);
     var tmp$ret$0;
     $l$block_0: {
       // Inline function 'kotlin.collections.all' call
@@ -14804,7 +15036,7 @@ protoOf(Signature).j9g = function (other) {
       var _iterator__ex2g4s = tmp0.g();
       while (_iterator__ex2g4s.h()) {
         var element = _iterator__ex2g4s.i();
-        if (!element.rg_1.y5z(element.sg_1)) {
+        if (!element.rg_1.z5z(element.sg_1)) {
           tmp$ret$0 = false;
           break $l$block_0;
         }
@@ -14817,10 +15049,10 @@ protoOf(Signature).j9g = function (other) {
   }
   return tmp;
 };
-protoOf(Signature).j9f = function (callSignature, context) {
+protoOf(Signature).p9f = function (callSignature, context) {
   var tmp;
   if (this.j() === callSignature.j()) {
-    var tmp0 = zip(this.h8z_1, callSignature.h8z_1);
+    var tmp0 = zip(this.i8z_1, callSignature.i8z_1);
     var tmp$ret$0;
     $l$block_0: {
       // Inline function 'kotlin.collections.all' call
@@ -14837,7 +15069,7 @@ protoOf(Signature).j9f = function (callSignature, context) {
       var _iterator__ex2g4s = tmp0.g();
       while (_iterator__ex2g4s.h()) {
         var element = _iterator__ex2g4s.i();
-        if (!element.rg_1.e60(element.sg_1, context)) {
+        if (!element.rg_1.f60(element.sg_1, context)) {
           tmp$ret$0 = false;
           break $l$block_0;
         }
@@ -14850,37 +15082,37 @@ protoOf(Signature).j9f = function (callSignature, context) {
   }
   return tmp;
 };
-protoOf(Signature).f60 = function (context) {
+protoOf(Signature).g60 = function (context) {
   // Inline function 'kotlin.collections.map' call
-  var this_0 = this.h8z_1;
+  var this_0 = this.i8z_1;
   // Inline function 'kotlin.collections.mapTo' call
   var destination = ArrayList_init_$Create$_0(collectionSizeOrDefault(this_0, 10));
   var _iterator__ex2g4s = this_0.g();
   while (_iterator__ex2g4s.h()) {
     var item = _iterator__ex2g4s.i();
-    var tmp$ret$0 = item.f60(context);
+    var tmp$ret$0 = item.g60(context);
     destination.e(tmp$ret$0);
   }
   return new Signature(destination);
 };
-protoOf(Signature).e9g = function (other, conversionMap, operatorMap, allowPromotionAndDemotion, conversions) {
+protoOf(Signature).k9g = function (other, conversionMap, operatorMap, allowPromotionAndDemotion, conversions) {
   var tmp;
   if (this.j() === other.j()) {
     // Inline function 'kotlin.run' call
     var tmp$ret$0;
     $l$block: {
       var inductionVariable = 0;
-      var last = this.h8z_1.j() - 1 | 0;
+      var last = this.i8z_1.j() - 1 | 0;
       if (inductionVariable <= last)
         $l$loop: do {
           var i = inductionVariable;
           inductionVariable = inductionVariable + 1 | 0;
-          var first = this.h8z_1.o(i);
-          var second = other.h8z_1.o(i);
-          if (first.x5z(second)) {
+          var first = this.i8z_1.o(i);
+          var second = other.i8z_1.o(i);
+          if (first.y5z(second)) {
             continue $l$loop;
           }
-          conversions[i] = conversionMap == null ? null : conversionMap.c9b(first, second, true, allowPromotionAndDemotion, operatorMap);
+          conversions[i] = conversionMap == null ? null : conversionMap.j9b(first, second, true, allowPromotionAndDemotion, operatorMap);
           if (conversions[i] == null) {
             tmp$ret$0 = false;
             break $l$block;
@@ -14896,10 +15128,10 @@ protoOf(Signature).e9g = function (other, conversionMap, operatorMap, allowPromo
   return tmp;
 };
 protoOf(Signature).toString = function () {
-  return '(' + joinToString(this.h8z_1, VOID, VOID, VOID, VOID, VOID, Signature$toString$lambda) + ')';
+  return '(' + joinToString(this.i8z_1, VOID, VOID, VOID, VOID, VOID, Signature$toString$lambda) + ')';
 };
 protoOf(Signature).hashCode = function () {
-  return hashCode(this.h8z_1);
+  return hashCode(this.i8z_1);
 };
 protoOf(Signature).equals = function (other) {
   if (this === other)
@@ -14907,529 +15139,529 @@ protoOf(Signature).equals = function (other) {
   if (!(other instanceof Signature))
     return false;
   var tmp0_other_with_cast = other instanceof Signature ? other : THROW_CCE();
-  if (!equals(this.h8z_1, tmp0_other_with_cast.h8z_1))
+  if (!equals(this.i8z_1, tmp0_other_with_cast.i8z_1))
     return false;
   return true;
 };
 function add($this, systemLibrary, tb, operator) {
   var fd = new FunctionDef();
-  fd.c6w_1 = operator.x8w_1;
+  fd.d6w_1 = operator.y8w_1;
   var n = 0;
-  var _iterator__ex2g4s = operator.y8w_1.h8z_1.g();
+  var _iterator__ex2g4s = operator.z8w_1.i8z_1.g();
   while (_iterator__ex2g4s.h()) {
     var dataType = _iterator__ex2g4s.i();
     n = n + 1 | 0;
-    var od = (new OperandDef()).q65('param' + n);
+    var od = (new OperandDef()).r65('param' + n);
     if (isInterface(dataType, NamedType)) {
-      od.w7q_1 = tb.q9b(dataType);
+      od.x7q_1 = tb.x9b(dataType);
     } else {
-      od.x7q_1 = tb.r9b(dataType);
+      od.y7q_1 = tb.y9b(dataType);
     }
-    Trackable_getInstance().o8v(od, dataType);
-    fd.o67().e(od);
+    Trackable_getInstance().p8v(od, dataType);
+    fd.p67().e(od);
   }
-  operator.a8x_1 = fd;
-  systemLibrary.f9e(fd, operator);
+  operator.b8x_1 = fd;
+  systemLibrary.l9e(fd, operator);
 }
 function add_0($this, systemLibrary, tb, conversion) {
-  systemLibrary.n97(conversion);
+  systemLibrary.a98(conversion);
 }
 function SystemLibraryHelper() {
 }
-protoOf(SystemLibraryHelper).r97 = function (systemModel, tb) {
+protoOf(SystemLibraryHelper).e98 = function (systemModel, tb) {
   var system = new CompiledLibrary();
-  system.j8z_1 = (new VersionedIdentifier()).a6i('System').d6j('1.0');
-  add(this, system, tb, Operator_init_$Create$('And', Signature_init_$Create$([systemModel.b9h(), systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Or', Signature_init_$Create$([systemModel.b9h(), systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Xor', Signature_init_$Create$([systemModel.b9h(), systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Not', Signature_init_$Create$([systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Implies', Signature_init_$Create$([systemModel.b9h(), systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('IsNull', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('IsTrue', Signature_init_$Create$([systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('IsFalse', Signature_init_$Create$([systemModel.b9h()]), systemModel.b9h()));
+  system.k8z_1 = (new VersionedIdentifier()).b6i('System').e6j('1.0');
+  add(this, system, tb, Operator_init_$Create$('And', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Or', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Xor', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Not', Signature_init_$Create$([systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Implies', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('IsNull', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('IsTrue', Signature_init_$Create$([systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('IsFalse', Signature_init_$Create$([systemModel.h9h()]), systemModel.h9h()));
   add(this, system, tb, GenericOperator_init_$Create$('Coalesce', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Coalesce', Signature_init_$Create$([TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T')]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Coalesce', Signature_init_$Create$([TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T')]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Coalesce', Signature_init_$Create$([TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T')]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Coalesce', Signature_init_$Create$([TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T'), TypeParameter_init_$Create$('T')]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  var booleanToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.b9h()]), systemModel.d9h());
+  var booleanToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.h9h()]), systemModel.j9h());
   add(this, system, tb, booleanToString);
   add_0(this, system, tb, Conversion_init_$Create$(booleanToString, false));
-  var integerToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.e9h()]), systemModel.d9h());
+  var integerToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.k9h()]), systemModel.j9h());
   add(this, system, tb, integerToString);
   add_0(this, system, tb, Conversion_init_$Create$(integerToString, false));
-  var longToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.f9h()]), systemModel.d9h());
+  var longToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.l9h()]), systemModel.j9h());
   add(this, system, tb, longToString);
   add_0(this, system, tb, Conversion_init_$Create$(longToString, false));
-  var decimalToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.g9h()]), systemModel.d9h());
+  var decimalToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.m9h()]), systemModel.j9h());
   add(this, system, tb, decimalToString);
   add_0(this, system, tb, Conversion_init_$Create$(decimalToString, false));
-  var dateTimeToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.h9h()]), systemModel.d9h());
+  var dateTimeToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.n9h()]), systemModel.j9h());
   add(this, system, tb, dateTimeToString);
   add_0(this, system, tb, Conversion_init_$Create$(dateTimeToString, false));
-  var dateToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.i9h()]), systemModel.d9h());
+  var dateToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.o9h()]), systemModel.j9h());
   add(this, system, tb, dateToString);
   add_0(this, system, tb, Conversion_init_$Create$(dateToString, false));
-  var timeToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.j9h()]), systemModel.d9h());
+  var timeToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.p9h()]), systemModel.j9h());
   add(this, system, tb, timeToString);
   add_0(this, system, tb, Conversion_init_$Create$(timeToString, false));
-  var quantityToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.k9h()]), systemModel.d9h());
+  var quantityToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.q9h()]), systemModel.j9h());
   add(this, system, tb, quantityToString);
   add_0(this, system, tb, Conversion_init_$Create$(quantityToString, false));
-  var ratioToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.l9h()]), systemModel.d9h());
+  var ratioToString = Operator_init_$Create$('ToString', Signature_init_$Create$([systemModel.r9h()]), systemModel.j9h());
   add(this, system, tb, ratioToString);
   add_0(this, system, tb, Conversion_init_$Create$(ratioToString, false));
-  var stringToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.d9h()]), systemModel.b9h());
+  var stringToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.j9h()]), systemModel.h9h());
   add(this, system, tb, stringToBoolean);
   add_0(this, system, tb, Conversion_init_$Create$(stringToBoolean, false));
-  var integerToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.e9h()]), systemModel.b9h());
+  var integerToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.k9h()]), systemModel.h9h());
   add(this, system, tb, integerToBoolean);
   add_0(this, system, tb, Conversion_init_$Create$(integerToBoolean, false));
-  var decimalToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.g9h()]), systemModel.b9h());
+  var decimalToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.m9h()]), systemModel.h9h());
   add(this, system, tb, decimalToBoolean);
   add_0(this, system, tb, Conversion_init_$Create$(decimalToBoolean, false));
-  var longToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.f9h()]), systemModel.b9h());
+  var longToBoolean = Operator_init_$Create$('ToBoolean', Signature_init_$Create$([systemModel.l9h()]), systemModel.h9h());
   add(this, system, tb, longToBoolean);
   add_0(this, system, tb, Conversion_init_$Create$(longToBoolean, false));
-  var toChars = Operator_init_$Create$('ToChars', Signature_init_$Create$([systemModel.d9h()]), new ListType(systemModel.d9h()));
+  var toChars = Operator_init_$Create$('ToChars', Signature_init_$Create$([systemModel.j9h()]), new ListType(systemModel.j9h()));
   add(this, system, tb, toChars);
   add_0(this, system, tb, Conversion_init_$Create$(toChars, false));
-  var stringToInteger = Operator_init_$Create$('ToInteger', Signature_init_$Create$([systemModel.d9h()]), systemModel.e9h());
+  var stringToInteger = Operator_init_$Create$('ToInteger', Signature_init_$Create$([systemModel.j9h()]), systemModel.k9h());
   add(this, system, tb, stringToInteger);
   add_0(this, system, tb, Conversion_init_$Create$(stringToInteger, false));
-  var longToInteger = Operator_init_$Create$('ToInteger', Signature_init_$Create$([systemModel.f9h()]), systemModel.e9h());
+  var longToInteger = Operator_init_$Create$('ToInteger', Signature_init_$Create$([systemModel.l9h()]), systemModel.k9h());
   add(this, system, tb, longToInteger);
   add_0(this, system, tb, Conversion_init_$Create$(longToInteger, false));
-  var booleanToInteger = Operator_init_$Create$('ToInteger', Signature_init_$Create$([systemModel.b9h()]), systemModel.e9h());
+  var booleanToInteger = Operator_init_$Create$('ToInteger', Signature_init_$Create$([systemModel.h9h()]), systemModel.k9h());
   add(this, system, tb, booleanToInteger);
   add_0(this, system, tb, Conversion_init_$Create$(booleanToInteger, false));
-  var stringToLong = Operator_init_$Create$('ToLong', Signature_init_$Create$([systemModel.d9h()]), systemModel.f9h());
+  var stringToLong = Operator_init_$Create$('ToLong', Signature_init_$Create$([systemModel.j9h()]), systemModel.l9h());
   add(this, system, tb, stringToLong);
   add_0(this, system, tb, Conversion_init_$Create$(stringToLong, false));
-  var integerToLong = Operator_init_$Create$('ToLong', Signature_init_$Create$([systemModel.e9h()]), systemModel.f9h());
+  var integerToLong = Operator_init_$Create$('ToLong', Signature_init_$Create$([systemModel.k9h()]), systemModel.l9h());
   add(this, system, tb, integerToLong);
   add_0(this, system, tb, Conversion_init_$Create$(integerToLong, true));
-  var booleanToLong = Operator_init_$Create$('ToLong', Signature_init_$Create$([systemModel.b9h()]), systemModel.f9h());
+  var booleanToLong = Operator_init_$Create$('ToLong', Signature_init_$Create$([systemModel.h9h()]), systemModel.l9h());
   add(this, system, tb, booleanToLong);
   add_0(this, system, tb, Conversion_init_$Create$(booleanToLong, false));
-  var stringToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.d9h()]), systemModel.g9h());
+  var stringToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.j9h()]), systemModel.m9h());
   add(this, system, tb, stringToDecimal);
   add_0(this, system, tb, Conversion_init_$Create$(stringToDecimal, false));
-  var integerToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.e9h()]), systemModel.g9h());
+  var integerToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.k9h()]), systemModel.m9h());
   add(this, system, tb, integerToDecimal);
   add_0(this, system, tb, Conversion_init_$Create$(integerToDecimal, true));
-  var longToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.f9h()]), systemModel.g9h());
+  var longToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.l9h()]), systemModel.m9h());
   add(this, system, tb, longToDecimal);
   add_0(this, system, tb, Conversion_init_$Create$(longToDecimal, true));
-  var booleanToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.b9h()]), systemModel.g9h());
+  var booleanToDecimal = Operator_init_$Create$('ToDecimal', Signature_init_$Create$([systemModel.h9h()]), systemModel.m9h());
   add(this, system, tb, booleanToDecimal);
   add_0(this, system, tb, Conversion_init_$Create$(booleanToDecimal, false));
-  var stringToDateTime = Operator_init_$Create$('ToDateTime', Signature_init_$Create$([systemModel.d9h()]), systemModel.h9h());
+  var stringToDateTime = Operator_init_$Create$('ToDateTime', Signature_init_$Create$([systemModel.j9h()]), systemModel.n9h());
   add(this, system, tb, stringToDateTime);
   add_0(this, system, tb, Conversion_init_$Create$(stringToDateTime, false));
-  var dateToDateTime = Operator_init_$Create$('ToDateTime', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
+  var dateToDateTime = Operator_init_$Create$('ToDateTime', Signature_init_$Create$([systemModel.o9h()]), systemModel.n9h());
   add(this, system, tb, dateToDateTime);
   add_0(this, system, tb, Conversion_init_$Create$(dateToDateTime, true));
-  var stringToDate = Operator_init_$Create$('ToDate', Signature_init_$Create$([systemModel.d9h()]), systemModel.i9h());
+  var stringToDate = Operator_init_$Create$('ToDate', Signature_init_$Create$([systemModel.j9h()]), systemModel.o9h());
   add(this, system, tb, stringToDate);
   add_0(this, system, tb, Conversion_init_$Create$(stringToDate, false));
-  var dateTimeToDate = Operator_init_$Create$('ToDate', Signature_init_$Create$([systemModel.h9h()]), systemModel.i9h());
+  var dateTimeToDate = Operator_init_$Create$('ToDate', Signature_init_$Create$([systemModel.n9h()]), systemModel.o9h());
   add(this, system, tb, dateTimeToDate);
   add_0(this, system, tb, Conversion_init_$Create$(dateTimeToDate, false));
-  var stringToTime = Operator_init_$Create$('ToTime', Signature_init_$Create$([systemModel.d9h()]), systemModel.j9h());
+  var stringToTime = Operator_init_$Create$('ToTime', Signature_init_$Create$([systemModel.j9h()]), systemModel.p9h());
   add(this, system, tb, stringToTime);
   add_0(this, system, tb, Conversion_init_$Create$(stringToTime, false));
-  var stringToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.d9h()]), systemModel.k9h());
+  var stringToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.j9h()]), systemModel.q9h());
   add(this, system, tb, stringToQuantity);
   add_0(this, system, tb, Conversion_init_$Create$(stringToQuantity, false));
-  var ratioToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.l9h()]), systemModel.k9h());
+  var ratioToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.r9h()]), systemModel.q9h());
   add(this, system, tb, ratioToQuantity);
   add_0(this, system, tb, Conversion_init_$Create$(ratioToQuantity, false));
-  var integerToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.e9h()]), systemModel.k9h());
+  var integerToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.k9h()]), systemModel.q9h());
   add(this, system, tb, integerToQuantity);
   add_0(this, system, tb, Conversion_init_$Create$(integerToQuantity, true));
-  var decimalToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.g9h()]), systemModel.k9h());
+  var decimalToQuantity = Operator_init_$Create$('ToQuantity', Signature_init_$Create$([systemModel.m9h()]), systemModel.q9h());
   add(this, system, tb, decimalToQuantity);
   add_0(this, system, tb, Conversion_init_$Create$(decimalToQuantity, true));
-  var stringToRatio = Operator_init_$Create$('ToRatio', Signature_init_$Create$([systemModel.d9h()]), systemModel.l9h());
+  var stringToRatio = Operator_init_$Create$('ToRatio', Signature_init_$Create$([systemModel.j9h()]), systemModel.r9h());
   add(this, system, tb, stringToRatio);
   add_0(this, system, tb, Conversion_init_$Create$(stringToRatio, false));
-  var convertsTo = Operator_init_$Create$('ConvertsToBoolean', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  var convertsTo = Operator_init_$Create$('ConvertsToBoolean', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToInteger', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToInteger', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToLong', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToLong', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToDecimal', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToDecimal', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToDateTime', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToDateTime', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToDate', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToDate', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToTime', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToTime', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToString', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToString', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToQuantity', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToQuantity', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  convertsTo = Operator_init_$Create$('ConvertsToRatio', Signature_init_$Create$([systemModel.c9h()]), systemModel.b9h());
+  convertsTo = Operator_init_$Create$('ConvertsToRatio', Signature_init_$Create$([systemModel.i9h()]), systemModel.h9h());
   add(this, system, tb, convertsTo);
-  var canConvertToQuantity = Operator_init_$Create$('CanConvertQuantity', Signature_init_$Create$([systemModel.k9h(), systemModel.d9h()]), systemModel.b9h());
+  var canConvertToQuantity = Operator_init_$Create$('CanConvertQuantity', Signature_init_$Create$([systemModel.q9h(), systemModel.j9h()]), systemModel.h9h());
   add(this, system, tb, canConvertToQuantity);
-  var convertToQuantity = Operator_init_$Create$('ConvertQuantity', Signature_init_$Create$([systemModel.k9h(), systemModel.d9h()]), systemModel.k9h());
+  var convertToQuantity = Operator_init_$Create$('ConvertQuantity', Signature_init_$Create$([systemModel.q9h(), systemModel.j9h()]), systemModel.q9h());
   add(this, system, tb, convertToQuantity);
   var C = new TypeParameter('C', TypeParameterConstraint_CLASS_getInstance(), null);
-  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([C, C]), systemModel.b9h(), [C]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([C, C]), systemModel.h9h(), [C]));
   var R = new TypeParameter('R', TypeParameterConstraint_TUPLE_getInstance(), null);
-  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([R, R]), systemModel.b9h(), [R]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([R, R]), systemModel.h9h(), [R]));
   var H = new TypeParameter('H', TypeParameterConstraint_CHOICE_getInstance(), null);
-  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([H, H]), systemModel.b9h(), [H]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([H, H]), systemModel.h9h(), [H]));
   C = new TypeParameter('C', TypeParameterConstraint_CLASS_getInstance(), null);
-  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([C, C]), systemModel.b9h(), [C]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([C, C]), systemModel.h9h(), [C]));
   R = new TypeParameter('R', TypeParameterConstraint_TUPLE_getInstance(), null);
-  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([R, R]), systemModel.b9h(), [R]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([R, R]), systemModel.h9h(), [R]));
   H = new TypeParameter('H', TypeParameterConstraint_CHOICE_getInstance(), null);
-  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([H, H]), systemModel.b9h(), [H]));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.b9h(), systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.b9h(), systemModel.b9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.p6k(), systemModel.p6k()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.p6k(), systemModel.p6k()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Abs', Signature_init_$Create$([systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Abs', Signature_init_$Create$([systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Abs', Signature_init_$Create$([systemModel.g9h()]), systemModel.g9h()));
+  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([H, H]), systemModel.h9h(), [H]));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Less', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('LessOrEqual', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Greater', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('GreaterOrEqual', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.r9h(), systemModel.r9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.r9h(), systemModel.r9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.q6k(), systemModel.q6k()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.q6k(), systemModel.q6k()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equal', Signature_init_$Create$([systemModel.s9h(), systemModel.s9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Equivalent', Signature_init_$Create$([systemModel.s9h(), systemModel.s9h()]), systemModel.h9h()));
   add(this, system, tb, Operator_init_$Create$('Abs', Signature_init_$Create$([systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('Abs', Signature_init_$Create$([systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Abs', Signature_init_$Create$([systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Abs', Signature_init_$Create$([systemModel.q9h()]), systemModel.q9h()));
   add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Ceiling', Signature_init_$Create$([systemModel.g9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Divide', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Divide', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Exp', Signature_init_$Create$([systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Floor', Signature_init_$Create$([systemModel.g9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.g9h(), systemModel.e9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.i9h(), systemModel.e9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.h9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.j9h(), systemModel.e9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Log', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.g9h(), systemModel.e9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.i9h(), systemModel.e9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.h9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.j9h(), systemModel.e9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Ln', Signature_init_$Create$([systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Modulo', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Modulo', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Modulo', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Ceiling', Signature_init_$Create$([systemModel.m9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Divide', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Divide', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Exp', Signature_init_$Create$([systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Floor', Signature_init_$Create$([systemModel.m9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.m9h(), systemModel.k9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.o9h(), systemModel.k9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.n9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('HighBoundary', Signature_init_$Create$([systemModel.p9h(), systemModel.k9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Log', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.m9h(), systemModel.k9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.o9h(), systemModel.k9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.n9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('LowBoundary', Signature_init_$Create$([systemModel.p9h(), systemModel.k9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Ln', Signature_init_$Create$([systemModel.m9h()]), systemModel.m9h()));
   add(this, system, tb, Operator_init_$Create$('Modulo', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Multiply', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Multiply', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Multiply', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('Modulo', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Modulo', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Modulo', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.q9h()));
   add(this, system, tb, Operator_init_$Create$('Multiply', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Negate', Signature_init_$Create$([systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Negate', Signature_init_$Create$([systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Negate', Signature_init_$Create$([systemModel.g9h()]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('Multiply', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Multiply', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Multiply', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.q9h()));
   add(this, system, tb, Operator_init_$Create$('Negate', Signature_init_$Create$([systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.g9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.i9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.h9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.j9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.i9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.h9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Negate', Signature_init_$Create$([systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Negate', Signature_init_$Create$([systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Negate', Signature_init_$Create$([systemModel.q9h()]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.m9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.o9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.n9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Precision', Signature_init_$Create$([systemModel.p9h()]), systemModel.k9h()));
   add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Power', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Power', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Power', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Round', Signature_init_$Create$([systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Round', Signature_init_$Create$([systemModel.g9h(), systemModel.e9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.o9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.n9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.p9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Predecessor', Signature_init_$Create$([systemModel.q9h()]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Power', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Power', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Power', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Round', Signature_init_$Create$([systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Round', Signature_init_$Create$([systemModel.m9h(), systemModel.k9h()]), systemModel.m9h()));
   add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.g9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.i9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.h9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.q9h()));
   add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Truncate', Signature_init_$Create$([systemModel.g9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('TruncatedDivide', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('TruncatedDivide', Signature_init_$Create$([systemModel.f9h(), systemModel.f9h()]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('TruncatedDivide', Signature_init_$Create$([systemModel.g9h(), systemModel.g9h()]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.o9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.n9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.p9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Successor', Signature_init_$Create$([systemModel.q9h()]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Truncate', Signature_init_$Create$([systemModel.m9h()]), systemModel.k9h()));
   add(this, system, tb, Operator_init_$Create$('TruncatedDivide', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Combine', Signature_init_$Create$([new ListType(systemModel.d9h())]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Combine', Signature_init_$Create$([new ListType(systemModel.d9h()), systemModel.d9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Concatenate', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('EndsWith', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Indexer', Signature_init_$Create$([systemModel.d9h(), systemModel.e9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('LastPositionOf', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Length', Signature_init_$Create$([systemModel.d9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Lower', Signature_init_$Create$([systemModel.d9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Matches', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('PositionOf', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('ReplaceMatches', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h(), systemModel.d9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Split', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), new ListType(systemModel.d9h())));
-  add(this, system, tb, Operator_init_$Create$('SplitOnMatches', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), new ListType(systemModel.d9h())));
-  add(this, system, tb, Operator_init_$Create$('StartsWith', Signature_init_$Create$([systemModel.d9h(), systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Substring', Signature_init_$Create$([systemModel.d9h(), systemModel.e9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Substring', Signature_init_$Create$([systemModel.d9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Upper', Signature_init_$Create$([systemModel.d9h()]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.h9h(), systemModel.k9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.i9h(), systemModel.k9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.j9h(), systemModel.k9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('After', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('After', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('After', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Before', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Before', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Before', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.g9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('Date', Signature_init_$Create$([systemModel.e9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('Date', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('Date', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('DateFrom', Signature_init_$Create$([systemModel.h9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('TimeFrom', Signature_init_$Create$([systemModel.h9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('TimezoneFrom', Signature_init_$Create$([systemModel.h9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('TimezoneOffsetFrom', Signature_init_$Create$([systemModel.h9h()]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTimeComponentFrom', Signature_init_$Create$([systemModel.h9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTimeComponentFrom', Signature_init_$Create$([systemModel.i9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DateTimeComponentFrom', Signature_init_$Create$([systemModel.j9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DifferenceBetween', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DifferenceBetween', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DifferenceBetween', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DurationBetween', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DurationBetween', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('DurationBetween', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Now', Signature_init_$Create$([]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('now', Signature_init_$Create$([]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('SameAs', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameAs', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameAs', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameOrAfter', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameOrAfter', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameOrAfter', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameOrBefore', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameOrBefore', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SameOrBefore', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.h9h(), systemModel.k9h()]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.i9h(), systemModel.k9h()]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.j9h(), systemModel.k9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Today', Signature_init_$Create$([]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('today', Signature_init_$Create$([]), systemModel.i9h()));
-  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.e9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.e9h(), systemModel.e9h(), systemModel.e9h(), systemModel.e9h()]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('TimeOfDay', Signature_init_$Create$([]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('timeOfDay', Signature_init_$Create$([]), systemModel.j9h()));
-  add(this, system, tb, GenericOperator_init_$Create$('After', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Before', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Collapse', Signature_init_$Create$([new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), systemModel.k9h()]), new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Contains', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, Operator_init_$Create$('TruncatedDivide', Signature_init_$Create$([systemModel.l9h(), systemModel.l9h()]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('TruncatedDivide', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('TruncatedDivide', Signature_init_$Create$([systemModel.q9h(), systemModel.q9h()]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Combine', Signature_init_$Create$([new ListType(systemModel.j9h())]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Combine', Signature_init_$Create$([new ListType(systemModel.j9h()), systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Concatenate', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('EndsWith', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Indexer', Signature_init_$Create$([systemModel.j9h(), systemModel.k9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('LastPositionOf', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Length', Signature_init_$Create$([systemModel.j9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Lower', Signature_init_$Create$([systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Matches', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('PositionOf', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('ReplaceMatches', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h(), systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Split', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), new ListType(systemModel.j9h())));
+  add(this, system, tb, Operator_init_$Create$('SplitOnMatches', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), new ListType(systemModel.j9h())));
+  add(this, system, tb, Operator_init_$Create$('StartsWith', Signature_init_$Create$([systemModel.j9h(), systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Substring', Signature_init_$Create$([systemModel.j9h(), systemModel.k9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Substring', Signature_init_$Create$([systemModel.j9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Upper', Signature_init_$Create$([systemModel.j9h()]), systemModel.j9h()));
+  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.n9h(), systemModel.q9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.o9h(), systemModel.q9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Add', Signature_init_$Create$([systemModel.p9h(), systemModel.q9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('After', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('After', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('After', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Before', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Before', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Before', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTime', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.m9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('Date', Signature_init_$Create$([systemModel.k9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Date', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Date', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('DateFrom', Signature_init_$Create$([systemModel.n9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('TimeFrom', Signature_init_$Create$([systemModel.n9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('TimezoneFrom', Signature_init_$Create$([systemModel.n9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('TimezoneOffsetFrom', Signature_init_$Create$([systemModel.n9h()]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTimeComponentFrom', Signature_init_$Create$([systemModel.n9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTimeComponentFrom', Signature_init_$Create$([systemModel.o9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DateTimeComponentFrom', Signature_init_$Create$([systemModel.p9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DifferenceBetween', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DifferenceBetween', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DifferenceBetween', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DurationBetween', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DurationBetween', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('DurationBetween', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Now', Signature_init_$Create$([]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('now', Signature_init_$Create$([]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('SameAs', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameAs', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameAs', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameOrAfter', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameOrAfter', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameOrAfter', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameOrBefore', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameOrBefore', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SameOrBefore', Signature_init_$Create$([systemModel.p9h(), systemModel.p9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.n9h(), systemModel.q9h()]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.o9h(), systemModel.q9h()]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Subtract', Signature_init_$Create$([systemModel.p9h(), systemModel.q9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Today', Signature_init_$Create$([]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('today', Signature_init_$Create$([]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.k9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('Time', Signature_init_$Create$([systemModel.k9h(), systemModel.k9h(), systemModel.k9h(), systemModel.k9h()]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('TimeOfDay', Signature_init_$Create$([]), systemModel.p9h()));
+  add(this, system, tb, Operator_init_$Create$('timeOfDay', Signature_init_$Create$([]), systemModel.p9h()));
+  add(this, system, tb, GenericOperator_init_$Create$('After', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Before', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Collapse', Signature_init_$Create$([new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), systemModel.q9h()]), new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Contains', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('End', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Ends', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Ends', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Except', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), new IntervalType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Expand', Signature_init_$Create$([new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), systemModel.k9h()]), new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Expand', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), systemModel.k9h()]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('In', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Includes', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('IncludedIn', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Expand', Signature_init_$Create$([new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), systemModel.q9h()]), new ListType(new IntervalType(TypeParameter_init_$Create$('T'))), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Expand', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), systemModel.q9h()]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('In', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Includes', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('IncludedIn', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Intersect', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), new IntervalType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Meets', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('MeetsBefore', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('MeetsAfter', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Overlaps', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('OverlapsBefore', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('OverlapsAfter', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Meets', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('MeetsBefore', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('MeetsAfter', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Overlaps', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('OverlapsBefore', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('OverlapsAfter', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   var pointFrom = GenericOperator_init_$Create$('PointFrom', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]);
   add(this, system, tb, pointFrom);
-  add(this, system, tb, GenericOperator_init_$Create$('ProperContains', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('ProperIn', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludes', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludedIn', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('SameAs', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('SameOrAfter', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('SameOrBefore', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperContains', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperIn', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludes', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludedIn', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('SameAs', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('SameOrAfter', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('SameOrBefore', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Size', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Start', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Starts', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Starts', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Union', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T')), new IntervalType(TypeParameter_init_$Create$('T'))]), new IntervalType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Width', Signature_init_$Create$([new IntervalType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Contains', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Contains', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Distinct', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equal', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Equivalent', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Except', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Exists', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Exists', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Flatten', Signature_init_$Create$([new ListType(new ListType(TypeParameter_init_$Create$('T')))]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('First', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('In', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Includes', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('IncludedIn', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Indexer', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), systemModel.e9h()]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('IndexOf', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.e9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('In', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Includes', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('IncludedIn', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Indexer', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), systemModel.k9h()]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('IndexOf', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.k9h(), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Intersect', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Last', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Length', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), systemModel.e9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('ProperContains', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('ProperIn', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludes', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludedIn', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.b9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Length', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), systemModel.k9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperContains', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), TypeParameter_init_$Create$('T')]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperIn', Signature_init_$Create$([TypeParameter_init_$Create$('T'), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludes', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('ProperIncludedIn', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), systemModel.h9h(), [TypeParameter_init_$Create$('T')]));
   var singletonFrom = GenericOperator_init_$Create$('SingletonFrom', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]);
   add(this, system, tb, singletonFrom);
-  add(this, system, tb, GenericOperator_init_$Create$('Skip', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), systemModel.e9h()]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Skip', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), systemModel.k9h()]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Tail', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, GenericOperator_init_$Create$('Take', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), systemModel.e9h()]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, GenericOperator_init_$Create$('Take', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), systemModel.k9h()]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
   add(this, system, tb, GenericOperator_init_$Create$('Union', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T')), new ListType(TypeParameter_init_$Create$('T'))]), new ListType(TypeParameter_init_$Create$('T')), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, Operator_init_$Create$('AllTrue', Signature_init_$Create$([new ListType(systemModel.b9h())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyTrue', Signature_init_$Create$([new ListType(systemModel.b9h())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Avg', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Avg', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, GenericOperator_init_$Create$('Count', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), systemModel.e9h(), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, Operator_init_$Create$('GeometricMean', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.e9h())]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.f9h())]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('AllTrue', Signature_init_$Create$([new ListType(systemModel.h9h())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyTrue', Signature_init_$Create$([new ListType(systemModel.h9h())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Avg', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Avg', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
+  add(this, system, tb, GenericOperator_init_$Create$('Count', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), systemModel.k9h(), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, Operator_init_$Create$('GeometricMean', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
   add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.h9h())]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.i9h())]), systemModel.i9h()));
+  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.l9h())]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.n9h())]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.o9h())]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.p9h())]), systemModel.p9h()));
   add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.j9h())]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Max', Signature_init_$Create$([new ListType(systemModel.d9h())]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.e9h())]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.f9h())]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
   add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.h9h())]), systemModel.h9h()));
-  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.i9h())]), systemModel.i9h()));
+  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.l9h())]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.n9h())]), systemModel.n9h()));
+  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.o9h())]), systemModel.o9h()));
+  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.p9h())]), systemModel.p9h()));
   add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.j9h())]), systemModel.j9h()));
-  add(this, system, tb, Operator_init_$Create$('Min', Signature_init_$Create$([new ListType(systemModel.d9h())]), systemModel.d9h()));
-  add(this, system, tb, Operator_init_$Create$('Median', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Median', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('Median', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Median', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
   add(this, system, tb, GenericOperator_init_$Create$('Mode', Signature_init_$Create$([new ListType(TypeParameter_init_$Create$('T'))]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
-  add(this, system, tb, Operator_init_$Create$('PopulationStdDev', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('PopulationStdDev', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('PopulationVariance', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('PopulationVariance', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Product', Signature_init_$Create$([new ListType(systemModel.e9h())]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Product', Signature_init_$Create$([new ListType(systemModel.f9h())]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Product', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('PopulationStdDev', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('PopulationStdDev', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('PopulationVariance', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('PopulationVariance', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
   add(this, system, tb, Operator_init_$Create$('Product', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('StdDev', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('StdDev', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Sum', Signature_init_$Create$([new ListType(systemModel.e9h())]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('Sum', Signature_init_$Create$([new ListType(systemModel.f9h())]), systemModel.f9h()));
-  add(this, system, tb, Operator_init_$Create$('Sum', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
+  add(this, system, tb, Operator_init_$Create$('Product', Signature_init_$Create$([new ListType(systemModel.l9h())]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Product', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Product', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('StdDev', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('StdDev', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
   add(this, system, tb, Operator_init_$Create$('Sum', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  add(this, system, tb, Operator_init_$Create$('Variance', Signature_init_$Create$([new ListType(systemModel.g9h())]), systemModel.g9h()));
-  add(this, system, tb, Operator_init_$Create$('Variance', Signature_init_$Create$([new ListType(systemModel.k9h())]), systemModel.k9h()));
-  var codeToConcept = Operator_init_$Create$('ToConcept', Signature_init_$Create$([systemModel.p6k()]), systemModel.m9h());
+  add(this, system, tb, Operator_init_$Create$('Sum', Signature_init_$Create$([new ListType(systemModel.l9h())]), systemModel.l9h()));
+  add(this, system, tb, Operator_init_$Create$('Sum', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Sum', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
+  add(this, system, tb, Operator_init_$Create$('Variance', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.m9h()));
+  add(this, system, tb, Operator_init_$Create$('Variance', Signature_init_$Create$([new ListType(systemModel.q9h())]), systemModel.q9h()));
+  var codeToConcept = Operator_init_$Create$('ToConcept', Signature_init_$Create$([systemModel.q6k()]), systemModel.s9h());
   add(this, system, tb, codeToConcept);
   add_0(this, system, tb, Conversion_init_$Create$(codeToConcept, true));
-  var codesToConcept = Operator_init_$Create$('ToConcept', Signature_init_$Create$([new ListType(systemModel.p6k())]), systemModel.m9h());
+  var codesToConcept = Operator_init_$Create$('ToConcept', Signature_init_$Create$([new ListType(systemModel.q6k())]), systemModel.s9h());
   add(this, system, tb, codesToConcept);
   add_0(this, system, tb, Conversion_init_$Create$(codesToConcept, false));
-  add(this, system, tb, Operator_init_$Create$('CalculateAge', Signature_init_$Create$([systemModel.h9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('CalculateAge', Signature_init_$Create$([systemModel.i9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('CalculateAgeAt', Signature_init_$Create$([systemModel.h9h(), systemModel.h9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('CalculateAgeAt', Signature_init_$Create$([systemModel.i9h(), systemModel.i9h()]), systemModel.e9h()));
-  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.p6k()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.m9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.d9h(), systemModel.n9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.p6k(), systemModel.n9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.m9h(), systemModel.n9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.d9h())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.p6k())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.d9h()), systemModel.n9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.p6k()), systemModel.n9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.m9h()), systemModel.n9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.d9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.p6k()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.m9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.d9h(), systemModel.k8h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.p6k(), systemModel.k8h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.m9h(), systemModel.k8h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.d9h())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.p6k())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.m9h())]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.d9h()), systemModel.k8h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.p6k()), systemModel.k8h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.m9h()), systemModel.k8h()]), systemModel.b9h()));
-  var expandValueSet = Operator_init_$Create$('ExpandValueSet', Signature_init_$Create$([systemModel.n9h()]), new ListType(systemModel.p6k()));
+  add(this, system, tb, Operator_init_$Create$('CalculateAge', Signature_init_$Create$([systemModel.n9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('CalculateAge', Signature_init_$Create$([systemModel.o9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('CalculateAgeAt', Signature_init_$Create$([systemModel.n9h(), systemModel.n9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('CalculateAgeAt', Signature_init_$Create$([systemModel.o9h(), systemModel.o9h()]), systemModel.k9h()));
+  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.q6k()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.s9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.j9h(), systemModel.t9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.q6k(), systemModel.t9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InValueSet', Signature_init_$Create$([systemModel.s9h(), systemModel.t9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.j9h())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.q6k())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.s9h())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.j9h()), systemModel.t9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.q6k()), systemModel.t9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInValueSet', Signature_init_$Create$([new ListType(systemModel.s9h()), systemModel.t9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.j9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.q6k()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.s9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.j9h(), systemModel.l8h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.q6k(), systemModel.l8h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('InCodeSystem', Signature_init_$Create$([systemModel.s9h(), systemModel.l8h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.j9h())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.q6k())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.s9h())]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.j9h()), systemModel.l8h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.q6k()), systemModel.l8h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('AnyInCodeSystem', Signature_init_$Create$([new ListType(systemModel.s9h()), systemModel.l8h()]), systemModel.h9h()));
+  var expandValueSet = Operator_init_$Create$('ExpandValueSet', Signature_init_$Create$([systemModel.t9h()]), new ListType(systemModel.q6k()));
   add(this, system, tb, expandValueSet);
   add_0(this, system, tb, Conversion_init_$Create$(expandValueSet, true));
-  add(this, system, tb, Operator_init_$Create$('Subsumes', Signature_init_$Create$([systemModel.p6k(), systemModel.p6k()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('Subsumes', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SubsumedBy', Signature_init_$Create$([systemModel.p6k(), systemModel.p6k()]), systemModel.b9h()));
-  add(this, system, tb, Operator_init_$Create$('SubsumedBy', Signature_init_$Create$([systemModel.m9h(), systemModel.m9h()]), systemModel.b9h()));
-  add(this, system, tb, GenericOperator_init_$Create$('Message', Signature_init_$Create$([TypeParameter_init_$Create$('T'), systemModel.b9h(), systemModel.d9h(), systemModel.d9h(), systemModel.d9h()]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
+  add(this, system, tb, Operator_init_$Create$('Subsumes', Signature_init_$Create$([systemModel.q6k(), systemModel.q6k()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('Subsumes', Signature_init_$Create$([systemModel.s9h(), systemModel.s9h()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SubsumedBy', Signature_init_$Create$([systemModel.q6k(), systemModel.q6k()]), systemModel.h9h()));
+  add(this, system, tb, Operator_init_$Create$('SubsumedBy', Signature_init_$Create$([systemModel.s9h(), systemModel.s9h()]), systemModel.h9h()));
+  add(this, system, tb, GenericOperator_init_$Create$('Message', Signature_init_$Create$([TypeParameter_init_$Create$('T'), systemModel.h9h(), systemModel.j9h(), systemModel.j9h(), systemModel.j9h()]), TypeParameter_init_$Create$('T'), [TypeParameter_init_$Create$('T')]));
   return system;
 };
 var SystemLibraryHelper_instance;
@@ -15439,57 +15671,57 @@ function SystemLibraryHelper_getInstance() {
 function SystemModel(modelInfo) {
   Model.call(this, modelInfo, null);
 }
-protoOf(SystemModel).c9h = function () {
-  return ensureNotNull(this.j90('Any'));
-};
-protoOf(SystemModel).b9h = function () {
-  return ensureNotNull(this.j90('Boolean'));
-};
-protoOf(SystemModel).e9h = function () {
-  return ensureNotNull(this.j90('Integer'));
-};
-protoOf(SystemModel).f9h = function () {
-  return ensureNotNull(this.j90('Long'));
-};
-protoOf(SystemModel).g9h = function () {
-  return ensureNotNull(this.j90('Decimal'));
-};
-protoOf(SystemModel).d9h = function () {
-  return ensureNotNull(this.j90('String'));
+protoOf(SystemModel).i9h = function () {
+  return ensureNotNull(this.k90('Any'));
 };
 protoOf(SystemModel).h9h = function () {
-  return ensureNotNull(this.j90('DateTime'));
-};
-protoOf(SystemModel).i9h = function () {
-  return ensureNotNull(this.j90('Date'));
-};
-protoOf(SystemModel).j9h = function () {
-  return ensureNotNull(this.j90('Time'));
+  return ensureNotNull(this.k90('Boolean'));
 };
 protoOf(SystemModel).k9h = function () {
-  return ensureNotNull(this.j90('Quantity'));
+  return ensureNotNull(this.k90('Integer'));
 };
 protoOf(SystemModel).l9h = function () {
-  return ensureNotNull(this.j90('Ratio'));
-};
-protoOf(SystemModel).p6k = function () {
-  return ensureNotNull(this.j90('Code'));
+  return ensureNotNull(this.k90('Long'));
 };
 protoOf(SystemModel).m9h = function () {
-  return ensureNotNull(this.j90('Concept'));
+  return ensureNotNull(this.k90('Decimal'));
 };
-protoOf(SystemModel).k8h = function () {
-  return ensureNotNull(this.j90('CodeSystem'));
+protoOf(SystemModel).j9h = function () {
+  return ensureNotNull(this.k90('String'));
 };
 protoOf(SystemModel).n9h = function () {
-  return ensureNotNull(this.j90('ValueSet'));
+  return ensureNotNull(this.k90('DateTime'));
+};
+protoOf(SystemModel).o9h = function () {
+  return ensureNotNull(this.k90('Date'));
+};
+protoOf(SystemModel).p9h = function () {
+  return ensureNotNull(this.k90('Time'));
+};
+protoOf(SystemModel).q9h = function () {
+  return ensureNotNull(this.k90('Quantity'));
+};
+protoOf(SystemModel).r9h = function () {
+  return ensureNotNull(this.k90('Ratio'));
+};
+protoOf(SystemModel).q6k = function () {
+  return ensureNotNull(this.k90('Code'));
+};
+protoOf(SystemModel).s9h = function () {
+  return ensureNotNull(this.k90('Concept'));
+};
+protoOf(SystemModel).l8h = function () {
+  return ensureNotNull(this.k90('CodeSystem'));
+};
+protoOf(SystemModel).t9h = function () {
+  return ensureNotNull(this.k90('ValueSet'));
 };
 function TimingOperatorContext(left, right) {
-  this.h91_1 = left;
-  this.i91_1 = right;
+  this.i91_1 = left;
+  this.j91_1 = right;
 }
 function initVersion($this) {
-  var tmp0 = Companion_getInstance_15().p9h_1.xd($this.f9a_1);
+  var tmp0 = Companion_getInstance_15().v9h_1.xd($this.f97_1);
   var tmp$ret$2;
   $l$block: {
     // Inline function 'kotlin.collections.dropLastWhile' call
@@ -15521,19 +15753,19 @@ function initVersion($this) {
       }
       switch (i) {
         case 0:
-          $this.g9a_1 = toUnsignedIntOrNull($this, part);
+          $this.g97_1 = toUnsignedIntOrNull($this, part);
           break;
         case 1:
-          $this.h9a_1 = toUnsignedIntOrNull($this, part);
+          $this.h97_1 = toUnsignedIntOrNull($this, part);
           break;
         case 2:
-          $this.i9a_1 = toUnsignedIntOrNull($this, part);
+          $this.i97_1 = toUnsignedIntOrNull($this, part);
           break;
         case 3:
-          $this.j9a_1 = part;
+          $this.j97_1 = part;
           break;
         default:
-          $this.j9a_1 = plus($this.j9a_1, '-' + part);
+          $this.j97_1 = plus($this.j97_1, '-' + part);
           break;
       }
     }
@@ -15541,7 +15773,7 @@ function initVersion($this) {
 }
 function compareTo_1($this, that, level) {
   // Inline function 'kotlin.require' call
-  if (!($this.q9h() && that.q9h())) {
+  if (!($this.l97() && that.l97())) {
     var message = 'The versions are not comparable';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
@@ -15555,16 +15787,16 @@ function compareTo_1($this, that, level) {
       var comparison;
       switch (i) {
         case 0:
-          comparison = compareToNullable_0($this, $this.g9a_1, that.g9a_1);
+          comparison = compareToNullable_0($this, $this.g97_1, that.g97_1);
           break;
         case 1:
-          comparison = compareToNullable_0($this, $this.h9a_1, that.h9a_1);
+          comparison = compareToNullable_0($this, $this.h97_1, that.h97_1);
           break;
         case 2:
-          comparison = compareToNullable_0($this, $this.i9a_1, that.i9a_1);
+          comparison = compareToNullable_0($this, $this.i97_1, that.i97_1);
           break;
         case 3:
-          comparison = compareToNullable($this, $this.j9a_1, that.j9a_1);
+          comparison = compareToNullable($this, $this.j97_1, that.j97_1);
           break;
         default:
           comparison = 0;
@@ -15583,26 +15815,26 @@ function compareToNullable_0($this, _this__u8e3s4, that) {
   return _this__u8e3s4 == null && that == null ? 0 : _this__u8e3s4 == null ? -1 : that == null ? 1 : compareTo_0(_this__u8e3s4, that);
 }
 function toUnsignedIntOrNull($this, _this__u8e3s4) {
-  return Companion_getInstance_15().o9h_1.od(_this__u8e3s4) ? toInt(_this__u8e3s4) : null;
+  return Companion_getInstance_15().u9h_1.od(_this__u8e3s4) ? toInt(_this__u8e3s4) : null;
 }
 function isComparable($this, level) {
   switch (level) {
     case 0:
-      return !($this.g9a_1 == null);
+      return !($this.g97_1 == null);
     case 1:
-      return !($this.g9a_1 == null) && !($this.h9a_1 == null);
+      return !($this.g97_1 == null) && !($this.h97_1 == null);
     case 2:
-      return !($this.g9a_1 == null) && !($this.h9a_1 == null) && !($this.i9a_1 == null);
+      return !($this.g97_1 == null) && !($this.h97_1 == null) && !($this.i97_1 == null);
     case 3:
-      return !($this.g9a_1 == null) && !($this.h9a_1 == null) && !($this.i9a_1 == null) && !($this.j9a_1 == null);
+      return !($this.g97_1 == null) && !($this.h97_1 == null) && !($this.i97_1 == null) && !($this.j97_1 == null);
     default:
       return false;
   }
 }
 function Companion_12() {
   Companion_instance_15 = this;
-  this.o9h_1 = Regex_init_$Create$('[0-9]+');
-  this.p9h_1 = Regex_init_$Create$('[.\\-]');
+  this.u9h_1 = Regex_init_$Create$('[0-9]+');
+  this.v9h_1 = Regex_init_$Create$('[.\\-]');
 }
 var Companion_instance_15;
 function Companion_getInstance_15() {
@@ -15612,33 +15844,33 @@ function Companion_getInstance_15() {
 }
 function Version(version) {
   Companion_getInstance_15();
-  this.f9a_1 = version;
+  this.f97_1 = version;
   initVersion(this);
-  this.g9a_1 = null;
-  this.h9a_1 = null;
-  this.i9a_1 = null;
-  this.j9a_1 = null;
+  this.g97_1 = null;
+  this.h97_1 = null;
+  this.i97_1 = null;
+  this.j97_1 = null;
 }
-protoOf(Version).r9h = function (other) {
+protoOf(Version).m97 = function (other) {
   return other == null ? 1 : compareTo_1(this, other, 4);
 };
 protoOf(Version).d = function (other) {
-  return this.r9h((other == null ? true : other instanceof Version) ? other : THROW_CCE());
+  return this.m97((other == null ? true : other instanceof Version) ? other : THROW_CCE());
 };
-protoOf(Version).k9a = function (that) {
-  return that == null ? false : this.q9h() && that.q9h() ? compareTo_1(this, that, 2) >= 0 : this.s9h(that);
+protoOf(Version).n97 = function (that) {
+  return that == null ? false : this.l97() && that.l97() ? compareTo_1(this, that, 2) >= 0 : this.k97(that);
 };
-protoOf(Version).s9h = function (that) {
-  return this.f9a_1 === that.f9a_1;
+protoOf(Version).k97 = function (that) {
+  return this.f97_1 === that.f97_1;
 };
-protoOf(Version).q9h = function () {
+protoOf(Version).l97 = function () {
   return isComparable(this, 2);
 };
 protoOf(Version).toString = function () {
-  return this.f9a_1;
+  return this.f97_1;
 };
 protoOf(Version).hashCode = function () {
-  return getStringHashCode(this.f9a_1);
+  return getStringHashCode(this.f97_1);
 };
 protoOf(Version).equals = function (other) {
   if (this === other)
@@ -15646,126 +15878,126 @@ protoOf(Version).equals = function (other) {
   if (!(other instanceof Version))
     return false;
   var tmp0_other_with_cast = other instanceof Version ? other : THROW_CCE();
-  if (!(this.f9a_1 === tmp0_other_with_cast.f9a_1))
+  if (!(this.f97_1 === tmp0_other_with_cast.f97_1))
     return false;
   return true;
 };
 function AbstractExpressionInvocation(expression) {
-  this.a93_1 = expression;
-  this.b93_1 = null;
+  this.b93_1 = expression;
+  this.c93_1 = null;
 }
-protoOf(AbstractExpressionInvocation).l5w = function () {
-  return this.a93_1;
-};
-protoOf(AbstractExpressionInvocation).c93 = function (resultType) {
-  Trackable_getInstance().o8v(this.l5w(), resultType);
-};
-protoOf(AbstractExpressionInvocation).j9b = function (_set____db54di) {
-  this.b93_1 = _set____db54di;
-};
-protoOf(AbstractExpressionInvocation).s92 = function () {
+protoOf(AbstractExpressionInvocation).m5w = function () {
   return this.b93_1;
+};
+protoOf(AbstractExpressionInvocation).d93 = function (resultType) {
+  Trackable_getInstance().p8v(this.m5w(), resultType);
+};
+protoOf(AbstractExpressionInvocation).q9b = function (_set____db54di) {
+  this.c93_1 = _set____db54di;
+};
+protoOf(AbstractExpressionInvocation).t92 = function () {
+  return this.c93_1;
 };
 function AggregateExpressionInvocation(expression) {
   AbstractExpressionInvocation.call(this, expression);
 }
-protoOf(AggregateExpressionInvocation).h9b = function (operands) {
+protoOf(AggregateExpressionInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 1)) {
     var message = 'Unary operator expected.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().r68_1 = operands.o(0);
+  this.m5w().s68_1 = operands.o(0);
 };
-protoOf(AggregateExpressionInvocation).f9b = function () {
-  return listOf_0(ensureNotNull(this.l5w().r68_1));
+protoOf(AggregateExpressionInvocation).m9b = function () {
+  return listOf_0(ensureNotNull(this.m5w().s68_1));
 };
-protoOf(AggregateExpressionInvocation).i9b = function (signature) {
-  this.l5w().l66(toMutableList(signature));
+protoOf(AggregateExpressionInvocation).p9b = function (signature) {
+  this.m5w().m66(toMutableList(signature));
 };
 function AnyInCodeSystemInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(AnyInCodeSystemInvocation).h9b = function (operands) {
+protoOf(AnyInCodeSystemInvocation).o9b = function (operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'AnyInCodeSystem operator requires one or two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().n6a_1 = operands.o(0);
+  this.m5w().o6a_1 = operands.o(0);
   if (operands.j() > 1) {
-    this.l5w().p6a_1 = operands.o(1);
+    this.m5w().q6a_1 = operands.o(1);
   }
 };
-protoOf(AnyInCodeSystemInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().n6a_1, this.l5w().p6a_1]);
+protoOf(AnyInCodeSystemInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().o6a_1, this.m5w().q6a_1]);
 };
 function AnyInValueSetInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(AnyInValueSetInvocation).h9b = function (operands) {
+protoOf(AnyInValueSetInvocation).o9b = function (operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'AnyInValueSet operator requires one or two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().z6a_1 = operands.o(0);
+  this.m5w().a6b_1 = operands.o(0);
   if (operands.j() > 1) {
-    this.l5w().b6b_1 = operands.o(1);
+    this.m5w().c6b_1 = operands.o(1);
   }
 };
-protoOf(AnyInValueSetInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().z6a_1, this.l5w().b6b_1]);
+protoOf(AnyInValueSetInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().a6b_1, this.m5w().c6b_1]);
 };
 function BinaryExpressionInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(BinaryExpressionInvocation).h9b = function (operands) {
+protoOf(BinaryExpressionInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'BinaryExpression requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().n67(toMutableList(operands));
+  this.m5w().o67(toMutableList(operands));
 };
-protoOf(BinaryExpressionInvocation).f9b = function () {
-  return this.l5w().o67();
+protoOf(BinaryExpressionInvocation).m9b = function () {
+  return this.m5w().p67();
 };
 function CombineInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(CombineInvocation).h9b = function (operands) {
+protoOf(CombineInvocation).o9b = function (operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'Combine operator requires one or two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().y6j_1 = operands.o(0);
+  this.m5w().z6j_1 = operands.o(0);
   if (operands.j() > 1) {
-    this.l5w().z6j_1 = operands.o(1);
+    this.m5w().a6k_1 = operands.o(1);
   }
 };
-protoOf(CombineInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().y6j_1, this.l5w().z6j_1]);
+protoOf(CombineInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().z6j_1, this.m5w().a6k_1]);
 };
 function Companion_13() {
 }
-protoOf(Companion_13).k9d = function (dt, operands) {
+protoOf(Companion_13).q9d = function (dt, operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 3 : false)) {
     var message = 'Date operator requires one to three operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  dt.w6p_1 = operands.o(0);
+  dt.x6p_1 = operands.o(0);
   if (operands.j() > 1) {
-    dt.x6p_1 = operands.o(1);
+    dt.y6p_1 = operands.o(1);
   }
   if (operands.j() > 2) {
-    dt.y6p_1 = operands.o(2);
+    dt.z6p_1 = operands.o(2);
   }
 };
 var Companion_instance_16;
@@ -15775,42 +16007,42 @@ function Companion_getInstance_16() {
 function DateInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(DateInvocation).h9b = function (operands) {
-  Companion_instance_16.k9d(this.l5w(), operands);
+protoOf(DateInvocation).o9b = function (operands) {
+  Companion_instance_16.q9d(this.m5w(), operands);
 };
-protoOf(DateInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().w6p_1, this.l5w().x6p_1, this.l5w().y6p_1]);
+protoOf(DateInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().x6p_1, this.m5w().y6p_1, this.m5w().z6p_1]);
 };
 function Companion_14() {
 }
-protoOf(Companion_14).j9d = function (dt, operands) {
+protoOf(Companion_14).p9d = function (dt, operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 8 : false)) {
     var message = 'DateTime operator requires one to eight operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  dt.w6q_1 = operands.o(0);
+  dt.x6q_1 = operands.o(0);
   if (operands.j() > 1) {
-    dt.x6q_1 = operands.o(1);
+    dt.y6q_1 = operands.o(1);
   }
   if (operands.j() > 2) {
-    dt.y6q_1 = operands.o(2);
+    dt.z6q_1 = operands.o(2);
   }
   if (operands.j() > 3) {
-    dt.z6q_1 = operands.o(3);
+    dt.a6r_1 = operands.o(3);
   }
   if (operands.j() > 4) {
-    dt.a6r_1 = operands.o(4);
+    dt.b6r_1 = operands.o(4);
   }
   if (operands.j() > 5) {
-    dt.b6r_1 = operands.o(5);
+    dt.c6r_1 = operands.o(5);
   }
   if (operands.j() > 6) {
-    dt.c6r_1 = operands.o(6);
+    dt.d6r_1 = operands.o(6);
   }
   if (operands.j() > 7) {
-    dt.d6r_1 = operands.o(7);
+    dt.e6r_1 = operands.o(7);
   }
 };
 var Companion_instance_17;
@@ -15820,314 +16052,314 @@ function Companion_getInstance_17() {
 function DateTimeInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(DateTimeInvocation).h9b = function (operands) {
-  Companion_instance_17.j9d(this.l5w(), operands);
+protoOf(DateTimeInvocation).o9b = function (operands) {
+  Companion_instance_17.p9d(this.m5w(), operands);
 };
-protoOf(DateTimeInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().w6q_1, this.l5w().x6q_1, this.l5w().y6q_1, this.l5w().z6q_1, this.l5w().a6r_1, this.l5w().b6r_1, this.l5w().c6r_1, this.l5w().d6r_1]);
+protoOf(DateTimeInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().x6q_1, this.m5w().y6q_1, this.m5w().z6q_1, this.m5w().a6r_1, this.m5w().b6r_1, this.m5w().c6r_1, this.m5w().d6r_1, this.m5w().e6r_1]);
 };
 function FirstInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(FirstInvocation).h9b = function (operands) {
+protoOf(FirstInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 1)) {
     var message = 'Unary operator expected.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().d6x_1 = operands.o(0);
+  this.m5w().e6x_1 = operands.o(0);
 };
-protoOf(FirstInvocation).f9b = function () {
-  return listOf_0(ensureNotNull(this.l5w().d6x_1));
+protoOf(FirstInvocation).m9b = function () {
+  return listOf_0(ensureNotNull(this.m5w().e6x_1));
 };
 function FunctionRefInvocation(expression) {
   AbstractExpressionInvocation.call(this, expression);
 }
-protoOf(FunctionRefInvocation).h9b = function (operands) {
-  this.l5w().n67(toMutableList(operands));
+protoOf(FunctionRefInvocation).o9b = function (operands) {
+  this.m5w().o67(toMutableList(operands));
 };
-protoOf(FunctionRefInvocation).f9b = function () {
-  return this.l5w().o67();
+protoOf(FunctionRefInvocation).m9b = function () {
+  return this.m5w().p67();
 };
-protoOf(FunctionRefInvocation).i9b = function (signature) {
-  this.l5w().l66(toMutableList(signature));
+protoOf(FunctionRefInvocation).p9b = function (signature) {
+  this.m5w().m66(toMutableList(signature));
 };
-protoOf(FunctionRefInvocation).j9b = function (resolution) {
-  protoOf(AbstractExpressionInvocation).j9b.call(this, resolution);
-  if (!((resolution == null ? null : resolution.y92_1) == this.l5w().n6w_1)) {
-    var tmp = this.l5w();
-    tmp.n6w_1 = resolution == null ? null : resolution.y92_1;
+protoOf(FunctionRefInvocation).q9b = function (resolution) {
+  protoOf(AbstractExpressionInvocation).q9b.call(this, resolution);
+  if (!((resolution == null ? null : resolution.z92_1) == this.m5w().o6w_1)) {
+    var tmp = this.m5w();
+    tmp.o6w_1 = resolution == null ? null : resolution.z92_1;
   }
 };
-protoOf(FunctionRefInvocation).s92 = function () {
-  return protoOf(AbstractExpressionInvocation).s92.call(this);
+protoOf(FunctionRefInvocation).t92 = function () {
+  return protoOf(AbstractExpressionInvocation).t92.call(this);
 };
 function InCodeSystemInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(InCodeSystemInvocation).h9b = function (operands) {
+protoOf(InCodeSystemInvocation).o9b = function (operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'InCodeSystem operator requires one or two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().l71_1 = operands.o(0);
+  this.m5w().m71_1 = operands.o(0);
   if (operands.j() > 1) {
-    this.l5w().n71_1 = operands.o(1);
+    this.m5w().o71_1 = operands.o(1);
   }
 };
-protoOf(InCodeSystemInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().l71_1, this.l5w().n71_1]);
+protoOf(InCodeSystemInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().m71_1, this.m5w().o71_1]);
 };
 function InValueSetInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(InValueSetInvocation).h9b = function (operands) {
+protoOf(InValueSetInvocation).o9b = function (operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'InValueSet operator requires one or two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().v71_1 = operands.o(0);
+  this.m5w().w71_1 = operands.o(0);
   if (operands.j() > 1) {
-    this.l5w().x71_1 = operands.o(1);
+    this.m5w().y71_1 = operands.o(1);
   }
 };
-protoOf(InValueSetInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().v71_1, this.l5w().x71_1]);
+protoOf(InValueSetInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().w71_1, this.m5w().y71_1]);
 };
 function IndexOfInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(IndexOfInvocation).h9b = function (operands) {
+protoOf(IndexOfInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'IndexOf operator requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().q73_1 = operands.o(0);
-  this.l5w().r73_1 = operands.o(1);
+  this.m5w().r73_1 = operands.o(0);
+  this.m5w().s73_1 = operands.o(1);
 };
-protoOf(IndexOfInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().q73_1, this.l5w().r73_1]);
+protoOf(IndexOfInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().r73_1, this.m5w().s73_1]);
 };
 function LastInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(LastInvocation).h9b = function (operands) {
+protoOf(LastInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 1)) {
     var message = 'Unary operator expected.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().l77_1 = operands.o(0);
+  this.m5w().m77_1 = operands.o(0);
 };
-protoOf(LastInvocation).f9b = function () {
-  return listOf_0(ensureNotNull(this.l5w().l77_1));
+protoOf(LastInvocation).m9b = function () {
+  return listOf_0(ensureNotNull(this.m5w().m77_1));
 };
 function LastPositionOfInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(LastPositionOfInvocation).h9b = function (operands) {
+protoOf(LastPositionOfInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'LastPositionOf operator requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().s77_1 = operands.o(0);
-  this.l5w().t77_1 = operands.o(1);
+  this.m5w().t77_1 = operands.o(0);
+  this.m5w().u77_1 = operands.o(1);
 };
-protoOf(LastPositionOfInvocation).f9b = function () {
-  return listOf([ensureNotNull(this.l5w().s77_1), ensureNotNull(this.l5w().t77_1)]);
+protoOf(LastPositionOfInvocation).m9b = function () {
+  return listOf([ensureNotNull(this.m5w().t77_1), ensureNotNull(this.m5w().u77_1)]);
 };
 function MessageInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(MessageInvocation).h9b = function (operands) {
+protoOf(MessageInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 5)) {
     var message = 'Message operator requires five operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().f7e_1 = operands.o(0);
-  this.l5w().g7e_1 = operands.o(1);
-  this.l5w().h7e_1 = operands.o(2);
-  this.l5w().i7e_1 = operands.o(3);
-  this.l5w().j7e_1 = operands.o(4);
+  this.m5w().g7e_1 = operands.o(0);
+  this.m5w().h7e_1 = operands.o(1);
+  this.m5w().i7e_1 = operands.o(2);
+  this.m5w().j7e_1 = operands.o(3);
+  this.m5w().k7e_1 = operands.o(4);
 };
-protoOf(MessageInvocation).f9b = function () {
-  return listOf([ensureNotNull(this.l5w().f7e_1), ensureNotNull(this.l5w().g7e_1), ensureNotNull(this.l5w().h7e_1), ensureNotNull(this.l5w().i7e_1), ensureNotNull(this.l5w().j7e_1)]);
+protoOf(MessageInvocation).m9b = function () {
+  return listOf([ensureNotNull(this.m5w().g7e_1), ensureNotNull(this.m5w().h7e_1), ensureNotNull(this.m5w().i7e_1), ensureNotNull(this.m5w().j7e_1), ensureNotNull(this.m5w().k7e_1)]);
 };
 function NaryExpressionInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(NaryExpressionInvocation).h9b = function (operands) {
-  this.l5w().n67(toMutableList(operands));
+protoOf(NaryExpressionInvocation).o9b = function (operands) {
+  this.m5w().o67(toMutableList(operands));
 };
-protoOf(NaryExpressionInvocation).f9b = function () {
-  return this.l5w().o67();
+protoOf(NaryExpressionInvocation).m9b = function () {
+  return this.m5w().p67();
 };
 function OperatorExpressionInvocation(expression) {
   AbstractExpressionInvocation.call(this, expression);
 }
-protoOf(OperatorExpressionInvocation).i9b = function (signature) {
-  this.l5w().l66(toMutableList(signature));
+protoOf(OperatorExpressionInvocation).p9b = function (signature) {
+  this.m5w().m66(toMutableList(signature));
 };
 function PositionOfInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(PositionOfInvocation).h9b = function (operands) {
+protoOf(PositionOfInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'PositionOf operator requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().w7u_1 = operands.o(0);
-  this.l5w().x7u_1 = operands.o(1);
+  this.m5w().x7u_1 = operands.o(0);
+  this.m5w().y7u_1 = operands.o(1);
 };
-protoOf(PositionOfInvocation).f9b = function () {
-  return listOf([ensureNotNull(this.l5w().w7u_1), ensureNotNull(this.l5w().x7u_1)]);
+protoOf(PositionOfInvocation).m9b = function () {
+  return listOf([ensureNotNull(this.m5w().x7u_1), ensureNotNull(this.m5w().y7u_1)]);
 };
 function RoundInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(RoundInvocation).h9b = function (operands) {
+protoOf(RoundInvocation).o9b = function (operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 2 : false)) {
     var message = 'Round operator requires one or two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().o82_1 = operands.o(0);
+  this.m5w().p82_1 = operands.o(0);
   if (operands.j() > 1) {
-    this.l5w().p82_1 = operands.o(1);
+    this.m5w().q82_1 = operands.o(1);
   }
 };
-protoOf(RoundInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().o82_1, this.l5w().p82_1]);
+protoOf(RoundInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().p82_1, this.m5w().q82_1]);
 };
 function SkipInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(SkipInvocation).h9b = function (operands) {
+protoOf(SkipInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'Skip operator requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().q84_1 = operands.o(0);
-  this.l5w().r84_1 = operands.o(1);
+  this.m5w().r84_1 = operands.o(0);
+  this.m5w().s84_1 = operands.o(1);
 };
-protoOf(SkipInvocation).f9b = function () {
-  return listOf([ensureNotNull(this.l5w().q84_1), ensureNotNull(this.l5w().r84_1)]);
+protoOf(SkipInvocation).m9b = function () {
+  return listOf([ensureNotNull(this.m5w().r84_1), ensureNotNull(this.m5w().s84_1)]);
 };
 function SplitInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(SplitInvocation).h9b = function (operands) {
+protoOf(SplitInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'Split operator requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().p85_1 = operands.o(0);
-  this.l5w().q85_1 = operands.o(1);
+  this.m5w().q85_1 = operands.o(0);
+  this.m5w().r85_1 = operands.o(1);
 };
-protoOf(SplitInvocation).f9b = function () {
-  return listOf([ensureNotNull(this.l5w().p85_1), ensureNotNull(this.l5w().q85_1)]);
+protoOf(SplitInvocation).m9b = function () {
+  return listOf([ensureNotNull(this.m5w().q85_1), ensureNotNull(this.m5w().r85_1)]);
 };
 function SplitOnMatchesInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(SplitOnMatchesInvocation).h9b = function (operands) {
+protoOf(SplitOnMatchesInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'SplitOnMatches operator requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().z85_1 = operands.o(0);
-  this.l5w().a86_1 = operands.o(1);
+  this.m5w().a86_1 = operands.o(0);
+  this.m5w().b86_1 = operands.o(1);
 };
-protoOf(SplitOnMatchesInvocation).f9b = function () {
-  return listOf([ensureNotNull(this.l5w().z85_1), ensureNotNull(this.l5w().a86_1)]);
+protoOf(SplitOnMatchesInvocation).m9b = function () {
+  return listOf([ensureNotNull(this.m5w().a86_1), ensureNotNull(this.m5w().b86_1)]);
 };
 function SubstringInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(SubstringInvocation).h9b = function (operands) {
+protoOf(SubstringInvocation).o9b = function (operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(2 <= containsArg ? containsArg <= 3 : false)) {
     var message = 'Substring operator requires two or three operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().m87_1 = operands.o(0);
-  this.l5w().n87_1 = operands.o(1);
+  this.m5w().n87_1 = operands.o(0);
+  this.m5w().o87_1 = operands.o(1);
   if (operands.j() > 2) {
-    this.l5w().o87_1 = operands.o(2);
+    this.m5w().p87_1 = operands.o(2);
   }
 };
-protoOf(SubstringInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().m87_1, this.l5w().n87_1, this.l5w().o87_1]);
+protoOf(SubstringInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().n87_1, this.m5w().o87_1, this.m5w().p87_1]);
 };
 function TailInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(TailInvocation).h9b = function (operands) {
+protoOf(TailInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 1)) {
     var message = 'Unary operator expected.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().q84_1 = operands.o(0);
+  this.m5w().r84_1 = operands.o(0);
 };
-protoOf(TailInvocation).f9b = function () {
-  return listOf_0(ensureNotNull(this.l5w().q84_1));
+protoOf(TailInvocation).m9b = function () {
+  return listOf_0(ensureNotNull(this.m5w().r84_1));
 };
 function TakeInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(TakeInvocation).h9b = function (operands) {
+protoOf(TakeInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 2)) {
     var message = 'Take operator requires two operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().q84_1 = operands.o(0);
-  this.l5w().s84_1 = operands.o(1);
+  this.m5w().r84_1 = operands.o(0);
+  this.m5w().t84_1 = operands.o(1);
 };
-protoOf(TakeInvocation).f9b = function () {
-  return listOf([ensureNotNull(this.l5w().q84_1), ensureNotNull(this.l5w().s84_1)]);
+protoOf(TakeInvocation).m9b = function () {
+  return listOf([ensureNotNull(this.m5w().r84_1), ensureNotNull(this.m5w().t84_1)]);
 };
 function TernaryExpressionInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(TernaryExpressionInvocation).h9b = function (operands) {
-  this.l5w().n67(toMutableList(operands));
+protoOf(TernaryExpressionInvocation).o9b = function (operands) {
+  this.m5w().o67(toMutableList(operands));
 };
-protoOf(TernaryExpressionInvocation).f9b = function () {
-  return this.l5w().o67();
+protoOf(TernaryExpressionInvocation).m9b = function () {
+  return this.m5w().p67();
 };
 function Companion_15() {
 }
-protoOf(Companion_15).l9d = function (t, operands) {
+protoOf(Companion_15).r9d = function (t, operands) {
   var containsArg = operands.j();
   // Inline function 'kotlin.require' call
   if (!(1 <= containsArg ? containsArg <= 4 : false)) {
     var message = 'Time operator requires at one to four operands.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  t.h89_1 = operands.o(0);
+  t.i89_1 = operands.o(0);
   if (operands.j() > 1) {
-    t.i89_1 = operands.o(1);
+    t.j89_1 = operands.o(1);
   }
   if (operands.j() > 2) {
-    t.j89_1 = operands.o(2);
+    t.k89_1 = operands.o(2);
   }
   if (operands.j() > 3) {
-    t.k89_1 = operands.o(3);
+    t.l89_1 = operands.o(3);
   }
 };
 var Companion_instance_18;
@@ -16137,117 +16369,117 @@ function Companion_getInstance_18() {
 function TimeInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(TimeInvocation).h9b = function (operands) {
-  Companion_instance_18.l9d(this.l5w(), operands);
+protoOf(TimeInvocation).o9b = function (operands) {
+  Companion_instance_18.r9d(this.m5w(), operands);
 };
-protoOf(TimeInvocation).f9b = function () {
-  return listOfNotNull([this.l5w().h89_1, this.l5w().i89_1, this.l5w().j89_1, this.l5w().k89_1]);
+protoOf(TimeInvocation).m9b = function () {
+  return listOfNotNull([this.m5w().i89_1, this.m5w().j89_1, this.m5w().k89_1, this.m5w().l89_1]);
 };
 function UnaryExpressionInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(UnaryExpressionInvocation).h9b = function (operands) {
+protoOf(UnaryExpressionInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!(operands.j() === 1)) {
     var message = 'Unary operator expected.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.l5w().u66_1 = operands.o(0);
+  this.m5w().v66_1 = operands.o(0);
 };
-protoOf(UnaryExpressionInvocation).f9b = function () {
-  return listOf_0(ensureNotNull(this.l5w().u66_1));
+protoOf(UnaryExpressionInvocation).m9b = function () {
+  return listOf_0(ensureNotNull(this.m5w().v66_1));
 };
 function ZeroOperandExpressionInvocation(expression) {
   OperatorExpressionInvocation.call(this, expression);
 }
-protoOf(ZeroOperandExpressionInvocation).h9b = function (operands) {
+protoOf(ZeroOperandExpressionInvocation).o9b = function (operands) {
   // Inline function 'kotlin.require' call
   if (!operands.q()) {
     var message = 'Zero operand operator expected.';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
 };
-protoOf(ZeroOperandExpressionInvocation).f9b = function () {
+protoOf(ZeroOperandExpressionInvocation).m9b = function () {
   return emptyList();
 };
 function BaseInfo(definition) {
-  this.x9j_1 = definition;
-  this.y9j_1 = null;
-  this.z9j_1 = null;
+  this.a9k_1 = definition;
+  this.b9k_1 = null;
+  this.c9k_1 = null;
 }
-protoOf(BaseInfo).a9k = function () {
-  return this.x9j_1;
+protoOf(BaseInfo).d9k = function () {
+  return this.a9k_1;
 };
 function CodeDefinitionInfo(name, definition) {
   BaseInfo.call(this, definition);
-  this.e9k_1 = name;
-  this.f9k_1 = definition;
+  this.h9k_1 = name;
+  this.i9k_1 = definition;
 }
-protoOf(CodeDefinitionInfo).a9k = function () {
-  return this.f9k_1;
+protoOf(CodeDefinitionInfo).d9k = function () {
+  return this.i9k_1;
 };
 function CodesystemDefinitionInfo(name, definition) {
   BaseInfo.call(this, definition);
-  this.j9k_1 = name;
-  this.k9k_1 = definition;
+  this.m9k_1 = name;
+  this.n9k_1 = definition;
 }
-protoOf(CodesystemDefinitionInfo).a9k = function () {
-  return this.k9k_1;
+protoOf(CodesystemDefinitionInfo).d9k = function () {
+  return this.n9k_1;
 };
 function ConceptDefinitionInfo(name, definition) {
   BaseInfo.call(this, definition);
-  this.o9k_1 = name;
-  this.p9k_1 = definition;
+  this.r9k_1 = name;
+  this.s9k_1 = definition;
 }
-protoOf(ConceptDefinitionInfo).a9k = function () {
-  return this.p9k_1;
+protoOf(ConceptDefinitionInfo).d9k = function () {
+  return this.s9k_1;
 };
 function ContextDefinitionInfo(definition) {
   BaseInfo.call(this, definition);
-  this.t9k_1 = definition;
-  this.u9k_1 = null;
+  this.w9k_1 = definition;
+  this.x9k_1 = null;
 }
-protoOf(ContextDefinitionInfo).a9k = function () {
-  return this.t9k_1;
+protoOf(ContextDefinitionInfo).d9k = function () {
+  return this.w9k_1;
 };
 function processHeader($this, ctx, info) {
-  var sourceInterval = ctx.l2f();
-  var beforeDefinition = sourceInterval.a24_1 - 1 | 0;
-  if (beforeDefinition >= $this.k9l_1) {
-    var header = new Interval($this.k9l_1 + 1 | 0, sourceInterval.a24_1 - 1 | 0);
-    $this.k9l_1 = sourceInterval.b24_1;
-    info.z9j_1 = header;
-    info.y9j_1 = $this.x8t_1.z23(header);
+  var sourceInterval = ctx.m2f();
+  var beforeDefinition = sourceInterval.b24_1 - 1 | 0;
+  if (beforeDefinition >= $this.n9l_1) {
+    var header = new Interval($this.n9l_1 + 1 | 0, sourceInterval.b24_1 - 1 | 0);
+    $this.n9l_1 = sourceInterval.c24_1;
+    info.c9k_1 = header;
+    info.b9k_1 = $this.y8t_1.a24(header);
   }
 }
 function CqlPreprocessor(libraryBuilder, tokenStream) {
   CqlPreprocessorElmCommonVisitor.call(this, libraryBuilder, tokenStream);
-  this.k9l_1 = -1;
+  this.n9l_1 = -1;
 }
-protoOf(CqlPreprocessor).i33 = function (ctx) {
+protoOf(CqlPreprocessor).j33 = function (ctx) {
   var lastResult = null;
-  var identifier = (new VersionedIdentifier()).a6i(this.d8u_1.k8x_1).d6j(this.d8u_1.l8x_1);
-  if (!(this.d8u_1.j8x_1 == null)) {
-    identifier.c8i_1 = this.w8t_1.resolveNamespaceUri(ensureNotNull(this.d8u_1.j8x_1), true);
-  } else if (!(this.w8t_1.namespaceInfo == null)) {
-    identifier.c8i_1 = this.w8t_1.namespaceInfo.z62_1;
+  var identifier = (new VersionedIdentifier()).b6i(this.e8u_1.l8x_1).e6j(this.e8u_1.m8x_1);
+  if (!(this.e8u_1.k8x_1 == null)) {
+    identifier.d8i_1 = this.x8t_1.resolveNamespaceUri(ensureNotNull(this.e8u_1.k8x_1), true);
+  } else if (!(this.x8t_1.namespaceInfo == null)) {
+    identifier.d8i_1 = this.x8t_1.namespaceInfo.a63_1;
   }
-  this.w8t_1.e90(identifier);
-  this.w8t_1.beginTranslation();
+  this.x8t_1.f90(identifier);
+  this.x8t_1.beginTranslation();
   var tmp;
   try {
     var inductionVariable = 0;
-    var last = ctx.k2f();
+    var last = ctx.l2f();
     if (inductionVariable < last)
       $l$loop: do {
         var i = inductionVariable;
         inductionVariable = inductionVariable + 1 | 0;
-        var tree = ctx.o2f(i);
+        var tree = ctx.p2f(i);
         var terminalNode = (!(tree == null) ? isInterface(tree, TerminalNode) : false) ? tree : null;
-        if (!(terminalNode == null) && terminalNode.r2f().s23() === -1) {
+        if (!(terminalNode == null) && terminalNode.s2f().t23() === -1) {
           continue $l$loop;
         }
-        var childResult = this.d32(ensureNotNull(tree));
+        var childResult = this.e32(ensureNotNull(tree));
         if (!(childResult == null)) {
           lastResult = childResult;
         }
@@ -16255,12 +16487,12 @@ protoOf(CqlPreprocessor).i33 = function (ctx) {
        while (inductionVariable < last);
     tmp = lastResult;
   }finally {
-    this.w8t_1.endTranslation();
+    this.x8t_1.endTranslation();
   }
   return tmp;
 };
-protoOf(CqlPreprocessor).j33 = function (ctx) {
-  var tmp = this.d32(ctx.f3u());
+protoOf(CqlPreprocessor).k33 = function (ctx) {
+  var tmp = this.e32(ctx.g3u());
   var identifiers = (!(tmp == null) ? isInterface(tmp, KtMutableList) : false) ? tmp : THROW_CCE();
   var libraryName = identifiers.l2(identifiers.j() - 1 | 0);
   var tmp_0;
@@ -16272,20 +16504,20 @@ protoOf(CqlPreprocessor).j33 = function (ctx) {
   }
   var namespaceName = tmp_0;
   var tmp_1;
-  if (!(ctx.g3u() == null)) {
-    var tmp_2 = this.d32(ensureNotNull(ctx.g3u()));
+  if (!(ctx.h3u() == null)) {
+    var tmp_2 = this.e32(ensureNotNull(ctx.h3u()));
     tmp_1 = (!(tmp_2 == null) ? typeof tmp_2 === 'string' : false) ? tmp_2 : THROW_CCE();
   } else {
     tmp_1 = null;
   }
   var version = tmp_1;
   var newLibraryInfo = new LibraryInfo(namespaceName, libraryName, version, ctx);
-  this.d8u_1 = newLibraryInfo;
+  this.e8u_1 = newLibraryInfo;
   processHeader(this, ctx, newLibraryInfo);
-  return protoOf(CqlPreprocessorElmCommonVisitor).j33.call(this, ctx);
+  return protoOf(CqlPreprocessorElmCommonVisitor).k33.call(this, ctx);
 };
-protoOf(CqlPreprocessor).l33 = function (ctx) {
-  var tmp = this.d32(ctx.f3u());
+protoOf(CqlPreprocessor).m33 = function (ctx) {
+  var tmp = this.e32(ctx.g3u());
   var identifiers = (!(tmp == null) ? isInterface(tmp, KtMutableList) : false) ? tmp : THROW_CCE();
   var name = identifiers.l2(identifiers.j() - 1 | 0);
   var tmp_0;
@@ -16297,21 +16529,21 @@ protoOf(CqlPreprocessor).l33 = function (ctx) {
   }
   var namespaceName = tmp_0;
   var tmp_1;
-  if (!(ctx.g3u() == null)) {
-    var tmp_2 = this.d32(ensureNotNull(ctx.g3u()));
+  if (!(ctx.h3u() == null)) {
+    var tmp_2 = this.e32(ensureNotNull(ctx.h3u()));
     tmp_1 = (!(tmp_2 == null) ? typeof tmp_2 === 'string' : false) ? tmp_2 : THROW_CCE();
   } else {
     tmp_1 = null;
   }
   var version = tmp_1;
-  var localName = !(ctx.r3u() == null) ? ensureNotNull(this.k8v(ctx.r3u())) : name;
+  var localName = !(ctx.s3u() == null) ? ensureNotNull(this.l8v(ctx.s3u())) : name;
   var includeDefinition = new IncludeDefinitionInfo(namespaceName, name, version, localName, ctx);
   processHeader(this, ctx, includeDefinition);
-  this.d8u_1.l9l(includeDefinition);
+  this.e8u_1.o9l(includeDefinition);
   return includeDefinition;
 };
-protoOf(CqlPreprocessor).k33 = function (ctx) {
-  var tmp = this.d32(ctx.f3u());
+protoOf(CqlPreprocessor).l33 = function (ctx) {
+  var tmp = this.e32(ctx.g3u());
   var identifiers = (!(tmp == null) ? isInterface(tmp, KtMutableList) : false) ? tmp : THROW_CCE();
   var unqualifiedIdentifier = identifiers.l2(identifiers.j() - 1 | 0);
   var tmp_0;
@@ -16323,27 +16555,27 @@ protoOf(CqlPreprocessor).k33 = function (ctx) {
   }
   var namespaceNameForUsingDefinition = tmp_0;
   var tmp_1;
-  if (!(ctx.g3u() == null)) {
-    var tmp_2 = this.d32(ensureNotNull(ctx.g3u()));
+  if (!(ctx.h3u() == null)) {
+    var tmp_2 = this.e32(ensureNotNull(ctx.h3u()));
     tmp_1 = (!(tmp_2 == null) ? typeof tmp_2 === 'string' : false) ? tmp_2 : THROW_CCE();
   } else {
     tmp_1 = null;
   }
   var version = tmp_1;
-  var localName = !(ctx.r3u() == null) ? ensureNotNull(this.k8v(ctx.r3u())) : unqualifiedIdentifier;
+  var localName = !(ctx.s3u() == null) ? ensureNotNull(this.l8v(ctx.s3u())) : unqualifiedIdentifier;
   var usingDefinition = new UsingDefinitionInfo(namespaceNameForUsingDefinition, unqualifiedIdentifier, version, localName, ctx);
   processHeader(this, ctx, usingDefinition);
-  this.d8u_1.m9l(usingDefinition);
+  this.e8u_1.p9l(usingDefinition);
   var tmp_3;
   // Inline function 'kotlin.collections.isNotEmpty' call
   if (!identifiers.q()) {
     tmp_3 = joinToString(identifiers, '.');
   } else {
-    if (this.w8t_1.isWellKnownModelName(unqualifiedIdentifier)) {
+    if (this.x8t_1.isWellKnownModelName(unqualifiedIdentifier)) {
       tmp_3 = null;
     } else {
-      if (!(this.w8t_1.namespaceInfo == null)) {
-        tmp_3 = this.w8t_1.namespaceInfo.y62_1;
+      if (!(this.x8t_1.namespaceInfo == null)) {
+        tmp_3 = this.x8t_1.namespaceInfo.z62_1;
       } else {
         tmp_3 = null;
       }
@@ -16352,51 +16584,51 @@ protoOf(CqlPreprocessor).k33 = function (ctx) {
   var namespaceName = tmp_3;
   var modelNamespace = null;
   if (!(namespaceName == null)) {
-    var namespaceUri = this.w8t_1.resolveNamespaceUri(namespaceName, true);
+    var namespaceUri = this.x8t_1.resolveNamespaceUri(namespaceName, true);
     modelNamespace = new NamespaceInfo(namespaceName, ensureNotNull(namespaceUri));
   }
-  var localIdentifier = ctx.r3u() == null ? unqualifiedIdentifier : ensureNotNull(this.k8v(ctx.r3u()));
+  var localIdentifier = ctx.s3u() == null ? unqualifiedIdentifier : ensureNotNull(this.l8v(ctx.s3u()));
   // Inline function 'kotlin.require' call
   if (!(localIdentifier === unqualifiedIdentifier)) {
     var message = 'Local identifiers for models must be the same as the name of the model \n                in this release of the translator (Model ' + unqualifiedIdentifier + ', Called ' + localIdentifier + ')';
     throw IllegalArgumentException_init_$Create$(toString(message));
   }
-  this.n9l(modelNamespace, unqualifiedIdentifier, this.k8v(ctx.g3u()), localIdentifier);
+  this.q9l(modelNamespace, unqualifiedIdentifier, this.l8v(ctx.h3u()), localIdentifier);
   return usingDefinition;
 };
-protoOf(CqlPreprocessor).p33 = function (ctx) {
-  var codesystemDefinition = new CodesystemDefinitionInfo(ensureNotNull(this.k8v(ctx.g3w())), ctx);
+protoOf(CqlPreprocessor).q33 = function (ctx) {
+  var codesystemDefinition = new CodesystemDefinitionInfo(ensureNotNull(this.l8v(ctx.h3w())), ctx);
   processHeader(this, ctx, codesystemDefinition);
-  this.d8u_1.o9l(codesystemDefinition);
+  this.e8u_1.r9l(codesystemDefinition);
   return codesystemDefinition;
 };
-protoOf(CqlPreprocessor).q33 = function (ctx) {
-  var valuesetDefinition = new ValuesetDefinitionInfo(ensureNotNull(this.k8v(ctx.g3w())), ctx);
+protoOf(CqlPreprocessor).r33 = function (ctx) {
+  var valuesetDefinition = new ValuesetDefinitionInfo(ensureNotNull(this.l8v(ctx.h3w())), ctx);
   processHeader(this, ctx, valuesetDefinition);
-  this.d8u_1.p9l(valuesetDefinition);
+  this.e8u_1.s9l(valuesetDefinition);
   return valuesetDefinition;
 };
-protoOf(CqlPreprocessor).u33 = function (ctx) {
-  var codeDefinition = new CodeDefinitionInfo(ensureNotNull(this.k8v(ctx.g3w())), ctx);
+protoOf(CqlPreprocessor).v33 = function (ctx) {
+  var codeDefinition = new CodeDefinitionInfo(ensureNotNull(this.l8v(ctx.h3w())), ctx);
   processHeader(this, ctx, codeDefinition);
-  this.d8u_1.q9l(codeDefinition);
+  this.e8u_1.t9l(codeDefinition);
   return codeDefinition;
 };
-protoOf(CqlPreprocessor).v33 = function (ctx) {
-  var conceptDefinition = new ConceptDefinitionInfo(ensureNotNull(this.k8v(ctx.g3w())), ctx);
+protoOf(CqlPreprocessor).w33 = function (ctx) {
+  var conceptDefinition = new ConceptDefinitionInfo(ensureNotNull(this.l8v(ctx.h3w())), ctx);
   processHeader(this, ctx, conceptDefinition);
-  this.d8u_1.r9l(conceptDefinition);
+  this.e8u_1.u9l(conceptDefinition);
   return conceptDefinition;
 };
-protoOf(CqlPreprocessor).o33 = function (ctx) {
-  var parameterDefinition = new ParameterDefinitionInfo(ensureNotNull(this.k8v(ctx.g3w())), ctx);
+protoOf(CqlPreprocessor).p33 = function (ctx) {
+  var parameterDefinition = new ParameterDefinitionInfo(ensureNotNull(this.l8v(ctx.h3w())), ctx);
   processHeader(this, ctx, parameterDefinition);
-  this.d8u_1.s9l(parameterDefinition);
+  this.e8u_1.v9l(parameterDefinition);
   return parameterDefinition;
 };
-protoOf(CqlPreprocessor).l34 = function (ctx) {
-  var modelIdentifier = !(ctx.s45() == null) ? this.k8v(ctx.s45()) : null;
-  var unqualifiedContext = ensureNotNull(this.k8v(ctx.g3w()));
+protoOf(CqlPreprocessor).m34 = function (ctx) {
+  var modelIdentifier = !(ctx.t45() == null) ? this.l8v(ctx.t45()) : null;
+  var unqualifiedContext = ensureNotNull(this.l8v(ctx.h3w()));
   var tmp = this;
   var tmp_0;
   // Inline function 'kotlin.text.isNullOrEmpty' call
@@ -16405,84 +16637,84 @@ protoOf(CqlPreprocessor).l34 = function (ctx) {
   } else {
     tmp_0 = unqualifiedContext;
   }
-  tmp.b8u_1 = tmp_0;
+  tmp.c8u_1 = tmp_0;
   var contextDefinition = new ContextDefinitionInfo(ctx);
   processHeader(this, ctx, contextDefinition);
-  this.d8u_1.t9l(contextDefinition);
-  if (!this.a8u_1 && !(unqualifiedContext === 'Unfiltered')) {
-    var expressionDefinition = new ExpressionDefinitionInfo(unqualifiedContext, this.b8u_1, null);
-    this.d8u_1.u9l(expressionDefinition);
-    this.a8u_1 = true;
+  this.e8u_1.w9l(contextDefinition);
+  if (!this.b8u_1 && !(unqualifiedContext === 'Unfiltered')) {
+    var expressionDefinition = new ExpressionDefinitionInfo(unqualifiedContext, this.c8u_1, null);
+    this.e8u_1.x9l(expressionDefinition);
+    this.b8u_1 = true;
   }
-  return this.b8u_1;
+  return this.c8u_1;
 };
-protoOf(CqlPreprocessor).k34 = function (ctx) {
-  var expressionDefinition = new ExpressionDefinitionInfo(ensureNotNull(this.k8v(ctx.g3w())), this.b8u_1, ctx);
+protoOf(CqlPreprocessor).l34 = function (ctx) {
+  var expressionDefinition = new ExpressionDefinitionInfo(ensureNotNull(this.l8v(ctx.h3w())), this.c8u_1, ctx);
   processHeader(this, ctx, expressionDefinition);
-  this.d8u_1.u9l(expressionDefinition);
+  this.e8u_1.x9l(expressionDefinition);
   return expressionDefinition;
 };
-protoOf(CqlPreprocessor).n34 = function (ctx) {
-  var functionDefinition = new FunctionDefinitionInfo(ensureNotNull(this.k8v(ctx.n46())), this.b8u_1, ctx);
+protoOf(CqlPreprocessor).o34 = function (ctx) {
+  var functionDefinition = new FunctionDefinitionInfo(ensureNotNull(this.l8v(ctx.o46())), this.c8u_1, ctx);
   processHeader(this, ctx, functionDefinition);
-  this.d8u_1.v9l(functionDefinition);
+  this.e8u_1.y9l(functionDefinition);
   return functionDefinition;
 };
-protoOf(CqlPreprocessor).c34 = function (ctx) {
-  var qualifiers = this.k90(ctx);
-  var modelIdentifier = Companion_instance_20.l90(qualifiers);
-  var identifier = Companion_instance_20.m90(qualifiers, ensureNotNull(this.k8v(ctx.c42())));
+protoOf(CqlPreprocessor).d34 = function (ctx) {
+  var qualifiers = this.l90(ctx);
+  var modelIdentifier = Companion_instance_20.m90(qualifiers);
+  var identifier = Companion_instance_20.n90(qualifiers, ensureNotNull(this.l8v(ctx.d42())));
   var typeSpecifierKey = '' + modelIdentifier + ':' + identifier;
-  var resultType = this.w8t_1.l8w(modelIdentifier, identifier);
+  var resultType = this.x8t_1.m8w(modelIdentifier, identifier);
   if (null == resultType) {
-    this.w8t_1.addNamedTypeSpecifierResult(typeSpecifierKey, Companion_instance_9.g9d());
+    this.x8t_1.addNamedTypeSpecifierResult(typeSpecifierKey, Companion_instance_9.m9d());
     throw new CqlCompilerException('Could not find type for model: ' + modelIdentifier + ' and name: ' + identifier);
   }
-  var result = this.y8t_1.c7k().c7g(this.w8t_1.dataTypeToQName(resultType));
-  Trackable_getInstance().o8v(result, resultType);
-  this.w8t_1.addNamedTypeSpecifierResult(typeSpecifierKey, Companion_instance_9.h9d(result));
+  var result = this.z8t_1.d7k().d7g(this.x8t_1.dataTypeToQName(resultType));
+  Trackable_getInstance().p8v(result, resultType);
+  this.x8t_1.addNamedTypeSpecifierResult(typeSpecifierKey, Companion_instance_9.n9d(result));
   return result;
 };
-protoOf(CqlPreprocessor).h32 = function (node) {
-  var text = node.c24();
-  var tokenType = node.r2f().s23();
+protoOf(CqlPreprocessor).i32 = function (node) {
+  var text = node.d24();
+  var tokenType = node.s2f().t23();
   if (165 === tokenType || 158 === tokenType) {
     text = substring_0(text, 1, text.length - 1 | 0);
   }
   return text;
 };
-protoOf(CqlPreprocessor).n35 = function (ctx) {
-  var identifiers = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.d42().g();
-  while (_iterator__ex2g4s.h()) {
-    var qualifierContext = _iterator__ex2g4s.i();
-    var tmp = this.d32(qualifierContext);
-    var qualifier = (!(tmp == null) ? typeof tmp === 'string' : false) ? tmp : THROW_CCE();
-    identifiers.e(qualifier);
-  }
-  var identifier = ensureNotNull(this.k8v(ctx.g3w()));
-  identifiers.e(identifier);
-  return identifiers;
-};
 protoOf(CqlPreprocessor).o35 = function (ctx) {
   var identifiers = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.z4h().g();
+  var _iterator__ex2g4s = ctx.e42().g();
   while (_iterator__ex2g4s.h()) {
     var qualifierContext = _iterator__ex2g4s.i();
-    var tmp = this.d32(qualifierContext);
+    var tmp = this.e32(qualifierContext);
     var qualifier = (!(tmp == null) ? typeof tmp === 'string' : false) ? tmp : THROW_CCE();
     identifiers.e(qualifier);
   }
-  var identifier = ensureNotNull(this.k8v(ctx.d44()));
+  var identifier = ensureNotNull(this.l8v(ctx.h3w()));
   identifiers.e(identifier);
   return identifiers;
 };
-protoOf(CqlPreprocessor).e32 = function () {
+protoOf(CqlPreprocessor).p35 = function (ctx) {
+  var identifiers = ArrayList_init_$Create$();
+  var _iterator__ex2g4s = ctx.a4i().g();
+  while (_iterator__ex2g4s.h()) {
+    var qualifierContext = _iterator__ex2g4s.i();
+    var tmp = this.e32(qualifierContext);
+    var qualifier = (!(tmp == null) ? typeof tmp === 'string' : false) ? tmp : THROW_CCE();
+    identifiers.e(qualifier);
+  }
+  var identifier = ensureNotNull(this.l8v(ctx.e44()));
+  identifiers.e(identifier);
+  return identifiers;
+};
+protoOf(CqlPreprocessor).f32 = function () {
   return null;
 };
 function Companion_16() {
 }
-protoOf(Companion_16).w9l = function (left, right) {
+protoOf(Companion_16).z9l = function (left, right) {
   return new Pair(left, right);
 };
 var Companion_instance_19;
@@ -16490,24 +16722,24 @@ function Companion_getInstance_19() {
   return Companion_instance_19;
 }
 function pushChunk($this, tree) {
-  if (!$this.e8u_1) {
+  if (!$this.f8u_1) {
     return false;
   }
-  var sourceInterval = tree.l2f();
-  if (sourceInterval.b24_1 < sourceInterval.a24_1) {
+  var sourceInterval = tree.m2f();
+  if (sourceInterval.c24_1 < sourceInterval.b24_1) {
     return false;
   }
   var chunk = Chunk_init_$Create$(sourceInterval);
-  $this.c8u_1.i8y(chunk);
+  $this.d8u_1.j8y(chunk);
   return true;
 }
 function popChunk($this, tree, o, pushedChunk) {
   if (!pushedChunk) {
     return Unit_instance;
   }
-  var chunk = $this.c8u_1.r2c();
+  var chunk = $this.d8u_1.s2c();
   if (o instanceof Element) {
-    chunk.z9d_1 = o;
+    chunk.f9e_1 = o;
     if (!(tree instanceof LibraryContext)) {
       var tmp;
       var tmp_0;
@@ -16559,17 +16791,17 @@ function popChunk($this, tree, o, pushedChunk) {
       }
       if (tmp) {
         var a = getAnnotation($this, o);
-        if ((a == null ? null : a.y63_1) == null) {
-          var definitionInfo = $this.d8u_1.x9l(tree);
-          if (!((definitionInfo == null ? null : definitionInfo.z9j_1) == null)) {
-            var headerChunk = new Chunk(ensureNotNull(definitionInfo.z9j_1), true);
-            var newChunk = Chunk_init_$Create$(new Interval(headerChunk.x9d_1.a24_1, chunk.x9d_1.b24_1));
-            newChunk.d9e(headerChunk);
-            newChunk.z9d_1 = chunk.z9d_1;
-            var _iterator__ex2g4s = chunk.b9e().g();
+        if ((a == null ? null : a.z63_1) == null) {
+          var definitionInfo = $this.e8u_1.a9m(tree);
+          if (!((definitionInfo == null ? null : definitionInfo.c9k_1) == null)) {
+            var headerChunk = new Chunk(ensureNotNull(definitionInfo.c9k_1), true);
+            var newChunk = Chunk_init_$Create$(new Interval(headerChunk.d9e_1.b24_1, chunk.d9e_1.c24_1));
+            newChunk.j9e(headerChunk);
+            newChunk.f9e_1 = chunk.f9e_1;
+            var _iterator__ex2g4s = chunk.h9e().g();
             while (_iterator__ex2g4s.h()) {
               var c = _iterator__ex2g4s.i();
-              newChunk.d9e(c);
+              newChunk.j9e(c);
             }
             chunk = newChunk;
           }
@@ -16582,20 +16814,20 @@ function popChunk($this, tree, o, pushedChunk) {
             tmp_7 = Unit_instance;
           }
           if (tmp_7 == null)
-            o.n66().e(buildAnnotation($this, chunk));
+            o.o66().e(buildAnnotation($this, chunk));
         }
       }
     } else {
-      if (!($this.d8u_1.m8x_1 == null) && !($this.d8u_1.z9j_1 == null)) {
-        var headerChunk_0 = new Chunk(ensureNotNull($this.d8u_1.z9j_1), true);
-        var tmp4_safe_receiver = $this.d8u_1.m8x_1;
-        var definitionChunk = Chunk_init_$Create$(ensureNotNull(tmp4_safe_receiver == null ? null : tmp4_safe_receiver.l2f()));
-        var newChunk_0 = Chunk_init_$Create$(new Interval(headerChunk_0.x9d_1.a24_1, definitionChunk.x9d_1.b24_1));
-        newChunk_0.d9e(headerChunk_0);
-        newChunk_0.d9e(definitionChunk);
-        newChunk_0.z9d_1 = chunk.z9d_1;
+      if (!($this.e8u_1.n8x_1 == null) && !($this.e8u_1.c9k_1 == null)) {
+        var headerChunk_0 = new Chunk(ensureNotNull($this.e8u_1.c9k_1), true);
+        var tmp4_safe_receiver = $this.e8u_1.n8x_1;
+        var definitionChunk = Chunk_init_$Create$(ensureNotNull(tmp4_safe_receiver == null ? null : tmp4_safe_receiver.m2f()));
+        var newChunk_0 = Chunk_init_$Create$(new Interval(headerChunk_0.d9e_1.b24_1, definitionChunk.d9e_1.c24_1));
+        newChunk_0.j9e(headerChunk_0);
+        newChunk_0.j9e(definitionChunk);
+        newChunk_0.f9e_1 = chunk.f9e_1;
         chunk = newChunk_0;
-        var a_0 = getAnnotation($this, $this.w8t_1.library);
+        var a_0 = getAnnotation($this, $this.x8t_1.library);
         var tmp_8;
         if (a_0 == null) {
           tmp_8 = null;
@@ -16605,16 +16837,16 @@ function popChunk($this, tree, o, pushedChunk) {
           tmp_8 = Unit_instance;
         }
         if (tmp_8 == null)
-          $this.w8t_1.library.n66().e(buildAnnotation($this, chunk));
+          $this.x8t_1.library.o66().e(buildAnnotation($this, chunk));
       }
     }
   }
-  if ($this.c8u_1.t99()) {
-    $this.c8u_1.q2c().d9e(chunk);
+  if ($this.d8u_1.g9a()) {
+    $this.d8u_1.r2c().j9e(chunk);
   }
 }
 function processTags($this, tree, o) {
-  if (!$this.w8t_1.isCompatibleWith('1.5')) {
+  if (!$this.x8t_1.isCompatibleWith('1.5')) {
     return Unit_instance;
   }
   if (!(o instanceof Element)) {
@@ -16676,24 +16908,24 @@ function processTags($this, tree, o) {
         var a = getAnnotation($this, o);
         if (a == null) {
           a = buildAnnotation_0($this);
-          o.n66().e(a);
+          o.o66().e(a);
         }
-        if (a.a64().q()) {
-          a.a64().n(tags);
+        if (a.b64().q()) {
+          a.b64().n(tags);
         }
       }
     }
   } else {
-    if (!($this.d8u_1.m8x_1 == null) && !($this.d8u_1.z9j_1 == null)) {
-      var tags_0 = getTags($this, $this.d8u_1.y9j_1);
+    if (!($this.e8u_1.n8x_1 == null) && !($this.e8u_1.c9k_1 == null)) {
+      var tags_0 = getTags($this, $this.e8u_1.b9k_1);
       // Inline function 'kotlin.collections.isNotEmpty' call
       if (!tags_0.q()) {
-        var a_0 = getAnnotation($this, $this.w8t_1.library);
+        var a_0 = getAnnotation($this, $this.x8t_1.library);
         if (a_0 == null) {
           a_0 = buildAnnotation_0($this);
-          $this.w8t_1.library.n66().e(a_0);
+          $this.x8t_1.library.o66().e(a_0);
         }
-        a_0.a64().n(tags_0);
+        a_0.b64().n(tags_0);
       }
     }
   }
@@ -16702,8 +16934,8 @@ function getTags($this, header) {
   return !(header == null) ? parseTags($this, parseComments($this, header)) : emptyList();
 }
 function getTags_0($this, tree) {
-  var bi = $this.d8u_1.x9l(tree);
-  return !(bi == null) ? getTags($this, bi.y9j_1) : emptyList();
+  var bi = $this.e8u_1.a9m(tree);
+  return !(bi == null) ? getTags($this, bi.b9k_1) : emptyList();
 }
 function parseTags($this, header) {
   // Inline function 'kotlin.text.trim' call
@@ -16758,31 +16990,31 @@ function parseTags($this, header) {
     if (!(tagNamePair == null)) {
       var tmp;
       // Inline function 'kotlin.text.isNotEmpty' call
-      var this_3 = tagNamePair.y9l_1;
+      var this_3 = tagNamePair.b9m_1;
       if (charSequenceLength(this_3) > 0) {
-        tmp = Companion_instance_20.a9m(tagNamePair.y9l_1);
+        tmp = Companion_instance_20.d9m(tagNamePair.b9m_1);
       } else {
         tmp = false;
       }
       if (tmp) {
-        var t = $this.z8t_1.m65().q65(tagNamePair.y9l_1);
-        startFrom = tagNamePair.z9l_1;
-        var tagValuePair = Companion_instance_20.b9m(header_0, startFrom);
+        var t = $this.a8u_1.n65().r65(tagNamePair.b9m_1);
+        startFrom = tagNamePair.c9m_1;
+        var tagValuePair = Companion_instance_20.e9m(header_0, startFrom);
         var tmp_0;
         if (!(tagValuePair == null)) {
           // Inline function 'kotlin.text.isNotEmpty' call
-          var this_4 = tagValuePair.y9l_1;
+          var this_4 = tagValuePair.b9m_1;
           tmp_0 = charSequenceLength(this_4) > 0;
         } else {
           tmp_0 = false;
         }
         if (tmp_0) {
-          t = t.r65(tagValuePair.y9l_1);
-          startFrom = tagValuePair.z9l_1;
+          t = t.s65(tagValuePair.b9m_1);
+          startFrom = tagValuePair.c9m_1;
         }
         tags.e(t);
       } else {
-        startFrom = tagNamePair.z9l_1;
+        startFrom = tagNamePair.c9m_1;
       }
     } else {
       break $l$loop_0;
@@ -16852,61 +17084,61 @@ function parseComments($this, header) {
   return joinToString(result, '\n');
 }
 function buildAnnotation($this, chunk) {
-  var annotation = $this.z8t_1.n65();
-  annotation.y63_1 = buildNarrative($this, chunk);
+  var annotation = $this.a8u_1.o65();
+  annotation.z63_1 = buildNarrative($this, chunk);
   return annotation;
 }
 function buildAnnotation_0($this) {
-  return $this.z8t_1.n65();
+  return $this.a8u_1.o65();
 }
 function addNarrativeToAnnotation($this, annotation, chunk) {
-  annotation.y63_1 = buildNarrative($this, chunk);
+  annotation.z63_1 = buildNarrative($this, chunk);
 }
 function buildNarrative($this, chunk) {
-  var narrative = $this.z8t_1.l65();
-  if (!(chunk.z9d_1 == null)) {
-    narrative.g65_1 = ensureNotNull(chunk.z9d_1).a66_1;
+  var narrative = $this.a8u_1.m65();
+  if (!(chunk.f9e_1 == null)) {
+    narrative.h65_1 = ensureNotNull(chunk.f9e_1).b66_1;
   }
-  if (chunk.c9e()) {
+  if (chunk.i9e()) {
     var currentNarrative = null;
-    var _iterator__ex2g4s = chunk.b9e().g();
+    var _iterator__ex2g4s = chunk.h9e().g();
     while (_iterator__ex2g4s.h()) {
       var childChunk = _iterator__ex2g4s.i();
       var chunkNarrative = buildNarrative($this, childChunk);
       if (hasChunks($this, chunkNarrative)) {
         if (!(currentNarrative == null)) {
-          narrative.l1e().e(Companion_instance_20.d9m(currentNarrative));
+          narrative.m1e().e(Companion_instance_20.g9m(currentNarrative));
           currentNarrative = null;
         }
-        narrative.l1e().e(Companion_instance_20.d9m(chunkNarrative));
+        narrative.m1e().e(Companion_instance_20.g9m(chunkNarrative));
       } else {
         if (currentNarrative == null) {
           currentNarrative = chunkNarrative;
         } else {
-          currentNarrative.l1e().n(chunkNarrative.l1e());
-          if (currentNarrative.g65_1 == null) {
-            currentNarrative.g65_1 = chunkNarrative.g65_1;
+          currentNarrative.m1e().n(chunkNarrative.m1e());
+          if (currentNarrative.h65_1 == null) {
+            currentNarrative.h65_1 = chunkNarrative.h65_1;
           }
         }
       }
     }
     if (!(currentNarrative == null)) {
-      narrative.l1e().e(Companion_instance_20.d9m(currentNarrative));
+      narrative.m1e().e(Companion_instance_20.g9m(currentNarrative));
     }
   } else {
-    var chunkContent = $this.x8t_1.z23(chunk.x9d_1);
-    if (chunk.y9d_1) {
+    var chunkContent = $this.y8t_1.a24(chunk.d9e_1);
+    if (chunk.e9e_1) {
       // Inline function 'kotlin.text.trimStart' call
       var this_0 = chunkContent;
       chunkContent = toString(trimStart(isCharSequence(this_0) ? this_0 : THROW_CCE()));
     }
-    chunkContent = Companion_instance_20.c9m(chunkContent);
-    narrative.l1e().e(chunkContent);
+    chunkContent = Companion_instance_20.f9m(chunkContent);
+    narrative.m1e().e(chunkContent);
   }
   return narrative;
 }
 function hasChunks($this, narrative) {
-  var _iterator__ex2g4s = narrative.l1e().g();
+  var _iterator__ex2g4s = narrative.m1e().g();
   while (_iterator__ex2g4s.h()) {
     var c = _iterator__ex2g4s.i();
     if (!(typeof c === 'string')) {
@@ -16928,55 +17160,55 @@ function getTrackBack_2($this, tree) {
   return tmp;
 }
 function getTrackBack_3($this, ctx) {
-  var tmp = $this.w8t_1.libraryIdentifier;
-  var tmp0_safe_receiver = ctx.i2e_1;
-  var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.x24();
+  var tmp = $this.x8t_1.libraryIdentifier;
+  var tmp0_safe_receiver = ctx.j2e_1;
+  var tmp1_elvis_lhs = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.y24();
   var tmp_0 = tmp1_elvis_lhs == null ? 0 : tmp1_elvis_lhs;
-  var tmp2_safe_receiver = ctx.i2e_1;
-  var tmp3_elvis_lhs = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.z24();
+  var tmp2_safe_receiver = ctx.j2e_1;
+  var tmp3_elvis_lhs = tmp2_safe_receiver == null ? null : tmp2_safe_receiver.a25();
   var tmp_1 = (tmp3_elvis_lhs == null ? 0 : tmp3_elvis_lhs) + 1 | 0;
-  var tmp4_safe_receiver = ctx.j2e_1;
-  var tmp5_elvis_lhs = tmp4_safe_receiver == null ? null : tmp4_safe_receiver.x24();
+  var tmp4_safe_receiver = ctx.k2e_1;
+  var tmp5_elvis_lhs = tmp4_safe_receiver == null ? null : tmp4_safe_receiver.y24();
   var tmp_2 = tmp5_elvis_lhs == null ? 0 : tmp5_elvis_lhs;
-  var tmp6_safe_receiver = ctx.j2e_1;
-  var tmp7_elvis_lhs = tmp6_safe_receiver == null ? null : tmp6_safe_receiver.z24();
+  var tmp6_safe_receiver = ctx.k2e_1;
+  var tmp7_elvis_lhs = tmp6_safe_receiver == null ? null : tmp6_safe_receiver.a25();
   var tmp_3 = tmp7_elvis_lhs == null ? 0 : tmp7_elvis_lhs;
-  var tmp8_safe_receiver = ctx.j2e_1;
-  var tmp9_safe_receiver = tmp8_safe_receiver == null ? null : tmp8_safe_receiver.c24();
+  var tmp8_safe_receiver = ctx.k2e_1;
+  var tmp9_safe_receiver = tmp8_safe_receiver == null ? null : tmp8_safe_receiver.d24();
   var tmp10_elvis_lhs = tmp9_safe_receiver == null ? null : tmp9_safe_receiver.length;
   return new TrackBack(tmp, tmp_0, tmp_1, tmp_2, tmp_3 + (tmp10_elvis_lhs == null ? 0 : tmp10_elvis_lhs) | 0);
 }
 function track_1($this, element, pt) {
   var tb = getTrackBack_2($this, pt);
   if (!(tb == null)) {
-    Trackable_getInstance().d90(element).e(tb);
+    Trackable_getInstance().e90(element).e(tb);
   }
   decorate_0($this, element, tb);
   return tb;
 }
 function decorate_0($this, element, tb) {
-  if ($this.g8u_1 && !(tb == null)) {
-    element.b66_1 = tb.a90();
+  if ($this.h8u_1 && !(tb == null)) {
+    element.c66_1 = tb.b90();
   }
-  if ($this.h8u_1 && !(Trackable_getInstance().n8v(element) == null)) {
-    var tmp = Trackable_getInstance().n8v(element);
+  if ($this.i8u_1 && !(Trackable_getInstance().o8v(element) == null)) {
+    var tmp = Trackable_getInstance().o8v(element);
     if (!(tmp == null) ? isInterface(tmp, NamedType) : false) {
-      element.c66_1 = $this.w8t_1.dataTypeToQName(Trackable_getInstance().n8v(element));
+      element.d66_1 = $this.x8t_1.dataTypeToQName(Trackable_getInstance().o8v(element));
     } else {
-      element.e66_1 = $this.w8t_1.dataTypeToTypeSpecifier(Trackable_getInstance().n8v(element));
+      element.f66_1 = $this.x8t_1.dataTypeToTypeSpecifier(Trackable_getInstance().o8v(element));
     }
   }
 }
 function Pair(left, right) {
-  this.y9l_1 = left;
-  this.z9l_1 = right;
+  this.b9m_1 = left;
+  this.c9m_1 = right;
 }
 protoOf(Pair).toString = function () {
-  return 'Pair(left=' + toString_0(this.y9l_1) + ', right=' + toString_0(this.z9l_1) + ')';
+  return 'Pair(left=' + toString_0(this.b9m_1) + ', right=' + toString_0(this.c9m_1) + ')';
 };
 protoOf(Pair).hashCode = function () {
-  var result = this.y9l_1 == null ? 0 : hashCode(this.y9l_1);
-  result = imul(result, 31) + (this.z9l_1 == null ? 0 : hashCode(this.z9l_1)) | 0;
+  var result = this.b9m_1 == null ? 0 : hashCode(this.b9m_1);
+  result = imul(result, 31) + (this.c9m_1 == null ? 0 : hashCode(this.c9m_1)) | 0;
   return result;
 };
 protoOf(Pair).equals = function (other) {
@@ -16985,9 +17217,9 @@ protoOf(Pair).equals = function (other) {
   if (!(other instanceof Pair))
     return false;
   var tmp0_other_with_cast = other instanceof Pair ? other : THROW_CCE();
-  if (!equals(this.y9l_1, tmp0_other_with_cast.y9l_1))
+  if (!equals(this.b9m_1, tmp0_other_with_cast.b9m_1))
     return false;
-  if (!equals(this.z9l_1, tmp0_other_with_cast.z9l_1))
+  if (!equals(this.c9m_1, tmp0_other_with_cast.c9m_1))
     return false;
   return true;
 };
@@ -17029,7 +17261,7 @@ function lookForTagName($this, header, startFrom) {
       }
       var tmp$ret$1 = charSequenceSubSequence(this_1, startIndex, endIndex + 1 | 0);
       var tmp$ret$2 = toString(tmp$ret$1);
-      return tmp.w9l(tmp$ret$2, header.length);
+      return tmp.z9l(tmp$ret$2, header.length);
     }
   } else {
     if (nextColon < 0 || nextColon > nextTagStart) {
@@ -17059,7 +17291,7 @@ function lookForTagName($this, header, startFrom) {
       }
       var tmp$ret$4 = charSequenceSubSequence(this_3, startIndex_0, endIndex_0 + 1 | 0);
       var tmp$ret$5 = toString(tmp$ret$4);
-      return tmp_0.w9l(tmp$ret$5, nextTagStart);
+      return tmp_0.z9l(tmp$ret$5, nextTagStart);
     }
   }
   var tmp_1 = Companion_instance_19;
@@ -17088,10 +17320,10 @@ function lookForTagName($this, header, startFrom) {
   }
   var tmp$ret$7 = charSequenceSubSequence(this_5, startIndex_1, endIndex_1 + 1 | 0);
   var tmp$ret$8 = toString(tmp$ret$7);
-  return tmp_1.w9l(tmp$ret$8, nextColon + 1 | 0);
+  return tmp_1.z9l(tmp$ret$8, nextColon + 1 | 0);
 }
 function getAnnotation($this, element) {
-  var _iterator__ex2g4s = element.n66().g();
+  var _iterator__ex2g4s = element.o66().g();
   while (_iterator__ex2g4s.h()) {
     var o = _iterator__ex2g4s.i();
     if (o instanceof Annotation) {
@@ -17102,31 +17334,31 @@ function getAnnotation($this, element) {
 }
 function setCompilerOptions_0($this, options) {
   if (options.options.p(Options_EnableDateRangeOptimization_getInstance())) {
-    $this.g93();
-  }
-  if (options.options.p(Options_EnableAnnotations_getInstance())) {
-    $this.d93();
-  }
-  if (options.options.p(Options_EnableLocators_getInstance())) {
-    $this.e93();
-  }
-  if (options.options.p(Options_EnableResultTypes_getInstance())) {
-    $this.f93();
-  }
-  if (options.options.p(Options_EnableDetailedErrors_getInstance())) {
     $this.h93();
   }
-  if (options.options.p(Options_DisableMethodInvocation_getInstance())) {
+  if (options.options.p(Options_EnableAnnotations_getInstance())) {
+    $this.e93();
+  }
+  if (options.options.p(Options_EnableLocators_getInstance())) {
+    $this.f93();
+  }
+  if (options.options.p(Options_EnableResultTypes_getInstance())) {
+    $this.g93();
+  }
+  if (options.options.p(Options_EnableDetailedErrors_getInstance())) {
     $this.i93();
   }
-  if (options.options.p(Options_RequireFromKeyword_getInstance())) {
+  if (options.options.p(Options_DisableMethodInvocation_getInstance())) {
     $this.j93();
   }
-  $this.w8t_1.h97(options.compatibilityLevel);
+  if (options.options.p(Options_RequireFromKeyword_getInstance())) {
+    $this.k93();
+  }
+  $this.x8t_1.u97(options.compatibilityLevel);
 }
 function Companion_17() {
 }
-protoOf(Companion_17).b9m = function (header, startFrom) {
+protoOf(Companion_17).e9m = function (header, startFrom) {
   if (startFrom >= header.length) {
     return null;
   }
@@ -17139,18 +17371,18 @@ protoOf(Companion_17).b9m = function (header, startFrom) {
       var parameterEnd = indexOf(header, '\n', nextStartDoubleQuote + 1 | 0);
       var tmp_0;
       if (parameterEnd < 0) {
-        tmp_0 = Companion_instance_19.w9l(substring(header, nextStartDoubleQuote), header.length);
+        tmp_0 = Companion_instance_19.z9l(substring(header, nextStartDoubleQuote), header.length);
       } else {
-        tmp_0 = Companion_instance_19.w9l(substring_0(header, nextStartDoubleQuote, parameterEnd), parameterEnd);
+        tmp_0 = Companion_instance_19.z9l(substring_0(header, nextStartDoubleQuote, parameterEnd), parameterEnd);
       }
       tmp = tmp_0;
     } else {
-      tmp = Companion_instance_19.w9l(substring(header, nextStartDoubleQuote), header.length);
+      tmp = Companion_instance_19.z9l(substring(header, nextStartDoubleQuote), header.length);
     }
     return tmp;
   }
-  if (nextTag === startFrom && !this.e9m(header, nextTag + 1 | 0)) {
-    return Companion_instance_19.w9l('', startFrom);
+  if (nextTag === startFrom && !this.h9m(header, nextTag + 1 | 0)) {
+    return Companion_instance_19.z9l('', startFrom);
   } else if (nextTag > 0) {
     // Inline function 'kotlin.text.trim' call
     var this_0 = substring_0(header, startFrom, nextTag);
@@ -17178,7 +17410,7 @@ protoOf(Companion_17).b9m = function (header, startFrom) {
     var tmp$ret$1 = charSequenceSubSequence(this_1, startIndex, endIndex + 1 | 0);
     var interimText = toString(tmp$ret$1);
     var tmp_1;
-    if (this.e9m(header, nextTag + 1 | 0)) {
+    if (this.h9m(header, nextTag + 1 | 0)) {
       var tmp_2;
       var tmp_3;
       // Inline function 'kotlin.text.isNotEmpty' call
@@ -17188,7 +17420,7 @@ protoOf(Companion_17).b9m = function (header, startFrom) {
         tmp_3 = false;
       }
       if (tmp_3) {
-        tmp_2 = Companion_instance_19.w9l(interimText, nextTag);
+        tmp_2 = Companion_instance_19.z9l(interimText, nextTag);
       } else {
         var nextSpace = indexOf_0(header, _Char___init__impl__6a9atx(32), nextTag);
         var nextLine = indexOf(header, '\n', nextTag);
@@ -17199,11 +17431,11 @@ protoOf(Companion_17).b9m = function (header, startFrom) {
         } else if (mul > 1) {
           nextDelimiterIndex = coerceAtMost(nextLine, nextSpace);
         }
-        tmp_2 = Companion_instance_19.w9l(substring_0(header, nextTag, nextDelimiterIndex), nextDelimiterIndex);
+        tmp_2 = Companion_instance_19.z9l(substring_0(header, nextTag, nextDelimiterIndex), nextDelimiterIndex);
       }
       tmp_1 = tmp_2;
     } else {
-      tmp_1 = Companion_instance_19.w9l(interimText, nextTag);
+      tmp_1 = Companion_instance_19.z9l(interimText, nextTag);
     }
     return tmp_1;
   }
@@ -17233,12 +17465,12 @@ protoOf(Companion_17).b9m = function (header, startFrom) {
   }
   var tmp$ret$5 = charSequenceSubSequence(this_3, startIndex_0, endIndex_0 + 1 | 0);
   var tmp$ret$6 = toString(tmp$ret$5);
-  return tmp_4.w9l(tmp$ret$6, header.length);
+  return tmp_4.z9l(tmp$ret$6, header.length);
 };
-protoOf(Companion_17).d9m = function (narrative) {
+protoOf(Companion_17).g9m = function (narrative) {
   return narrative;
 };
-protoOf(Companion_17).a9m = function (tagName) {
+protoOf(Companion_17).d9m = function (tagName) {
   var inductionVariable = 0;
   var last = charSequenceLength(tagName) - 1 | 0;
   if (inductionVariable <= last)
@@ -17261,7 +17493,7 @@ protoOf(Companion_17).a9m = function (tagName) {
      while (inductionVariable <= last);
   return true;
 };
-protoOf(Companion_17).m90 = function (qualifiers, identifier) {
+protoOf(Companion_17).n90 = function (qualifiers, identifier) {
   if (qualifiers.j() > 1) {
     var result = null;
     var inductionVariable = 1;
@@ -17277,7 +17509,7 @@ protoOf(Companion_17).m90 = function (qualifiers, identifier) {
   }
   return identifier;
 };
-protoOf(Companion_17).l90 = function (qualifiers) {
+protoOf(Companion_17).m90 = function (qualifiers) {
   var tmp;
   // Inline function 'kotlin.collections.isNotEmpty' call
   if (!qualifiers.q()) {
@@ -17287,10 +17519,10 @@ protoOf(Companion_17).l90 = function (qualifiers) {
   }
   return tmp;
 };
-protoOf(Companion_17).c9m = function (input) {
+protoOf(Companion_17).f9m = function (input) {
   return replace(input, '\r\n', '\n');
 };
-protoOf(Companion_17).e9m = function (header, index) {
+protoOf(Companion_17).h9m = function (header, index) {
   return index < header.length && isDigit(charCodeAt(header, index));
 };
 var Companion_instance_20;
@@ -17299,38 +17531,38 @@ function Companion_getInstance_20() {
 }
 function CqlPreprocessorElmCommonVisitor(libraryBuilder, tokenStream) {
   cqlBaseVisitor.call(this);
-  this.w8t_1 = libraryBuilder;
-  this.x8t_1 = tokenStream;
-  this.y8t_1 = this.w8t_1.objectFactory;
-  this.z8t_1 = new ObjectFactory();
-  this.a8u_1 = false;
-  this.b8u_1 = 'Unfiltered';
-  this.c8u_1 = new Stack();
-  this.d8u_1 = new LibraryInfo();
-  this.e8u_1 = false;
+  this.x8t_1 = libraryBuilder;
+  this.y8t_1 = tokenStream;
+  this.z8t_1 = this.x8t_1.objectFactory;
+  this.a8u_1 = new ObjectFactory();
+  this.b8u_1 = false;
+  this.c8u_1 = 'Unfiltered';
+  this.d8u_1 = new Stack();
+  this.e8u_1 = new LibraryInfo();
   this.f8u_1 = false;
   this.g8u_1 = false;
   this.h8u_1 = false;
   this.i8u_1 = false;
-  this.j8u_1 = true;
-  this.k8u_1 = false;
-  setCompilerOptions_0(this, this.w8t_1.libraryManager.cqlCompilerOptions);
+  this.j8u_1 = false;
+  this.k8u_1 = true;
+  this.l8u_1 = false;
+  setCompilerOptions_0(this, this.x8t_1.libraryManager.cqlCompilerOptions);
 }
-protoOf(CqlPreprocessorElmCommonVisitor).g8y = function (currentContext) {
-  var saveContext = this.b8u_1;
-  this.b8u_1 = currentContext;
+protoOf(CqlPreprocessorElmCommonVisitor).h8y = function (currentContext) {
+  var saveContext = this.c8u_1;
+  this.c8u_1 = currentContext;
   return saveContext;
 };
-protoOf(CqlPreprocessorElmCommonVisitor).d32 = function (tree) {
+protoOf(CqlPreprocessorElmCommonVisitor).e32 = function (tree) {
   var pushedChunk = pushChunk(this, tree);
   var o = null;
   var tmp;
   try {
     try {
-      o = protoOf(cqlBaseVisitor).d32.call(this, tree);
+      o = protoOf(cqlBaseVisitor).e32.call(this, tree);
       var tmp_0;
       if (o instanceof Element) {
-        tmp_0 = o.a66_1 == null;
+        tmp_0 = o.b66_1 == null;
       } else {
         tmp_0 = false;
       }
@@ -17344,11 +17576,11 @@ protoOf(CqlPreprocessorElmCommonVisitor).d32 = function (tree) {
         if (translatorException.locator == null) {
           throw translatorException;
         }
-        this.w8t_1.recordParsingException(translatorException);
+        this.x8t_1.recordParsingException(translatorException);
       } else {
         if ($p instanceof CqlCompilerException) {
           var e_0 = $p;
-          this.w8t_1.recordParsingException(e_0);
+          this.x8t_1.recordParsingException(e_0);
         } else {
           if ($p instanceof Exception) {
             var e_1 = $p;
@@ -17359,17 +17591,17 @@ protoOf(CqlPreprocessorElmCommonVisitor).d32 = function (tree) {
               tmp_1 = CqlSemanticException_init_$Create$_1(e_1.message, getTrackBack_2(this, tree), e_1);
             }
             var ex = tmp_1;
-            var rootCause = this.w8t_1.determineRootCause();
+            var rootCause = this.x8t_1.determineRootCause();
             if (rootCause == null) {
               rootCause = ex;
-              this.w8t_1.recordParsingException(ex);
-              this.w8t_1.setRootCause(rootCause);
+              this.x8t_1.recordParsingException(ex);
+              this.x8t_1.setRootCause(rootCause);
             } else {
-              if (this.f8u_1) {
-                this.w8t_1.recordParsingException(ex);
+              if (this.g8u_1) {
+                this.x8t_1.recordParsingException(ex);
               }
             }
-            o = this.y8t_1.a7o();
+            o = this.z8t_1.b7o();
           } else {
             throw $p;
           }
@@ -17392,144 +17624,138 @@ protoOf(CqlPreprocessorElmCommonVisitor).d32 = function (tree) {
   }
   return tmp;
 };
+protoOf(CqlPreprocessorElmCommonVisitor).i34 = function (ctx) {
+  var result = this.z8t_1.t7l().r65(this.l8v(ctx.e44())).o7a(this.g90(ctx.j3w()));
+  return result;
+};
 protoOf(CqlPreprocessorElmCommonVisitor).h34 = function (ctx) {
-  var result = this.y8t_1.s7l().q65(this.k8v(ctx.d44())).n7a(this.f90(ctx.i3w()));
+  // Inline function 'kotlin.collections.mutableListOf' call
+  var elements = ArrayList_init_$Create$();
+  var typeSpecifier = this.z8t_1.b7m();
+  var _iterator__ex2g4s = ctx.t43().g();
+  while (_iterator__ex2g4s.h()) {
+    var definitionContext = _iterator__ex2g4s.i();
+    var tmp = this.e32(definitionContext);
+    var element = tmp instanceof TupleElementDefinition ? tmp : THROW_CCE();
+    elements.e(new TupleTypeElement(ensureNotNull(element.u8f_1), ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(element.v8f_1)))));
+    typeSpecifier.h5v().e(element);
+  }
+  Trackable_getInstance().p8v(typeSpecifier, TupleType_init_$Create$(elements));
+  return typeSpecifier;
+};
+protoOf(CqlPreprocessorElmCommonVisitor).j34 = function (ctx) {
+  var typeSpecifiers = ArrayList_init_$Create$();
+  var types = ArrayList_init_$Create$();
+  var _iterator__ex2g4s = ctx.j3w().g();
+  while (_iterator__ex2g4s.h()) {
+    var typeSpecifierContext = _iterator__ex2g4s.i();
+    var typeSpecifier = ensureNotNull(this.g90(typeSpecifierContext));
+    typeSpecifiers.e(typeSpecifier);
+    types.e(ensureNotNull(Trackable_getInstance().o8v(typeSpecifier)));
+  }
+  var result = this.z8t_1.v7j().s6g(typeSpecifiers);
+  var choiceType = ChoiceType_init_$Create$(types);
+  Trackable_getInstance().p8v(result, choiceType);
   return result;
 };
 protoOf(CqlPreprocessorElmCommonVisitor).g34 = function (ctx) {
-  // Inline function 'kotlin.collections.mutableListOf' call
-  var elements = ArrayList_init_$Create$();
-  var typeSpecifier = this.y8t_1.a7m();
-  var _iterator__ex2g4s = ctx.s43().g();
-  while (_iterator__ex2g4s.h()) {
-    var definitionContext = _iterator__ex2g4s.i();
-    var tmp = this.d32(definitionContext);
-    var element = tmp instanceof TupleElementDefinition ? tmp : THROW_CCE();
-    elements.e(new TupleTypeElement(ensureNotNull(element.t8f_1), ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(element.u8f_1)))));
-    typeSpecifier.g5v().e(element);
-  }
-  Trackable_getInstance().o8v(typeSpecifier, TupleType_init_$Create$(elements));
-  return typeSpecifier;
-};
-protoOf(CqlPreprocessorElmCommonVisitor).i34 = function (ctx) {
-  var typeSpecifiers = ArrayList_init_$Create$();
-  var types = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.i3w().g();
-  while (_iterator__ex2g4s.h()) {
-    var typeSpecifierContext = _iterator__ex2g4s.i();
-    var typeSpecifier = ensureNotNull(this.f90(typeSpecifierContext));
-    typeSpecifiers.e(typeSpecifier);
-    types.e(ensureNotNull(Trackable_getInstance().n8v(typeSpecifier)));
-  }
-  var result = this.y8t_1.u7j().r6g(typeSpecifiers);
-  var choiceType = ChoiceType_init_$Create$(types);
-  Trackable_getInstance().o8v(result, choiceType);
+  var result = this.z8t_1.k7n().s75(this.g90(ctx.j3w()));
+  var intervalType = new IntervalType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(result.r75_1))));
+  Trackable_getInstance().p8v(result, intervalType);
   return result;
 };
 protoOf(CqlPreprocessorElmCommonVisitor).f34 = function (ctx) {
-  var result = this.y8t_1.j7n().r75(this.f90(ctx.i3w()));
-  var intervalType = new IntervalType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(result.q75_1))));
-  Trackable_getInstance().o8v(result, intervalType);
+  var result = this.z8t_1.w7m().o7a(this.g90(ctx.j3w()));
+  var listType = new ListType(ensureNotNull(Trackable_getInstance().o8v(ensureNotNull(result.n7a_1))));
+  Trackable_getInstance().p8v(result, listType);
   return result;
 };
-protoOf(CqlPreprocessorElmCommonVisitor).e34 = function (ctx) {
-  var result = this.y8t_1.v7m().n7a(this.f90(ctx.i3w()));
-  var listType = new ListType(ensureNotNull(Trackable_getInstance().n8v(ensureNotNull(result.m7a_1))));
-  Trackable_getInstance().o8v(result, listType);
-  return result;
-};
-protoOf(CqlPreprocessorElmCommonVisitor).a8z = function (ctx) {
-  var functionDef = this.y8t_1.e7o().b6i(this.l8v(ctx.h3w())).q65(this.k8v(ctx.n46())).g6w(this.b8u_1);
-  if (!(ctx.p46() == null)) {
-    this.w8t_1.checkCompatibilityLevel('Fluent functions', '1.5');
-    functionDef.k6y_1 = true;
+protoOf(CqlPreprocessorElmCommonVisitor).b8z = function (ctx) {
+  var functionDef = this.z8t_1.f7o().c6i(this.m8v(ctx.i3w())).r65(this.l8v(ctx.o46())).h6w(this.c8u_1);
+  if (!(ctx.q46() == null)) {
+    this.x8t_1.checkCompatibilityLevel('Fluent functions', '1.5');
+    functionDef.l6y_1 = true;
   }
-  var _iterator__ex2g4s = ctx.q46().g();
+  var _iterator__ex2g4s = ctx.r46().g();
   while (_iterator__ex2g4s.h()) {
     var opdef = _iterator__ex2g4s.i();
-    var typeSpecifier = ensureNotNull(this.f90(opdef.i3w()));
-    functionDef.o67().e(Trackable_getInstance().h90(this.y8t_1.c7i().q65(this.k8v(opdef.d44())).y7q(typeSpecifier), Trackable_getInstance().n8v(typeSpecifier)));
+    var typeSpecifier = ensureNotNull(this.g90(opdef.j3w()));
+    functionDef.p67().e(Trackable_getInstance().i90(this.z8t_1.d7i().r65(this.l8v(opdef.e44())).z7q(typeSpecifier), Trackable_getInstance().o8v(typeSpecifier)));
   }
-  var typeSpecifierContext = ctx.i3w();
+  var typeSpecifierContext = ctx.j3w();
   var tmp;
   if (typeSpecifierContext == null) {
     tmp = FunctionHeader_init_$Create$(functionDef);
   } else {
-    tmp = new FunctionHeader(functionDef, this.f90(typeSpecifierContext));
+    tmp = new FunctionHeader(functionDef, this.g90(typeSpecifierContext));
   }
   return tmp;
 };
-protoOf(CqlPreprocessorElmCommonVisitor).f90 = function (pt) {
+protoOf(CqlPreprocessorElmCommonVisitor).g90 = function (pt) {
   var tmp;
   if (pt == null) {
     tmp = null;
   } else {
-    var tmp_0 = this.d32(pt);
+    var tmp_0 = this.e32(pt);
     tmp = tmp_0 instanceof TypeSpecifier ? tmp_0 : THROW_CCE();
   }
   return tmp;
 };
-protoOf(CqlPreprocessorElmCommonVisitor).l8v = function (pt) {
+protoOf(CqlPreprocessorElmCommonVisitor).m8v = function (pt) {
   var tmp;
   if (pt == null) {
     tmp = AccessModifier_PUBLIC_getInstance();
   } else {
-    var tmp_0 = this.d32(pt);
+    var tmp_0 = this.e32(pt);
     tmp = tmp_0 instanceof AccessModifier ? tmp_0 : THROW_CCE();
   }
   return tmp;
 };
-protoOf(CqlPreprocessorElmCommonVisitor).k90 = function (ctx) {
+protoOf(CqlPreprocessorElmCommonVisitor).l90 = function (ctx) {
   var qualifiers = ArrayList_init_$Create$();
-  var _iterator__ex2g4s = ctx.d42().g();
+  var _iterator__ex2g4s = ctx.e42().g();
   while (_iterator__ex2g4s.h()) {
     var qualifierContext = _iterator__ex2g4s.i();
-    var qualifier = ensureNotNull(this.k8v(qualifierContext));
+    var qualifier = ensureNotNull(this.l8v(qualifierContext));
     qualifiers.e(qualifier);
   }
   return qualifiers;
 };
-protoOf(CqlPreprocessorElmCommonVisitor).n9l = function (modelNamespace, modelName, version, localIdentifier) {
+protoOf(CqlPreprocessorElmCommonVisitor).q9l = function (modelNamespace, modelName, version, localIdentifier) {
   var tmp;
   if (modelName == null) {
-    var tmp1_safe_receiver = this.d8u_1.n8x_1;
-    tmp = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.j9m_1;
+    var tmp1_safe_receiver = this.e8u_1.o8x_1;
+    tmp = tmp1_safe_receiver == null ? null : tmp1_safe_receiver.m9m_1;
   } else {
     tmp = modelName;
   }
   var modelId = tmp;
   var tmp_0;
   if (version == null) {
-    var tmp3_safe_receiver = this.d8u_1.n8x_1;
-    tmp_0 = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.k9m_1;
+    var tmp3_safe_receiver = this.e8u_1.o8x_1;
+    tmp_0 = tmp3_safe_receiver == null ? null : tmp3_safe_receiver.n9m_1;
   } else {
     tmp_0 = version;
   }
   var modelVersion = tmp_0;
   var tmp5_id = ensureNotNull(modelId);
-  var tmp6_system = modelNamespace == null ? null : modelNamespace.z62_1;
+  var tmp6_system = modelNamespace == null ? null : modelNamespace.a63_1;
   var modelIdentifier = new ModelIdentifier(tmp5_id, tmp6_system, modelVersion);
-  return this.w8t_1.q97(modelIdentifier, localIdentifier);
+  return this.x8t_1.d98(modelIdentifier, localIdentifier);
 };
-protoOf(CqlPreprocessorElmCommonVisitor).d93 = function () {
-  this.e8u_1 = true;
+protoOf(CqlPreprocessorElmCommonVisitor).e93 = function () {
+  this.f8u_1 = true;
 };
-protoOf(CqlPreprocessorElmCommonVisitor).k8v = function (pt) {
+protoOf(CqlPreprocessorElmCommonVisitor).l8v = function (pt) {
   var tmp;
   if (pt == null) {
     tmp = null;
   } else {
     var tmp_0 = StringEscapeUtils_getInstance();
-    var tmp_1 = this.d32(pt);
-    tmp = tmp_0.p93((!(tmp_1 == null) ? typeof tmp_1 === 'string' : false) ? tmp_1 : THROW_CCE());
+    var tmp_1 = this.e32(pt);
+    tmp = tmp_0.q93((!(tmp_1 == null) ? typeof tmp_1 === 'string' : false) ? tmp_1 : THROW_CCE());
   }
   return tmp;
-};
-protoOf(CqlPreprocessorElmCommonVisitor).e93 = function () {
-  this.g8u_1 = true;
-};
-protoOf(CqlPreprocessorElmCommonVisitor).b90 = function () {
-  return this.g8u_1;
 };
 protoOf(CqlPreprocessorElmCommonVisitor).f93 = function () {
   this.h8u_1 = true;
@@ -17540,46 +17766,52 @@ protoOf(CqlPreprocessorElmCommonVisitor).c90 = function () {
 protoOf(CqlPreprocessorElmCommonVisitor).g93 = function () {
   this.i8u_1 = true;
 };
+protoOf(CqlPreprocessorElmCommonVisitor).d90 = function () {
+  return this.i8u_1;
+};
 protoOf(CqlPreprocessorElmCommonVisitor).h93 = function () {
-  this.f8u_1 = true;
+  this.j8u_1 = true;
 };
 protoOf(CqlPreprocessorElmCommonVisitor).i93 = function () {
-  this.j8u_1 = false;
+  this.g8u_1 = true;
 };
 protoOf(CqlPreprocessorElmCommonVisitor).j93 = function () {
-  this.k8u_1 = true;
+  this.k8u_1 = false;
+};
+protoOf(CqlPreprocessorElmCommonVisitor).k93 = function () {
+  this.l8u_1 = true;
 };
 function ExpressionDefinitionInfo(name, context, definition) {
   BaseInfo.call(this, definition);
-  this.d8y_1 = name;
-  this.e8y_1 = context;
-  this.f8y_1 = definition;
+  this.e8y_1 = name;
+  this.f8y_1 = context;
+  this.g8y_1 = definition;
 }
-protoOf(ExpressionDefinitionInfo).a9k = function () {
-  return this.f8y_1;
+protoOf(ExpressionDefinitionInfo).d9k = function () {
+  return this.g8y_1;
 };
 function FunctionDefinitionInfo(name, context, definition) {
   BaseInfo.call(this, definition);
-  this.n92_1 = name;
-  this.o92_1 = context;
-  this.p92_1 = definition;
+  this.o92_1 = name;
+  this.p92_1 = context;
+  this.q92_1 = definition;
 }
-protoOf(FunctionDefinitionInfo).a9k = function () {
-  return this.p92_1;
+protoOf(FunctionDefinitionInfo).d9k = function () {
+  return this.q92_1;
 };
 protoOf(FunctionDefinitionInfo).ug = function () {
-  return this.o92_1;
-};
-protoOf(FunctionDefinitionInfo).dm = function () {
   return this.p92_1;
 };
+protoOf(FunctionDefinitionInfo).dm = function () {
+  return this.q92_1;
+};
 protoOf(FunctionDefinitionInfo).toString = function () {
-  return 'FunctionDefinitionInfo(name=' + this.n92_1 + ', context=' + this.o92_1 + ', definition=' + this.p92_1.toString() + ')';
+  return 'FunctionDefinitionInfo(name=' + this.o92_1 + ', context=' + this.p92_1 + ', definition=' + this.q92_1.toString() + ')';
 };
 protoOf(FunctionDefinitionInfo).hashCode = function () {
-  var result = getStringHashCode(this.n92_1);
-  result = imul(result, 31) + getStringHashCode(this.o92_1) | 0;
-  result = imul(result, 31) + hashCode(this.p92_1) | 0;
+  var result = getStringHashCode(this.o92_1);
+  result = imul(result, 31) + getStringHashCode(this.p92_1) | 0;
+  result = imul(result, 31) + hashCode(this.q92_1) | 0;
   return result;
 };
 protoOf(FunctionDefinitionInfo).equals = function (other) {
@@ -17588,32 +17820,32 @@ protoOf(FunctionDefinitionInfo).equals = function (other) {
   if (!(other instanceof FunctionDefinitionInfo))
     return false;
   var tmp0_other_with_cast = other instanceof FunctionDefinitionInfo ? other : THROW_CCE();
-  if (!(this.n92_1 === tmp0_other_with_cast.n92_1))
-    return false;
   if (!(this.o92_1 === tmp0_other_with_cast.o92_1))
     return false;
-  if (!equals(this.p92_1, tmp0_other_with_cast.p92_1))
+  if (!(this.p92_1 === tmp0_other_with_cast.p92_1))
+    return false;
+  if (!equals(this.q92_1, tmp0_other_with_cast.q92_1))
     return false;
   return true;
 };
 function IncludeDefinitionInfo(namespaceName, name, version, localName, definition) {
   BaseInfo.call(this, definition);
-  this.q9m_1 = namespaceName;
-  this.r9m_1 = name;
-  this.s9m_1 = version;
-  this.t9m_1 = localName;
-  this.u9m_1 = definition;
+  this.t9m_1 = namespaceName;
+  this.u9m_1 = name;
+  this.v9m_1 = version;
+  this.w9m_1 = localName;
+  this.x9m_1 = definition;
 }
-protoOf(IncludeDefinitionInfo).a9k = function () {
-  return this.u9m_1;
+protoOf(IncludeDefinitionInfo).d9k = function () {
+  return this.x9m_1;
 };
 function addDefinition($this, definition) {
-  if (!(definition.a9k() == null)) {
-    var tmp0_safe_receiver = definition.a9k();
-    var sourceInterval = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.l2f();
+  if (!(definition.d9k() == null)) {
+    var tmp0_safe_receiver = definition.d9k();
+    var sourceInterval = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.m2f();
     if (!(sourceInterval == null)) {
       // Inline function 'kotlin.collections.set' call
-      $this.y8x_1.u2(sourceInterval, definition);
+      $this.z8x_1.u2(sourceInterval, definition);
     }
   }
 }
@@ -17623,12 +17855,11 @@ function LibraryInfo(namespaceName, libraryName, version, definition) {
   version = version === VOID ? null : version;
   definition = definition === VOID ? null : definition;
   BaseInfo.call(this, definition);
-  this.j8x_1 = namespaceName;
-  this.k8x_1 = libraryName;
-  this.l8x_1 = version;
-  this.m8x_1 = definition;
-  this.n8x_1 = null;
-  this.o8x_1 = LinkedHashMap_init_$Create$_0();
+  this.k8x_1 = namespaceName;
+  this.l8x_1 = libraryName;
+  this.m8x_1 = version;
+  this.n8x_1 = definition;
+  this.o8x_1 = null;
   this.p8x_1 = LinkedHashMap_init_$Create$_0();
   this.q8x_1 = LinkedHashMap_init_$Create$_0();
   this.r8x_1 = LinkedHashMap_init_$Create$_0();
@@ -17637,24 +17868,25 @@ function LibraryInfo(namespaceName, libraryName, version, definition) {
   this.u8x_1 = LinkedHashMap_init_$Create$_0();
   this.v8x_1 = LinkedHashMap_init_$Create$_0();
   this.w8x_1 = LinkedHashMap_init_$Create$_0();
-  this.x8x_1 = ArrayList_init_$Create$();
-  this.y8x_1 = HashMap_init_$Create$();
+  this.x8x_1 = LinkedHashMap_init_$Create$_0();
+  this.y8x_1 = ArrayList_init_$Create$();
+  this.z8x_1 = HashMap_init_$Create$();
 }
-protoOf(LibraryInfo).a9k = function () {
-  return this.m8x_1;
+protoOf(LibraryInfo).d9k = function () {
+  return this.n8x_1;
 };
-protoOf(LibraryInfo).m9l = function (usingDefinition) {
-  if (this.n8x_1 == null) {
-    this.n8x_1 = usingDefinition;
+protoOf(LibraryInfo).p9l = function (usingDefinition) {
+  if (this.o8x_1 == null) {
+    this.o8x_1 = usingDefinition;
   }
-  var tmp0 = this.o8x_1;
+  var tmp0 = this.p8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = usingDefinition.j9m_1;
+  var key = usingDefinition.m9m_1;
   tmp0.u2(key, usingDefinition);
   addDefinition(this, usingDefinition);
 };
-protoOf(LibraryInfo).y90 = function () {
-  var tmp0_elvis_lhs = this.n8x_1;
+protoOf(LibraryInfo).z90 = function () {
+  var tmp0_elvis_lhs = this.o8x_1;
   var tmp;
   if (tmp0_elvis_lhs == null) {
     throw IllegalArgumentException_init_$Create$('Could not determine a default model because no usings have been defined.');
@@ -17662,76 +17894,76 @@ protoOf(LibraryInfo).y90 = function () {
     tmp = tmp0_elvis_lhs;
   }
   var usingDefinitionInfo = tmp;
-  return usingDefinitionInfo.j9m_1;
+  return usingDefinitionInfo.m9m_1;
 };
-protoOf(LibraryInfo).l9l = function (includeDefinition) {
-  var tmp0 = this.p8x_1;
+protoOf(LibraryInfo).o9l = function (includeDefinition) {
+  var tmp0 = this.q8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = includeDefinition.t9m_1;
+  var key = includeDefinition.w9m_1;
   tmp0.u2(key, includeDefinition);
   addDefinition(this, includeDefinition);
 };
-protoOf(LibraryInfo).v9m = function (identifier) {
-  return this.p8x_1.q2(identifier);
+protoOf(LibraryInfo).y9m = function (identifier) {
+  return this.q8x_1.q2(identifier);
 };
-protoOf(LibraryInfo).o91 = function (identifier) {
-  var includeDefinition = this.v9m(identifier);
-  return includeDefinition == null ? null : includeDefinition.t9m_1;
+protoOf(LibraryInfo).p91 = function (identifier) {
+  var includeDefinition = this.y9m(identifier);
+  return includeDefinition == null ? null : includeDefinition.w9m_1;
 };
-protoOf(LibraryInfo).s9l = function (parameterDefinition) {
-  var tmp0 = this.u8x_1;
+protoOf(LibraryInfo).v9l = function (parameterDefinition) {
+  var tmp0 = this.v8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = parameterDefinition.n8y_1;
+  var key = parameterDefinition.o8y_1;
   tmp0.u2(key, parameterDefinition);
   addDefinition(this, parameterDefinition);
 };
-protoOf(LibraryInfo).j8y = function (identifier) {
-  return this.u8x_1.q2(identifier);
+protoOf(LibraryInfo).k8y = function (identifier) {
+  return this.v8x_1.q2(identifier);
 };
-protoOf(LibraryInfo).o9l = function (codesystemDefinition) {
-  var tmp0 = this.q8x_1;
+protoOf(LibraryInfo).r9l = function (codesystemDefinition) {
+  var tmp0 = this.r8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = codesystemDefinition.j9k_1;
+  var key = codesystemDefinition.m9k_1;
   tmp0.u2(key, codesystemDefinition);
   addDefinition(this, codesystemDefinition);
 };
-protoOf(LibraryInfo).p9l = function (valuesetDefinition) {
-  var tmp0 = this.r8x_1;
+protoOf(LibraryInfo).s9l = function (valuesetDefinition) {
+  var tmp0 = this.s8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = valuesetDefinition.z9m_1;
+  var key = valuesetDefinition.c9n_1;
   tmp0.u2(key, valuesetDefinition);
   addDefinition(this, valuesetDefinition);
 };
-protoOf(LibraryInfo).q9l = function (codeDefinition) {
-  var tmp0 = this.s8x_1;
+protoOf(LibraryInfo).t9l = function (codeDefinition) {
+  var tmp0 = this.t8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = codeDefinition.e9k_1;
+  var key = codeDefinition.h9k_1;
   tmp0.u2(key, codeDefinition);
   addDefinition(this, codeDefinition);
 };
-protoOf(LibraryInfo).r9l = function (conceptDefinition) {
-  var tmp0 = this.t8x_1;
+protoOf(LibraryInfo).u9l = function (conceptDefinition) {
+  var tmp0 = this.u8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = conceptDefinition.o9k_1;
+  var key = conceptDefinition.r9k_1;
   tmp0.u2(key, conceptDefinition);
   addDefinition(this, conceptDefinition);
 };
-protoOf(LibraryInfo).u9l = function (letStatement) {
-  var tmp0 = this.v8x_1;
+protoOf(LibraryInfo).x9l = function (letStatement) {
+  var tmp0 = this.w8x_1;
   // Inline function 'kotlin.collections.set' call
-  var key = letStatement.d8y_1;
+  var key = letStatement.e8y_1;
   tmp0.u2(key, letStatement);
   addDefinition(this, letStatement);
 };
-protoOf(LibraryInfo).z8x = function (identifier) {
-  return this.v8x_1.q2(identifier);
+protoOf(LibraryInfo).a8y = function (identifier) {
+  return this.w8x_1.q2(identifier);
 };
-protoOf(LibraryInfo).v9l = function (functionDefinition) {
-  var infos = this.w8x_1.q2(functionDefinition.n92_1);
+protoOf(LibraryInfo).y9l = function (functionDefinition) {
+  var infos = this.x8x_1.q2(functionDefinition.o92_1);
   if (infos == null) {
     infos = ArrayList_init_$Create$();
-    var tmp0 = this.w8x_1;
-    var tmp2 = functionDefinition.n92_1;
+    var tmp0 = this.x8x_1;
+    var tmp2 = functionDefinition.o92_1;
     // Inline function 'kotlin.collections.set' call
     var value = infos;
     tmp0.u2(tmp2, value);
@@ -17739,62 +17971,62 @@ protoOf(LibraryInfo).v9l = function (functionDefinition) {
   infos.e(functionDefinition);
   addDefinition(this, functionDefinition);
 };
-protoOf(LibraryInfo).j92 = function (identifier) {
-  return this.w8x_1.q2(identifier);
+protoOf(LibraryInfo).k92 = function (identifier) {
+  return this.x8x_1.q2(identifier);
 };
-protoOf(LibraryInfo).t9l = function (contextDefinition) {
-  this.x8x_1.e(contextDefinition);
+protoOf(LibraryInfo).w9l = function (contextDefinition) {
+  this.y8x_1.e(contextDefinition);
   addDefinition(this, contextDefinition);
 };
-protoOf(LibraryInfo).x9l = function (pt) {
-  return this.y8x_1.q2(pt.l2f());
+protoOf(LibraryInfo).a9m = function (pt) {
+  return this.z8x_1.q2(pt.m2f());
 };
 function ParameterDefinitionInfo(name, definition) {
   BaseInfo.call(this, definition);
-  this.n8y_1 = name;
-  this.o8y_1 = definition;
+  this.o8y_1 = name;
+  this.p8y_1 = definition;
 }
-protoOf(ParameterDefinitionInfo).a9k = function () {
-  return this.o8y_1;
+protoOf(ParameterDefinitionInfo).d9k = function () {
+  return this.p8y_1;
 };
 function UsingDefinitionInfo(namespaceName, name, version, localName, definition) {
   BaseInfo.call(this, definition);
-  this.i9m_1 = namespaceName;
-  this.j9m_1 = name;
-  this.k9m_1 = version;
-  this.l9m_1 = localName;
-  this.m9m_1 = definition;
+  this.l9m_1 = namespaceName;
+  this.m9m_1 = name;
+  this.n9m_1 = version;
+  this.o9m_1 = localName;
+  this.p9m_1 = definition;
 }
-protoOf(UsingDefinitionInfo).a9k = function () {
-  return this.m9m_1;
+protoOf(UsingDefinitionInfo).d9k = function () {
+  return this.p9m_1;
 };
 function ValuesetDefinitionInfo(name, definition) {
   BaseInfo.call(this, definition);
-  this.z9m_1 = name;
-  this.a9n_1 = definition;
+  this.c9n_1 = name;
+  this.d9n_1 = definition;
 }
-protoOf(ValuesetDefinitionInfo).a9k = function () {
-  return this.a9n_1;
+protoOf(ValuesetDefinitionInfo).d9k = function () {
+  return this.d9n_1;
 };
 function TrackBack(library, startLine, startChar, endLine, endChar) {
-  this.v8z_1 = library;
-  this.w8z_1 = startLine;
-  this.x8z_1 = startChar;
-  this.y8z_1 = endLine;
-  this.z8z_1 = endChar;
+  this.w8z_1 = library;
+  this.x8z_1 = startLine;
+  this.y8z_1 = startChar;
+  this.z8z_1 = endLine;
+  this.a90_1 = endChar;
 }
 protoOf(TrackBack).toString = function () {
-  return "TrackBack{library='" + this.v8z_1 + new Char(_Char___init__impl__6a9atx(39)) + ', startLine=' + this.w8z_1 + ', startChar=' + this.x8z_1 + ', endLine=' + this.y8z_1 + ', endChar=' + this.z8z_1 + toString_1(_Char___init__impl__6a9atx(125));
+  return "TrackBack{library='" + this.w8z_1 + new Char(_Char___init__impl__6a9atx(39)) + ', startLine=' + this.x8z_1 + ', startChar=' + this.y8z_1 + ', endLine=' + this.z8z_1 + ', endChar=' + this.a90_1 + toString_1(_Char___init__impl__6a9atx(125));
 };
-protoOf(TrackBack).a90 = function () {
-  return this.w8z_1 === this.y8z_1 && this.x8z_1 === this.z8z_1 ? '' + this.w8z_1 + ':' + this.x8z_1 : '' + this.w8z_1 + ':' + this.x8z_1 + '-' + this.y8z_1 + ':' + this.z8z_1;
+protoOf(TrackBack).b90 = function () {
+  return this.x8z_1 === this.z8z_1 && this.y8z_1 === this.a90_1 ? '' + this.x8z_1 + ':' + this.y8z_1 : '' + this.x8z_1 + ':' + this.y8z_1 + '-' + this.z8z_1 + ':' + this.a90_1;
 };
 protoOf(TrackBack).hashCode = function () {
-  var result = this.v8z_1 == null ? 0 : this.v8z_1.hashCode();
-  result = imul(result, 31) + this.w8z_1 | 0;
+  var result = this.w8z_1 == null ? 0 : this.w8z_1.hashCode();
   result = imul(result, 31) + this.x8z_1 | 0;
   result = imul(result, 31) + this.y8z_1 | 0;
   result = imul(result, 31) + this.z8z_1 | 0;
+  result = imul(result, 31) + this.a90_1 | 0;
   return result;
 };
 protoOf(TrackBack).equals = function (other) {
@@ -17803,15 +18035,15 @@ protoOf(TrackBack).equals = function (other) {
   if (!(other instanceof TrackBack))
     return false;
   var tmp0_other_with_cast = other instanceof TrackBack ? other : THROW_CCE();
-  if (!equals(this.v8z_1, tmp0_other_with_cast.v8z_1))
-    return false;
-  if (!(this.w8z_1 === tmp0_other_with_cast.w8z_1))
+  if (!equals(this.w8z_1, tmp0_other_with_cast.w8z_1))
     return false;
   if (!(this.x8z_1 === tmp0_other_with_cast.x8z_1))
     return false;
   if (!(this.y8z_1 === tmp0_other_with_cast.y8z_1))
     return false;
   if (!(this.z8z_1 === tmp0_other_with_cast.z8z_1))
+    return false;
+  if (!(this.a90_1 === tmp0_other_with_cast.a90_1))
     return false;
   return true;
 };
@@ -17826,17 +18058,17 @@ function ExtensionProperties(trackerId, trackbacks, resultType) {
   }
   trackbacks = tmp;
   resultType = resultType === VOID ? null : resultType;
-  this.b9n_1 = trackerId;
-  this.c9n_1 = trackbacks;
-  this.d9n_1 = resultType;
+  this.e9n_1 = trackerId;
+  this.f9n_1 = trackbacks;
+  this.g9n_1 = resultType;
 }
 protoOf(ExtensionProperties).toString = function () {
-  return 'ExtensionProperties(trackerId=' + this.b9n_1.toString() + ', trackbacks=' + toString(this.c9n_1) + ', resultType=' + toString_0(this.d9n_1) + ')';
+  return 'ExtensionProperties(trackerId=' + this.e9n_1.toString() + ', trackbacks=' + toString(this.f9n_1) + ', resultType=' + toString_0(this.g9n_1) + ')';
 };
 protoOf(ExtensionProperties).hashCode = function () {
-  var result = this.b9n_1.hashCode();
-  result = imul(result, 31) + hashCode(this.c9n_1) | 0;
-  result = imul(result, 31) + (this.d9n_1 == null ? 0 : hashCode(this.d9n_1)) | 0;
+  var result = this.e9n_1.hashCode();
+  result = imul(result, 31) + hashCode(this.f9n_1) | 0;
+  result = imul(result, 31) + (this.g9n_1 == null ? 0 : hashCode(this.g9n_1)) | 0;
   return result;
 };
 protoOf(ExtensionProperties).equals = function (other) {
@@ -17845,35 +18077,35 @@ protoOf(ExtensionProperties).equals = function (other) {
   if (!(other instanceof ExtensionProperties))
     return false;
   var tmp0_other_with_cast = other instanceof ExtensionProperties ? other : THROW_CCE();
-  if (!this.b9n_1.equals(tmp0_other_with_cast.b9n_1))
+  if (!this.e9n_1.equals(tmp0_other_with_cast.e9n_1))
     return false;
-  if (!equals(this.c9n_1, tmp0_other_with_cast.c9n_1))
+  if (!equals(this.f9n_1, tmp0_other_with_cast.f9n_1))
     return false;
-  if (!equals(this.d9n_1, tmp0_other_with_cast.d9n_1))
+  if (!equals(this.g9n_1, tmp0_other_with_cast.g9n_1))
     return false;
   return true;
 };
 function _get_extensions__zgcsuh($this, _this__u8e3s4) {
-  return $this.m8v_1.e9n(_this__u8e3s4, Trackable$_get_extensions_$lambda_rqjd6d);
+  return $this.n8v_1.h9n(_this__u8e3s4, Trackable$_get_extensions_$lambda_rqjd6d);
 }
 function Trackable$_get_extensions_$lambda_rqjd6d() {
   return new ExtensionProperties();
 }
 function Trackable() {
   Trackable_instance = this;
-  this.m8v_1 = new IdentityHashMap();
+  this.n8v_1 = new IdentityHashMap();
 }
-protoOf(Trackable).d90 = function (_this__u8e3s4) {
-  return _get_extensions__zgcsuh(this, _this__u8e3s4).c9n_1;
+protoOf(Trackable).e90 = function (_this__u8e3s4) {
+  return _get_extensions__zgcsuh(this, _this__u8e3s4).f9n_1;
 };
-protoOf(Trackable).o8v = function (_this__u8e3s4, value) {
-  _get_extensions__zgcsuh(this, _this__u8e3s4).d9n_1 = value;
+protoOf(Trackable).p8v = function (_this__u8e3s4, value) {
+  _get_extensions__zgcsuh(this, _this__u8e3s4).g9n_1 = value;
 };
-protoOf(Trackable).n8v = function (_this__u8e3s4) {
-  return _get_extensions__zgcsuh(this, _this__u8e3s4).d9n_1;
+protoOf(Trackable).o8v = function (_this__u8e3s4) {
+  return _get_extensions__zgcsuh(this, _this__u8e3s4).g9n_1;
 };
-protoOf(Trackable).h90 = function (_this__u8e3s4, resultType) {
-  this.o8v(_this__u8e3s4, resultType);
+protoOf(Trackable).i90 = function (_this__u8e3s4, resultType) {
+  this.p8v(_this__u8e3s4, resultType);
   return _this__u8e3s4;
 };
 var Trackable_instance;
@@ -17886,11 +18118,11 @@ function createUcumService(convertUnit, validateUnit) {
   return lazy_0(createUcumService$lambda(convertUnit, validateUnit));
 }
 function createUcumService$2$1($convertUnit, $validateUnit) {
-  this.f9n_1 = $convertUnit;
-  this.g9n_1 = $validateUnit;
+  this.i9n_1 = $convertUnit;
+  this.j9n_1 = $validateUnit;
 }
-protoOf(createUcumService$2$1).v98 = function (unit) {
-  return this.g9n_1(unit);
+protoOf(createUcumService$2$1).i99 = function (unit) {
+  return this.j9n_1(unit);
 };
 function createUcumService$lambda($convertUnit, $validateUnit) {
   return function () {
@@ -17923,7 +18155,7 @@ function _init_properties_Log_kt__yce3ki() {
   if (!properties_initialized_Log_kt_phdpho) {
     properties_initialized_Log_kt_phdpho = true;
     var tmp = KotlinLogging_instance;
-    logger = tmp.g1q(logger$lambda);
+    logger = tmp.h1q(logger$lambda);
   }
 }
 function asSource(_this__u8e3s4) {
@@ -17934,47 +18166,47 @@ function asSource(_this__u8e3s4) {
 function Stack() {
   var tmp = this;
   // Inline function 'kotlin.collections.mutableListOf' call
-  tmp.h8y_1 = ArrayList_init_$Create$();
+  tmp.i8y_1 = ArrayList_init_$Create$();
 }
-protoOf(Stack).f99 = function () {
-  return get_indices(this.h8y_1);
+protoOf(Stack).s99 = function () {
+  return get_indices(this.i8y_1);
 };
-protoOf(Stack).i8y = function (item) {
-  this.h8y_1.e(item);
+protoOf(Stack).j8y = function (item) {
+  this.i8y_1.e(item);
+};
+protoOf(Stack).s2c = function () {
+  // Inline function 'kotlin.collections.isNotEmpty' call
+  // Inline function 'kotlin.check' call
+  if (!!this.i8y_1.q()) {
+    var message = 'Cannot pop from an empty stack';
+    throw IllegalStateException_init_$Create$(toString(message));
+  }
+  return this.i8y_1.l2(this.i8y_1.j() - 1 | 0);
 };
 protoOf(Stack).r2c = function () {
   // Inline function 'kotlin.collections.isNotEmpty' call
   // Inline function 'kotlin.check' call
-  if (!!this.h8y_1.q()) {
-    var message = 'Cannot pop from an empty stack';
-    throw IllegalStateException_init_$Create$(toString(message));
-  }
-  return this.h8y_1.l2(this.h8y_1.j() - 1 | 0);
-};
-protoOf(Stack).q2c = function () {
-  // Inline function 'kotlin.collections.isNotEmpty' call
-  // Inline function 'kotlin.check' call
-  if (!!this.h8y_1.q()) {
+  if (!!this.i8y_1.q()) {
     var message = 'Cannot peek at an empty stack';
     throw IllegalStateException_init_$Create$(toString(message));
   }
-  return this.h8y_1.o(this.h8y_1.j() - 1 | 0);
+  return this.i8y_1.o(this.i8y_1.j() - 1 | 0);
 };
 protoOf(Stack).q = function () {
-  return this.h8y_1.q();
+  return this.i8y_1.q();
 };
-protoOf(Stack).e10 = function () {
-  return this.h8y_1.q();
+protoOf(Stack).f10 = function () {
+  return this.i8y_1.q();
 };
-protoOf(Stack).t99 = function () {
+protoOf(Stack).g9a = function () {
   // Inline function 'kotlin.collections.isNotEmpty' call
-  return !this.h8y_1.q();
+  return !this.i8y_1.q();
 };
-protoOf(Stack).l23 = function () {
-  return this.h8y_1.j();
+protoOf(Stack).m23 = function () {
+  return this.i8y_1.j();
 };
-protoOf(Stack).g99 = function (index) {
-  return this.h8y_1.o(index);
+protoOf(Stack).t99 = function (index) {
+  return this.i8y_1.o(index);
 };
 function getTranslatorVersion() {
   return '4.0.0-SNAPSHOT';
@@ -18010,21 +18242,21 @@ function createConcurrentHashMap() {
 function IdentityHashMap() {
   var tmp = this;
   // Inline function 'kotlin.js.asDynamic' call
-  tmp.b8z_1 = new Map();
+  tmp.c8z_1 = new Map();
 }
-protoOf(IdentityHashMap).r8z = function (key) {
-  return this.b8z_1.get(key);
+protoOf(IdentityHashMap).s8z = function (key) {
+  return this.c8z_1.get(key);
 };
-protoOf(IdentityHashMap).c8z = function (key, value) {
-  this.b8z_1.set(key, value);
+protoOf(IdentityHashMap).d8z = function (key, value) {
+  this.c8z_1.set(key, value);
 };
-protoOf(IdentityHashMap).e9n = function (key, defaultValue) {
-  var existingValue = this.r8z(key);
+protoOf(IdentityHashMap).h9n = function (key, defaultValue) {
+  var existingValue = this.s8z(key);
   if (!(existingValue == null)) {
     return existingValue;
   }
   var newValue = defaultValue();
-  this.c8z(key, newValue);
+  this.d8z(key, newValue);
   return newValue;
 };
 function stringAsPath(string) {
@@ -18038,32 +18270,32 @@ defineProp(protoOf(ErrorSeverity), 'name', protoOf(ErrorSeverity).z2);
 defineProp(protoOf(ErrorSeverity), 'ordinal', protoOf(ErrorSeverity).a3);
 defineProp(protoOf(Options), 'name', protoOf(Options).z2);
 defineProp(protoOf(Options), 'ordinal', protoOf(Options).a3);
-protoOf($serializer).m12 = typeParametersSerializers;
+protoOf($serializer).n12 = typeParametersSerializers;
 defineProp(protoOf(Format), 'name', protoOf(Format).z2);
 defineProp(protoOf(Format), 'ordinal', protoOf(Format).a3);
-defineProp(protoOf(CqlTranslator), 'translatedLibrary', protoOf(CqlTranslator).m96);
-defineProp(protoOf(CqlTranslator), 'libraries', protoOf(CqlTranslator).h94);
-defineProp(protoOf(CqlTranslator), 'exceptions', protoOf(CqlTranslator).n96);
-defineProp(protoOf(CqlTranslator), 'errors', protoOf(CqlTranslator).o96);
-defineProp(protoOf(CqlTranslator), 'warnings', protoOf(CqlTranslator).p96);
-defineProp(protoOf(CqlTranslator), 'messages', protoOf(CqlTranslator).q96);
+defineProp(protoOf(CqlTranslator), 'translatedLibrary', protoOf(CqlTranslator).n96);
+defineProp(protoOf(CqlTranslator), 'libraries', protoOf(CqlTranslator).i94);
+defineProp(protoOf(CqlTranslator), 'exceptions', protoOf(CqlTranslator).o96);
+defineProp(protoOf(CqlTranslator), 'errors', protoOf(CqlTranslator).p96);
+defineProp(protoOf(CqlTranslator), 'warnings', protoOf(CqlTranslator).q96);
+defineProp(protoOf(CqlTranslator), 'messages', protoOf(CqlTranslator).r96);
 defineProp(protoOf(Format_0), 'name', protoOf(Format_0).z2);
 defineProp(protoOf(Format_0), 'ordinal', protoOf(Format_0).a3);
-protoOf($serializer_0).m12 = typeParametersSerializers;
+protoOf($serializer_0).n12 = typeParametersSerializers;
 defineProp(protoOf(SignatureLevel), 'name', protoOf(SignatureLevel).z2);
 defineProp(protoOf(SignatureLevel), 'ordinal', protoOf(SignatureLevel).a3);
 defineProp(protoOf(IdentifierScope), 'name', protoOf(IdentifierScope).z2);
 defineProp(protoOf(IdentifierScope), 'ordinal', protoOf(IdentifierScope).a3);
-defineProp(protoOf(LibraryBuilder), 'defaultModel', protoOf(LibraryBuilder).x99);
-defineProp(protoOf(LibraryBuilder), 'compatibilityLevel', protoOf(LibraryBuilder).g95, protoOf(LibraryBuilder).h97);
-defineProp(protoOf(LibraryBuilder), 'isCompatibilityLevel3', protoOf(LibraryBuilder).d9a);
-defineProp(protoOf(LibraryBuilder), 'isCompatibilityLevel4', protoOf(LibraryBuilder).e9a);
-defineProp(protoOf(LibraryBuilder), 'systemModel', protoOf(LibraryBuilder).n9a);
-defineProp(protoOf(LibraryBuilder), 'libraryIdentifier', protoOf(LibraryBuilder).o9a, protoOf(LibraryBuilder).e90);
+defineProp(protoOf(LibraryBuilder), 'defaultModel', protoOf(LibraryBuilder).k9a);
+defineProp(protoOf(LibraryBuilder), 'compatibilityLevel', protoOf(LibraryBuilder).h95, protoOf(LibraryBuilder).u97);
+defineProp(protoOf(LibraryBuilder), 'isCompatibilityLevel3', protoOf(LibraryBuilder).q9a);
+defineProp(protoOf(LibraryBuilder), 'isCompatibilityLevel4', protoOf(LibraryBuilder).r9a);
+defineProp(protoOf(LibraryBuilder), 'systemModel', protoOf(LibraryBuilder).u9a);
+defineProp(protoOf(LibraryBuilder), 'libraryIdentifier', protoOf(LibraryBuilder).v9a, protoOf(LibraryBuilder).f90);
 defineProp(protoOf(CacheMode), 'name', protoOf(CacheMode).z2);
 defineProp(protoOf(CacheMode), 'ordinal', protoOf(CacheMode).a3);
-defineProp(protoOf(LibraryManager), 'ucumService', protoOf(LibraryManager).n9c);
-protoOf(createLibrarySourceProvider$1).getLibraryContent = getLibraryContent_0;
+defineProp(protoOf(LibraryManager), 'ucumService', protoOf(LibraryManager).u9c);
+protoOf(createLibrarySourceProvider$1).getLibraryContent = getLibraryContent;
 //endregion
 //region block: init
 Companion_instance_2 = new Companion();
@@ -18158,6 +18390,8 @@ export {
   CqlCompilerOptions as CqlCompilerOptions,
   CqlTranslator as CqlTranslator,
   CqlTranslatorOptions as CqlTranslatorOptions,
+  DefaultLibrarySourceProvider as DefaultLibrarySourceProvider,
+  DefaultModelInfoProvider as DefaultModelInfoProvider,
   LibraryBuilder as LibraryBuilder,
   LibraryManager as LibraryManager,
   createLibrarySourceProvider as createLibrarySourceProvider,

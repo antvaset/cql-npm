@@ -392,6 +392,25 @@ export declare namespace CqlTranslatorOptions {
         }
     }
 }
+export declare class DefaultLibrarySourceProvider implements LibrarySourceProvider/*, PathAware */ {
+    constructor(path: any/* Path */);
+    getLibrarySource(libraryIdentifier: any/* VersionedIdentifier */): Nullable<any>/* Nullable<Source> */;
+    getLibraryContent(libraryIdentifier: any/* VersionedIdentifier */, type: any/* LibraryContentType */): Nullable<any>/* Nullable<Source> */;
+    readonly __doNotUseOrImplementIt: LibrarySourceProvider["__doNotUseOrImplementIt"];
+}
+/** @deprecated $metadata$ is used for internal purposes, please don't use it in your code, because it can be removed at any moment */
+export declare namespace DefaultLibrarySourceProvider.$metadata$ {
+    const constructor: abstract new () => DefaultLibrarySourceProvider;
+}
+export declare class DefaultModelInfoProvider implements ModelInfoProvider/*, PathAware */ {
+    constructor(path: any/* Path */);
+    load(modelIdentifier: any/* ModelIdentifier */): Nullable<any>/* Nullable<ModelInfo> */;
+    readonly __doNotUseOrImplementIt: ModelInfoProvider["__doNotUseOrImplementIt"];
+}
+/** @deprecated $metadata$ is used for internal purposes, please don't use it in your code, because it can be removed at any moment */
+export declare namespace DefaultModelInfoProvider.$metadata$ {
+    const constructor: abstract new () => DefaultModelInfoProvider;
+}
 export declare class LibraryBuilder {
     constructor(namespaceInfo: Nullable<any>/* Nullable<NamespaceInfo> */, libraryManager: LibraryManager, objectFactory: any/* IdObjectFactory */);
     get namespaceInfo(): Nullable<any>/* Nullable<NamespaceInfo> */;

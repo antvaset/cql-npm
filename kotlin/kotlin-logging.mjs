@@ -28,20 +28,20 @@ var imul = Math.imul;
 //region block: pre-declaration
 function debug(message) {
   var tmp = Level_DEBUG_getInstance();
-  return this.d1q(tmp, VOID, KLogger$debug$lambda(message));
+  return this.e1q(tmp, VOID, KLogger$debug$lambda(message));
 }
 function warn(throwable, message) {
   var tmp = Level_WARN_getInstance();
-  return this.d1q(tmp, VOID, KLogger$warn$lambda(message, throwable));
+  return this.e1q(tmp, VOID, KLogger$warn$lambda(message, throwable));
 }
 function at$default(level, marker, block, $super) {
   marker = marker === VOID ? null : marker;
   var tmp;
   if ($super === VOID) {
-    this.f1q(level, marker, block);
+    this.g1q(level, marker, block);
     tmp = Unit_instance;
   } else {
-    tmp = $super.f1q.call(this, level, marker, block);
+    tmp = $super.g1q.call(this, level, marker, block);
   }
   return tmp;
 }
@@ -61,33 +61,33 @@ initMetadataForObject(KLoggerNameResolver, 'KLoggerNameResolver');
 //endregion
 function KLogger$debug$lambda($message) {
   return function ($this$at) {
-    $this$at.x1p_1 = toStringSafe($message);
+    $this$at.y1p_1 = toStringSafe($message);
     return Unit_instance;
   };
 }
 function KLogger$warn$lambda($message, $throwable) {
   return function ($this$at) {
-    $this$at.x1p_1 = toStringSafe($message);
-    $this$at.y1p_1 = $throwable;
+    $this$at.y1p_1 = toStringSafe($message);
+    $this$at.z1p_1 = $throwable;
     return Unit_instance;
   };
 }
 function KLogger() {
 }
 function KLoggingEventBuilder() {
-  this.x1p_1 = null;
   this.y1p_1 = null;
   this.z1p_1 = null;
   this.a1q_1 = null;
   this.b1q_1 = null;
+  this.c1q_1 = null;
 }
 function KotlinLogging() {
 }
-protoOf(KotlinLogging).g1q = function (func) {
-  return this.i1q(KLoggerNameResolver_instance.h1q(func));
+protoOf(KotlinLogging).h1q = function (func) {
+  return this.j1q(KLoggerNameResolver_instance.i1q(func));
 };
-protoOf(KotlinLogging).i1q = function (name) {
-  return KLoggerFactory_instance.i1q(name);
+protoOf(KotlinLogging).j1q = function (name) {
+  return KLoggerFactory_instance.j1q(name);
 };
 var KotlinLogging_instance;
 function KotlinLogging_getInstance() {
@@ -113,11 +113,11 @@ function Level_initEntries() {
 }
 function Level(name, ordinal, levelInt, levelStr) {
   Enum.call(this, name, ordinal);
-  this.l1q_1 = levelInt;
-  this.m1q_1 = levelStr;
+  this.m1q_1 = levelInt;
+  this.n1q_1 = levelStr;
 }
 protoOf(Level).toString = function () {
-  return this.m1q_1;
+  return this.n1q_1;
 };
 function Level_DEBUG_getInstance() {
   Level_initEntries();
@@ -139,7 +139,7 @@ function toStringSafe(_this__u8e3s4) {
     var tmp_0;
     if ($p instanceof Exception) {
       var e = $p;
-      tmp_0 = DefaultErrorMessageProducer_instance.n1q(e);
+      tmp_0 = DefaultErrorMessageProducer_instance.o1q(e);
     } else {
       throw $p;
     }
@@ -149,7 +149,7 @@ function toStringSafe(_this__u8e3s4) {
 }
 function DefaultErrorMessageProducer() {
 }
-protoOf(DefaultErrorMessageProducer).n1q = function (e) {
+protoOf(DefaultErrorMessageProducer).o1q = function (e) {
   return 'Log message invocation failed: ' + e.toString();
 };
 var DefaultErrorMessageProducer_instance;
@@ -158,14 +158,14 @@ function DefaultErrorMessageProducer_getInstance() {
 }
 function FormattingAppender() {
 }
-protoOf(FormattingAppender).p1q = function (loggingEvent) {
+protoOf(FormattingAppender).q1q = function (loggingEvent) {
   // Inline function 'kotlin.let' call
-  var it = KotlinLoggingConfiguration_getInstance().r1q_1.t1q(loggingEvent);
-  this.o1q(loggingEvent, it);
+  var it = KotlinLoggingConfiguration_getInstance().s1q_1.u1q(loggingEvent);
+  this.p1q(loggingEvent, it);
 };
 function prefix($this, level, loggerName) {
   var tmp;
-  if ($this.u1q_1) {
+  if ($this.v1q_1) {
     tmp = level.x2_1 + ': [' + loggerName + '] ';
   } else {
     tmp = '';
@@ -201,16 +201,16 @@ function createThrowableMsg($this, msg, throwable) {
 }
 function DefaultMessageFormatter(includePrefix) {
   includePrefix = includePrefix === VOID ? true : includePrefix;
-  this.u1q_1 = includePrefix;
+  this.v1q_1 = includePrefix;
 }
-protoOf(DefaultMessageFormatter).t1q = function (loggingEvent) {
+protoOf(DefaultMessageFormatter).u1q = function (loggingEvent) {
   // Inline function 'kotlin.with' call
   // Inline function 'kotlin.text.buildString' call
   // Inline function 'kotlin.apply' call
   var this_0 = StringBuilder_init_$Create$();
-  this_0.j9(prefix(this, loggingEvent.v1q_1, loggingEvent.x1q_1));
-  var tmp0_safe_receiver = loggingEvent.w1q_1;
-  var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.b1r();
+  this_0.j9(prefix(this, loggingEvent.w1q_1, loggingEvent.y1q_1));
+  var tmp0_safe_receiver = loggingEvent.x1q_1;
+  var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.c1r();
   if (tmp1_safe_receiver == null)
     null;
   else {
@@ -218,12 +218,12 @@ protoOf(DefaultMessageFormatter).t1q = function (loggingEvent) {
     this_0.j9(tmp1_safe_receiver);
     this_0.j9(' ');
   }
-  this_0.j9(loggingEvent.y1q_1);
-  this_0.j9(throwableToString(this, loggingEvent.z1q_1));
+  this_0.j9(loggingEvent.z1q_1);
+  this_0.j9(throwableToString(this, loggingEvent.a1r_1));
   return this_0.toString();
 };
 function KLoggingEvent_init_$Init$(level, marker, loggerName, eventBuilder, $this) {
-  KLoggingEvent.call($this, level, marker, loggerName, eventBuilder.x1p_1, eventBuilder.y1p_1, eventBuilder.z1p_1);
+  KLoggingEvent.call($this, level, marker, loggerName, eventBuilder.y1p_1, eventBuilder.z1p_1, eventBuilder.a1q_1);
   return $this;
 }
 function KLoggingEvent_init_$Create$(level, marker, loggerName, eventBuilder) {
@@ -233,23 +233,23 @@ function KLoggingEvent(level, marker, loggerName, message, cause, payload) {
   message = message === VOID ? null : message;
   cause = cause === VOID ? null : cause;
   payload = payload === VOID ? null : payload;
-  this.v1q_1 = level;
-  this.w1q_1 = marker;
-  this.x1q_1 = loggerName;
-  this.y1q_1 = message;
-  this.z1q_1 = cause;
-  this.a1r_1 = payload;
+  this.w1q_1 = level;
+  this.x1q_1 = marker;
+  this.y1q_1 = loggerName;
+  this.z1q_1 = message;
+  this.a1r_1 = cause;
+  this.b1r_1 = payload;
 }
 protoOf(KLoggingEvent).toString = function () {
-  return 'KLoggingEvent(level=' + this.v1q_1.toString() + ', marker=' + toString(this.w1q_1) + ', loggerName=' + this.x1q_1 + ', message=' + this.y1q_1 + ', cause=' + toString(this.z1q_1) + ', payload=' + toString(this.a1r_1) + ')';
+  return 'KLoggingEvent(level=' + this.w1q_1.toString() + ', marker=' + toString(this.x1q_1) + ', loggerName=' + this.y1q_1 + ', message=' + this.z1q_1 + ', cause=' + toString(this.a1r_1) + ', payload=' + toString(this.b1r_1) + ')';
 };
 protoOf(KLoggingEvent).hashCode = function () {
-  var result = this.v1q_1.hashCode();
-  result = imul(result, 31) + (this.w1q_1 == null ? 0 : hashCode(this.w1q_1)) | 0;
-  result = imul(result, 31) + getStringHashCode(this.x1q_1) | 0;
-  result = imul(result, 31) + (this.y1q_1 == null ? 0 : getStringHashCode(this.y1q_1)) | 0;
-  result = imul(result, 31) + (this.z1q_1 == null ? 0 : hashCode(this.z1q_1)) | 0;
+  var result = this.w1q_1.hashCode();
+  result = imul(result, 31) + (this.x1q_1 == null ? 0 : hashCode(this.x1q_1)) | 0;
+  result = imul(result, 31) + getStringHashCode(this.y1q_1) | 0;
+  result = imul(result, 31) + (this.z1q_1 == null ? 0 : getStringHashCode(this.z1q_1)) | 0;
   result = imul(result, 31) + (this.a1r_1 == null ? 0 : hashCode(this.a1r_1)) | 0;
+  result = imul(result, 31) + (this.b1r_1 == null ? 0 : hashCode(this.b1r_1)) | 0;
   return result;
 };
 protoOf(KLoggingEvent).equals = function (other) {
@@ -258,43 +258,43 @@ protoOf(KLoggingEvent).equals = function (other) {
   if (!(other instanceof KLoggingEvent))
     return false;
   var tmp0_other_with_cast = other instanceof KLoggingEvent ? other : THROW_CCE();
-  if (!this.v1q_1.equals(tmp0_other_with_cast.v1q_1))
+  if (!this.w1q_1.equals(tmp0_other_with_cast.w1q_1))
     return false;
-  if (!equals(this.w1q_1, tmp0_other_with_cast.w1q_1))
+  if (!equals(this.x1q_1, tmp0_other_with_cast.x1q_1))
     return false;
-  if (!(this.x1q_1 === tmp0_other_with_cast.x1q_1))
+  if (!(this.y1q_1 === tmp0_other_with_cast.y1q_1))
     return false;
-  if (!(this.y1q_1 == tmp0_other_with_cast.y1q_1))
-    return false;
-  if (!equals(this.z1q_1, tmp0_other_with_cast.z1q_1))
+  if (!(this.z1q_1 == tmp0_other_with_cast.z1q_1))
     return false;
   if (!equals(this.a1r_1, tmp0_other_with_cast.a1r_1))
+    return false;
+  if (!equals(this.b1r_1, tmp0_other_with_cast.b1r_1))
     return false;
   return true;
 };
 function isLoggingEnabled(_this__u8e3s4) {
-  return _this__u8e3s4.y2_1 >= KotlinLoggingConfiguration_getInstance().q1q_1.y2_1;
+  return _this__u8e3s4.y2_1 >= KotlinLoggingConfiguration_getInstance().r1q_1.y2_1;
 }
 function KLoggerDirect(name) {
-  this.c1r_1 = name;
+  this.d1r_1 = name;
 }
-protoOf(KLoggerDirect).f1q = function (level, marker, block) {
-  if (this.d1r(level, marker)) {
+protoOf(KLoggerDirect).g1q = function (level, marker, block) {
+  if (this.e1r(level, marker)) {
     // Inline function 'kotlin.apply' call
     var this_0 = new KLoggingEventBuilder();
     block(this_0);
     // Inline function 'kotlin.run' call
     if (level.y2_1 !== 5) {
-      KotlinLoggingConfiguration_getInstance().s1q_1.p1q(KLoggingEvent_init_$Create$(level, marker, this.c1r_1, this_0));
+      KotlinLoggingConfiguration_getInstance().t1q_1.q1q(KLoggingEvent_init_$Create$(level, marker, this.d1r_1, this_0));
     }
   }
 };
-protoOf(KLoggerDirect).d1r = function (level, marker) {
+protoOf(KLoggerDirect).e1r = function (level, marker) {
   return isLoggingEnabled(level);
 };
 function KLoggerFactory() {
 }
-protoOf(KLoggerFactory).i1q = function (name) {
+protoOf(KLoggerFactory).j1q = function (name) {
   return new KLoggerDirect(name);
 };
 var KLoggerFactory_instance;
@@ -304,8 +304,8 @@ function KLoggerFactory_getInstance() {
 function ConsoleOutputAppender() {
   FormattingAppender.call(this);
 }
-protoOf(ConsoleOutputAppender).o1q = function (loggingEvent, formattedMessage) {
-  switch (loggingEvent.v1q_1.y2_1) {
+protoOf(ConsoleOutputAppender).p1q = function (loggingEvent, formattedMessage) {
+  switch (loggingEvent.w1q_1.y2_1) {
     case 0:
       console.log(formattedMessage);
       break;
@@ -330,9 +330,9 @@ protoOf(ConsoleOutputAppender).o1q = function (loggingEvent, formattedMessage) {
 };
 function KotlinLoggingConfiguration() {
   KotlinLoggingConfiguration_instance = this;
-  this.q1q_1 = Level_INFO_getInstance();
-  this.r1q_1 = new DefaultMessageFormatter(true);
-  this.s1q_1 = new ConsoleOutputAppender();
+  this.r1q_1 = Level_INFO_getInstance();
+  this.s1q_1 = new DefaultMessageFormatter(true);
+  this.t1q_1 = new ConsoleOutputAppender();
 }
 var KotlinLoggingConfiguration_instance;
 function KotlinLoggingConfiguration_getInstance() {
@@ -342,7 +342,7 @@ function KotlinLoggingConfiguration_getInstance() {
 }
 function KLoggerNameResolver() {
 }
-protoOf(KLoggerNameResolver).h1q = function (func) {
+protoOf(KLoggerNameResolver).i1q = function (func) {
   var found = false;
   var exception = Exception_init_$Create$();
   var _iterator__ex2g4s = split(stackTraceToString(exception), ['\n']).g();
@@ -362,9 +362,9 @@ function KLoggerNameResolver_getInstance() {
   return KLoggerNameResolver_instance;
 }
 //region block: post-declaration
-protoOf(KLoggerDirect).d1q = at$default;
-protoOf(KLoggerDirect).c1q = debug;
-protoOf(KLoggerDirect).e1q = warn;
+protoOf(KLoggerDirect).e1q = at$default;
+protoOf(KLoggerDirect).d1q = debug;
+protoOf(KLoggerDirect).f1q = warn;
 //endregion
 //region block: init
 KotlinLogging_instance = new KotlinLogging();

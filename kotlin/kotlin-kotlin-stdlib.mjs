@@ -37,6 +37,11 @@ if (typeof Array.prototype.fill === 'undefined') {
     Object.defineProperty(TypedArray.prototype, 'fill', {value: Array.prototype.fill});
   }
 });
+if (typeof Math.log10 === 'undefined') {
+  Math.log10 = function (x) {
+    return Math.log(x) * Math.LOG10E;
+  };
+}
 if (typeof Math.clz32 === 'undefined') {
   Math.clz32 = function (log, LN2) {
     return function (x) {
@@ -47,11 +52,6 @@ if (typeof Math.clz32 === 'undefined') {
       return 31 - (log(asUint) / LN2 | 0) | 0; // the "| 0" acts like math.floor
     };
   }(Math.log, Math.LN2);
-}
-if (typeof Math.log10 === 'undefined') {
-  Math.log10 = function (x) {
-    return Math.log(x) * Math.LOG10E;
-  };
 }
 if (typeof String.prototype.endsWith === 'undefined') {
   Object.defineProperty(String.prototype, 'endsWith', {value: function (searchString, position) {
@@ -16015,6 +16015,7 @@ export {
   concatToString_0 as concatToString3cxf0c1gqonpo,
   contains_9 as contains3ue2qo8xhmpf1,
   contains_8 as contains2el4s70rdq4ld,
+  endsWith_0 as endsWith278181ii8uuo,
   endsWith as endsWith3cq61xxngobwh,
   equals_0 as equals2v6cggk171b6e,
   indexOf_6 as indexOfwa4w6635jewi,

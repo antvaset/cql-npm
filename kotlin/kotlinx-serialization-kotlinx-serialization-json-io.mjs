@@ -26,25 +26,25 @@ function encodeToSink(_this__u8e3s4, serializer, value, sink) {
   try {
     encodeByWriter(_this__u8e3s4, writer, serializer, value);
   }finally {
-    writer.w1p();
+    writer.x1p();
   }
 }
 function JsonToIoStreamWriter(sink) {
-  this.v1p_1 = sink;
+  this.w1p_1 = sink;
 }
-protoOf(JsonToIoStreamWriter).d1g = function (value) {
-  this.z1f(value.toString());
+protoOf(JsonToIoStreamWriter).e1g = function (value) {
+  this.a1g(value.toString());
 };
-protoOf(JsonToIoStreamWriter).x1f = function (char) {
+protoOf(JsonToIoStreamWriter).y1f = function (char) {
   // Inline function 'kotlin.code' call
   var tmp$ret$0 = Char__toInt_impl_vasixd(char);
-  writeCodePointValue(this.v1p_1, tmp$ret$0);
+  writeCodePointValue(this.w1p_1, tmp$ret$0);
 };
-protoOf(JsonToIoStreamWriter).z1f = function (text) {
-  writeString(this.v1p_1, text);
+protoOf(JsonToIoStreamWriter).a1g = function (text) {
+  writeString(this.w1p_1, text);
 };
-protoOf(JsonToIoStreamWriter).j1g = function (text) {
-  writeCodePointValue(this.v1p_1, 34);
+protoOf(JsonToIoStreamWriter).k1g = function (text) {
+  writeCodePointValue(this.w1p_1, 34);
   // Inline function 'kotlinx.serialization.json.internal.Companion.doWriteEscaping' call
   var lastPos = 0;
   var inductionVariable = 0;
@@ -58,20 +58,20 @@ protoOf(JsonToIoStreamWriter).j1g = function (text) {
       var c = Char__toInt_impl_vasixd(this_0);
       if (c < get_ESCAPE_STRINGS().length && !(get_ESCAPE_STRINGS()[c] == null)) {
         var start = lastPos;
-        writeString(this.v1p_1, text, start, i);
+        writeString(this.w1p_1, text, start, i);
         var escape = ensureNotNull(get_ESCAPE_STRINGS()[c]);
         var end = escape.length;
-        writeString(this.v1p_1, escape, 0, end);
+        writeString(this.w1p_1, escape, 0, end);
         lastPos = i + 1 | 0;
       }
     }
      while (inductionVariable <= last);
   var tmp2 = lastPos;
   var end_0 = text.length;
-  writeString(this.v1p_1, text, tmp2, end_0);
-  writeCodePointValue(this.v1p_1, 34);
+  writeString(this.w1p_1, text, tmp2, end_0);
+  writeCodePointValue(this.w1p_1, 34);
 };
-protoOf(JsonToIoStreamWriter).w1p = function () {
+protoOf(JsonToIoStreamWriter).x1p = function () {
 };
 //region block: exports
 export {

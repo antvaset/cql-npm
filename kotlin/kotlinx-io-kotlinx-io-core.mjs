@@ -24,6 +24,9 @@ import {
   Char__toInt_impl_vasixd1agw9q2fuvclj as Char__toInt_impl_vasixd,
   toByte4i43936u611k as toByte,
   initMetadataForInterface1egvbzx539z91 as initMetadataForInterface,
+  StringBuilder_init_$Create$2qsge4ydj6bin as StringBuilder_init_$Create$_0,
+  charSequenceLength3278n89t01tmv as charSequenceLength,
+  endsWith278181ii8uuo as endsWith,
   startsWith26w8qjqapeeq6 as startsWith,
   substringiqarkczpya5m as substring,
   numberToChar93r9buh19yek as numberToChar,
@@ -36,7 +39,7 @@ import {
   getPropertyCallableRef1ajb9in178r5r as getPropertyCallableRef,
   UnsupportedOperationException_init_$Create$2py9d3liytkkq as UnsupportedOperationException_init_$Create$,
   lazy2hsh8ze7j6ikd as lazy,
-  charSequenceLength3278n89t01tmv as charSequenceLength,
+  ArrayList_init_$Create$149jv2ovkkvnt as ArrayList_init_$Create$,
   getStringHashCode26igk1bx568vk as getStringHashCode,
   Char19o2r8palgjof as Char,
 } from './kotlin-kotlin-stdlib.mjs';
@@ -53,7 +56,7 @@ initMetadataForClass(SegmentCopyTracker, 'SegmentCopyTracker');
 initMetadataForObject(AlwaysSharedCopyTracker, 'AlwaysSharedCopyTracker', VOID, SegmentCopyTracker);
 function sink$default(path, append, $super) {
   append = append === VOID ? false : append;
-  return $super === VOID ? this.pq(path, append) : $super.pq.call(this, path, append);
+  return $super === VOID ? this.qq(path, append) : $super.qq.call(this, path, append);
 }
 initMetadataForInterface(FileSystem, 'FileSystem');
 initMetadataForClass(SystemFileSystemImpl, 'SystemFileSystemImpl', VOID, VOID, [FileSystem]);
@@ -67,7 +70,7 @@ initMetadataForClass(EOFException, 'EOFException', EOFException_init_$Create$, I
 initMetadataForObject(SegmentPool, 'SegmentPool');
 initMetadataForClass(FileNotFoundException, 'FileNotFoundException', VOID, IOException);
 initMetadataForClass(SystemFileSystem$1, VOID, VOID, SystemFileSystemImpl);
-initMetadataForClass(Path, 'Path');
+initMetadataForClass(Path_1, 'Path');
 initMetadataForClass(FileSource, 'FileSource');
 initMetadataForClass(FileSink, 'FileSink');
 //endregion
@@ -1161,9 +1164,12 @@ function FileMetadata(isRegularFile, isDirectory, size) {
   isRegularFile = isRegularFile === VOID ? false : isRegularFile;
   isDirectory = isDirectory === VOID ? false : isDirectory;
   size = size === VOID ? new Long(0, 0) : size;
-  this.tq_1 = isRegularFile;
-  this.uq_1 = isDirectory;
-  this.vq_1 = size;
+  this.vq_1 = isRegularFile;
+  this.wq_1 = isDirectory;
+  this.xq_1 = size;
+}
+function Path(base, parts) {
+  return Path_0(base.toString(), parts.slice());
 }
 function removeTrailingSeparators(path, isWindows_) {
   isWindows_ = isWindows_ === VOID ? get_isWindows() : isWindows_;
@@ -1186,6 +1192,32 @@ function removeTrailingSeparators(path, isWindows_) {
     return removeTrailingSeparatorsWindows(limit, path);
   }
   return removeTrailingSeparatorsUnix(path);
+}
+function Path_0(base, parts) {
+  // Inline function 'kotlin.text.buildString' call
+  // Inline function 'kotlin.apply' call
+  var this_0 = StringBuilder_init_$Create$_0();
+  this_0.j9(base);
+  // Inline function 'kotlin.collections.forEach' call
+  var inductionVariable = 0;
+  var last = parts.length;
+  while (inductionVariable < last) {
+    var element = parts[inductionVariable];
+    inductionVariable = inductionVariable + 1 | 0;
+    var tmp;
+    // Inline function 'kotlin.text.isNotEmpty' call
+    if (charSequenceLength(this_0) > 0) {
+      tmp = !endsWith(this_0, get_SystemPathSeparator());
+    } else {
+      tmp = false;
+    }
+    if (tmp) {
+      this_0.k9(get_SystemPathSeparator());
+    }
+    this_0.j9(element);
+  }
+  var tmp$ret$5 = this_0.toString();
+  return Path_2(tmp$ret$5);
 }
 function isUnc(path) {
   if (path.length < 2)
@@ -1843,7 +1875,7 @@ function FileNotFoundException(message) {
 }
 function SystemFileSystem$o$metadataOrNull$lambda($path, $metadata) {
   return function () {
-    var tmp0_elvis_lhs = get_fs().statSync($path.wq_1);
+    var tmp0_elvis_lhs = get_fs().statSync($path.yq_1);
     var tmp;
     if (tmp0_elvis_lhs == null) {
       return Unit_instance;
@@ -1860,11 +1892,11 @@ function SystemFileSystem$o$metadataOrNull$lambda($path, $metadata) {
 function SystemFileSystem$1() {
   SystemFileSystemImpl.call(this);
 }
-protoOf(SystemFileSystem$1).xq = function (path) {
-  return get_fs().existsSync(path.wq_1);
+protoOf(SystemFileSystem$1).oq = function (path) {
+  return get_fs().existsSync(path.yq_1);
 };
-protoOf(SystemFileSystem$1).rq = function (path) {
-  if (!this.xq(path))
+protoOf(SystemFileSystem$1).sq = function (path) {
+  if (!this.oq(path))
     return null;
   var metadata = {_v: null};
   var tmp0_safe_receiver = withCaughtException(SystemFileSystem$o$metadataOrNull$lambda(path, metadata));
@@ -1876,16 +1908,50 @@ protoOf(SystemFileSystem$1).rq = function (path) {
   }
   return metadata._v;
 };
-protoOf(SystemFileSystem$1).oq = function (path) {
+protoOf(SystemFileSystem$1).pq = function (path) {
   return new FileSource(path);
 };
-protoOf(SystemFileSystem$1).pq = function (path, append) {
+protoOf(SystemFileSystem$1).qq = function (path, append) {
   return new FileSink(path, append);
 };
-protoOf(SystemFileSystem$1).sq = function (path) {
-  if (!this.xq(path))
-    throw new FileNotFoundException(path.wq_1);
-  return Path_0(get_fs().realpathSync.native(path.wq_1));
+protoOf(SystemFileSystem$1).tq = function (path) {
+  if (!this.oq(path))
+    throw new FileNotFoundException(path.yq_1);
+  return Path_2(get_fs().realpathSync.native(path.yq_1));
+};
+protoOf(SystemFileSystem$1).uq = function (directory) {
+  var tmp0_elvis_lhs = this.sq(directory);
+  var tmp;
+  if (tmp0_elvis_lhs == null) {
+    throw new FileNotFoundException(directory.yq_1);
+  } else {
+    tmp = tmp0_elvis_lhs;
+  }
+  var metadata = tmp;
+  if (!metadata.wq_1)
+    throw IOException_init_$Create$_0('Not a directory: ' + directory.yq_1);
+  var tmp1_elvis_lhs = get_fs().opendirSync(directory.yq_1);
+  var tmp_0;
+  if (tmp1_elvis_lhs == null) {
+    throw IOException_init_$Create$_0('Unable to read directory: ' + directory.yq_1);
+  } else {
+    tmp_0 = tmp1_elvis_lhs;
+  }
+  var dir = tmp_0;
+  try {
+    // Inline function 'kotlin.collections.buildList' call
+    // Inline function 'kotlin.collections.buildListInternal' call
+    // Inline function 'kotlin.apply' call
+    var this_0 = ArrayList_init_$Create$();
+    var child = dir.readSync();
+    while (!(child == null)) {
+      this_0.e(Path(directory, [child.name]));
+      child = dir.readSync();
+    }
+    return this_0.h4();
+  }finally {
+    dir.closeSync();
+  }
 };
 var properties_initialized_FileSystemNodeJs_kt_vmmd20;
 function _init_properties_FileSystemNodeJs_kt__m4c3u() {
@@ -1895,16 +1961,24 @@ function _init_properties_FileSystemNodeJs_kt__m4c3u() {
     isWindows = get_os().platform() === 'win32';
   }
 }
-var SystemPathSeparator$delegate;
-function Path(rawPath, any) {
-  this.wq_1 = removeTrailingSeparators(rawPath);
+function get_SystemPathSeparator() {
+  _init_properties_PathsNodeJs_kt__bvvvsp();
+  var tmp0 = SystemPathSeparator$delegate;
+  var tmp = KProperty0;
+  // Inline function 'kotlin.getValue' call
+  getPropertyCallableRef('SystemPathSeparator', 0, tmp, _get_SystemPathSeparator_$ref_lvdbpt(), null);
+  return tmp0.n2().n1_1;
 }
-protoOf(Path).z2 = function () {
+var SystemPathSeparator$delegate;
+function Path_1(rawPath, any) {
+  this.yq_1 = removeTrailingSeparators(rawPath);
+}
+protoOf(Path_1).z2 = function () {
   // Inline function 'kotlin.text.isEmpty' call
-  var this_0 = this.wq_1;
+  var this_0 = this.yq_1;
   if (charSequenceLength(this_0) === 0)
     return '';
-  var p = get_path().basename(this.wq_1);
+  var p = get_path().basename(this.yq_1);
   var tmp;
   // Inline function 'kotlin.text.isEmpty' call
   if (charSequenceLength(p) === 0) {
@@ -1914,22 +1988,22 @@ protoOf(Path).z2 = function () {
   }
   return tmp;
 };
-protoOf(Path).toString = function () {
-  return this.wq_1;
+protoOf(Path_1).toString = function () {
+  return this.yq_1;
 };
-protoOf(Path).equals = function (other) {
+protoOf(Path_1).equals = function (other) {
   if (this === other)
     return true;
-  if (!(other instanceof Path))
+  if (!(other instanceof Path_1))
     return false;
-  return this.wq_1 === other.wq_1;
+  return this.yq_1 === other.yq_1;
 };
-protoOf(Path).hashCode = function () {
-  return getStringHashCode(this.wq_1);
+protoOf(Path_1).hashCode = function () {
+  return getStringHashCode(this.yq_1);
 };
 function open($this, path) {
-  if (!get_fs().existsSync(path.wq_1)) {
-    throw new FileNotFoundException('File does not exist: ' + path.wq_1);
+  if (!get_fs().existsSync(path.yq_1)) {
+    throw new FileNotFoundException('File does not exist: ' + path.yq_1);
   }
   var fd = {_v: -1};
   var tmp0_safe_receiver = withCaughtException(FileSource$open$lambda(fd, path));
@@ -1937,55 +2011,55 @@ function open($this, path) {
     null;
   else {
     // Inline function 'kotlin.also' call
-    throw IOException_init_$Create$_1('Failed to open a file ' + path.wq_1 + '.', tmp0_safe_receiver);
+    throw IOException_init_$Create$_1('Failed to open a file ' + path.yq_1 + '.', tmp0_safe_receiver);
   }
   if (fd._v < 0)
-    throw IOException_init_$Create$_0('Failed to open a file ' + path.wq_1 + '.');
+    throw IOException_init_$Create$_0('Failed to open a file ' + path.yq_1 + '.');
   return fd._v;
 }
 function FileSource$open$lambda($fd, $path) {
   return function () {
-    $fd._v = get_fs().openSync($path.wq_1, 'r');
+    $fd._v = get_fs().openSync($path.yq_1, 'r');
     return Unit_instance;
   };
 }
 function FileSource$readAtMostTo$lambda(this$0) {
   return function () {
-    this$0.zq_1 = get_fs().readFileSync(this$0.cr_1, null);
+    this$0.ar_1 = get_fs().readFileSync(this$0.dr_1, null);
     return Unit_instance;
   };
 }
 function FileSource(path) {
-  this.yq_1 = path;
-  this.zq_1 = null;
-  this.ar_1 = false;
-  this.br_1 = 0;
-  this.cr_1 = open(this, this.yq_1);
+  this.zq_1 = path;
+  this.ar_1 = null;
+  this.br_1 = false;
+  this.cr_1 = 0;
+  this.dr_1 = open(this, this.zq_1);
 }
 protoOf(FileSource).zo = function (sink, byteCount) {
   // Inline function 'kotlin.check' call
-  if (!!this.ar_1) {
+  if (!!this.br_1) {
     var message = 'Source is closed.';
     throw IllegalStateException_init_$Create$(toString(message));
   }
   if (byteCount.equals(new Long(0, 0))) {
     return new Long(0, 0);
   }
-  if (this.zq_1 === null) {
+  if (this.ar_1 === null) {
     var tmp0_safe_receiver = withCaughtException(FileSource$readAtMostTo$lambda(this));
     if (tmp0_safe_receiver == null)
       null;
     else {
       // Inline function 'kotlin.also' call
-      throw IOException_init_$Create$_1('Failed to read data from ' + this.yq_1.wq_1, tmp0_safe_receiver);
+      throw IOException_init_$Create$_1('Failed to read data from ' + this.zq_1.yq_1, tmp0_safe_receiver);
     }
   }
-  var len = ensureNotNull(this.zq_1).length;
-  if (this.br_1 >= len) {
+  var len = ensureNotNull(this.ar_1).length;
+  if (this.cr_1 >= len) {
     return new Long(-1, -1);
   }
   // Inline function 'kotlinx.io.minOf' call
-  var b = len - this.br_1 | 0;
+  var b = len - this.cr_1 | 0;
   // Inline function 'kotlin.comparisons.minOf' call
   var b_0 = toLong(b);
   var bytesToRead = byteCount.a1(b_0) <= 0 ? byteCount : b_0;
@@ -1994,18 +2068,18 @@ protoOf(FileSource).zo = function (sink, byteCount) {
     do {
       var i = inductionVariable;
       inductionVariable = inductionVariable.g3(new Long(1, 0));
-      var tmp = ensureNotNull(this.zq_1);
-      var _unary__edvuaz = this.br_1;
-      this.br_1 = _unary__edvuaz + 1 | 0;
+      var tmp = ensureNotNull(this.ar_1);
+      var _unary__edvuaz = this.cr_1;
+      this.cr_1 = _unary__edvuaz + 1 | 0;
       sink.lp(tmp.readInt8(_unary__edvuaz));
     }
      while (inductionVariable.a1(bytesToRead) < 0);
   return bytesToRead;
 };
 protoOf(FileSource).j5 = function () {
-  if (!this.ar_1) {
-    this.ar_1 = true;
-    get_fs().closeSync(this.cr_1);
+  if (!this.br_1) {
+    this.br_1 = true;
+    get_fs().closeSync(this.dr_1);
   }
 };
 function open_0($this, path, append) {
@@ -2016,31 +2090,31 @@ function open_0($this, path, append) {
     null;
   else {
     // Inline function 'kotlin.also' call
-    throw IOException_init_$Create$_1('Failed to open a file ' + path.wq_1 + '.', tmp0_safe_receiver);
+    throw IOException_init_$Create$_1('Failed to open a file ' + path.yq_1 + '.', tmp0_safe_receiver);
   }
   if (fd._v < 0)
-    throw IOException_init_$Create$_0('Failed to open a file ' + path.wq_1 + '.');
+    throw IOException_init_$Create$_0('Failed to open a file ' + path.yq_1 + '.');
   return fd._v;
 }
 function FileSink$open$lambda($fd, $path, $flags) {
   return function () {
-    $fd._v = get_fs().openSync($path.wq_1, $flags);
+    $fd._v = get_fs().openSync($path.yq_1, $flags);
     return Unit_instance;
   };
 }
 function FileSink$write$lambda(this$0, $buf) {
   return function () {
-    get_fs().writeFileSync(this$0.er_1, $buf);
+    get_fs().writeFileSync(this$0.fr_1, $buf);
     return Unit_instance;
   };
 }
 function FileSink(path, append) {
-  this.dr_1 = false;
-  this.er_1 = open_0(this, path, append);
+  this.er_1 = false;
+  this.fr_1 = open_0(this, path, append);
 }
 protoOf(FileSink).ap = function (source, byteCount) {
   // Inline function 'kotlin.check' call
-  if (!!this.dr_1) {
+  if (!!this.er_1) {
     var message = 'Sink is closed.';
     throw IllegalStateException_init_$Create$(toString(message));
   }
@@ -2094,14 +2168,14 @@ protoOf(FileSink).ap = function (source, byteCount) {
   }
 };
 protoOf(FileSink).j5 = function () {
-  if (!this.dr_1) {
-    this.dr_1 = true;
-    get_fs().closeSync(this.er_1);
+  if (!this.er_1) {
+    this.er_1 = true;
+    get_fs().closeSync(this.fr_1);
   }
 };
-function Path_0(path) {
+function Path_2(path) {
   _init_properties_PathsNodeJs_kt__bvvvsp();
-  return new Path(path, null);
+  return new Path_1(path, null);
 }
 function SystemPathSeparator$delegate$lambda() {
   _init_properties_PathsNodeJs_kt__bvvvsp();
@@ -2112,6 +2186,11 @@ function SystemPathSeparator$delegate$lambda() {
   }
   return new Char(charCodeAt(sep, 0));
 }
+function _get_SystemPathSeparator_$ref_lvdbpt() {
+  return function () {
+    return new Char(get_SystemPathSeparator());
+  };
+}
 var properties_initialized_PathsNodeJs_kt_2u5gc7;
 function _init_properties_PathsNodeJs_kt__bvvvsp() {
   if (!properties_initialized_PathsNodeJs_kt_2u5gc7) {
@@ -2120,7 +2199,7 @@ function _init_properties_PathsNodeJs_kt__bvvvsp() {
   }
 }
 //region block: post-declaration
-protoOf(SystemFileSystemImpl).qq = sink$default;
+protoOf(SystemFileSystemImpl).rq = sink$default;
 //endregion
 //region block: init
 Companion_instance = new Companion();
@@ -2129,7 +2208,9 @@ SegmentPool_instance = new SegmentPool();
 //endregion
 //region block: exports
 export {
-  Path_0 as Path21qufdfgaayly,
+  FileNotFoundException as FileNotFoundException1fp87nupo9c26,
+  Path as Patho2uzee7j6809,
+  Path_2 as Path21qufdfgaayly,
   get_SystemFileSystem as get_SystemFileSystemcqw7gp4jhbc7,
   Buffer as Buffergs925ekssbch,
   IOException as IOException1wyutdmfe71nu,
