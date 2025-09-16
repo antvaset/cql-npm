@@ -37,11 +37,6 @@ if (typeof Array.prototype.fill === 'undefined') {
     Object.defineProperty(TypedArray.prototype, 'fill', {value: Array.prototype.fill});
   }
 });
-if (typeof Math.log10 === 'undefined') {
-  Math.log10 = function (x) {
-    return Math.log(x) * Math.LOG10E;
-  };
-}
 if (typeof Math.clz32 === 'undefined') {
   Math.clz32 = function (log, LN2) {
     return function (x) {
@@ -52,6 +47,11 @@ if (typeof Math.clz32 === 'undefined') {
       return 31 - (log(asUint) / LN2 | 0) | 0; // the "| 0" acts like math.floor
     };
   }(Math.log, Math.LN2);
+}
+if (typeof Math.log10 === 'undefined') {
+  Math.log10 = function (x) {
+    return Math.log(x) * Math.LOG10E;
+  };
 }
 if (typeof String.prototype.endsWith === 'undefined') {
   Object.defineProperty(String.prototype, 'endsWith', {value: function (searchString, position) {
@@ -95,7 +95,7 @@ initMetadataForInterface(MutableIterable, 'MutableIterable');
 function asJsArrayView() {
   return createJsArrayViewFrom(this);
 }
-initMetadataForInterface(KtMutableList_0, 'MutableList', VOID, VOID, [KtList_0, MutableIterable, Collection]);
+initMetadataForInterface(KtMutableList_0, 'MutableList', VOID, VOID, [KtList_0, Collection, MutableIterable]);
 initMetadataForCompanion(Companion_2);
 function asJsReadonlySetView() {
   return createJsReadonlySetViewFrom(this);
@@ -111,7 +111,7 @@ initMetadataForCompanion(Companion_4);
 function asJsSetView() {
   return createJsSetViewFrom(this);
 }
-initMetadataForInterface(KtMutableSet_0, 'MutableSet', VOID, VOID, [KtSet_0, MutableIterable, Collection]);
+initMetadataForInterface(KtMutableSet_0, 'MutableSet', VOID, VOID, [KtSet_0, Collection, MutableIterable]);
 initMetadataForInterface(MutableEntry, 'MutableEntry', VOID, VOID, [Entry]);
 initMetadataForCompanion(Companion_5);
 function asJsMapView() {
@@ -142,7 +142,7 @@ initMetadataForInterface(RandomAccess, 'RandomAccess');
 initMetadataForClass(asList$1, VOID, VOID, AbstractList, [AbstractList, RandomAccess]);
 initMetadataForInterface(Comparator, 'Comparator');
 initMetadataForObject(Unit, 'Unit');
-initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [AbstractCollection, MutableIterable, Collection]);
+initMetadataForClass(AbstractMutableCollection, 'AbstractMutableCollection', VOID, AbstractCollection, [AbstractCollection, Collection, MutableIterable]);
 initMetadataForClass(IteratorImpl, 'IteratorImpl');
 initMetadataForClass(ListIteratorImpl, 'ListIteratorImpl', VOID, IteratorImpl);
 initMetadataForClass(AbstractMutableList, 'AbstractMutableList', VOID, AbstractMutableCollection, [AbstractMutableCollection, KtMutableList_0]);
@@ -154,7 +154,7 @@ initMetadataForCompanion(Companion_8);
 initMetadataForClass(ArrayList, 'ArrayList', ArrayList_init_$Create$, AbstractMutableList, [AbstractMutableList, KtMutableList_0, RandomAccess]);
 initMetadataForClass(HashMap, 'HashMap', HashMap_init_$Create$, AbstractMutableMap, [AbstractMutableMap, KtMutableMap_0]);
 initMetadataForClass(HashMapKeys, 'HashMapKeys', VOID, AbstractMutableSet, [KtMutableSet_0, AbstractMutableSet]);
-initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [MutableIterable, Collection, AbstractMutableCollection]);
+initMetadataForClass(HashMapValues, 'HashMapValues', VOID, AbstractMutableCollection, [Collection, MutableIterable, AbstractMutableCollection]);
 initMetadataForClass(HashMapEntrySetBase, 'HashMapEntrySetBase', VOID, AbstractMutableSet, [KtMutableSet_0, AbstractMutableSet]);
 initMetadataForClass(HashMapEntrySet, 'HashMapEntrySet', VOID, HashMapEntrySetBase);
 initMetadataForClass(HashMapKeysDefault$iterator$1);

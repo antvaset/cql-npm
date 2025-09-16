@@ -1,14 +1,21 @@
 {
-  "name": "cql-all-cql-to-elm",
-  "version": "4.0.0-SNAPSHOT",
-  "main": "kotlin/cql-all-cql-to-elm.mjs",
-  "devDependencies": {
-    "typescript": "5.8.3"
+  "name": "@cqframework/cql",
+  "version": "4.0.0-beta.1",
+  "description": "JavaScript tools for the Clinical Quality Language (CQL).",
+  "keywords": [
+    "cql",
+    "clinical quality language"
+  ],
+  "repository": "cqframework/clinical_quality_language",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    "./cql": "./kotlin/cql.mjs",
+    "./cql-to-elm": "./kotlin/cql-to-elm.mjs",
+    "./elm": "./kotlin/elm.mjs",
+    "./shared": "./kotlin/shared.mjs"
   },
   "dependencies": {
     "saxes": "6.0.0"
-  },
-  "peerDependencies": {},
-  "optionalDependencies": {},
-  "bundledDependencies": []
+  }
 }
